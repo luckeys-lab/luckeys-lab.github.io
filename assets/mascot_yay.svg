@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="신난 마스코트">
+  <defs>
+    <linearGradient id="hat" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3285"/><stop offset="1" stop-color="#211c55"/></linearGradient>
+    <linearGradient id="coat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dfe2f0"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#E6B84F" stop-opacity=".55"/><stop offset="1" stop-color="#E6B84F" stop-opacity="0"/></radialGradient>
+  </defs>
+  <!-- 뒤 빛 -->
+  <circle cx="200" cy="220" r="170" fill="url(#glow)"/>
+  <!-- 망토 깃 (빨간 안감) -->
+  <path d="M120 300 L78 168 L150 238 Z" fill="#B3243A" stroke="#2a0f1a" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M280 300 L322 168 L250 238 Z" fill="#B3243A" stroke="#2a0f1a" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M120 300 L92 196 L146 246 Z" fill="#7d1426"/>
+  <path d="M280 300 L308 196 L254 246 Z" fill="#7d1426"/>
+  <!-- 실험 가운 -->
+  <path d="M108 400 L118 300 Q124 276 160 268 L240 268 Q276 276 282 300 L292 400 Z" fill="url(#coat)" stroke="#b9bdd6" stroke-width="3"/>
+  <path d="M170 268 L200 330 L230 268 Z" fill="#1E2346"/>
+  <path d="M160 268 L200 340 L178 400 L150 400 L140 300 Z" fill="#f4f5fa" stroke="#b9bdd6" stroke-width="2.5"/>
+  <path d="M240 268 L200 340 L222 400 L250 400 L260 300 Z" fill="#f4f5fa" stroke="#b9bdd6" stroke-width="2.5"/>
+  <rect x="236" y="352" width="34" height="26" rx="4" fill="none" stroke="#b9bdd6" stroke-width="2.5"/>
+  <rect x="244" y="344" width="5" height="16" rx="2" fill="#E6B84F"/>
+  <!-- 목 -->
+  <rect x="186" y="250" width="28" height="24" rx="6" fill="#efe6ef"/>
+  <!-- 귀 -->
+  <path d="M144 200 L124 184 L146 222 Z" fill="#efe6ef" stroke="#cdbfd0" stroke-width="2"/>
+  <path d="M256 200 L276 184 L254 222 Z" fill="#efe6ef" stroke="#cdbfd0" stroke-width="2"/>
+  <!-- 얼굴 -->
+  <ellipse cx="200" cy="208" rx="58" ry="62" fill="#f4ecf3" stroke="#d9cbd9" stroke-width="2"/>
+  <!-- 머리카락: M자 이마 -->
+  <path d="M141 212 C134 150 168 128 200 128 C232 128 266 150 259 212 C254 196 248 184 240 178 C226 170 212 172 200 194 C188 172 174 170 160 178 C152 184 146 196 141 212 Z" fill="#1a1530"/>
+  <!-- 눈썹 -->
+  <path d="M166 192 L188 198" stroke="#1a1530" stroke-width="4" stroke-linecap="round"/>
+  <path d="M234 192 L212 198" stroke="#1a1530" stroke-width="4" stroke-linecap="round"/>
+  <!-- 눈 (빨강) -->
+  <path d="M171 217 q9 -12 18 0" fill="none" stroke="#D7263D" stroke-width="4" stroke-linecap="round"/><path d="M211 217 q9 -12 18 0" fill="none" stroke="#D7263D" stroke-width="4" stroke-linecap="round"/>
+  <!-- 볼 -->
+  <ellipse cx="164" cy="232" rx="8" ry="4.5" fill="#f2b8c6" opacity=".7"/>
+  <ellipse cx="236" cy="232" rx="8" ry="4.5" fill="#f2b8c6" opacity=".7"/>
+  <!-- 입 + 송곳니 -->
+  <path d="M180 238 Q200 262 220 238 Z" fill="#7a1d2e" stroke="#3a1a2a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M187 243 L191 254 L195 245 Z" fill="#fff" stroke="#3a1a2a" stroke-width="1.2" stroke-linejoin="round"/>
+  <path d="M213 243 L209 254 L205 245 Z" fill="#fff" stroke="#3a1a2a" stroke-width="1.2" stroke-linejoin="round"/>
+  <!-- 고깔모자 (뒤로 젖혀 씀) -->
+  <g transform="translate(6 -30) rotate(-12 200 140) scale(.92) translate(16 12)">
+    <path d="M138 142 L262 142 L232 52 Q240 24 284 40 Q252 44 244 72 Z" fill="url(#hat)" stroke="#120e33" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="142" y="124" width="116" height="14" rx="3" fill="#E6B84F"/>
+    <ellipse cx="200" cy="144" rx="80" ry="14" fill="#2b2463" stroke="#120e33" stroke-width="4"/>
+    <path d="M196 98 l4 -9 l4 9 l9 1 l-7 6 l2 9 l-8 -5 l-8 5 l2 -9 l-7 -6 Z" fill="#E6B84F"/>
+    <circle cx="224" cy="76" r="3" fill="#E6B84F"/>
+    <circle cx="176" cy="110" r="2.5" fill="#E6B84F"/>
+    <!-- 끝에 달린 금색 열쇠 -->
+    <path d="M284 40 L286 70" stroke="#A8730F" stroke-width="2.5" stroke-dasharray="3 3"/>
+    <g transform="rotate(8 286 70)">
+      <circle cx="286" cy="80" r="9" fill="none" stroke="#E6B84F" stroke-width="5"/>
+      <rect x="283.5" y="88" width="5" height="30" rx="2" fill="#E6B84F"/>
+      <rect x="288" y="106" width="8" height="4" fill="#E6B84F"/>
+      <rect x="288" y="113" width="6" height="4" fill="#E6B84F"/>
+    </g>
+  </g>
+  <!-- 어깨 박쥐 -->
+  <g transform="translate(286 270)">
+    <path d="M0 0 C-10 -14 -26 -12 -34 -2 C-26 -4 -22 2 -18 4 C-14 -2 -8 2 -6 6 C-4 2 4 2 6 6 C8 2 14 -2 18 4 C22 2 26 -4 34 -2 C26 -12 10 -14 0 0 Z" fill="#1a1530"/>
+    <circle cx="-3" cy="-1" r="1.6" fill="#E6B84F"/><circle cx="3" cy="-1" r="1.6" fill="#E6B84F"/>
+  </g>
+  <!-- 반짝이 -->
+  <path d="M70 110 l3 -8 l3 8 l8 3 l-8 3 l-3 8 l-3 -8 l-8 -3 Z" fill="#E6B84F" opacity=".9"/>
+  <path d="M330 300 l2 -6 l2 6 l6 2 l-6 2 l-2 6 l-2 -6 l-6 -2 Z" fill="#E6B84F" opacity=".8"/>
+  <path d="M60 300 l2 -5 l2 5 l5 2 l-5 2 l-2 5 l-2 -5 l-5 -2 Z" fill="#E6B84F" opacity=".6"/>
+<path d="M40 60 l4 -10 l4 10 l10 4 l-10 4 l-4 10 l-4 -10 l-10 -4 Z" fill="#E6B84F"/><path d="M350 90 l3 -8 l3 8 l8 3 l-8 3 l-3 8 l-3 -8 l-8 -3 Z" fill="#E6B84F"/><path d="M345 230 l3 -7 l3 7 l7 3 l-7 3 l-3 7 l-3 -7 l-7 -3 Z" fill="#fff" opacity=".8"/></svg>

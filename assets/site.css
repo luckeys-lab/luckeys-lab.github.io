@@ -152,3 +152,7 @@ table.evo td.to{white-space:nowrap;font-weight:700}
 .ic{width:20px;height:20px;image-rendering:pixelated;vertical-align:-4px;margin-right:3px;object-fit:contain}
 .ic.big{width:32px;height:32px;vertical-align:-8px;margin-right:6px}
 table.evo .ic{width:24px;height:24px}
+.yay{display:none;align-items:center;gap:10px;background:var(--navy);color:#fff;border-radius:12px;padding:8px 14px;margin:6px 0 10px}
+.yay.show{display:flex}
+.yay img{width:70px;height:70px}
+.yay b{color:var(--gold);font-size:15px}
