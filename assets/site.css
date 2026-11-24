@@ -1,0 +1,89 @@
+/* LucKey's Lab · 공통 스타일 */
+:root{
+  --navy:#1E2346;--navy2:#2F3352;--gold:#E6B84F;--gold2:#A8730F;
+  --bg:#ffffff;--soft:#F5F6FB;--line:#E3E5F0;--txt:#2F3352;--sub:#6b6f85;
+  --bar:46px;--max:760px;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#14172b;--soft:#1c2038;--line:#2d3252;--txt:#e6e8f5;--sub:#9aa0c4;--gold2:#E6B84F}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;-webkit-text-size-adjust:100%}
+a{color:inherit}
+img{max-width:100%;height:auto}
+
+/* 위쪽 줄 */
+.bar{position:sticky;top:0;z-index:40;height:var(--bar);background:var(--navy);display:flex;align-items:center;justify-content:space-between;padding:0 12px}
+.brand{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-family:Outfit,"Noto Sans KR",sans-serif;font-weight:800;font-size:16px;letter-spacing:.01em}
+.brand img{width:28px;height:28px}
+.bar-r{display:flex;align-items:center;gap:6px}
+.icon-btn{background:none;border:0;color:var(--gold);font-size:18px;width:38px;height:38px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.icon-btn:focus-visible{outline:2px solid var(--gold)}
+.burger{width:20px;height:14px;display:flex;flex-direction:column;justify-content:space-between}
+.burger i{display:block;height:2px;background:var(--gold);border-radius:2px;transition:.2s}
+.menu-open .burger i:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-open .burger i:nth-child(2){opacity:0}
+.menu-open .burger i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* 메뉴 레이어 */
+.dim{position:fixed;inset:var(--bar) 0 0 0;background:#0008;z-index:30;opacity:0;pointer-events:none;transition:.2s}
+.layer{position:fixed;left:0;right:0;top:var(--bar);z-index:35;background:var(--bg);border-bottom:3px solid var(--gold);max-height:calc(100vh - var(--bar));overflow:auto;transform:translateY(-8px);opacity:0;pointer-events:none;transition:.2s}
+.menu-open .dim,.menu-open .layer{opacity:1;pointer-events:auto}
+.menu-open .layer{transform:none}
+.layer-in{max-width:var(--max);margin:0 auto}
+.grp{border-bottom:1px solid var(--line)}
+.grp>button{width:100%;display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:none;border:0;color:var(--txt);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.grp>button i{font-style:normal;color:var(--gold2);font-size:12px;transition:.2s}
+.grp.open>button i{transform:rotate(180deg)}
+.grp-body{display:none;background:var(--soft);padding:6px 16px 14px}
+.grp.open .grp-body{display:block}
+.gm{font-size:12px;color:var(--gold2);font-weight:700;margin:8px 0 6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips a,.chips span{font-size:13px;padding:5px 11px;border-radius:15px;background:var(--bg);border:1px solid var(--line);text-decoration:none}
+.chips a.on{border-color:var(--gold);font-weight:700}
+.chips .off{color:var(--sub);opacity:.7}
+.grp>a{display:flex;justify-content:space-between;padding:13px 16px;font-weight:700;font-size:15px;text-decoration:none}
+
+/* 본문 */
+main{max-width:var(--max);margin:0 auto;padding:16px 14px 40px}
+h1{font-size:22px;font-weight:900;margin:6px 0 4px;line-height:1.35}
+.sub{font-size:13px;color:var(--sub);margin:0 0 16px}
+h2{font-size:16px;margin:26px 0 10px;display:flex;align-items:center;gap:8px}
+h2:before{content:"";width:4px;height:16px;background:var(--gold);border-radius:2px}
+.crumb{font-size:12px;color:var(--sub);margin:0 0 4px}
+.crumb a{text-decoration:none;border-bottom:1px dotted var(--sub)}
+
+/* 게임 카드 */
+.game{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);text-decoration:none;margin-bottom:12px;background:var(--bg)}
+.game .art{height:130px;background:linear-gradient(135deg,#3a1030 0%,#7a1d2e 55%,#c9452c 100%);position:relative}
+.game .art b{position:absolute;left:14px;bottom:12px;color:#fff;font-size:19px;font-weight:900;text-shadow:0 1px 4px #0008}
+.game .art em{position:absolute;right:10px;top:10px;font-style:normal;font-size:11px;background:var(--gold);color:var(--navy);padding:2px 9px;border-radius:10px;font-weight:700}
+.game .meta{padding:9px 14px;font-size:13px;color:var(--sub);display:flex;justify-content:space-between}
+.game.soon{pointer-events:none}
+.game.soon .art{background:repeating-linear-gradient(45deg,var(--soft),var(--soft) 10px,var(--line) 10px,var(--line) 20px)}
+.game.soon .art b{color:var(--sub);text-shadow:none;font-size:14px;font-weight:500}
+.btn-line{display:flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--navy);color:var(--navy);border-radius:10px;padding:11px;font-size:14px;font-weight:700;text-decoration:none;margin:6px 0 14px}
+@media (prefers-color-scheme:dark){.btn-line{border-color:var(--gold);color:var(--gold)}}
+
+/* 목록 칸 */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(min-width:640px){.tiles{grid-template-columns:repeat(3,1fr)}}
+.tile{border:1px solid var(--line);border-radius:10px;padding:10px 12px;text-decoration:none;display:block}
+.tile b{display:block;font-size:14px}
+.tile span{font-size:12px;color:var(--sub)}
+.tile.on{border-color:var(--gold);background:#FFFBF0}
+@media (prefers-color-scheme:dark){.tile.on{background:#2a2a1c}}
+.tile.off{opacity:.55;pointer-events:none}
+
+.about{font-size:12.5px;color:var(--sub);line-height:1.7;border-top:1px solid var(--line);padding-top:12px;margin-top:20px}
+.foot{background:var(--navy);color:#9aa0c4;font-size:11.5px;padding:16px 14px;text-align:center;line-height:1.8}
+.foot a{color:#c9cde8}
+
+/* 광고 자리: 켜졌을 때만 보임 */
+.ad{display:none;margin:16px 0;text-align:center}
+.ad.on{display:block}
+
+/* 위로 가기 */
+.totop{position:fixed;right:14px;bottom:18px;z-index:20;width:42px;height:42px;border-radius:50%;border:0;background:var(--navy);color:var(--gold);font-size:18px;box-shadow:0 3px 12px #0003;opacity:0;pointer-events:none;transition:.2s;cursor:pointer}
+.totop.show{opacity:.92;pointer-events:auto}

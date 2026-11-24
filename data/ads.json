@@ -1,0 +1,10 @@
+{
+  "_about": "광고 설정 표 · enabled를 true로 바꾸고 slots에 광고 코드를 넣으면 그 자리에만 광고가 뜸 · 지금은 꺼 둠",
+  "enabled": false,
+  "slots": {
+    "home": "",
+    "mid": "",
+    "end": "",
+    "side": ""
+  }
+}
