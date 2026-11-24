@@ -195,7 +195,7 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 {len(BU)}개 전체 (1.0 + 
 <div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
 <label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label></div>
 <div id="ulist" data-group="base" data-lock="1">
-<details class="sec" open><summary>본편 <span class="sc"></span></summary>
+<details class="sec" open><summary>1.0 버전 <span class="sc"></span></summary>
 {chr(10).join(brows[:NMAIN])}
 </details>
 <details class="sec" open><summary>추가 <span class="sc"></span></summary>
