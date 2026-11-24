@@ -4,10 +4,10 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <h1>🔓 본편 해금 213</h1>
 <p class="sub">1.0 + 무료 추가 업데이트 · 게임 데이터 기준 · 보상 이름을 누르면 설명이 보입니다</p>
 <div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div>
-<div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button><button type="button" data-f="발견">⚰️ 발견 55</button><button type="button" data-f="특수">🎯 특수 35</button><button type="button" data-f="레벨">🆙 레벨 31</button><button type="button" data-f="생존">⏱ 생존 28</button><button type="button" data-f="진화">✨ 진화 27</button><button type="button" data-f="처치 수">💀 처치 수 14</button><button type="button" data-f="성장">📈 성장 14</button><button type="button" data-f="비밀">🔒 비밀 9</button></div>
+<div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button><button type="button" data-f="발견">⚰️ 발견 55</button><button type="button" data-f="특수">🎯 특수 35</button><button type="button" data-f="레벨">🆙 레벨 31</button><button type="button" data-f="생존">⏱ 생존 28</button><button type="button" data-f="진화">✨ 진화 27</button><button type="button" data-f="성장">📈 성장 14</button><button type="button" data-f="처치 수">💀 처치 수 14</button><button type="button" data-f="비밀">🔒 비밀 9</button></div>
 <div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
 <label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label></div>
-<div id="ulist" data-group="base">
+<div id="ulist" data-group="base" data-lock="1">
 <details class="ul" data-id="b-ReachLV5" data-type="레벨" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">1</span><span class="tt">레벨 5에 도달.</span><span class="k">🆙 레벨</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="MOVESPEED"><img class="ic" src="/assets/vs/i/Wing.png" alt="" loading="lazy">날개</span></p><p><span class="bd">공통</span></p></div></details>
@@ -26,18 +26,18 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-FindYellowSignS5" data-type="레벨" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">6</span><span class="tt">갈로의 탑에서 레벨 80에 도달합니다.</span><span class="k">🆙 레벨</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 스테이지 마그나 예배당</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-ReachLV80InverseForest" data-type="레벨" data-scope="공통">
+<details class="ul" data-id="b-ReachLV80InverseForest" data-type="레벨" data-scope="공통" data-need="b-ObtainGraciasMirror">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">7</span><span class="tt">광기의 숲 반전 모드에서 레벨 80에 도달합니다. <span class="bd">추가</span></span><span class="k">🆙 레벨</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스테이지 박쥐 나라 · 하이퍼 박쥐 나라</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-ReachLV80InverseLibrary" data-type="레벨" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스테이지 박쥐 나라 · 하이퍼 박쥐 나라</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainGraciasMirror">#78</a> 유물 그라시아의 거울</p></div></details>
+<details class="ul" data-id="b-ReachLV80InverseLibrary" data-type="레벨" data-scope="공통" data-need="b-ObtainGraciasMirror">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">8</span><span class="tt">반전 상감 라이브러리에서 80레벨에 도달합니다. <span class="bd">추가</span></span><span class="k">🆙 레벨</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스테이지 아스트랄 계단 · 하이퍼 아스트랄 계단</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-ReachLV80InverseWarehouse" data-type="레벨" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스테이지 아스트랄 계단 · 하이퍼 아스트랄 계단</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainGraciasMirror">#78</a> 유물 그라시아의 거울</p></div></details>
+<details class="ul" data-id="b-ReachLV80InverseWarehouse" data-type="레벨" data-scope="공통" data-need="b-ObtainGraciasMirror">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">9</span><span class="tt">인버스 유제품 공장에서 레벨 80에 도달하세요. <span class="bd">추가</span></span><span class="k">🆙 레벨</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스테이지 마제렐라 · 하이퍼 마제렐라</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-ReachLV80InverseTower" data-type="레벨" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스테이지 마제렐라 · 하이퍼 마제렐라</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainGraciasMirror">#78</a> 유물 그라시아의 거울</p></div></details>
+<details class="ul" data-id="b-ReachLV80InverseTower" data-type="레벨" data-scope="공통" data-need="b-ObtainGraciasMirror">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">10</span><span class="tt">반전 갈로의 탑에서 80레벨에 도달합니다. <span class="bd">추가</span></span><span class="k">🆙 레벨</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스테이지 작은 다리 · 하이퍼 작은 다리</p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 스테이지 작은 다리 · 하이퍼 작은 다리</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainGraciasMirror">#78</a> 유물 그라시아의 거울</p></div></details>
 <details class="ul" data-id="b-Survive1Minute" data-type="생존" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">11</span><span class="tt">아무 캐릭터로 1분 생존.</span><span class="k">⏱ 생존</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="MAXHEALTH"><img class="ic" src="/assets/vs/i/HeartBlack.png" alt="" loading="lazy">검은 심장</span></p><p><span class="bd">공통</span></p></div></details>
@@ -50,54 +50,54 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-Survive10Minutes" data-type="생존" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">14</span><span class="tt">아무 캐릭터로 10분 생존.</span><span class="k">⏱ 생존</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="SILF"><img class="ic" src="/assets/vs/i/Silf1.png" alt="" loading="lazy">하얀 비둘기</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Survive10MinutesWithGuns" data-type="생존" data-scope="전용">
+<details class="ul" data-id="b-Survive10MinutesWithGuns" data-type="생존" data-scope="전용" data-need="b-FindCoffinStage1">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">15</span><span class="tt">푸냘라로 10분 생존.</span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="GUNS"><img class="ic" src="/assets/vs/i/Guns.png" alt="" loading="lazy">피에라 데 투펠로</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_PUGNALA">푸냘라 프로볼라</span></span></p></div></details>
-<details class="ul" data-id="b-Survive15MinutesWithGuns" data-type="생존" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="GUNS"><img class="ic" src="/assets/vs/i/Guns.png" alt="" loading="lazy">피에라 데 투펠로</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_PUGNALA">푸냘라 프로볼라</span></span></p><p class="need">🔒 먼저: <a href="#b-FindCoffinStage1">#94</a> 캐릭터 푸냘라 프로볼라</p></div></details>
+<details class="ul" data-id="b-Survive15MinutesWithGuns" data-type="생존" data-scope="전용" data-need="b-FindCoffinStage1">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">16</span><span class="tt">푸냘라로 15분 생존.</span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="GUNS2">에잇 더 스패로우</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_PUGNALA">푸냘라 프로볼라</span></span></p></div></details>
-<details class="ul" data-id="b-Survive15MinutesWithGatti" data-type="생존" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="GUNS2">에잇 더 스패로우</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_PUGNALA">푸냘라 프로볼라</span></span></p><p class="need">🔒 먼저: <a href="#b-FindCoffinStage1">#94</a> 캐릭터 푸냘라 프로볼라</p></div></details>
+<details class="ul" data-id="b-Survive15MinutesWithGatti" data-type="생존" data-scope="전용" data-need="b-FindCoffinStage2">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">17</span><span class="tt">지오반나로 15분 생존.</span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="GATTI">마녀의 고양이</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_GIOVANNA">지오반나 그라나</span></span></p></div></details>
-<details class="ul" data-id="b-Survive15MinutesWithSong" data-type="생존" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="GATTI">마녀의 고양이</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_GIOVANNA">지오반나 그라나</span></span></p><p class="need">🔒 먼저: <a href="#b-FindCoffinStage2">#95</a> 캐릭터 지오반나 그라나</p></div></details>
+<details class="ul" data-id="b-Survive15MinutesWithSong" data-type="생존" data-scope="전용" data-need="b-FindCoffinStage3">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">18</span><span class="tt">포페아로 15분 생존.</span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="SONG"><img class="ic" src="/assets/vs/i/Song.png" alt="" loading="lazy">마나의 노래</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_POPPEA">포페아 페코리나</span></span></p></div></details>
-<details class="ul" data-id="b-Survive15MinutesWithShadow" data-type="생존" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="SONG"><img class="ic" src="/assets/vs/i/Song.png" alt="" loading="lazy">마나의 노래</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_POPPEA">포페아 페코리나</span></span></p><p class="need">🔒 먼저: <a href="#b-FindCoffinStage3">#96</a> 캐릭터 포페아 페코리나</p></div></details>
+<details class="ul" data-id="b-Survive15MinutesWithShadow" data-type="생존" data-scope="전용" data-need="b-FindCoffinStage4">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">19</span><span class="tt">콘체타로 15분 생존.</span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="TRAPANO"><img class="ic" src="/assets/vs/i/trapano.png" alt="" loading="lazy">검은 드릴</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_CONCETTA">콘체타 카치오타</span></span></p></div></details>
-<details class="ul" data-id="b-Survive15MinutesWithWind" data-type="생존" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="TRAPANO"><img class="ic" src="/assets/vs/i/trapano.png" alt="" loading="lazy">검은 드릴</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_CONCETTA">콘체타 카치오타</span></span></p><p class="need">🔒 먼저: <a href="#b-FindCoffinStage4">#97</a> 캐릭터 콘체타 카치오타</p></div></details>
+<details class="ul" data-id="b-Survive15MinutesWithWind" data-type="생존" data-scope="전용" data-need="b-FindCoffinStage5">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">20</span><span class="tt">지아순타로 15분 생존.</span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="VENTO"><img class="ic" src="/assets/vs/i/Whip3.png" alt="" loading="lazy">성스러운 바람</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_ASSUNTA">지아순타 벨파에제</span></span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="VENTO"><img class="ic" src="/assets/vs/i/Whip3.png" alt="" loading="lazy">성스러운 바람</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_ASSUNTA">지아순타 벨파에제</span></span></p><p class="need">🔒 먼저: <a href="#b-FindCoffinStage5">#98</a> 캐릭터 지아순타 벨파에제</p></div></details>
 <details class="ul" data-id="b-Survive20Minutes" data-type="생존" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">21</span><span class="tt">아무 캐릭터로 20분 생존.</span><span class="k">⏱ 생존</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="PENTAGRAM"><img class="ic" src="/assets/vs/i/Pentagram.png" alt="" loading="lazy">오망성</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Survive20MinutesWithCross" data-type="생존" data-scope="전용">
+<details class="ul" data-id="b-Survive20MinutesWithCross" data-type="생존" data-scope="전용" data-need="b-Defeat100KEnemies">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">22</span><span class="tt">크로치로 20분 생존.</span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="REVIVAL"><img class="ic" src="/assets/vs/i/Tiramisu.png" alt="" loading="lazy">티라미수</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_CROCI">크로치 프리토</span></span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="REVIVAL"><img class="ic" src="/assets/vs/i/Tiramisu.png" alt="" loading="lazy">티라미수</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_CROCI">크로치 프리토</span></span></p><p class="need">🔒 먼저: <a href="#b-Defeat100KEnemies">#106</a> 캐릭터 크로치 프리토</p></div></details>
 <details class="ul" data-id="b-Survive20MinutesWithCurse" data-type="특수" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">23</span><span class="tt">10% 이상의 저주를 받고 20분 동안 생존.</span><span class="k">🎯 특수</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_LAMA">라마 라돈나</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-SurviveUntilTheEndOfWhiteout" data-type="생존" data-scope="공통">
+<details class="ul" data-id="b-SurviveUntilTheEndOfWhiteout" data-type="생존" data-scope="공통" data-need="b-FindManyOrologions">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">24</span><span class="tt">화이트아웃에서 20분 동안 생존하기. <span class="bd">추가</span></span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_SHEMOONITA">쉬문 에타</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Survive20minutesInLycaeum" data-type="생존" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_SHEMOONITA">쉬문 에타</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyOrologions">#60</a> 스테이지 화이트아웃 · 하이퍼 화이트아웃</p></div></details>
+<details class="ul" data-id="b-Survive20minutesInLycaeum" data-type="생존" data-scope="공통" data-need="b-FindManyVacuums">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">25</span><span class="tt">라이케움에서 20분 동안 생존합니다. <span class="bd">추가</span></span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_EX_PARACOOLIO">클레오</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Survive20MinutesInLaborratory" data-type="생존" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_EX_PARACOOLIO">클레오</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyVacuums">#61</a> 스테이지 라이케움 · 하이퍼 라이케움</p></div></details>
+<details class="ul" data-id="b-Survive20MinutesInLaborratory" data-type="생존" data-scope="공통" data-need="b-FindManyRosaries">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">26</span><span class="tt">실험실에서 20분 동안 생존하세요. <span class="bd">추가</span></span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_SANTA">산타 라돈나</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-EvolveOfGaea" data-type="생존" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_SANTA">산타 라돈나</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyRosaries">#62</a> 스테이지 실험실 · 하이퍼 실험실</p></div></details>
+<details class="ul" data-id="b-EvolveOfGaea" data-type="생존" data-scope="공통" data-need="b-FindManyChickens;b-Defeat0EnemiesInCoop">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">27</span><span class="tt">가에야의 시선을 진화시키세요. <span class="bd">추가</span></span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_YOLO">가제보</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Survive20MinutesInWestwoods" data-type="생존" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_YOLO">가제보</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyChickens">#63</a> 스테이지 협동 농장 · 하이퍼 협동 농장 그리고 <a href="#b-Defeat0EnemiesInCoop">#99</a> 스킬 가에야의 시선</p></div></details>
+<details class="ul" data-id="b-Survive20MinutesInWestwoods" data-type="생존" data-scope="공통" data-need="b-FindManyClovers">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">28</span><span class="tt">Survive 20 minutes in Westwoods. <span class="bd">추가</span></span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_EX_CHULAREH">출라레</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Survive20MinutesInSpace54" data-type="생존" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_EX_CHULAREH">출라레</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyClovers">#64</a> 스테이지 웨스트우드 · 하이퍼 웨스트우드</p></div></details>
+<details class="ul" data-id="b-Survive20MinutesInSpace54" data-type="생존" data-scope="공통" data-need="b-FindManyGoldenFinger">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">29</span><span class="tt">스페이스 24로 20분 동안 생존합니다. <span class="bd">추가</span></span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_SPACEDUDE">우주 친구</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Survive30MinutesWithAxe" data-type="생존" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_SPACEDUDE">우주 친구</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyGoldenFinger">#65</a> 스테이지 스페이스 54 · 하이퍼 스페이스 54</p></div></details>
+<details class="ul" data-id="b-Survive30MinutesWithAxe" data-type="생존" data-scope="전용" data-need="b-Survive20MinutesWithCurse">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">30</span><span class="tt">라마로 30분 생존.</span><span class="k">⏱ 생존</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="CURSE"><img class="ic" src="/assets/vs/i/Curse.png" alt="" loading="lazy">미치광이의 두개골</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_LAMA">라마 라돈나</span></span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="CURSE"><img class="ic" src="/assets/vs/i/Curse.png" alt="" loading="lazy">미치광이의 두개골</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_LAMA">라마 라돈나</span></span></p><p class="need">🔒 먼저: <a href="#b-Survive20MinutesWithCurse">#23</a> 캐릭터 라마 라돈나</p></div></details>
 <details class="ul" data-id="b-GetHolyBookToLevel4" data-type="성장" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">31</span><span class="tt">성경 레벨 4까지 올리기.</span><span class="k">📈 성장</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="SPEED"><img class="ic" src="/assets/vs/i/Gauntlet.png" alt="" loading="lazy">팔 보호대</span></p><p><span class="bd">공통</span></p></div></details>
@@ -125,18 +125,18 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-GetPentagramToLevel7" data-type="성장" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">39</span><span class="tt">오망성을 레벨 7까지 올리기.</span><span class="k">📈 성장</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_CRISTINA">크리스틴 다베인</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-GetGlassFandangoToLevel7" data-type="성장" data-scope="공통">
+<details class="ul" data-id="b-GetGlassFandangoToLevel7" data-type="성장" data-scope="공통" data-need="b-FindManyOrologions">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">40</span><span class="tt">유리 판당고 레벨 7까지 올리기. <span class="bd">추가</span></span><span class="k">📈 성장</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="ICELANCE"><img class="ic" src="/assets/vs/i/SpearIce.png" alt="" loading="lazy">유리 판당고</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-GetJavelinToLevel7" data-type="성장" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="ICELANCE"><img class="ic" src="/assets/vs/i/SpearIce.png" alt="" loading="lazy">유리 판당고</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyOrologions">#60</a> 스테이지 화이트아웃 · 하이퍼 화이트아웃</p></div></details>
+<details class="ul" data-id="b-GetJavelinToLevel7" data-type="성장" data-scope="공통" data-need="b-FindManyRosaries">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">41</span><span class="tt">산타 재블린의 레벨을 7까지 올리세요. <span class="bd">추가</span></span><span class="k">📈 성장</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="SANTAJAVELIN"><img class="ic" src="/assets/vs/i/sjavelin.png" alt="" loading="lazy">산타 재블린</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-GetMagiStonetoLevel7" data-type="성장" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="SANTAJAVELIN"><img class="ic" src="/assets/vs/i/sjavelin.png" alt="" loading="lazy">산타 재블린</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyRosaries">#62</a> 스테이지 실험실 · 하이퍼 실험실</p></div></details>
+<details class="ul" data-id="b-GetMagiStonetoLevel7" data-type="성장" data-scope="공통" data-need="b-FindManyClovers">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">42</span><span class="tt">Get Magi-Stone to level 7. <span class="bd">추가</span></span><span class="k">📈 성장</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="EX_MAGISTONE1"><img class="ic" src="/assets/vs/i/magistone.png" alt="" loading="lazy">마기 스톤</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-GetPhas3rToLevel7" data-type="성장" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="EX_MAGISTONE1"><img class="ic" src="/assets/vs/i/magistone.png" alt="" loading="lazy">마기 스톤</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyClovers">#64</a> 스테이지 웨스트우드 · 하이퍼 웨스트우드</p></div></details>
+<details class="ul" data-id="b-GetPhas3rToLevel7" data-type="성장" data-scope="공통" data-need="b-FindManyGoldenFinger">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">43</span><span class="tt">Phas3r 레벨을 7까지 올리세요. <span class="bd">추가</span></span><span class="k">📈 성장</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="PHASER"><img class="ic" src="/assets/vs/i/phaser.png" alt="" loading="lazy">Phas3r</span></p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="PHASER"><img class="ic" src="/assets/vs/i/phaser.png" alt="" loading="lazy">Phas3r</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyGoldenFinger">#65</a> 스테이지 스페이스 54 · 하이퍼 스페이스 54</p></div></details>
 <details class="ul" data-id="b-GetTorroneToLevel9" data-type="성장" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">44</span><span class="tt">토로나의 상자 레벨 9 달성.</span><span class="k">📈 성장</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 파워업 전능</p><p><span class="bd">공통</span></p></div></details>
@@ -152,9 +152,9 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-Earn5000CoinsInASingleRun" data-type="특수" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">48</span><span class="tt">한 게임에서 5,000골드 획득.</span><span class="k">🎯 특수</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_DOMMARIO">돔마리오</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-GalloDivano" data-type="특수" data-scope="전용">
+<details class="ul" data-id="b-GalloDivano" data-type="특수" data-scope="전용" data-need="b-ObtainTheInfiniteCorridor">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">49</span><span class="tt">갈로 또는 디바노로 30분 동안 생존합니다.</span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="TRIASSO1"><img class="ic" src="/assets/vs/i/bracelet1.png" alt="" loading="lazy">팔찌</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_PINO">갈로 발레토</span></span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="TRIASSO1"><img class="ic" src="/assets/vs/i/bracelet1.png" alt="" loading="lazy">팔찌</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_PINO">갈로 발레토</span></span></p><p class="need">🔒 먼저: <a href="#b-ObtainTheInfiniteCorridor">#165</a> 캐릭터 갈로 발레토</p></div></details>
 <details class="ul" data-id="b-Destroy20Candles" data-type="특수" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">50</span><span class="tt">빛 물체 20개 파괴.</span><span class="k">🎯 특수</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="FIREBALL"><img class="ic" src="/assets/vs/i/WandFire.png" alt="" loading="lazy">불의 지팡이</span></p><p><span class="bd">공통</span></p></div></details>
@@ -176,36 +176,36 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-FindAStoneMask" data-type="발견" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">56</span><span class="tt">돌가면 발견.</span><span class="k">⚰️ 발견</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="GREED"><img class="ic" src="/assets/vs/i/Mask.png" alt="" loading="lazy">돌<span class="pop" data-pop="CH_NOSTRO">가면</span></span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindAnArmaDio" data-type="발견" data-scope="공통">
+<details class="ul" data-id="b-FindAnArmaDio" data-type="발견" data-scope="공통" data-need="b-FindManyRosaries">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">57</span><span class="tt">아르마 디오를 찾으세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="ARMADIO"><img class="ic" src="/assets/vs/i/armadio.png" alt="" loading="lazy">아르마 디오</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindAParmAegis" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="ARMADIO"><img class="ic" src="/assets/vs/i/armadio.png" alt="" loading="lazy">아르마 디오</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyRosaries">#62</a> 스테이지 실험실 · 하이퍼 실험실</p></div></details>
+<details class="ul" data-id="b-FindAParmAegis" data-type="발견" data-scope="공통" data-need="b-FindManyChickens">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">58</span><span class="tt">협동 농장에서 파마산 보호구를 찾으세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="PARMA"><img class="ic" src="/assets/vs/i/parma.png" alt="" loading="lazy">파마산 보호구</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindKaromasMana" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="PARMA"><img class="ic" src="/assets/vs/i/parma.png" alt="" loading="lazy">파마산 보호구</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyChickens">#63</a> 스테이지 협동 농장 · 하이퍼 협동 농장</p></div></details>
+<details class="ul" data-id="b-FindKaromasMana" data-type="발견" data-scope="공통" data-need="b-FindManyClovers">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">59</span><span class="tt">웨스트우드에서 카로마의 마나를 찾으세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="DOMINION"><img class="ic" src="/assets/vs/i/dominion.png" alt="" loading="lazy">카로마의 마나</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindManyOrologions" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 패시브 <span class="pop" data-pop="DOMINION"><img class="ic" src="/assets/vs/i/dominion.png" alt="" loading="lazy">카로마의 마나</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyClovers">#64</a> 스테이지 웨스트우드 · 하이퍼 웨스트우드</p></div></details>
+<details class="ul" data-id="b-FindManyOrologions" data-type="발견" data-scope="공통" data-need="b-FindMilkyWayMap">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">60</span><span class="tt">회중시계 20개 찾기. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스테이지 화이트아웃 · 하이퍼 화이트아웃</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindManyVacuums" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스테이지 화이트아웃 · 하이퍼 화이트아웃</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindMilkyWayMap">#69</a> 유물 은하수 지도</p></div></details>
+<details class="ul" data-id="b-FindManyVacuums" data-type="발견" data-scope="공통" data-need="b-FindMilkyWayMap">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">61</span><span class="tt">흡입기 50개를 찾으세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스테이지 라이케움 · 하이퍼 라이케움</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindManyRosaries" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스테이지 라이케움 · 하이퍼 라이케움</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindMilkyWayMap">#69</a> 유물 은하수 지도</p></div></details>
+<details class="ul" data-id="b-FindManyRosaries" data-type="발견" data-scope="공통" data-need="b-FindMilkyWayMap">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">62</span><span class="tt">묵주를 33개 찾으세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스테이지 실험실 · 하이퍼 실험실</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindManyChickens" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스테이지 실험실 · 하이퍼 실험실</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindMilkyWayMap">#69</a> 유물 은하수 지도</p></div></details>
+<details class="ul" data-id="b-FindManyChickens" data-type="발견" data-scope="공통" data-need="b-FindMilkyWayMap">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">63</span><span class="tt">플로어 치킨 500마리를 찾으세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스테이지 협동 농장 · 하이퍼 협동 농장</p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 스테이지 협동 농장 · 하이퍼 협동 농장</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindMilkyWayMap">#69</a> 유물 은하수 지도</p></div></details>
 <details class="ul" data-id="b-FindManyClovers" data-type="발견" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">64</span><span class="tt">리틀 클로버 23개를 주우세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 스테이지 웨스트우드 · 하이퍼 웨스트우드</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindManyGoldenFinger" data-type="발견" data-scope="공통">
+<details class="ul" data-id="b-FindManyGoldenFinger" data-type="발견" data-scope="공통" data-need="b-FindMilkyWayMap">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">65</span><span class="tt">골드 핑거 5개를 찾으세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스테이지 스페이스 54 · 하이퍼 스페이스 54</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-HitManyEnemiesWithTrain" data-type="특수" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스테이지 스페이스 54 · 하이퍼 스페이스 54</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindMilkyWayMap">#69</a> 유물 은하수 지도</p></div></details>
+<details class="ul" data-id="b-HitManyEnemiesWithTrain" data-type="특수" data-scope="공통" data-need="b-FindManyRosaries">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">66</span><span class="tt">실험실 열차로 피해를 총 25120 만큼 입히세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스테이지 카를로 카트 · 하이퍼 카를로 카트</p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 스테이지 카를로 카트 · 하이퍼 카를로 카트</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyRosaries">#62</a> 스테이지 실험실 · 하이퍼 실험실</p></div></details>
 <details class="ul" data-id="b-FindGrimoire" data-type="발견" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">67</span><span class="tt">그림 그리모어 발견.</span><span class="k">⚰️ 발견</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_GRIMOIRE">그림 그리모어</span></p><p><span class="bd">공통</span></p></div></details>
@@ -230,63 +230,63 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-FindYellowSign" data-type="발견" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">74</span><span class="tt">노란색 신호 발견.</span><span class="k">⚰️ 발견</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_YELLOW">노란색 신호</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindForbiddenScroll" data-type="발견" data-scope="공통">
+<details class="ul" data-id="b-FindForbiddenScroll" data-type="발견" data-scope="공통" data-need="b-FindYellowSign">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">75</span><span class="tt">모르베인의 금지된 두루마리를 찾습니다.</span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_SECRETS">모르베인의 금지된 두루마리</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindGGospel" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_SECRETS">모르베인의 금지된 두루마리</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindYellowSign">#74</a> 유물 노란색 신호</p></div></details>
+<details class="ul" data-id="b-FindGGospel" data-type="발견" data-scope="공통" data-need="b-FindYellowSign">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">76</span><span class="tt">위대한 복음을 찾습니다.</span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_GGOSPEL">위대한 복음</span></p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_GGOSPEL">위대한 복음</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindYellowSign">#74</a> 유물 노란색 신호</p></div></details>
 <details class="ul" data-id="b-ObtainAllRelics" data-type="비밀" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">77</span><span class="tt">모든 스테이지에서 모든 일반 유물을 획득합니다.</span><span class="k">🔒 비밀</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 스테이지 에우다이모니아 M.</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-ObtainGraciasMirror" data-type="발견" data-scope="공통">
+<details class="ul" data-id="b-ObtainGraciasMirror" data-type="발견" data-scope="공통" data-need="b-FindYellowSign">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">78</span><span class="tt">그라시아의 거울을 획득합니다.</span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_MIRROR">그라시아의 거울</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-ObtainSeventhTrumpet" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_MIRROR">그라시아의 거울</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindYellowSign">#74</a> 유물 노란색 신호</p></div></details>
+<details class="ul" data-id="b-ObtainSeventhTrumpet" data-type="발견" data-scope="공통" data-need="b-FindYellowSign">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">79</span><span class="tt">일곱 번째 나팔을 획득합니다.</span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_TRUMPET">일곱 번째 나팔</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindAtlas" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_TRUMPET">일곱 번째 나팔</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindYellowSign">#74</a> 유물 노란색 신호</p></div></details>
+<details class="ul" data-id="b-FindAtlas" data-type="발견" data-scope="공통" data-need="b-FindYellowSign">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">80</span><span class="tt">보스에게서 아틀라스 게이트 획득하기 <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_ATLAS">아틀라스 게이트</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindApoplexy" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_ATLAS">아틀라스 게이트</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindYellowSign">#74</a> 유물 노란색 신호</p></div></details>
+<details class="ul" data-id="b-FindApoplexy" data-type="발견" data-scope="공통" data-need="b-ObtainGraciasMirror">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">81</span><span class="tt">박쥐 나라에서 9분 생존해 아포플렉시를 찾습니다. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_CHARM">아포플렉시</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindAntidote" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_CHARM">아포플렉시</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainGraciasMirror">#78</a> 유물 그라시아의 거울</p></div></details>
+<details class="ul" data-id="b-FindAntidote" data-type="발견" data-scope="공통" data-need="b-FindMilkyWayMap">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">82</span><span class="tt">화이트아웃에서 해독제 찾기. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_ANTIDOTE">해독제</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-BuyGreenEyesVizard" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_ANTIDOTE">해독제</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindMilkyWayMap">#69</a> 유물 은하수 지도</p></div></details>
+<details class="ul" data-id="b-BuyGreenEyesVizard" data-type="발견" data-scope="공통" data-need="b-FindManyClovers">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">83</span><span class="tt">라이케움에서 녹색 눈의 가면을 찾아 구매하세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_GREENEYES">녹색 눈의 <span class="pop" data-pop="CH_NOSTRO">가면</span>.</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindTrisection" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_GREENEYES">녹색 눈의 <span class="pop" data-pop="CH_NOSTRO">가면</span>.</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyClovers">#64</a> 스테이지 웨스트우드 · 하이퍼 웨스트우드</p></div></details>
+<details class="ul" data-id="b-FindTrisection" data-type="발견" data-scope="공통" data-need="b-ObtainGraciasMirror">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">84</span><span class="tt">아스트랄 계단에서 트라이섹션을 찾습니다. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_TRISECTION">트라이섹션</span></p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_TRISECTION">트라이섹션</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainGraciasMirror">#78</a> 유물 그라시아의 거울</p></div></details>
 <details class="ul" data-id="b-FindBraveStory" data-type="발견" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">85</span><span class="tt">스페이스 54의 18분 54초에서 용감한 이야기를 찾습니다. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_BRAVESTORY">용감한 이야기</span></p><p><span class="bd">공통</span></p></div></details>
 <details class="ul" data-id="b-FindChickenClock" data-type="발견" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">86</span><span class="tt">협동 농장 끝에서 가운데에 시계가 박힌 로스트 치킨을 찾으세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_SPEEDUP">가운데에 시계가 박힌 로스트 치킨</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindMasquerade" data-type="발견" data-scope="공통">
+<details class="ul" data-id="b-FindMasquerade" data-type="발견" data-scope="공통" data-need="b-FindManyClovers">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">87</span><span class="tt">웨스트우즈에서 가면무도회 유물을 찾으세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_PARTY">가장무도회</span></p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_PARTY">가장무도회</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyClovers">#64</a> 스테이지 웨스트우드 · 하이퍼 웨스트우드</p></div></details>
 <details class="ul" data-id="b-FindRecycle" data-type="발견" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">88</span><span class="tt">마제렐라에서 왁스 페티쉬를 찾으세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_RECYCLE">왁스 페티쉬</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindChaosMalachite" data-type="발견" data-scope="공통">
+<details class="ul" data-id="b-FindChaosMalachite" data-type="발견" data-scope="공통" data-need="b-ObtainGraciasMirror">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">89</span><span class="tt">박쥐 나라에서 18분 생존해 카오스 말라카이트를 찾습니다. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_MALACHITE">카오스 말라카이트</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindChaosRosalia" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_MALACHITE">카오스 말라카이트</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainGraciasMirror">#78</a> 유물 그라시아의 거울</p></div></details>
+<details class="ul" data-id="b-FindChaosRosalia" data-type="발견" data-scope="공통" data-need="b-ObtainGraciasMirror">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">90</span><span class="tt">아스트랄 계단에서 카오스 로잘리아를 찾습니다. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_ROSALIA">카오스 로잘리아</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindChaosLazulia" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_ROSALIA">카오스 로잘리아</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainGraciasMirror">#78</a> 유물 그라시아의 거울</p></div></details>
+<details class="ul" data-id="b-FindChaosLazulia" data-type="발견" data-scope="공통" data-need="b-ObtainGraciasMirror">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">91</span><span class="tt">마제렐라에서 카오스 라줄리아를 찾으세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_LAZULIA">카오스 라줄리아</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindChaosAltemanna" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_LAZULIA">카오스 라줄리아</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainGraciasMirror">#78</a> 유물 그라시아의 거울</p></div></details>
+<details class="ul" data-id="b-FindChaosAltemanna" data-type="발견" data-scope="공통" data-need="b-ObtainGraciasMirror">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">92</span><span class="tt">작은 다리에서 카오스 알테만나 찾기. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_ALTEMANNA">카오스 알테만나</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-FindMap_AstralStair" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_ALTEMANNA">카오스 알테만나</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainGraciasMirror">#78</a> 유물 그라시아의 거울</p></div></details>
+<details class="ul" data-id="b-FindMap_AstralStair" data-type="발견" data-scope="공통" data-need="b-ReachLV80InverseLibrary">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">93</span><span class="tt">아스트랄 계단 지도를 찾습니다. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_MAP_AS">아스트랄 계단 지도</span></p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_MAP_AS">아스트랄 계단 지도</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ReachLV80InverseLibrary">#8</a> 스테이지 아스트랄 계단 · 하이퍼 아스트랄 계단</p></div></details>
 <details class="ul" data-id="b-FindCoffinStage1" data-type="비밀" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">94</span><span class="tt">광기의 숲에서 관을 찾아서 열기.</span><span class="k">🔒 비밀</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_PUGNALA">푸냘라 프로볼라</span></p><p><span class="bd">공통</span></p></div></details>
@@ -302,9 +302,9 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-FindCoffinStage5" data-type="비밀" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">98</span><span class="tt">마그나 예배당에서 관을 찾아서 열기.</span><span class="k">🔒 비밀</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_ASSUNTA">지아순타 벨파에제</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Defeat0EnemiesInCoop" data-type="특수" data-scope="공통">
+<details class="ul" data-id="b-Defeat0EnemiesInCoop" data-type="특수" data-scope="공통" data-need="b-FindManyChickens">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">99</span><span class="tt">협동 농장에서 적 0마리룰 처치하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="EX_GAEA1"><img class="ic" src="/assets/vs/i/icon_gazeofgaea.png" alt="" loading="lazy">가에야의 시선</span></p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="EX_GAEA1"><img class="ic" src="/assets/vs/i/icon_gazeofgaea.png" alt="" loading="lazy">가에야의 시선</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyChickens">#63</a> 스테이지 협동 농장 · 하이퍼 협동 농장</p></div></details>
 <details class="ul" data-id="b-Defeat3000Skeletons" data-type="처치 수" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">100</span><span class="tt">누적 3,000마리 스켈레톤 처치.</span><span class="k">💀 처치 수</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 스킬 뼈 · 캐릭터 <span class="pop" data-pop="CH_MORTACCIO">모르타치오</span></p><p><span class="bd">누적</span> <span class="bd">공통</span></p></div></details>
@@ -332,9 +332,9 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-DefeatShootingEnemies" data-type="특수" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">108</span><span class="tt">251096명의 사격하는 적을 처치하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="EX_AMMO1"><img class="ic" src="/assets/vs/i/EX_AMMO1.png" alt="" loading="lazy">탄약 아팔레트</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Defeat100kWithSigma" data-type="처치 수" data-scope="전용">
+<details class="ul" data-id="b-Defeat100kWithSigma" data-type="처치 수" data-scope="전용" data-need="b-CompleteCollection">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">109</span><span class="tt">시그마 여왕으로 한 게임에서 적을 100000명 처치합니다.</span><span class="k">💀 처치 수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="VICTORY"><img class="ic" src="/assets/vs/i/victory1.png" alt="" loading="lazy">승리의 검</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_SIGMA">시그마</span></span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="VICTORY"><img class="ic" src="/assets/vs/i/victory1.png" alt="" loading="lazy">승리의 검</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_SIGMA">시그마</span></span></p><p class="need">🔒 먼저: <a href="#b-CompleteCollection">#163</a> 캐릭터 시그마</p></div></details>
 <details class="ul" data-id="b-DefeatBossMadForest" data-type="처치 수" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">110</span><span class="tt">광기의 숲에서 거대한 푸른 비너스를 쓰러뜨리기.</span><span class="k">💀 처치 수</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 하이퍼 광기의 숲</p><p><span class="bd">누적</span> <span class="bd">공통</span></p></div></details>
@@ -350,9 +350,9 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-DefeatBossChapel" data-type="처치 수" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">114</span><span class="tt">마그나 예배당에서 트리나크리아를 쓰러뜨리기.</span><span class="k">💀 처치 수</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 하이퍼 마그나 예배당</p><p><span class="bd">누적</span> <span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-DefeatBatDragons" data-type="특수" data-scope="공통">
+<details class="ul" data-id="b-DefeatBatDragons" data-type="특수" data-scope="공통" data-need="b-BuyGreenEyesVizard">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">115</span><span class="tt">박쥐 드래곤 1마리를 처치하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="EX_FLIK1"><img class="ic" src="/assets/vs/i/unearthlybolt1.png" alt="" loading="lazy">저세상 번개</span></p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="EX_FLIK1"><img class="ic" src="/assets/vs/i/unearthlybolt1.png" alt="" loading="lazy">저세상 번개</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-BuyGreenEyesVizard">#83</a> 유물 녹색 눈의 가면.</p></div></details>
 <details class="ul" data-id="b-Unlock3Hypers" data-type="특수" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">116</span><span class="tt">보통 스테이지에서 하이퍼모드를 잠금 해제합니다.</span><span class="k">🎯 특수</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 스테이지 일 몰리제 · 하이퍼 일 몰리제</p><p><span class="bd">공통</span></p></div></details>
@@ -434,21 +434,21 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-ReachLV99WithPoe" data-type="레벨" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">142</span><span class="tt">포로 레벨 50에 도달합니다.</span><span class="k">🆙 레벨</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_21">XXI - <span class="pop" data-pop="ASTRONOMIA">블러드 아스트로노미아</span></span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-ReachLV100WithMortaccio" data-type="레벨" data-scope="전용">
+<details class="ul" data-id="b-ReachLV100WithMortaccio" data-type="레벨" data-scope="전용" data-need="b-Defeat3000Skeletons">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">143</span><span class="tt">모르타치오로 레벨 80 달성.</span><span class="k">🆙 레벨</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 파워업 새로고침</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_MORTACCIO">모르타치오</span></span></p></div></details>
-<details class="ul" data-id="b-ReachLV100WithCavallo" data-type="레벨" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 파워업 새로고침</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_MORTACCIO">모르타치오</span></span></p><p class="need">🔒 먼저: <a href="#b-Defeat3000Skeletons">#100</a> 스킬 뼈 · 캐릭터 모르타치오</p></div></details>
+<details class="ul" data-id="b-ReachLV100WithCavallo" data-type="레벨" data-scope="전용" data-need="b-Defeat3000Buers">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">144</span><span class="tt">야타 카발로 레벨 80 달성.</span><span class="k">🆙 레벨</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 파워업 새로고침</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_CAVALLO">카발로</span></span></p></div></details>
-<details class="ul" data-id="b-ReachLV100WithRamba" data-type="레벨" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 파워업 새로고침</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_CAVALLO">카발로</span></span></p><p class="need">🔒 먼저: <a href="#b-Defeat3000Buers">#101</a> 스킬 체리폭탄 · 캐릭터 카발로</p></div></details>
+<details class="ul" data-id="b-ReachLV100WithRamba" data-type="레벨" data-scope="전용" data-need="b-Defeat3000Milk">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">145</span><span class="tt">비앙카 람바로 레벨 80 도달.</span><span class="k">🆙 레벨</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 파워업 새로고침</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_MARIA">람바</span></span></p></div></details>
-<details class="ul" data-id="b-ReachLV100WithOsole" data-type="레벨" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 파워업 새로고침</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_MARIA">람바</span></span></p><p class="need">🔒 먼저: <a href="#b-Defeat3000Milk">#102</a> 스킬 광산수레 · 캐릭터 람바</p></div></details>
+<details class="ul" data-id="b-ReachLV100WithOsole" data-type="레벨" data-scope="전용" data-need="b-Defeat3000Hydra">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">146</span><span class="tt">오&#x27; 솔레미오로 레벨 80 도달.</span><span class="k">🆙 레벨</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 파워업 새로고침</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_TATANKA">오&#x27;솔레 미오</span></span></p></div></details>
-<details class="ul" data-id="b-ReachLV100WithAmbrojoe" data-type="레벨" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 파워업 새로고침</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_TATANKA">오&#x27;솔레 미오</span></span></p><p class="need">🔒 먼저: <a href="#b-Defeat3000Hydra">#103</a> 스킬 천상의 꽃 · 캐릭터 오&#x27;솔레 미오</p></div></details>
+<details class="ul" data-id="b-ReachLV100WithAmbrojoe" data-type="레벨" data-scope="전용" data-need="b-Defeat6000StageKillers">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">147</span><span class="tt">암브로조 경으로 레벨 80 도달.</span><span class="k">🆙 레벨</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 파워업 새로고침</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_AMBROGIO">암브로조</span></span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 파워업 새로고침</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_AMBROGIO">암브로조</span></span></p><p class="need">🔒 먼저: <a href="#b-Defeat6000StageKillers">#104</a> 스킬 라 로바 · 캐릭터 암브로조</p></div></details>
 <details class="ul" data-id="b-Survive15MinutesInMolise" data-type="생존" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">148</span><span class="tt">일 몰리제에서 15분 생존.</span><span class="k">⏱ 생존</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 파워업 건너뛰기</p><p><span class="bd">공통</span></p></div></details>
@@ -500,21 +500,21 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-GreatestJubilee" data-type="비밀" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">164</span><span class="tt">마지막 불꽃놀이를 봅니다.</span><span class="k">🔒 비밀</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="JUBILEE"><img class="ic" src="/assets/vs/i/jubilee.png" alt="" loading="lazy">위대한 기념제</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-ObtainTheInfiniteCorridor" data-type="발견" data-scope="공통">
+<details class="ul" data-id="b-ObtainTheInfiniteCorridor" data-type="발견" data-scope="공통" data-need="b-FindYellowSign">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">165</span><span class="tt">무한 회랑 획득.</span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_PINO">갈로 발레토</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-ObtainTheCrimsonShroud" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_PINO">갈로 발레토</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindYellowSign">#74</a> 유물 노란색 신호</p></div></details>
+<details class="ul" data-id="b-ObtainTheCrimsonShroud" data-type="발견" data-scope="공통" data-need="b-FindYellowSign">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">166</span><span class="tt">진홍의 망토 획득.</span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_FEBBRA">디바노 델마</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-EvolveBattilia" data-type="진화" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_FEBBRA">디바노 델마</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindYellowSign">#74</a> 유물 노란색 신호</p></div></details>
+<details class="ul" data-id="b-EvolveBattilia" data-type="진화" data-scope="공통" data-need="b-DefeatManyBats">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">167</span><span class="tt">파코 바틸리아를 진화시키세요. <span class="bd">추가</span></span><span class="k">✨ 진화</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_TUPU">로버트</span></p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_TUPU">로버트</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-DefeatManyBats">#107</a> 스킬 파코 바틸리아</p></div></details>
 <details class="ul" data-id="b-EvolveAmmoAppalate" data-type="진화" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">168</span><span class="tt">탄약 아팔레트를 진화시키세요. <span class="bd">추가</span></span><span class="k">✨ 진화</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 캐릭터 지아푼타 벨파에제</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-EvolveUnearthlyBolt" data-type="진화" data-scope="공통">
+<details class="ul" data-id="b-EvolveUnearthlyBolt" data-type="진화" data-scope="공통" data-need="b-BuyGreenEyesVizard;b-DefeatBatDragons">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">169</span><span class="tt">저세상 번개를 진화시키세요. <span class="bd">추가</span></span><span class="k">✨ 진화</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_EX_BIGTROUBLER">트러블러</span></p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 캐릭터 <span class="pop" data-pop="CH_EX_BIGTROUBLER">트러블러</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-BuyGreenEyesVizard">#83</a> 유물 녹색 눈의 가면. 그리고 <a href="#b-DefeatBatDragons">#115</a> 스킬 저세상 번개</p></div></details>
 <details class="ul" data-id="b-EvolveWhip" data-type="진화" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">170</span><span class="tt">채찍 진화.</span><span class="k">✨ 진화</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p></div></details>
@@ -572,81 +572,81 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 213개 전체 (1.0 + 추가
 <details class="ul" data-id="b-EvolveBracelet" data-type="진화" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">188</span><span class="tt">팔찌와 이중 팔찌를 진화시킵니다.</span><span class="k">✨ 진화</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-EvolveGlassFandango" data-type="진화" data-scope="공통">
+<details class="ul" data-id="b-EvolveGlassFandango" data-type="진화" data-scope="공통" data-need="b-FindManyOrologions">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">189</span><span class="tt">유리 판당고 진화시키기. <span class="bd">추가</span></span><span class="k">✨ 진화</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-EvolvePenshin" data-type="진화" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyOrologions">#60</a> 스테이지 화이트아웃 · 하이퍼 화이트아웃</p></div></details>
+<details class="ul" data-id="b-EvolvePenshin" data-type="진화" data-scope="공통" data-need="b-FindManyVacuums">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">190</span><span class="tt">펜신 파차를 진화시키세요. <span class="bd">추가</span></span><span class="k">✨ 진화</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="EX_PENSHIN"><img class="ic" src="/assets/vs/i/penshin_selector.png" alt="" loading="lazy">펜신 파차</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-EvolveJavelin" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="EX_PENSHIN"><img class="ic" src="/assets/vs/i/penshin_selector.png" alt="" loading="lazy">펜신 파차</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyVacuums">#61</a> 스테이지 라이케움 · 하이퍼 라이케움</p></div></details>
+<details class="ul" data-id="b-EvolveJavelin" data-type="발견" data-scope="공통" data-need="b-FindManyRosaries">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">191</span><span class="tt">산타 재블린. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-EvolveOfGaea_Fix" data-type="진화" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyRosaries">#62</a> 스테이지 실험실 · 하이퍼 실험실</p></div></details>
+<details class="ul" data-id="b-EvolveOfGaea_Fix" data-type="진화" data-scope="공통" data-need="b-FindManyChickens">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">192</span><span class="tt">가이아의 시선을 진화시키세요. <span class="bd">추가</span></span><span class="k">✨ 진화</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-EvolveMagiStone" data-type="진화" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyChickens">#63</a> 스테이지 협동 농장 · 하이퍼 협동 농장</p></div></details>
+<details class="ul" data-id="b-EvolveMagiStone" data-type="진화" data-scope="공통" data-need="b-FindManyClovers">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">193</span><span class="tt">마기 스톤을 진화시키세요. <span class="bd">추가</span></span><span class="k">✨ 진화</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-EvolvePhas3r" data-type="진화" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyClovers">#64</a> 스테이지 웨스트우드 · 하이퍼 웨스트우드</p></div></details>
+<details class="ul" data-id="b-EvolvePhas3r" data-type="진화" data-scope="공통" data-need="b-FindManyGoldenFinger">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">194</span><span class="tt">Phas3r을 진화시키세요. <span class="bd">추가</span></span><span class="k">✨ 진화</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 골드 500</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyGoldenFinger">#65</a> 스테이지 스페이스 54 · 하이퍼 스페이스 54</p></div></details>
 <details class="ul" data-id="b-EvolveAll" data-type="진화" data-scope="공통">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">195</span><span class="tt">모든 일반 진화 및 조합을 발견합니다.</span><span class="k">✨ 진화</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → 스킬 <span class="pop" data-pop="CANDYBOX"><img class="ic" src="/assets/vs/i/candybox.png" alt="" loading="lazy">사탕상자</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-CastForbiddenBox" data-type="비밀" data-scope="공통">
+<details class="ul" data-id="b-CastForbiddenBox" data-type="비밀" data-scope="공통" data-need="b-FindForbiddenScroll">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">196</span><span class="tt">과감하게 &quot;fobiddenbox&quot; 주문을 시전해 보세요. <span class="bd">추가</span></span><span class="k">🔒 비밀</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스테이지 1665호실</p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-ObtainDarkasso" data-type="비밀" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 스테이지 1665호실</p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindForbiddenScroll">#75</a> 유물 모르베인의 금지된 두루마리</p></div></details>
+<details class="ul" data-id="b-ObtainDarkasso" data-type="비밀" data-scope="공통" data-need="b-CastForbiddenBox">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">197</span><span class="tt">다르카소의 품에 안겨보세요. <span class="bd">추가</span></span><span class="k">🔒 비밀</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_DARKASSO">다르카소</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Dark_00Troubler" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_DARKASSO">다르카소</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-CastForbiddenBox">#196</a> 스테이지 1665호실</p></div></details>
+<details class="ul" data-id="b-Dark_00Troubler" data-type="특수" data-scope="전용" data-need="b-EvolveUnearthlyBolt;b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">198</span><span class="tt">게임 킬러 아르카나를 사용하는 동안 빅 트러블러로 박쥐 드래곤을 처치하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_22">심장에 박힌 말뚝</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_EX_BIGTROUBLER">트러블러</span></span></p></div></details>
-<details class="ul" data-id="b-Dark_01SpaceDude" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_22">심장에 박힌 말뚝</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_EX_BIGTROUBLER">트러블러</span></span></p><p class="need">🔒 먼저: <a href="#b-EvolveUnearthlyBolt">#169</a> 캐릭터 트러블러 그리고 <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-Dark_01SpaceDude" data-type="특수" data-scope="전용" data-need="b-Survive20MinutesInSpace54;b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">199</span><span class="tt">스페이스듀드로 쿨타임 보너스 -85%에 도달하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_23">I - 사파이어 미스트</span>,</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_SPACEDUDE">우주 친구</span></span></p></div></details>
-<details class="ul" data-id="b-Dark_03Gazebo" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_23">I - 사파이어 미스트</span>,</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_SPACEDUDE">우주 친구</span></span></p><p class="need">🔒 먼저: <a href="#b-Survive20MinutesInSpace54">#29</a> 캐릭터 우주 친구 그리고 <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-Dark_03Gazebo" data-type="특수" data-scope="전용" data-need="b-EvolveOfGaea;b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">200</span><span class="tt">가제보로 최대한 많이 먹어보세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_25">III - 숨겨진 혐오감</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_YOLO">가제보</span></span></p></div></details>
-<details class="ul" data-id="b-Dark_05Appunta" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_25">III - 숨겨진 혐오감</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_YOLO">가제보</span></span></p><p class="need">🔒 먼저: <a href="#b-EvolveOfGaea">#27</a> 캐릭터 가제보 그리고 <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-Dark_05Appunta" data-type="특수" data-scope="전용" data-need="b-EvolveAmmoAppalate;b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">201</span><span class="tt">지아순타의 능력으로 보물상자 10개를 한 번에 찾으세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_27">V - 창백한 다이아몬드의 급습</span></p><div class="fix">게임 원문: 지아푼타의 능력으로 보물상자 10개를 한 번에 찾으세요.</div><p><span class="bd bd-own">전용 · 지아푼타 벨파에제</span></p></div></details>
-<details class="ul" data-id="b-Dark_06Darkasso" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_27">V - 창백한 다이아몬드의 급습</span></p><div class="fix">게임 원문: 지아푼타의 능력으로 보물상자 10개를 한 번에 찾으세요.</div><p><span class="bd bd-own">전용 · 지아푼타 벨파에제</span></p><p class="need">🔒 먼저: <a href="#b-EvolveAmmoAppalate">#168</a> 캐릭터 지아푼타 벨파에제 그리고 <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-Dark_06Darkasso" data-type="발견" data-scope="공통" data-need="b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">202</span><span class="tt">다르카소의 품에 안겨보세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_28">VI - 달빛 볼레로</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Dark_08ParaKooleo" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_28">VI - 달빛 볼레로</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-Dark_08ParaKooleo" data-type="특수" data-scope="전용" data-need="b-Survive20minutesInLycaeum;b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">203</span><span class="tt">파라 쿨레오로 라바트릭스 마키나를 발동시키세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_30">VIII - 지구의 모서리</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_EX_PARACOOLIO">클레오</span></span></p></div></details>
-<details class="ul" data-id="b-Dark_10Santa" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_30">VIII - 지구의 모서리</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_EX_PARACOOLIO">클레오</span></span></p><p class="need">🔒 먼저: <a href="#b-Survive20minutesInLycaeum">#25</a> 캐릭터 클레오 그리고 <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-Dark_10Santa" data-type="특수" data-scope="전용" data-need="b-Survive20MinutesInLaborratory;b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">204</span><span class="tt">산타 라돈나와 함께 이상한 영혼 정화기를 발동하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_32">X - 미래에서 온 우박</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_SANTA">산타 라돈나</span></span></p></div></details>
-<details class="ul" data-id="b-Dark_12Shemoon" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_32">X - 미래에서 온 우박</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_SANTA">산타 라돈나</span></span></p><p class="need">🔒 먼저: <a href="#b-Survive20MinutesInLaborratory">#26</a> 캐릭터 산타 라돈나 그리고 <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-Dark_12Shemoon" data-type="특수" data-scope="전용" data-need="b-SurviveUntilTheEndOfWhiteout;b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">205</span><span class="tt">쉬문 에타로 별빛 천국을 발동하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_34">XII - 크리스탈의 곡소리</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_SHEMOONITA">쉬문 에타</span></span></p></div></details>
-<details class="ul" data-id="b-Dark_13Chula" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_34">XII - 크리스탈의 곡소리</span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_SHEMOONITA">쉬문 에타</span></span></p><p class="need">🔒 먼저: <a href="#b-SurviveUntilTheEndOfWhiteout">#24</a> 캐릭터 쉬문 에타 그리고 <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-Dark_13Chula" data-type="특수" data-scope="전용" data-need="b-Survive20MinutesInWestwoods;b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">206</span><span class="tt">출라레로 +999%의 행운을 달성하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_35">XIII - <span class="pop" data-pop="D13_MADMOON">미친 달의 부름</span></span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_EX_CHULAREH">출라레</span></span></p></div></details>
-<details class="ul" data-id="b-Dark_18Challenge" data-type="특수" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_35">XIII - <span class="pop" data-pop="D13_MADMOON">미친 달의 부름</span></span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_EX_CHULAREH">출라레</span></span></p><p class="need">🔒 먼저: <a href="#b-Survive20MinutesInWestwoods">#28</a> 캐릭터 출라레 그리고 <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-Dark_18Challenge" data-type="특수" data-scope="공통" data-need="b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">207</span><span class="tt">거꾸로 된 푸른 초원에서 무기 없이 30분동안 생존하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_40">XVIII - 빅토리아 풍 호러</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Dark_19Challenge" data-type="특수" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_40">XVIII - 빅토리아 풍 호러</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-Dark_19Challenge" data-type="특수" data-scope="공통" data-need="b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">208</span><span class="tt">랜덤 이벤트와 랜덤 레벨업이 발생하는 인버스 보스 래쉬에서 15분 동안 살아남으세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_41">XIX - 운명의 계승자</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-Dark_21Robert" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_41">XIX - 운명의 계승자</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-Dark_21Robert" data-type="특수" data-scope="전용" data-need="b-EvolveBattilia;b-ObtainDarkasso">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">209</span><span class="tt">배트 로버트로 최대 체력 665에 도달하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_43">XXI - <span class="pop" data-pop="D20_JETBLACK">제트 블랙에서의 방랑</span></span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_TUPU">로버트</span></span></p></div></details>
-<details class="ul" data-id="b-BuySurvarocchi" data-type="발견" data-scope="공통">
+<div class="bdy"><p class="rw">🎁 보상 → 아르카나 <span class="pop" data-pop="ARCANA_43">XXI - <span class="pop" data-pop="D20_JETBLACK">제트 블랙에서의 방랑</span></span></p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_TUPU">로버트</span></span></p><p class="need">🔒 먼저: <a href="#b-EvolveBattilia">#167</a> 캐릭터 로버트 그리고 <a href="#b-ObtainDarkasso">#197</a> 유물 다르카소</p></div></details>
+<details class="ul" data-id="b-BuySurvarocchi" data-type="발견" data-scope="공통" data-need="b-FindManyVacuums;b-FindMilkyWayMap">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">210</span><span class="tt">라이케움에서 서바로키를 찾아 구매하세요. <span class="bd">추가</span></span><span class="k">⚰️ 발견</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_SURVAROCCHI">서바로키</span></p><p><span class="bd">공통</span></p></div></details>
-<details class="ul" data-id="b-CompleteAdv_WorldOfLightAndDark" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 유물 <span class="pop" data-pop="RELIC_SURVAROCCHI">서바로키</span></p><p><span class="bd">공통</span></p><p class="need">🔒 먼저: <a href="#b-FindManyVacuums">#61</a> 스테이지 라이케움 · 하이퍼 라이케움 그리고 <a href="#b-FindMilkyWayMap">#69</a> 유물 은하수 지도</p></div></details>
+<details class="ul" data-id="b-CompleteAdv_WorldOfLightAndDark" data-type="특수" data-scope="전용" data-need="b-FindAtlas">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">211</span><span class="tt">빛과 어둠의 세계 모험을 한 번 완료하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킨 {&#x27;character&#x27;: &#x27;IMELDA&#x27;, &#x27;skin&#x27;: &#x27;SKIN_IMELDA_UNBLINDED&#x27;}</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_IMELDA">이멜다 벨파에제</span></span></p></div></details>
-<details class="ul" data-id="b-CompleteAdv_AGarlicParadise" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 스킨 {&#x27;character&#x27;: &#x27;IMELDA&#x27;, &#x27;skin&#x27;: &#x27;SKIN_IMELDA_UNBLINDED&#x27;}</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_IMELDA">이멜다 벨파에제</span></span></p><p class="need">🔒 먼저: <a href="#b-FindAtlas">#80</a> 유물 아틀라스 게이트</p></div></details>
+<details class="ul" data-id="b-CompleteAdv_AGarlicParadise" data-type="특수" data-scope="전용" data-need="b-GetGarlicToLevel7;b-FindAtlas">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">212</span><span class="tt">마늘 천국을 한 번 완료하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킨 {&#x27;character&#x27;: &#x27;CAMILLO&#x27;, &#x27;skin&#x27;: &#x27;SKIN_POE_RETIRED&#x27;}</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_CAMILLO">포 랏초</span></span></p></div></details>
-<details class="ul" data-id="b-CompleteAdv_ToEndAnIceAge" data-type="특수" data-scope="전용">
+<div class="bdy"><p class="rw">🎁 보상 → 스킨 {&#x27;character&#x27;: &#x27;CAMILLO&#x27;, &#x27;skin&#x27;: &#x27;SKIN_POE_RETIRED&#x27;}</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_CAMILLO">포 랏초</span></span></p><p class="need">🔒 먼저: <a href="#b-GetGarlicToLevel7">#38</a> 캐릭터 포 랏초 그리고 <a href="#b-FindAtlas">#80</a> 유물 아틀라스 게이트</p></div></details>
+<details class="ul" data-id="b-CompleteAdv_ToEndAnIceAge" data-type="특수" data-scope="전용" data-need="b-SurviveUntilTheEndOfWhiteout;b-FindAtlas">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">213</span><span class="tt">빙하기의 종말 모험을 완료하세요. <span class="bd">추가</span></span><span class="k">🎯 특수</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → 스킨 {&#x27;character&#x27;: &#x27;SHEMOONITA&#x27;, &#x27;skin&#x27;: &#x27;SKIN_SHEMOON_REBORN&#x27;}</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_SHEMOONITA">쉬문 에타</span></span></p></div></details>
+<div class="bdy"><p class="rw">🎁 보상 → 스킨 {&#x27;character&#x27;: &#x27;SHEMOONITA&#x27;, &#x27;skin&#x27;: &#x27;SKIN_SHEMOON_REBORN&#x27;}</p><p><span class="bd bd-own">전용 · <span class="pop" data-pop="CH_SHEMOONITA">쉬문 에타</span></span></p><p class="need">🔒 먼저: <a href="#b-SurviveUntilTheEndOfWhiteout">#24</a> 캐릭터 쉬문 에타 그리고 <a href="#b-FindAtlas">#80</a> 유물 아틀라스 게이트</p></div></details>
 </div>
 <p class="note">☑ 체크는 이 기기(브라우저)에만 저장됩니다. 순서는 게임 데이터 순서이고, 추천 순서는 준비 중입니다.</p>
 <div class="ad" data-slot="end"></div>

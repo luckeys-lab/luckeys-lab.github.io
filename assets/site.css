@@ -156,3 +156,8 @@ table.evo .ic{width:24px;height:24px}
 .yay.show{display:flex}
 .yay img{width:70px;height:70px}
 .yay b{color:var(--gold);font-size:15px}
+
+/* 게임처럼 숨은 해금 */
+.ul.lock{opacity:.55}.ul.lock summary .tt::before{content:'🔒 '}
+.need{font-size:.85em;color:var(--sub);margin-top:.3em}.need a{color:inherit;font-weight:700}
+.lockbtn{display:block;width:100%;margin:.8em 0;padding:.7em;border:1px dashed var(--line,#ccc);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:.9em;cursor:pointer;text-align:left}

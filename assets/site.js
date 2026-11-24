@@ -65,9 +65,15 @@
   var list=document.getElementById('ulist');
   if(list){
     var KEY='ll_chk',S={};try{S=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
-    var rows=[].slice.call(list.querySelectorAll('.ul'));var fT='',fS='',only=false;
-    function apply(){var n=0;rows.forEach(function(r){var d=!!S[r.dataset.id];if(d)n++;r.classList.toggle('done',d);
-        var h=(fT&&r.dataset.type!==fT)||(fS&&r.dataset.scope!==fS)||(only&&d);r.classList.toggle('hide',h)});
+    var rows=[].slice.call(list.querySelectorAll('.ul'));var fT='',fS='',only=false,LOCK=list.dataset.lock==='1',showL=false,lb=null;
+    if(LOCK){lb=document.createElement('button');lb.type='button';lb.className='lockbtn';list.parentNode.insertBefore(lb,list.nextSibling);
+      lb.addEventListener('click',function(){showL=!showL;apply()})}
+    // 게임처럼: 먼저 필요한 해금(캐릭터·스테이지·유물)이 체크돼야 줄이 보임 · need = "a|b;c" (|는 또는, ;는 그리고)
+    function locked(r){var nd=r.dataset.need;if(!LOCK||!nd)return false;return nd.split(';').some(function(g){return !g.split('|').some(function(k){return S[k]})})}
+    function apply(){var n=0,nl=0;rows.forEach(function(r){var d=!!S[r.dataset.id];if(d)n++;r.classList.toggle('done',d);
+        var lk=locked(r)&&!d;if(lk)nl++;r.classList.toggle('lock',lk);
+        var h=(fT&&r.dataset.type!==fT)||(fS&&r.dataset.scope!==fS)||(only&&d)||(lk&&!showL);r.classList.toggle('hide',h)});
+      if(lb){lb.style.display=nl?'':'none';lb.textContent=showL?'🔓 숨은 해금 다시 접기':'🔒 아직 숨은 해금 '+nl+'개 · 게임처럼 먼저 필요한 해금을 체크하면 나타나요 (눌러서 미리 보기)'}
       var pt=document.getElementById('ptxt'),pb=document.getElementById('pbar');if(pt)pt.textContent=n+' / '+rows.length;if(pb)pb.style.width=(n/rows.length*100)+'%';
       var y=document.getElementById('yay');if(!y&&pb){y=document.createElement('div');y.id='yay';y.className='yay';y.innerHTML='<img src="/assets/mascot_yay.svg" alt=""><div><b>전부 해금! 🎉</b><br>축하합니다. 다음 열쇠도 같이 찾아봐요.</div>';var pr=pb.closest('.prog');pr.parentNode.insertBefore(y,pr)}
       if(y)y.classList.toggle('show',rows.length>0&&n===rows.length)}
@@ -80,7 +86,9 @@
     var o=document.getElementById('onlyLeft');if(o){try{o.checked=localStorage.getItem('ll_only')==='1'}catch(e){}only=o.checked;
       o.addEventListener('change',function(){only=o.checked;try{localStorage.setItem('ll_only',only?'1':'0')}catch(e){}apply()})}
     apply();
-    var h=location.hash.replace('#','');if(h){var t=document.querySelector('[data-id="'+h+'"]');if(t){t.open=true;t.scrollIntoView({block:'center'})}}
+    function goHash(){var h=location.hash.replace('#','');if(!h)return;var t=document.querySelector('[data-id="'+h+'"]');if(!t)return;
+      if(t.classList.contains('hide')){showL=true;fT='';fS='';only=false;apply()}t.open=true;t.scrollIntoView({block:'center'})}
+    goHash();window.addEventListener('hashchange',goHash);
   }
   // 검색
   var q=document.getElementById('sq'),res=document.getElementById('sres');

@@ -26,6 +26,24 @@ def link_names(text):
 
 # ---------- 디오라마 해금 ----------
 U=json.loads((D/'ed/unlocks.json').read_text(encoding='utf-8'))
+
+# 먼저 필요한 해금 (게임처럼 숨기기) · need = [[OR 키들], ...] (AND)
+def _needinfo():
+    m={}
+    for i,u in enumerate(json.load(open(R/'data/vs/base_unlocks.json')),1):m['b-'+u['id']]=(i,u['reward'] if isinstance(u['reward'],list) else [u['reward']])
+    for u in json.load(open(R/'data/vs/ed/unlocks.json'))['unlocks']:m['ed-%d'%u['n']]=(('💎%d'%u['n']),[u['reward']])
+    return m
+NEEDI=_needinfo()
+def need_attr(u):
+    return ' data-need="'+';'.join('|'.join(g) for g in u.get('need',[]))+'"' if u.get('need') else ''
+def need_note(u,here):
+    if not u.get('need'):return ''
+    def one(k):
+        n,rw=NEEDI[k];pre='/vs/base/unlocks.html' if k.startswith('b-') else '/vs/ed/'
+        href=('#' if pre==here else pre+'#')+k
+        return f'<a href="{href}">#{n}</a> {esc(" · ".join(rw))}'
+    return '<p class="need">🔒 먼저: '+' 그리고 '.join(' 또는 '.join(one(k) for k in g) for g in u['need'])+'</p>'
+
 FIXT={'시우그나스':'시그나스','디바 5호':'디바 5번'}
 CH=U['chars']
 FULL={'츠나노리':'츠나노리 미도','보니':'보니 블레어','포미나':'포미나 프랭클린','디바 5번':'디바 5번','아메야':'아메야 아이슬링','시그나스':'시그나스'}
@@ -47,9 +65,9 @@ for u in U['unlocks']:
     loc=' · '.join(x for x in [mp,zt] if x)
     q=f'<div class="fix">게임 원문: {esc(raw)}</div>' if fixed!=raw else ''
     title=fixed
-    rows.append(f'''<details class="ul" data-id="ed-{u['n']}" data-type="{t}" data-scope="{scope}">
+    rows.append(f'''<details class="ul" data-id="ed-{u['n']}" data-type="{t}" data-scope="{scope}"{need_attr(u)}>
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">{u['n']}</span><span class="tt">{esc(title)}</span><span class="k">{ICON.get(t,'')} {t}</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → {link_names(u['reward'])}</p>{q}<p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p></div></details>''')
+<div class="bdy"><p class="rw">🎁 보상 → {link_names(u['reward'])}</p>{q}<p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p>{need_note(u,'/vs/ed/')}</div></details>''')
 types=sorted({ty(u['type']) for u in U['unlocks']},key=lambda t:(t=='기타',-sum(1 for u in U['unlocks'] if ty(u['type'])==t)))
 fb=''.join(f'<button type="button" data-f="{t}">{ICON.get(t,"")} {t} {sum(1 for u in U["unlocks"] if ty(u["type"])==t)}</button>' for t in types)
 (R/'_src/vs/ed').mkdir(parents=True,exist_ok=True)
@@ -62,7 +80,7 @@ desc: 뱀파이어 서바이벌 에메랄드 디오라마 해금 조건 41개 �
 <div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button>{fb}</div>
 <div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
 <label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label></div>
-<div id="ulist" data-group="ed">
+<div id="ulist" data-group="ed" data-lock="1">
 {chr(10).join(rows)}
 </div>
 <p class="note">☑ 체크는 이 기기(브라우저)에만 저장됩니다. 줄을 누르면 펼쳐집니다.</p>
@@ -160,9 +178,9 @@ for i,u in enumerate(BU,1):
     mode='<span class="bd">누적</span> ' if u['mode']=='누적' else ''
     title=u['text_fix']
     extra=' <span class="bd">추가</span>' if u['group']=='추가' else ''
-    brows.append(f'''<details class="ul" data-id="b-{u['id']}" data-type="{t}" data-scope="{scope}">
+    brows.append(f'''<details class="ul" data-id="b-{u['id']}" data-type="{t}" data-scope="{scope}"{need_attr(u)}>
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">{i}</span><span class="tt">{esc(title)}{extra}</span><span class="k">{ICON2.get(t,'')} {t}</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → {rw}</p>{q}<p>{mode}{badge}</p></div></details>''')
+<div class="bdy"><p class="rw">🎁 보상 → {rw}</p>{q}<p>{mode}{badge}</p>{need_note(u,'/vs/base/unlocks.html')}</div></details>''')
 btypes=sorted({bty(u['type']) for u in BU},key=lambda t:(t=='기타',-sum(1 for u in BU if bty(u['type'])==t)))
 bfb=''.join(f'<button type="button" data-f="{t}">{ICON2.get(t,"")} {t} {sum(1 for u in BU if bty(u["type"])==t)}</button>' for t in btypes)
 (R/'_src/vs/base').mkdir(parents=True,exist_ok=True)
@@ -175,7 +193,7 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 {len(BU)}개 전체 (1.0 + 
 <div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button>{bfb}</div>
 <div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
 <label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label></div>
-<div id="ulist" data-group="base">
+<div id="ulist" data-group="base" data-lock="1">
 {chr(10).join(brows)}
 </div>
 <p class="note">☑ 체크는 이 기기(브라우저)에만 저장됩니다. 순서는 게임 데이터 순서이고, 추천 순서는 준비 중입니다.</p>
