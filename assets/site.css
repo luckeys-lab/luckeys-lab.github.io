@@ -134,3 +134,4 @@ table.evo td.to{white-space:nowrap;font-weight:700}
 .hero-t .lk{font-family:Outfit,sans-serif;font-weight:800;color:var(--gold);font-size:13px;letter-spacing:.04em}
 .hero img{width:150px;height:150px;flex:none;align-self:flex-end}
 @media(min-width:640px){.hero{padding:18px 18px 0 26px}.hero img{width:200px;height:200px}.hero-t h1{font-size:26px}}
+#popbox .tip{margin-top:4px;font-size:12.5px;color:#d08a12;font-weight:500}

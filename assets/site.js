@@ -42,6 +42,7 @@
   var box=document.createElement('div');box.id='popbox';document.body.appendChild(box);var cur=null;
   function card(it){
     var h='<span class="ty">'+esc(it.t)+'</span><b>'+esc(it.n)+'</b>'+esc(it.d);
+    if(it.p)h+='<div class="tip">'+esc(it.p)+'</div>';
     if(it.s)h+='<div class="ev">🗡️ 시작 스킬: '+esc(it.s)+'</div>';
     if(it.e)h+='<div class="ev">✨ 진화: '+esc(it.e)+'</div>';
     if(it.f)h+='<div class="ev">⬅ 재료: '+it.f.map(esc).join(' / ')+'</div>';
