@@ -78,78 +78,6 @@
   "need": []
  },
  {
-  "id": "ReachLV80InverseForest",
-  "text": "광기의 숲 반전 모드에서 레벨 80에 도달합니다.",
-  "text_fix": "광기의 숲 반전 모드에서 레벨 80에 도달합니다.",
-  "reward": [
-   "스테이지 박쥐 나라",
-   "하이퍼 박쥐 나라"
-  ],
-  "type": "레벨",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-ObtainGraciasMirror"
-   ]
-  ]
- },
- {
-  "id": "ReachLV80InverseLibrary",
-  "text": "반전 상감 라이브러리에서 80레벨에 도달합니다.",
-  "text_fix": "반전 상감 라이브러리에서 80레벨에 도달합니다.",
-  "reward": [
-   "스테이지 아스트랄 계단",
-   "하이퍼 아스트랄 계단"
-  ],
-  "type": "레벨",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-ObtainGraciasMirror"
-   ]
-  ]
- },
- {
-  "id": "ReachLV80InverseWarehouse",
-  "text": "인버스 유제품 공장에서 레벨 80에 도달하세요.",
-  "text_fix": "인버스 유제품 공장에서 레벨 80에 도달하세요.",
-  "reward": [
-   "스테이지 마제렐라",
-   "하이퍼 마제렐라"
-  ],
-  "type": "레벨",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-ObtainGraciasMirror"
-   ]
-  ]
- },
- {
-  "id": "ReachLV80InverseTower",
-  "text": "반전 갈로의 탑에서 80레벨에 도달합니다.",
-  "text_fix": "반전 갈로의 탑에서 80레벨에 도달합니다.",
-  "reward": [
-   "스테이지 작은 다리",
-   "하이퍼 작은 다리"
-  ],
-  "type": "레벨",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-ObtainGraciasMirror"
-   ]
-  ]
- },
- {
   "id": "Survive1Minute",
   "text": "아무 캐릭터로 1분 생존.",
   "text_fix": "아무 캐릭터로 1분 생존.",
@@ -361,111 +289,6 @@
   "need": []
  },
  {
-  "id": "SurviveUntilTheEndOfWhiteout",
-  "text": "화이트아웃에서 20분 동안 생존하기.",
-  "text_fix": "화이트아웃에서 20분 동안 생존하기.",
-  "reward": [
-   "캐릭터 쉬문 에타"
-  ],
-  "type": "생존",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyOrologions"
-   ]
-  ]
- },
- {
-  "id": "Survive20minutesInLycaeum",
-  "text": "라이케움에서 20분 동안 생존합니다.",
-  "text_fix": "라이케움에서 20분 동안 생존합니다.",
-  "reward": [
-   "캐릭터 클레오"
-  ],
-  "type": "생존",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyVacuums"
-   ]
-  ]
- },
- {
-  "id": "Survive20MinutesInLaborratory",
-  "text": "실험실에서 20분 동안 생존하세요.",
-  "text_fix": "실험실에서 20분 동안 생존하세요.",
-  "reward": [
-   "캐릭터 산타 라돈나"
-  ],
-  "type": "생존",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyRosaries"
-   ]
-  ]
- },
- {
-  "id": "EvolveOfGaea",
-  "text": "가에야의 시선을 진화시키세요.",
-  "text_fix": "가에야의 시선을 진화시키세요.",
-  "reward": [
-   "캐릭터 가제보"
-  ],
-  "type": "생존",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyChickens"
-   ],
-   [
-    "b-Defeat0EnemiesInCoop"
-   ]
-  ]
- },
- {
-  "id": "Survive20MinutesInWestwoods",
-  "text": "Survive 20 minutes in Westwoods.",
-  "text_fix": "Survive 20 minutes in Westwoods.",
-  "reward": [
-   "캐릭터 출라레"
-  ],
-  "type": "생존",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyClovers"
-   ]
-  ]
- },
- {
-  "id": "Survive20MinutesInSpace54",
-  "text": "스페이스 24로 20분 동안 생존합니다.",
-  "text_fix": "스페이스 24로 20분 동안 생존합니다.",
-  "reward": [
-   "캐릭터 우주 친구"
-  ],
-  "type": "생존",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyGoldenFinger"
-   ]
-  ]
- },
- {
   "id": "Survive30MinutesWithAxe",
   "text": "라마로 30분 생존.",
   "text_fix": "라마로 30분 생존.",
@@ -600,74 +423,6 @@
   "char": [],
   "group": "본편",
   "need": []
- },
- {
-  "id": "GetGlassFandangoToLevel7",
-  "text": "유리 판당고 레벨 7까지 올리기.",
-  "text_fix": "유리 판당고 레벨 7까지 올리기.",
-  "reward": [
-   "스킬 유리 판당고"
-  ],
-  "type": "성장",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyOrologions"
-   ]
-  ]
- },
- {
-  "id": "GetJavelinToLevel7",
-  "text": "산타 재블린의 레벨을 7까지 올리세요.",
-  "text_fix": "산타 재블린의 레벨을 7까지 올리세요.",
-  "reward": [
-   "스킬 산타 재블린"
-  ],
-  "type": "성장",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyRosaries"
-   ]
-  ]
- },
- {
-  "id": "GetMagiStonetoLevel7",
-  "text": "Get Magi-Stone to level 7.",
-  "text_fix": "Get Magi-Stone to level 7.",
-  "reward": [
-   "스킬 마기 스톤"
-  ],
-  "type": "성장",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyClovers"
-   ]
-  ]
- },
- {
-  "id": "GetPhas3rToLevel7",
-  "text": "Phas3r 레벨을 7까지 올리세요.",
-  "text_fix": "Phas3r 레벨을 7까지 올리세요.",
-  "reward": [
-   "스킬 Phas3r"
-  ],
-  "type": "성장",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyGoldenFinger"
-   ]
-  ]
  },
  {
   "id": "GetTorroneToLevel9",
@@ -843,179 +598,6 @@
   "char": [],
   "group": "본편",
   "need": []
- },
- {
-  "id": "FindAnArmaDio",
-  "text": "아르마 디오를 찾으세요.",
-  "text_fix": "아르마 디오를 찾으세요.",
-  "reward": [
-   "스킬 아르마 디오"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyRosaries"
-   ]
-  ]
- },
- {
-  "id": "FindAParmAegis",
-  "text": "협동 농장에서 파마산 보호구를 찾으세요.",
-  "text_fix": "협동 농장에서 파마산 보호구를 찾으세요.",
-  "reward": [
-   "패시브 파마산 보호구"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyChickens"
-   ]
-  ]
- },
- {
-  "id": "FindKaromasMana",
-  "text": "웨스트우드에서 카로마의 마나를 찾으세요.",
-  "text_fix": "웨스트우드에서 카로마의 마나를 찾으세요.",
-  "reward": [
-   "패시브 카로마의 마나"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyClovers"
-   ]
-  ]
- },
- {
-  "id": "FindManyOrologions",
-  "text": "회중시계 20개 찾기.",
-  "text_fix": "회중시계 20개 찾기.",
-  "reward": [
-   "스테이지 화이트아웃",
-   "하이퍼 화이트아웃"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindMilkyWayMap"
-   ]
-  ]
- },
- {
-  "id": "FindManyVacuums",
-  "text": "흡입기 50개를 찾으세요.",
-  "text_fix": "흡입기 50개를 찾으세요.",
-  "reward": [
-   "스테이지 라이케움",
-   "하이퍼 라이케움"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindMilkyWayMap"
-   ]
-  ]
- },
- {
-  "id": "FindManyRosaries",
-  "text": "묵주를 33개 찾으세요.",
-  "text_fix": "묵주를 33개 찾으세요.",
-  "reward": [
-   "스테이지 실험실",
-   "하이퍼 실험실"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindMilkyWayMap"
-   ]
-  ]
- },
- {
-  "id": "FindManyChickens",
-  "text": "플로어 치킨 500마리를 찾으세요.",
-  "text_fix": "플로어 치킨 500마리를 찾으세요.",
-  "reward": [
-   "스테이지 협동 농장",
-   "하이퍼 협동 농장"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindMilkyWayMap"
-   ]
-  ]
- },
- {
-  "id": "FindManyClovers",
-  "text": "리틀 클로버 23개를 주우세요.",
-  "text_fix": "리틀 클로버 23개를 주우세요.",
-  "reward": [
-   "스테이지 웨스트우드",
-   "하이퍼 웨스트우드"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": []
- },
- {
-  "id": "FindManyGoldenFinger",
-  "text": "골드 핑거 5개를 찾으세요.",
-  "text_fix": "골드 핑거 5개를 찾으세요.",
-  "reward": [
-   "스테이지 스페이스 54",
-   "하이퍼 스페이스 54"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindMilkyWayMap"
-   ]
-  ]
- },
- {
-  "id": "HitManyEnemiesWithTrain",
-  "text": "실험실 열차로 피해를 총 25120 만큼 입히세요.",
-  "text_fix": "실험실 열차로 피해를 총 25120 만큼 입히세요.",
-  "reward": [
-   "스테이지 카를로 카트",
-   "하이퍼 카를로 카트"
-  ],
-  "type": "특수",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyRosaries"
-   ]
-  ]
  },
  {
   "id": "FindGrimoire",
@@ -1203,232 +785,6 @@
   ]
  },
  {
-  "id": "FindAtlas",
-  "text": "보스에게서 아틀라스 게이트 획득하기",
-  "text_fix": "보스에게서 아틀라스 게이트 획득하기",
-  "reward": [
-   "유물 아틀라스 게이트"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindYellowSign"
-   ]
-  ]
- },
- {
-  "id": "FindApoplexy",
-  "text": "박쥐 나라에서 9분 생존해 아포플렉시를 찾습니다.",
-  "text_fix": "박쥐 나라에서 9분 생존해 아포플렉시를 찾습니다.",
-  "reward": [
-   "유물 아포플렉시"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-ObtainGraciasMirror"
-   ]
-  ]
- },
- {
-  "id": "FindAntidote",
-  "text": "화이트아웃에서 해독제 찾기.",
-  "text_fix": "화이트아웃에서 해독제 찾기.",
-  "reward": [
-   "유물 해독제"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindMilkyWayMap"
-   ]
-  ]
- },
- {
-  "id": "BuyGreenEyesVizard",
-  "text": "라이케움에서 녹색 눈의 가면을 찾아 구매하세요.",
-  "text_fix": "라이케움에서 녹색 눈의 가면을 찾아 구매하세요.",
-  "reward": [
-   "유물 녹색 눈의 가면."
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyClovers"
-   ]
-  ]
- },
- {
-  "id": "FindTrisection",
-  "text": "아스트랄 계단에서 트라이섹션을 찾습니다.",
-  "text_fix": "아스트랄 계단에서 트라이섹션을 찾습니다.",
-  "reward": [
-   "유물 트라이섹션"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-ObtainGraciasMirror"
-   ]
-  ]
- },
- {
-  "id": "FindBraveStory",
-  "text": "스페이스 54의 18분 54초에서 용감한 이야기를 찾습니다.",
-  "text_fix": "스페이스 54의 18분 54초에서 용감한 이야기를 찾습니다.",
-  "reward": [
-   "유물 용감한 이야기"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": []
- },
- {
-  "id": "FindChickenClock",
-  "text": "협동 농장 끝에서 가운데에 시계가 박힌 로스트 치킨을 찾으세요.",
-  "text_fix": "협동 농장 끝에서 가운데에 시계가 박힌 로스트 치킨을 찾으세요.",
-  "reward": [
-   "유물 가운데에 시계가 박힌 로스트 치킨"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": []
- },
- {
-  "id": "FindMasquerade",
-  "text": "웨스트우즈에서 가면무도회 유물을 찾으세요.",
-  "text_fix": "웨스트우즈에서 가면무도회 유물을 찾으세요.",
-  "reward": [
-   "유물 가장무도회"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyClovers"
-   ]
-  ]
- },
- {
-  "id": "FindRecycle",
-  "text": "마제렐라에서 왁스 페티쉬를 찾으세요.",
-  "text_fix": "마제렐라에서 왁스 페티쉬를 찾으세요.",
-  "reward": [
-   "유물 왁스 페티쉬"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": []
- },
- {
-  "id": "FindChaosMalachite",
-  "text": "박쥐 나라에서 18분 생존해 카오스 말라카이트를 찾습니다.",
-  "text_fix": "박쥐 나라에서 18분 생존해 카오스 말라카이트를 찾습니다.",
-  "reward": [
-   "유물 카오스 말라카이트"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-ObtainGraciasMirror"
-   ]
-  ]
- },
- {
-  "id": "FindChaosRosalia",
-  "text": "아스트랄 계단에서 카오스 로잘리아를 찾습니다.",
-  "text_fix": "아스트랄 계단에서 카오스 로잘리아를 찾습니다.",
-  "reward": [
-   "유물 카오스 로잘리아"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-ObtainGraciasMirror"
-   ]
-  ]
- },
- {
-  "id": "FindChaosLazulia",
-  "text": "마제렐라에서 카오스 라줄리아를 찾으세요.",
-  "text_fix": "마제렐라에서 카오스 라줄리아를 찾으세요.",
-  "reward": [
-   "유물 카오스 라줄리아"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-ObtainGraciasMirror"
-   ]
-  ]
- },
- {
-  "id": "FindChaosAltemanna",
-  "text": "작은 다리에서 카오스 알테만나 찾기.",
-  "text_fix": "작은 다리에서 카오스 알테만나 찾기.",
-  "reward": [
-   "유물 카오스 알테만나"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-ObtainGraciasMirror"
-   ]
-  ]
- },
- {
-  "id": "FindMap_AstralStair",
-  "text": "아스트랄 계단 지도를 찾습니다.",
-  "text_fix": "아스트랄 계단 지도를 찾습니다.",
-  "reward": [
-   "유물 아스트랄 계단 지도"
-  ],
-  "type": "발견",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-ReachLV80InverseLibrary"
-   ]
-  ]
- },
- {
   "id": "FindCoffinStage1",
   "text": "광기의 숲에서 관을 찾아서 열기.",
   "text_fix": "광기의 숲에서 관을 찾아서 열기.",
@@ -1492,23 +848,6 @@
   "char": [],
   "group": "본편",
   "need": []
- },
- {
-  "id": "Defeat0EnemiesInCoop",
-  "text": "협동 농장에서 적 0마리룰 처치하세요.",
-  "text_fix": "협동 농장에서 적 0마리룰 처치하세요.",
-  "reward": [
-   "스킬 가에야의 시선"
-  ],
-  "type": "특수",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-FindManyChickens"
-   ]
-  ]
  },
  {
   "id": "Defeat3000Skeletons",
@@ -1607,32 +946,6 @@
   "need": []
  },
  {
-  "id": "DefeatManyBats",
-  "text": "박쥐 총 161616마리를 처치하세요.",
-  "text_fix": "박쥐 총 161616마리를 처치하세요.",
-  "reward": [
-   "스킬 파코 바틸리아"
-  ],
-  "type": "특수",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": []
- },
- {
-  "id": "DefeatShootingEnemies",
-  "text": "251096명의 사격하는 적을 처치하세요.",
-  "text_fix": "251096명의 사격하는 적을 처치하세요.",
-  "reward": [
-   "스킬 탄약 아팔레트"
-  ],
-  "type": "특수",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": []
- },
- {
   "id": "Defeat100kWithSigma",
   "text": "시그마 여왕으로 한 게임에서 적을 100000명 처치합니다.",
   "text_fix": "시그마 여왕으로 한 게임에서 적을 100000명 처치합니다.",
@@ -1715,23 +1028,6 @@
   "char": [],
   "group": "본편",
   "need": []
- },
- {
-  "id": "DefeatBatDragons",
-  "text": "박쥐 드래곤 1마리를 처치하세요.",
-  "text_fix": "박쥐 드래곤 1마리를 처치하세요.",
-  "reward": [
-   "스킬 저세상 번개"
-  ],
-  "type": "특수",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-BuyGreenEyesVizard"
-   ]
-  ]
  },
  {
   "id": "Unlock3Hypers",
@@ -2328,58 +1624,6 @@
   "need": []
  },
  {
-  "id": "Banish10Items",
-  "text": "한 게임에서 10개 이상의 무기를 지웁니다.",
-  "text_fix": "한 게임에서 10개 이상의 무기를 지웁니다.",
-  "reward": [
-   "파워업 봉인 I"
-  ],
-  "type": "특수",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": []
- },
- {
-  "id": "Banish20Items",
-  "text": "한 게임에서 20개 이상의 무기를 지웁니다.",
-  "text_fix": "한 게임에서 20개 이상의 무기를 지웁니다.",
-  "reward": [
-   "파워업 봉인 II"
-  ],
-  "type": "특수",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": []
- },
- {
-  "id": "Banish40Items",
-  "text": "한 게임에서 40개 이상의 무기를 지웁니다.",
-  "text_fix": "한 게임에서 40개 이상의 무기를 지웁니다.",
-  "reward": [
-   "파워업 봉인 III"
-  ],
-  "type": "특수",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": []
- },
- {
-  "id": "Banish80Items",
-  "text": "한 게임에서 80개 이상의 무기를 지우세요.",
-  "text_fix": "한 게임에서 80개 이상의 무기를 지우세요.",
-  "reward": [
-   "파워업 모두 봉인"
-  ],
-  "type": "특수",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": []
- },
- {
   "id": "CompleteCollection",
   "text": "컬렉션 1.0을 완성합니다.",
   "text_fix": "컬렉션 1.0을 완성합니다.",
@@ -2436,56 +1680,6 @@
   "need": [
    [
     "b-FindYellowSign"
-   ]
-  ]
- },
- {
-  "id": "EvolveBattilia",
-  "text": "파코 바틸리아를 진화시키세요.",
-  "text_fix": "파코 바틸리아를 진화시키세요.",
-  "reward": [
-   "캐릭터 로버트"
-  ],
-  "type": "진화",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-DefeatManyBats"
-   ]
-  ]
- },
- {
-  "id": "EvolveAmmoAppalate",
-  "text": "탄약 아팔레트를 진화시키세요.",
-  "text_fix": "탄약 아팔레트를 진화시키세요.",
-  "reward": [
-   "캐릭터 지아푼타 벨파에제"
-  ],
-  "type": "진화",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": []
- },
- {
-  "id": "EvolveUnearthlyBolt",
-  "text": "저세상 번개를 진화시키세요.",
-  "text_fix": "저세상 번개를 진화시키세요.",
-  "reward": [
-   "캐릭터 트러블러"
-  ],
-  "type": "진화",
-  "mode": "한판",
-  "char": [],
-  "group": "추가",
-  "need": [
-   [
-    "b-BuyGreenEyesVizard"
-   ],
-   [
-    "b-DefeatBatDragons"
    ]
   ]
  },
@@ -2737,6 +1931,825 @@
   "need": []
  },
  {
+  "id": "EvolveAll",
+  "text": "모든 일반 진화 및 조합을 발견합니다.",
+  "text_fix": "모든 일반 진화 및 조합을 발견합니다.",
+  "reward": [
+   "스킬 사탕상자"
+  ],
+  "type": "진화",
+  "mode": "한판",
+  "char": [],
+  "group": "본편",
+  "need": []
+ },
+ {
+  "id": "ReachLV80InverseForest",
+  "text": "광기의 숲 반전 모드에서 레벨 80에 도달합니다.",
+  "text_fix": "광기의 숲 반전 모드에서 레벨 80에 도달합니다.",
+  "reward": [
+   "스테이지 박쥐 나라",
+   "하이퍼 박쥐 나라"
+  ],
+  "type": "레벨",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-ObtainGraciasMirror"
+   ]
+  ]
+ },
+ {
+  "id": "ReachLV80InverseLibrary",
+  "text": "반전 상감 라이브러리에서 80레벨에 도달합니다.",
+  "text_fix": "반전 상감 라이브러리에서 80레벨에 도달합니다.",
+  "reward": [
+   "스테이지 아스트랄 계단",
+   "하이퍼 아스트랄 계단"
+  ],
+  "type": "레벨",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-ObtainGraciasMirror"
+   ]
+  ]
+ },
+ {
+  "id": "ReachLV80InverseWarehouse",
+  "text": "인버스 유제품 공장에서 레벨 80에 도달하세요.",
+  "text_fix": "인버스 유제품 공장에서 레벨 80에 도달하세요.",
+  "reward": [
+   "스테이지 마제렐라",
+   "하이퍼 마제렐라"
+  ],
+  "type": "레벨",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-ObtainGraciasMirror"
+   ]
+  ]
+ },
+ {
+  "id": "ReachLV80InverseTower",
+  "text": "반전 갈로의 탑에서 80레벨에 도달합니다.",
+  "text_fix": "반전 갈로의 탑에서 80레벨에 도달합니다.",
+  "reward": [
+   "스테이지 작은 다리",
+   "하이퍼 작은 다리"
+  ],
+  "type": "레벨",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-ObtainGraciasMirror"
+   ]
+  ]
+ },
+ {
+  "id": "SurviveUntilTheEndOfWhiteout",
+  "text": "화이트아웃에서 20분 동안 생존하기.",
+  "text_fix": "화이트아웃에서 20분 동안 생존하기.",
+  "reward": [
+   "캐릭터 쉬문 에타"
+  ],
+  "type": "생존",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyOrologions"
+   ]
+  ]
+ },
+ {
+  "id": "Survive20minutesInLycaeum",
+  "text": "라이케움에서 20분 동안 생존합니다.",
+  "text_fix": "라이케움에서 20분 동안 생존합니다.",
+  "reward": [
+   "캐릭터 클레오"
+  ],
+  "type": "생존",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyVacuums"
+   ]
+  ]
+ },
+ {
+  "id": "Survive20MinutesInLaborratory",
+  "text": "실험실에서 20분 동안 생존하세요.",
+  "text_fix": "실험실에서 20분 동안 생존하세요.",
+  "reward": [
+   "캐릭터 산타 라돈나"
+  ],
+  "type": "생존",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyRosaries"
+   ]
+  ]
+ },
+ {
+  "id": "EvolveOfGaea",
+  "text": "가에야의 시선을 진화시키세요.",
+  "text_fix": "가에야의 시선을 진화시키세요.",
+  "reward": [
+   "캐릭터 가제보"
+  ],
+  "type": "생존",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyChickens"
+   ],
+   [
+    "b-Defeat0EnemiesInCoop"
+   ]
+  ]
+ },
+ {
+  "id": "Survive20MinutesInWestwoods",
+  "text": "Survive 20 minutes in Westwoods.",
+  "text_fix": "Survive 20 minutes in Westwoods.",
+  "reward": [
+   "캐릭터 출라레"
+  ],
+  "type": "생존",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyClovers"
+   ]
+  ]
+ },
+ {
+  "id": "Survive20MinutesInSpace54",
+  "text": "스페이스 24로 20분 동안 생존합니다.",
+  "text_fix": "스페이스 24로 20분 동안 생존합니다.",
+  "reward": [
+   "캐릭터 우주 친구"
+  ],
+  "type": "생존",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyGoldenFinger"
+   ]
+  ]
+ },
+ {
+  "id": "GetGlassFandangoToLevel7",
+  "text": "유리 판당고 레벨 7까지 올리기.",
+  "text_fix": "유리 판당고 레벨 7까지 올리기.",
+  "reward": [
+   "스킬 유리 판당고"
+  ],
+  "type": "성장",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyOrologions"
+   ]
+  ]
+ },
+ {
+  "id": "GetJavelinToLevel7",
+  "text": "산타 재블린의 레벨을 7까지 올리세요.",
+  "text_fix": "산타 재블린의 레벨을 7까지 올리세요.",
+  "reward": [
+   "스킬 산타 재블린"
+  ],
+  "type": "성장",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyRosaries"
+   ]
+  ]
+ },
+ {
+  "id": "GetMagiStonetoLevel7",
+  "text": "Get Magi-Stone to level 7.",
+  "text_fix": "Get Magi-Stone to level 7.",
+  "reward": [
+   "스킬 마기 스톤"
+  ],
+  "type": "성장",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyClovers"
+   ]
+  ]
+ },
+ {
+  "id": "GetPhas3rToLevel7",
+  "text": "Phas3r 레벨을 7까지 올리세요.",
+  "text_fix": "Phas3r 레벨을 7까지 올리세요.",
+  "reward": [
+   "스킬 Phas3r"
+  ],
+  "type": "성장",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyGoldenFinger"
+   ]
+  ]
+ },
+ {
+  "id": "FindAnArmaDio",
+  "text": "아르마 디오를 찾으세요.",
+  "text_fix": "아르마 디오를 찾으세요.",
+  "reward": [
+   "스킬 아르마 디오"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyRosaries"
+   ]
+  ]
+ },
+ {
+  "id": "FindAParmAegis",
+  "text": "협동 농장에서 파마산 보호구를 찾으세요.",
+  "text_fix": "협동 농장에서 파마산 보호구를 찾으세요.",
+  "reward": [
+   "패시브 파마산 보호구"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyChickens"
+   ]
+  ]
+ },
+ {
+  "id": "FindKaromasMana",
+  "text": "웨스트우드에서 카로마의 마나를 찾으세요.",
+  "text_fix": "웨스트우드에서 카로마의 마나를 찾으세요.",
+  "reward": [
+   "패시브 카로마의 마나"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyClovers"
+   ]
+  ]
+ },
+ {
+  "id": "FindManyOrologions",
+  "text": "회중시계 20개 찾기.",
+  "text_fix": "회중시계 20개 찾기.",
+  "reward": [
+   "스테이지 화이트아웃",
+   "하이퍼 화이트아웃"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindMilkyWayMap"
+   ]
+  ]
+ },
+ {
+  "id": "FindManyVacuums",
+  "text": "흡입기 50개를 찾으세요.",
+  "text_fix": "흡입기 50개를 찾으세요.",
+  "reward": [
+   "스테이지 라이케움",
+   "하이퍼 라이케움"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindMilkyWayMap"
+   ]
+  ]
+ },
+ {
+  "id": "FindManyRosaries",
+  "text": "묵주를 33개 찾으세요.",
+  "text_fix": "묵주를 33개 찾으세요.",
+  "reward": [
+   "스테이지 실험실",
+   "하이퍼 실험실"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindMilkyWayMap"
+   ]
+  ]
+ },
+ {
+  "id": "FindManyChickens",
+  "text": "플로어 치킨 500마리를 찾으세요.",
+  "text_fix": "플로어 치킨 500마리를 찾으세요.",
+  "reward": [
+   "스테이지 협동 농장",
+   "하이퍼 협동 농장"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindMilkyWayMap"
+   ]
+  ]
+ },
+ {
+  "id": "FindManyClovers",
+  "text": "리틀 클로버 23개를 주우세요.",
+  "text_fix": "리틀 클로버 23개를 주우세요.",
+  "reward": [
+   "스테이지 웨스트우드",
+   "하이퍼 웨스트우드"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": []
+ },
+ {
+  "id": "FindManyGoldenFinger",
+  "text": "골드 핑거 5개를 찾으세요.",
+  "text_fix": "골드 핑거 5개를 찾으세요.",
+  "reward": [
+   "스테이지 스페이스 54",
+   "하이퍼 스페이스 54"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindMilkyWayMap"
+   ]
+  ]
+ },
+ {
+  "id": "HitManyEnemiesWithTrain",
+  "text": "실험실 열차로 피해를 총 25120 만큼 입히세요.",
+  "text_fix": "실험실 열차로 피해를 총 25120 만큼 입히세요.",
+  "reward": [
+   "스테이지 카를로 카트",
+   "하이퍼 카를로 카트"
+  ],
+  "type": "특수",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyRosaries"
+   ]
+  ]
+ },
+ {
+  "id": "FindAtlas",
+  "text": "보스에게서 아틀라스 게이트 획득하기",
+  "text_fix": "보스에게서 아틀라스 게이트 획득하기",
+  "reward": [
+   "유물 아틀라스 게이트"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindYellowSign"
+   ]
+  ]
+ },
+ {
+  "id": "FindApoplexy",
+  "text": "박쥐 나라에서 9분 생존해 아포플렉시를 찾습니다.",
+  "text_fix": "박쥐 나라에서 9분 생존해 아포플렉시를 찾습니다.",
+  "reward": [
+   "유물 아포플렉시"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-ObtainGraciasMirror"
+   ]
+  ]
+ },
+ {
+  "id": "FindAntidote",
+  "text": "화이트아웃에서 해독제 찾기.",
+  "text_fix": "화이트아웃에서 해독제 찾기.",
+  "reward": [
+   "유물 해독제"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindMilkyWayMap"
+   ]
+  ]
+ },
+ {
+  "id": "BuyGreenEyesVizard",
+  "text": "라이케움에서 녹색 눈의 가면을 찾아 구매하세요.",
+  "text_fix": "라이케움에서 녹색 눈의 가면을 찾아 구매하세요.",
+  "reward": [
+   "유물 녹색 눈의 가면."
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyClovers"
+   ]
+  ]
+ },
+ {
+  "id": "FindTrisection",
+  "text": "아스트랄 계단에서 트라이섹션을 찾습니다.",
+  "text_fix": "아스트랄 계단에서 트라이섹션을 찾습니다.",
+  "reward": [
+   "유물 트라이섹션"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-ObtainGraciasMirror"
+   ]
+  ]
+ },
+ {
+  "id": "FindBraveStory",
+  "text": "스페이스 54의 18분 54초에서 용감한 이야기를 찾습니다.",
+  "text_fix": "스페이스 54의 18분 54초에서 용감한 이야기를 찾습니다.",
+  "reward": [
+   "유물 용감한 이야기"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": []
+ },
+ {
+  "id": "FindChickenClock",
+  "text": "협동 농장 끝에서 가운데에 시계가 박힌 로스트 치킨을 찾으세요.",
+  "text_fix": "협동 농장 끝에서 가운데에 시계가 박힌 로스트 치킨을 찾으세요.",
+  "reward": [
+   "유물 가운데에 시계가 박힌 로스트 치킨"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": []
+ },
+ {
+  "id": "FindMasquerade",
+  "text": "웨스트우즈에서 가면무도회 유물을 찾으세요.",
+  "text_fix": "웨스트우즈에서 가면무도회 유물을 찾으세요.",
+  "reward": [
+   "유물 가장무도회"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyClovers"
+   ]
+  ]
+ },
+ {
+  "id": "FindRecycle",
+  "text": "마제렐라에서 왁스 페티쉬를 찾으세요.",
+  "text_fix": "마제렐라에서 왁스 페티쉬를 찾으세요.",
+  "reward": [
+   "유물 왁스 페티쉬"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": []
+ },
+ {
+  "id": "FindChaosMalachite",
+  "text": "박쥐 나라에서 18분 생존해 카오스 말라카이트를 찾습니다.",
+  "text_fix": "박쥐 나라에서 18분 생존해 카오스 말라카이트를 찾습니다.",
+  "reward": [
+   "유물 카오스 말라카이트"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-ObtainGraciasMirror"
+   ]
+  ]
+ },
+ {
+  "id": "FindChaosRosalia",
+  "text": "아스트랄 계단에서 카오스 로잘리아를 찾습니다.",
+  "text_fix": "아스트랄 계단에서 카오스 로잘리아를 찾습니다.",
+  "reward": [
+   "유물 카오스 로잘리아"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-ObtainGraciasMirror"
+   ]
+  ]
+ },
+ {
+  "id": "FindChaosLazulia",
+  "text": "마제렐라에서 카오스 라줄리아를 찾으세요.",
+  "text_fix": "마제렐라에서 카오스 라줄리아를 찾으세요.",
+  "reward": [
+   "유물 카오스 라줄리아"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-ObtainGraciasMirror"
+   ]
+  ]
+ },
+ {
+  "id": "FindChaosAltemanna",
+  "text": "작은 다리에서 카오스 알테만나 찾기.",
+  "text_fix": "작은 다리에서 카오스 알테만나 찾기.",
+  "reward": [
+   "유물 카오스 알테만나"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-ObtainGraciasMirror"
+   ]
+  ]
+ },
+ {
+  "id": "FindMap_AstralStair",
+  "text": "아스트랄 계단 지도를 찾습니다.",
+  "text_fix": "아스트랄 계단 지도를 찾습니다.",
+  "reward": [
+   "유물 아스트랄 계단 지도"
+  ],
+  "type": "발견",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-ReachLV80InverseLibrary"
+   ]
+  ]
+ },
+ {
+  "id": "Defeat0EnemiesInCoop",
+  "text": "협동 농장에서 적 0마리룰 처치하세요.",
+  "text_fix": "협동 농장에서 적 0마리룰 처치하세요.",
+  "reward": [
+   "스킬 가에야의 시선"
+  ],
+  "type": "특수",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-FindManyChickens"
+   ]
+  ]
+ },
+ {
+  "id": "DefeatManyBats",
+  "text": "박쥐 총 161616마리를 처치하세요.",
+  "text_fix": "박쥐 총 161616마리를 처치하세요.",
+  "reward": [
+   "스킬 파코 바틸리아"
+  ],
+  "type": "특수",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": []
+ },
+ {
+  "id": "DefeatShootingEnemies",
+  "text": "251096명의 사격하는 적을 처치하세요.",
+  "text_fix": "251096명의 사격하는 적을 처치하세요.",
+  "reward": [
+   "스킬 탄약 아팔레트"
+  ],
+  "type": "특수",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": []
+ },
+ {
+  "id": "DefeatBatDragons",
+  "text": "박쥐 드래곤 1마리를 처치하세요.",
+  "text_fix": "박쥐 드래곤 1마리를 처치하세요.",
+  "reward": [
+   "스킬 저세상 번개"
+  ],
+  "type": "특수",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-BuyGreenEyesVizard"
+   ]
+  ]
+ },
+ {
+  "id": "Banish10Items",
+  "text": "한 게임에서 10개 이상의 무기를 지웁니다.",
+  "text_fix": "한 게임에서 10개 이상의 무기를 지웁니다.",
+  "reward": [
+   "파워업 봉인 I"
+  ],
+  "type": "특수",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": []
+ },
+ {
+  "id": "Banish20Items",
+  "text": "한 게임에서 20개 이상의 무기를 지웁니다.",
+  "text_fix": "한 게임에서 20개 이상의 무기를 지웁니다.",
+  "reward": [
+   "파워업 봉인 II"
+  ],
+  "type": "특수",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": []
+ },
+ {
+  "id": "Banish40Items",
+  "text": "한 게임에서 40개 이상의 무기를 지웁니다.",
+  "text_fix": "한 게임에서 40개 이상의 무기를 지웁니다.",
+  "reward": [
+   "파워업 봉인 III"
+  ],
+  "type": "특수",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": []
+ },
+ {
+  "id": "Banish80Items",
+  "text": "한 게임에서 80개 이상의 무기를 지우세요.",
+  "text_fix": "한 게임에서 80개 이상의 무기를 지우세요.",
+  "reward": [
+   "파워업 모두 봉인"
+  ],
+  "type": "특수",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": []
+ },
+ {
+  "id": "EvolveBattilia",
+  "text": "파코 바틸리아를 진화시키세요.",
+  "text_fix": "파코 바틸리아를 진화시키세요.",
+  "reward": [
+   "캐릭터 로버트"
+  ],
+  "type": "진화",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-DefeatManyBats"
+   ]
+  ]
+ },
+ {
+  "id": "EvolveAmmoAppalate",
+  "text": "탄약 아팔레트를 진화시키세요.",
+  "text_fix": "탄약 아팔레트를 진화시키세요.",
+  "reward": [
+   "캐릭터 지아푼타 벨파에제"
+  ],
+  "type": "진화",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": []
+ },
+ {
+  "id": "EvolveUnearthlyBolt",
+  "text": "저세상 번개를 진화시키세요.",
+  "text_fix": "저세상 번개를 진화시키세요.",
+  "reward": [
+   "캐릭터 트러블러"
+  ],
+  "type": "진화",
+  "mode": "한판",
+  "char": [],
+  "group": "추가",
+  "need": [
+   [
+    "b-BuyGreenEyesVizard"
+   ],
+   [
+    "b-DefeatBatDragons"
+   ]
+  ]
+ },
+ {
   "id": "EvolveGlassFandango",
   "text": "유리 판당고 진화시키기.",
   "text_fix": "유리 판당고 진화시키기.",
@@ -2837,19 +2850,6 @@
     "b-FindManyGoldenFinger"
    ]
   ]
- },
- {
-  "id": "EvolveAll",
-  "text": "모든 일반 진화 및 조합을 발견합니다.",
-  "text_fix": "모든 일반 진화 및 조합을 발견합니다.",
-  "reward": [
-   "스킬 사탕상자"
-  ],
-  "type": "진화",
-  "mode": "한판",
-  "char": [],
-  "group": "본편",
-  "need": []
  },
  {
   "id": "CastForbiddenBox",

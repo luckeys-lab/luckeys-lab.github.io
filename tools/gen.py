@@ -170,6 +170,7 @@ bc={}
 for u in BU: bc[u['type']]=bc.get(u['type'],0)+1
 bty=lambda t:t if bc.get(t,0)>=3 else '기타'
 brows=[]
+NMAIN=sum(1 for u in BU if u['group']!='추가')
 for i,u in enumerate(BU,1):
     t=bty(u['type']);scope='전용' if u['char'] else '공통'
     q=(f'<div class="fix">게임 원문: {esc(u["text"])}</div>' if u['text_fix']!=u['text'] else '')
@@ -177,7 +178,7 @@ for i,u in enumerate(BU,1):
     badge=('<span class="bd bd-own">전용 · '+' · '.join(pop(c) for c in u['char'])+'</span>') if u['char'] else '<span class="bd">공통</span>'
     mode='<span class="bd">누적</span> ' if u['mode']=='누적' else ''
     title=u['text_fix']
-    extra=' <span class="bd">추가</span>' if u['group']=='추가' else ''
+    extra=''
     brows.append(f'''<details class="ul" data-id="b-{u['id']}" data-type="{t}" data-scope="{scope}"{need_attr(u)}>
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">{i}</span><span class="tt">{esc(title)}{extra}</span><span class="k">{ICON2.get(t,'')} {t}</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → {rw}</p>{q}<p>{mode}{badge}</p>{need_note(u,'/vs/base/unlocks.html')}</div></details>''')
@@ -194,7 +195,12 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 {len(BU)}개 전체 (1.0 + 
 <div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
 <label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label></div>
 <div id="ulist" data-group="base" data-lock="1">
-{chr(10).join(brows)}
+<details class="sec" open><summary>본편 <span class="sc"></span></summary>
+{chr(10).join(brows[:NMAIN])}
+</details>
+<details class="sec" open><summary>추가 <span class="sc"></span></summary>
+{chr(10).join(brows[NMAIN:])}
+</details>
 </div>
 <p class="note">☑ 체크는 이 기기(브라우저)에만 저장됩니다. 순서는 게임 데이터 순서이고, 추천 순서는 준비 중입니다.</p>
 <div class="ad" data-slot="end"></div>

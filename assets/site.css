@@ -161,3 +161,8 @@ table.evo .ic{width:24px;height:24px}
 .ul.lock{opacity:.55}.ul.lock summary .tt::before{content:'🔒 '}
 .need{font-size:.85em;color:var(--sub);margin-top:.3em}.need a{color:inherit;font-weight:700}
 .lockbtn{display:block;width:100%;margin:.8em 0;padding:.7em;border:1px dashed var(--line,#ccc);border-radius:10px;background:transparent;color:inherit;font:inherit;font-size:.9em;cursor:pointer;text-align:left}
+
+/* 본편 / 추가 칸 (게임처럼) */
+details.sec{margin:.6em 0}details.sec>summary{cursor:pointer;font-weight:800;padding:.55em .8em;border:1px solid var(--gold);border-radius:10px;display:flex;justify-content:space-between;list-style:none}
+details.sec>summary::-webkit-details-marker{display:none}details.sec>summary::before{content:'▶ ';color:var(--gold)}details.sec[open]>summary::before{content:'▼ '}
+details.sec>summary .sc{margin-left:auto;font-weight:700;color:var(--sub)}
