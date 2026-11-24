@@ -144,3 +144,8 @@ table.evo td.to{white-space:nowrap;font-weight:700}
 .skin b{display:block;font-size:14px}
 .how{padding-left:18px;font-size:13.5px}
 #popbox .go{display:inline-block;margin-top:6px;font-weight:700;color:var(--gold2);text-decoration:none}
+.ul .tt{font-weight:500;line-height:1.5}
+.ul summary{align-items:flex-start}
+.ul summary input,.ul .n{margin-top:2px}
+.ul .k{margin-top:3px}
+.ul .rw{font-weight:700}

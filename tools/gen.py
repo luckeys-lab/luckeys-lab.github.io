@@ -42,12 +42,11 @@ for u in U['unlocks']:
     mp=u.get('map','');mp=mp.replace('둘다','일반·인버스').replace('❓','')
     z=u.get('zone');zt=ZONE.get(z,'') if z not in (None,'❓') else ''
     loc=' · '.join(x for x in [mp,zt] if x)
-    q=f'<q>{esc(raw)}</q>'
-    if fixed!=raw: q+=f'<div class="fix">바른 표기: {esc(fixed)}</div>'
-    title=re.sub(r'^(캐릭터|무기|스킨|스테이지|하이퍼|유물) ','',u['reward'])
+    q=f'<div class="fix">게임 원문: {esc(raw)}</div>' if fixed!=raw else ''
+    title=fixed
     rows.append(f'''<details class="ul" data-id="ed-{u['n']}" data-type="{t}" data-scope="{scope}">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">{u['n']}</span><span class="tt">{esc(title)}</span><span class="k">{ICON.get(t,'')} {t}</span></summary>
-<div class="bdy">{q}<p>보상 → {link_names(u['reward'])}</p><p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p></div></details>''')
+<div class="bdy"><p class="rw">🎁 보상 → {link_names(u['reward'])}</p>{q}<p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p></div></details>''')
 types=sorted({ty(u['type']) for u in U['unlocks']},key=lambda t:(t=='기타',-sum(1 for u in U['unlocks'] if ty(u['type'])==t)))
 fb=''.join(f'<button type="button" data-f="{t}">{ICON.get(t,"")} {t} {sum(1 for u in U["unlocks"] if ty(u["type"])==t)}</button>' for t in types)
 (R/'_src/vs/ed').mkdir(parents=True,exist_ok=True)
@@ -152,15 +151,15 @@ bty=lambda t:t if bc.get(t,0)>=3 else '기타'
 brows=[]
 for i,u in enumerate(BU,1):
     t=bty(u['type']);scope='전용' if u['char'] else '공통'
-    q=f'<q>{esc(u["text"])}</q>'+(f'<div class="fix">바른 표기: {esc(u["text_fix"])}</div>' if u['text_fix']!=u['text'] else '')
+    q=(f'<div class="fix">게임 원문: {esc(u["text"])}</div>' if u['text_fix']!=u['text'] else '')
     rw=' · '.join(link_names(r) for r in u['reward'])
     badge=('<span class="bd bd-own">전용 · '+' · '.join(pop(c) for c in u['char'])+'</span>') if u['char'] else '<span class="bd">공통</span>'
     mode='<span class="bd">누적</span> ' if u['mode']=='누적' else ''
-    title=re.sub(r'^(스킬|패시브|캐릭터|아르카나|유물|스테이지|하이퍼|파워업|스킨) ','',u['reward'][0]) if u['reward'] else u['text'][:20]
+    title=u['text_fix']
     extra=' <span class="bd">추가</span>' if u['group']=='추가' else ''
     brows.append(f'''<details class="ul" data-id="b-{u['id']}" data-type="{t}" data-scope="{scope}">
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">{i}</span><span class="tt">{esc(title)}{extra}</span><span class="k">{ICON2.get(t,'')} {t}</span></summary>
-<div class="bdy">{q}<p>보상 → {rw}</p><p>{mode}{badge}</p></div></details>''')
+<div class="bdy"><p class="rw">🎁 보상 → {rw}</p>{q}<p>{mode}{badge}</p></div></details>''')
 btypes=sorted({bty(u['type']) for u in BU},key=lambda t:(t=='기타',-sum(1 for u in BU if bty(u['type'])==t)))
 bfb=''.join(f'<button type="button" data-f="{t}">{ICON2.get(t,"")} {t} {sum(1 for u in BU if bty(u["type"])==t)}</button>' for t in btypes)
 (R/'_src/vs/base').mkdir(parents=True,exist_ok=True)
