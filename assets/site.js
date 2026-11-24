@@ -41,9 +41,9 @@
   // 미리보기
   var box=document.createElement('div');box.id='popbox';document.body.appendChild(box);var cur=null;
   function card(it){
-    var h='<span class="ty">'+esc(it.t)+'</span><b>'+esc(it.n)+'</b>'+esc(it.d);
+    var h='<span class="ty">'+esc(it.t)+'</span><b>'+(it.i?'<img class="ic big" src="'+it.i+'" alt="">':'')+esc(it.n)+'</b>'+esc(it.d);
     if(it.p)h+='<div class="tip">'+esc(it.p)+'</div>';
-    if(it.s)h+='<div class="ev">🗡️ 시작 스킬: '+esc(it.s)+'</div>';
+    if(it.s)h+='<div class="ev">'+(it.si?'<img class="ic" src="'+it.si+'" alt="">':'🗡️ ')+'시작 스킬: '+esc(it.s)+'</div>';
     if(it.e)h+='<div class="ev">✨ 진화: '+esc(it.e)+'</div>';
     if(it.f)h+='<div class="ev">⬅ 재료: '+it.f.map(esc).join(' / ')+'</div>';
     if(it.u)h+='<div class="ev">🔗 이걸로 진화: '+it.u.map(esc).join(' · ')+'</div>';
@@ -86,6 +86,6 @@
   var sb=document.getElementById('searchBtn');if(sb&&q)sb.addEventListener('click',function(){setTimeout(function(){q.focus()},150)});
   if(q)q.addEventListener('input',function(){var v=q.value.trim().replace(/\s/g,'');if(!v){res.innerHTML='';return}
     load().then(function(I){var out=[];PAGES.forEach(function(p){if(p[0].replace(/\s/g,'').indexOf(v)>=0)out.push('<a href="'+p[1]+'">📄 '+esc(p[0])+'</a>')});
-      Object.keys(I).forEach(function(k){var it=I[k];if(out.length<30&&it.n.replace(/\s/g,'').indexOf(v)>=0)out.push('<span class="pop" data-pop="'+k+'">'+esc(it.n)+'<small>'+esc(it.t)+'</small></span>')});
+      Object.keys(I).forEach(function(k){var it=I[k];if(out.length<30&&it.n.replace(/\s/g,'').indexOf(v)>=0)out.push('<span class="pop" data-pop="'+k+'">'+(it.i?'<img class="ic" src="'+it.i+'" alt="">':'')+esc(it.n)+'<small>'+esc(it.t)+'</small></span>')});
       res.innerHTML=out.join('')||'<span>찾는 게 없어요</span>'})});
 })();

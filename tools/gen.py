@@ -12,13 +12,16 @@ for k,v in items.items(): name2id.setdefault(v['n'],k)
 def pop(name):
     """이름에 미리보기 걸기 (카드에 있으면)"""
     k=name2id.get(name)
-    return f'<span class="pop" data-pop="{k}">{esc(name)}</span>' if k else esc(name)
+    if not k: return esc(name)
+    ic=items[k].get('i')
+    img=f'<img class="ic" src="{ic}" alt="" loading="lazy">' if ic else ''
+    return f'<span class="pop" data-pop="{k}">{img}{esc(name)}</span>'
 
 def link_names(text):
     out=esc(text)
     for n in sorted(name2id,key=len,reverse=True):
         if len(n)>=2 and n in text:
-            out=out.replace(esc(n),f'<span class="pop" data-pop="{name2id[n]}">{esc(n)}</span>',1)
+            out=out.replace(esc(n),pop(n),1)
     return out
 
 # ---------- 디오라마 해금 ----------

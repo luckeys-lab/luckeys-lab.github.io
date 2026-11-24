@@ -149,3 +149,6 @@ table.evo td.to{white-space:nowrap;font-weight:700}
 .ul summary input,.ul .n{margin-top:2px}
 .ul .k{margin-top:3px}
 .ul .rw{font-weight:700}
+.ic{width:20px;height:20px;image-rendering:pixelated;vertical-align:-4px;margin-right:3px;object-fit:contain}
+.ic.big{width:32px;height:32px;vertical-align:-8px;margin-right:6px}
+table.evo .ic{width:24px;height:24px}
