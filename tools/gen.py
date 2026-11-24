@@ -84,3 +84,61 @@ desc: 뱀파이어 서바이벌 본편 진화 조합 전체 (게임 데이터 �
 <p class="note">시곗바늘·월계수 같은 다른 방식의 합체 진화는 정리 중입니다.</p>
 ''',encoding='utf-8')
 print('gen ok',len(rows),len(evo))
+
+# ---------- 디오라마 캐릭터 페이지 ----------
+EC=json.loads((D/'ed/chars.json').read_text(encoding='utf-8'))
+SHORT={v:k for k,v in FULL.items()}
+MULT={'moveSpeed':'이동 속도','power':'피해량','area':'공격 범위','speed':'투사체 속도','duration':'지속시간','luck':'행운','growth':'성장','greed':'탐욕','curse':'저주','magnet':'자석','cooldown':'쿨타임'}
+FLAT={'maxHp':'최대 체력','armor':'방어력','regen':'회복','amount':'투사체 수','revivals':'부활','rerolls':'새로고침','skips':'건너뛰기','banish':'지우기'}
+def slug(i): return i.replace('EME_','').lower()
+def stat_rows(st):
+    out=[]
+    for k,lab in list(FLAT.items())+list(MULT.items()):
+        if k not in st: continue
+        v=st[k]
+        if k in MULT:
+            if v==1: continue
+            p=round((v-1)*100);txt=f"{p:+d}%";w=max(6,min(100,50+p))
+        else:
+            txt=str(v) if k=='maxHp' else f"+{v}";w=max(6,min(100,(v/2 if k=='maxHp' else v*12)))
+        out.append(f'<div class="stat"><span>{lab}</span><div class="pb"><i style="width:{w}%"></i></div><em>{txt}</em></div>')
+    return ''.join(out)
+(R/'_src/vs/ed/c').mkdir(parents=True,exist_ok=True)
+tiles=[]
+for c in EC:
+    sl=slug(c['id']);short=SHORT.get(c['ko'],c['ko'])
+    need=[u for u in U['unlocks'] if u['char'] and short in u['char'].split('|')]
+    how=[u for u in U['unlocks'] if c['ko'] in u['reward']]
+    rws=[r for r in rows if any(f'data-id="ed-{u["n"]}"' in r for u in need)]
+    sk=''.join(f'<div class="skin"><b>{esc(s["ko"])}</b><span>🗡️ {pop(s["start"]) if s.get("start") else "-"}</span></div>' for s in c['skins'])
+    howt=''.join(f'<li><a href="/vs/ed/#ed-{u["n"]}">{u["n"]}번</a> · {esc(u["text"])}</li>' for u in how) or '<li>처음부터 또는 확인 중</li>'
+    tiles.append(f'<a class="tile" href="/vs/ed/c/{sl}.html"><b>{esc(c["ko"])}</b><span>🗡️ {esc(c["start"] or "-")}</span></a>')
+    (R/f'_src/vs/ed/c/{sl}.html').write_text(f'''title: {c["ko"]} · 에메랄드 디오라마
+desc: 뱀파이어 서바이벌 에메랄드 디오라마 캐릭터 {c["ko"]} · 시작 스킬 {c["start"]} · 스킨별 시작 스킬 · 해금 방법 · 이 캐릭터가 필요한 해금
+<div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › <a href="/vs/ed/">에메랄드 디오라마</a> › <a href="/vs/ed/chars.html">캐릭터</a></div>
+<h1>{esc(c["ko"])}</h1>
+<p class="sub">🗡️ 시작 스킬 {pop(c["start"]) if c.get("start") else "-"}</p>
+<div class="quote">{link_names(c["desc"] or "")}</div>
+<h2>능력치</h2>{stat_rows(c.get("stats",{}))}
+<h2>스킨 {len(c["skins"])}</h2><div class="skins">{sk}</div>
+<p class="note">스킨마다 시작 스킬이 다릅니다. 스킨 이름 일부는 게임 번역 파일에 한글이 없어 영어로 적었습니다.</p>
+<h2>해금 방법</h2><ul class="how">{howt}</ul>
+<h2>{esc(c["ko"])}가 필요한 해금 {len(need)}</h2>
+{('<div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div><div id="ulist" data-group="ed">'+chr(10).join(rws)+'</div>') if rws else '<p class="note">이 캐릭터 전용 해금은 없습니다.</p>'}
+<div class="ad" data-slot="end"></div>
+''',encoding='utf-8')
+    k='CH_'+c['id']
+    if k in items: items[k]['l']=f'/vs/ed/c/{sl}.html'
+(R/'_src/vs/ed/chars.html').write_text(f'''title: 에메랄드 디오라마 캐릭터 {len(EC)}
+desc: 뱀파이어 서바이벌 에메랄드 디오라마 캐릭터 {len(EC)}명 · 시작 스킬 · 스킨
+<div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › <a href="/vs/ed/">에메랄드 디오라마</a> › 캐릭터</div>
+<h1>🧛 디오라마 캐릭터 {len(EC)}</h1>
+<p class="sub">이름 아래는 기본 시작 스킬 · 들어가면 스킨별 시작 스킬과 해금 방법</p>
+<div class="tiles">{''.join(tiles)}</div>
+''',encoding='utf-8')
+(D/'items.json').write_text(json.dumps(items,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+# 해금 페이지 위에 캐릭터 링크
+p=R/'_src/vs/ed/index.html';t=p.read_text(encoding='utf-8')
+if 'chars.html' not in t:
+    t=t.replace('<div class="prog">','<a class="btn-line" href="/vs/ed/chars.html">🧛 디오라마 캐릭터 보기</a>\n<div class="prog">',1);p.write_text(t,encoding='utf-8')
+print('chars pages',len(EC))

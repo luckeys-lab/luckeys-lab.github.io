@@ -47,6 +47,8 @@
     if(it.e)h+='<div class="ev">✨ 진화: '+esc(it.e)+'</div>';
     if(it.f)h+='<div class="ev">⬅ 재료: '+it.f.map(esc).join(' / ')+'</div>';
     if(it.u)h+='<div class="ev">🔗 이걸로 진화: '+it.u.map(esc).join(' · ')+'</div>';
+    if(it.sk&&it.sk.length)h+='<div class="ev">👕 스킨: '+it.sk.map(esc).join(' · ')+'</div>';
+    if(it.l)h+='<a class="go" href="'+it.l+'">자세히 →</a>';
     return h}
   function show(el,key){load().then(function(I){var it=I[key];if(!it)return;box.innerHTML=card(it);box.style.display='block';
     var r=el.getBoundingClientRect(),w=box.offsetWidth,h=box.offsetHeight;var x=Math.max(8,Math.min(r.left,innerWidth-w-8));var y=r.bottom+6;if(y+h>innerHeight-8)y=Math.max(8,r.top-h-6);
