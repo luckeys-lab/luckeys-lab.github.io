@@ -37,7 +37,7 @@ for u in U['unlocks']:
     raw=u['text'];fixed=raw
     for a,b in FIXT.items(): fixed=fixed.replace(a,b)
     chars=u['char'].split('|') if u['char'] else []
-    cbadge=' · '.join(f"{esc(c)} 🗡️{esc(CH.get(c,'?'))}" for c in chars)
+    cbadge=' · '.join(f"{pop(FULL.get(c,c)) if FULL.get(c,c) in name2id else esc(c)} 🗡️{pop(CH.get(c,'?'))}" for c in chars)
     badge=f'<span class="bd bd-own">전용 · {cbadge}</span>' if chars else '<span class="bd">공통</span>'
     mp=u.get('map','');mp=mp.replace('둘다','일반·인버스').replace('❓','')
     z=u.get('zone');zt=ZONE.get(z,'') if z not in (None,'❓') else ''
