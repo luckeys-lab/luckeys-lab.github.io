@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>에메랄드 디오라마 · LucKey's Lab</title>
-<meta name="description" content="뱀파이어 서바이벌 무료 DLC 에메랄드 디오라마 공략 (준비 중)">
+<title>에메랄드 디오라마 해금 41개 · LucKey's Lab</title>
+<meta name="description" content="뱀파이어 서바이벌 에메랄드 디오라마 해금 조건 41개 전체. 게임 데이터 기준 · 필요 캐릭터와 시작 스킬 · 해금 체크.">
 <meta name="theme-color" content="#1E2346">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,11 +18,13 @@
 </header>
 <div class="dim"></div>
 <nav class="layer" aria-label="메뉴"><div class="layer-in">
+ <div class="srch"><input id="sq" type="search" placeholder="🔍 스킬 · 패시브 · 캐릭터 · 아르카나 이름" autocomplete="off"><div id="sres"></div></div>
  <div class="grp open"><button type="button">📖 공략 <i>▼</i></button>
   <div class="grp-body">
    <div class="gm">뱀파이어 서바이벌</div>
    <div class="chips">
     <a href="/vs/">뱀서 홈</a>
+    <a href="/vs/evo.html">✨ 본편 진화</a>
     <span class="off">본편 · 준비 중</span>
     <a class="on" href="/vs/ed/">💎 에메랄드 디오라마</a>
     <span class="off">다른 DLC · 준비 중</span>
@@ -36,10 +38,139 @@
 </div></nav>
 <main>
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 에메랄드 디오라마</div>
-<h1>💎 에메랄드 디오라마</h1>
-<p class="sub">무료 DLC · 해금 41개 · 구역 6 + 허브</p>
-<h2>준비 중</h2>
-<p>허브 지도 → 구역 지도 → 해금 순서로 정리하고 있습니다.</p>
+<h1>💎 에메랄드 디오라마 · 해금</h1>
+<p class="sub">무료 DLC · 해금 41개 · 게임 데이터 기준 · 지도와 캐릭터 페이지는 준비 중</p>
+<div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div>
+<div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button><button type="button" data-f="진화">✨ 진화 11</button><button type="button" data-f="성장">📈 성장 11</button><button type="button" data-f="사냥">⚔️ 사냥 9</button><button type="button" data-f="찾아서진화">🔍 찾아서진화 5</button><button type="button" data-f="발견">⚰️ 발견 3</button><button type="button" data-f="기타">📦 기타 2</button></div>
+<div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
+<label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label></div>
+<div id="ulist" data-group="ed">
+<details class="ul" data-id="ed-1" data-type="발견" data-scope="공통">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">1</span><span class="tt">에메랄드 디오라마 · 유물 에메랄드 디스크</span><span class="k">⚰️ 발견</span></summary>
+<div class="bdy"><q>에메랄드 디스크를 발견해 구매하세요.</q><p>보상 → 스테이지 에메랄드 디오라마 · 유물 에메랄드 디스크</p><p><span class="bd">공통</span></p></div></details>
+<details class="ul" data-id="ed-2" data-type="발견" data-scope="공통">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">2</span><span class="tt">츠나노리 미도</span><span class="k">⚰️ 발견</span></summary>
+<div class="bdy"><q>에메랄드 디오라마에서 첫 번째 관을 찾아서 여세요.</q><p>보상 → 캐릭터 츠나노리 미도</p><p><span class="bd">공통</span> · 📍 일반 · 1 미야코시</p></div></details>
+<details class="ul" data-id="ed-3" data-type="성장" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">3</span><span class="tt">플뢰레</span><span class="k">📈 성장</span></summary>
+<div class="bdy"><q>플뢰레 레벨을 6에 맞추세요.</q><p>보상 → 무기 플뢰레</p><p><span class="bd bd-own">전용 · 츠나노리 🗡️플뢰레</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-4" data-type="진화" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">4</span><span class="tt">3종(이도류·솔로 플뢰레·솔로 이도)</span><span class="k">✨ 진화</span></summary>
+<div class="bdy"><q>플뢰레를 완전히 진화시키세요.</q><p>보상 → 스킨 3종(이도류·솔로 플뢰레·솔로 이도)</p><p><span class="bd bd-own">전용 · 츠나노리 🗡️플뢰레</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-5" data-type="성장" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">5</span><span class="tt">스플래셔</span><span class="k">📈 성장</span></summary>
+<div class="bdy"><q>스플래셔 레벨을 6에 맞추세요.</q><p>보상 → 무기 스플래셔</p><p><span class="bd bd-own">전용 · 츠나노리 🗡️플뢰레</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-6" data-type="진화" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">6</span><span class="tt">보니 블레어</span><span class="k">✨ 진화</span></summary>
+<div class="bdy"><q>스플래셔를 완전히 진화시키세요.</q><p>보상 → 캐릭터 보니 블레어</p><p><span class="bd bd-own">전용 · 츠나노리 🗡️플뢰레</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-7" data-type="성장" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">7</span><span class="tt">펀치</span><span class="k">📈 성장</span></summary>
+<div class="bdy"><q>펀치 레벨을 6에 맞추세요.</q><p>보상 → 무기 펀치</p><p><span class="bd bd-own">전용 · 보니 🗡️펀치</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-8" data-type="진화" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">8</span><span class="tt">3종(보니 킥·솔로 펀치·솔로 킥)</span><span class="k">✨ 진화</span></summary>
+<div class="bdy"><q>펀치를 완전히 진화시키세요.</q><p>보상 → 스킨 3종(보니 킥·솔로 펀치·솔로 킥)</p><p><span class="bd bd-own">전용 · 보니 🗡️펀치</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-9" data-type="성장" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">9</span><span class="tt">킥</span><span class="k">📈 성장</span></summary>
+<div class="bdy"><q>킥 레벨을 6에 맞추세요.</q><p>보상 → 무기 킥</p><p><span class="bd bd-own">전용 · 보니 🗡️펀치</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-10" data-type="진화" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">10</span><span class="tt">포미나 프랭클린</span><span class="k">✨ 진화</span></summary>
+<div class="bdy"><q>킥을 완전히 진화시키세요.</q><p>보상 → 캐릭터 포미나 프랭클린</p><p><span class="bd bd-own">전용 · 보니 🗡️펀치</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-11" data-type="성장" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">11</span><span class="tt">세이버 기관총</span><span class="k">📈 성장</span></summary>
+<div class="bdy"><q>세이버 기관총 레벨을 6에 맞추세요.</q><p>보상 → 무기 세이버 기관총</p><p><span class="bd bd-own">전용 · 포미나 🗡️세이버 기관총</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-12" data-type="진화" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">12</span><span class="tt">3종(포미나 권총·솔로 캐논·솔로 권총)</span><span class="k">✨ 진화</span></summary>
+<div class="bdy"><q>세이버 기관총을 완전히 진화시키세요.</q><p>보상 → 스킨 3종(포미나 권총·솔로 캐논·솔로 권총)</p><p><span class="bd bd-own">전용 · 보니 🗡️펀치</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-13" data-type="성장" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">13</span><span class="tt">이글 건</span><span class="k">📈 성장</span></summary>
+<div class="bdy"><q>이글 건 레벨을 6에 맞추세요.</q><p>보상 → 무기 이글 건</p><p><span class="bd bd-own">전용 · 포미나 🗡️세이버 기관총</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-14" data-type="진화" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">14</span><span class="tt">디바 5번</span><span class="k">✨ 진화</span></summary>
+<div class="bdy"><q>이글 건을 완전히 진화시키세요.</q><p>보상 → 캐릭터 디바 5번</p><p><span class="bd bd-own">전용 · 보니 🗡️펀치</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-15" data-type="성장" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">15</span><span class="tt">슈퍼 미사일</span><span class="k">📈 성장</span></summary>
+<div class="bdy"><q>슈퍼 미사일 레벨을 6에 맞추세요.</q><p>보상 → 무기 슈퍼 미사일</p><p><span class="bd bd-own">전용 · 디바 5번 🗡️슈퍼 미사일</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-16" data-type="진화" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">16</span><span class="tt">디바 카타나</span><span class="k">✨ 진화</span></summary>
+<div class="bdy"><q>슈퍼 미사일을 완전히 진화시키세요.</q><p>보상 → 스킨 디바 카타나</p><p><span class="bd bd-own">전용 · 디바 5번 🗡️슈퍼 미사일</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-17" data-type="성장" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">17</span><span class="tt">트윈 드래곤</span><span class="k">📈 성장</span></summary>
+<div class="bdy"><q>트윈 드래곤 레벨을 6에 맞추세요.</q><p>보상 → 무기 트윈 드래곤</p><p><span class="bd bd-own">전용 · 디바 5번 🗡️슈퍼 미사일</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-18" data-type="진화" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">18</span><span class="tt">아메야 아이슬링</span><span class="k">✨ 진화</span></summary>
+<div class="bdy"><q>트윈 드래곤을 완전히 진화시키세요.</q><p>보상 → 캐릭터 아메야 아이슬링</p><p><span class="bd bd-own">전용 · 디바 5번 🗡️슈퍼 미사일</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-19" data-type="성장" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">19</span><span class="tt">정령 반지</span><span class="k">📈 성장</span></summary>
+<div class="bdy"><q>스피릿 링 레벨을 6에 맞추세요.</q><p>보상 → 무기 정령 반지</p><p><span class="bd bd-own">전용 · 아메야 🗡️정령 반지</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-20" data-type="진화" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">20</span><span class="tt">아메야 셀렉트</span><span class="k">✨ 진화</span></summary>
+<div class="bdy"><q>스피릿 링을 진화시키세요.</q><p>보상 → 스킨 아메야 셀렉트</p><p><span class="bd bd-own">전용 · 아메야 🗡️정령 반지</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-21" data-type="찾아서진화" data-scope="공통">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">21</span><span class="tt">글레이브</span><span class="k">🔍 찾아서진화</span></summary>
+<div class="bdy"><q>글레이브를 찾아 완전히 진화하세요.</q><p>보상 → 무기 글레이브</p><p><span class="bd">공통</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-22" data-type="찾아서진화" data-scope="공통">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">22</span><span class="tt">플랑베르주</span><span class="k">🔍 찾아서진화</span></summary>
+<div class="bdy"><q>플랑베르주를 찾아 완전히 진화시키세요.</q><p>보상 → 무기 플랑베르주</p><p><span class="bd">공통</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-23" data-type="찾아서진화" data-scope="공통">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">23</span><span class="tt">쿠쿠리</span><span class="k">🔍 찾아서진화</span></summary>
+<div class="bdy"><q>쿠쿠리를 찾아 완전히 진화시키세요.</q><p>보상 → 무기 쿠쿠리</p><p><span class="bd">공통</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-24" data-type="찾아서진화" data-scope="공통">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">24</span><span class="tt">불로바</span><span class="k">🔍 찾아서진화</span></summary>
+<div class="bdy"><q>불로바를 찾아 완전히 진화시키세요.</q><p>보상 → 무기 불로바</p><p><span class="bd">공통</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-25" data-type="발견" data-scope="공통">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">25</span><span class="tt">시그나스</span><span class="k">⚰️ 발견</span></summary>
+<div class="bdy"><q>에메랄드 디오라마에서 두 번째 관을 찾아서 여세요.</q><p>보상 → 캐릭터 시그나스</p><p><span class="bd">공통</span> · 📍 일반 · 6 구역</p></div></details>
+<details class="ul" data-id="ed-26" data-type="성장" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">26</span><span class="tt">타운 소드</span><span class="k">📈 성장</span></summary>
+<div class="bdy"><q>타운 소드 레벨을 6에 맞추세요.</q><p>보상 → 무기 타운 소드</p><p><span class="bd bd-own">전용 · 시그나스 🗡️타운 소드</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-27" data-type="진화" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">27</span><span class="tt">시그나스 블러드</span><span class="k">✨ 진화</span></summary>
+<div class="bdy"><q>타운 소드를 완전히 진화시키세요</q><p>보상 → 스킨 시그나스 블러드</p><p><span class="bd bd-own">전용 · 시그나스 🗡️타운 소드</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-28" data-type="성장" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">28</span><span class="tt">블러드 스타</span><span class="k">📈 성장</span></summary>
+<div class="bdy"><q>블러드 스타 레벨을 6에 맞추세요.</q><p>보상 → 무기 블러드 스타</p><p><span class="bd bd-own">전용 · 시그나스 🗡️타운 소드</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-29" data-type="진화" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">29</span><span class="tt">직관</span><span class="k">✨ 진화</span></summary>
+<div class="bdy"><q>블러드 스타를 완전히 진화시키세요.</q><p>보상 → 무기 직관</p><p><span class="bd bd-own">전용 · 시그나스 🗡️타운 소드</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-30" data-type="사냥" data-scope="공통">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">30</span><span class="tt">구구츠</span><span class="k">⚔️ 사냥</span></summary>
+<div class="bdy"><q>인버스 에메랄드 디오라마, 미야코시에서 스피릿 비스트를 처치하세요.</q><p>보상 → 캐릭터 구구츠</p><p><span class="bd">공통</span> · 📍 인버스 · 1 미야코시</p></div></details>
+<details class="ul" data-id="ed-31" data-type="사냥" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">31</span><span class="tt">리타 카릭스</span><span class="k">⚔️ 사냥</span></summary>
+<div class="bdy"><q>츠나노리와 함께 인버스 에메랄드 디오라마, 풀크라에서 어스 드래곤을 처치하세요.</q><p>보상 → 캐릭터 리타 카릭스</p><p><span class="bd bd-own">전용 · 츠나노리 🗡️플뢰레</span> · 📍 인버스 · 2 풀크라</p></div></details>
+<details class="ul" data-id="ed-32" data-type="사냥" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">32</span><span class="tt">마지막 황제</span><span class="k">⚔️ 사냥</span></summary>
+<div class="bdy"><q>보니 또는 포미나로 인버스 에메랄드 디오라마, 그렐론에서 최종 황제의 악마 형태를 처치하세요.</q><p>보상 → 캐릭터 마지막 황제</p><p><span class="bd bd-own">전용 · 보니 🗡️펀치 · 포미나 🗡️세이버 기관총</span> · 📍 인버스 · 3 그렐론</p></div></details>
+<details class="ul" data-id="ed-33" data-type="사냥" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">33</span><span class="tt">마차 얼터 에고</span><span class="k">⚔️ 사냥</span></summary>
+<div class="bdy"><q>아메야로 인버스 에메랄드 디오라마, 아발론에서 아이언 메이든을 처치하세요.</q><p>보상 → 캐릭터 마차 얼터 에고</p><p><span class="bd bd-own">전용 · 아메야 🗡️정령 반지</span> · 📍 인버스 · 4 아발론</p></div></details>
+<details class="ul" data-id="ed-34" data-type="사냥" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">34</span><span class="tt">돌로레스</span><span class="k">⚔️ 사냥</span></summary>
+<div class="bdy"><q>시우그나스와 함께 인버스 에메랄드 디오라마, 요미에서 이와나가히메의 유령을 처치하세요.</q><div class="fix">바른 표기: 시그나스와 함께 인버스 에메랄드 디오라마, 요미에서 이와나가히메의 유령을 처치하세요.</div><p>보상 → 캐릭터 돌로레스</p><p><span class="bd bd-own">전용 · 시그나스 🗡️타운 소드</span> · 📍 인버스 · 5 요미</p></div></details>
+<details class="ul" data-id="ed-35" data-type="사냥" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">35</span><span class="tt">미스터 S</span><span class="k">⚔️ 사냥</span></summary>
+<div class="bdy"><q>디바 5번으로 인버스 에메랄드 디오라마에서 살아있는 고뇌를 처치하세요.</q><p>보상 → 캐릭터 미스터 S</p><p><span class="bd bd-own">전용 · 디바 5번 🗡️슈퍼 미사일</span> · 📍 인버스 · 6 구역</p></div></details>
+<details class="ul" data-id="ed-36" data-type="기타" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">36</span><span class="tt">디바 무버</span><span class="k">📦 기타</span></summary>
+<div class="bdy"><q>디바 5호 “레트로 포드”로 최소 7가지 기술에 섬광 효과를 주세요.</q><div class="fix">바른 표기: 디바 5번 “레트로 포드”로 최소 7가지 기술에 섬광 효과를 주세요.</div><p>보상 → 스킨 디바 무버</p><p><span class="bd bd-own">전용 · 디바 5번 🗡️슈퍼 미사일</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-37" data-type="기타" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">37</span><span class="tt">디바 배틀 탱크</span><span class="k">📦 기타</span></summary>
+<div class="bdy"><q>디바 5번 “버지니아”로 최소 11가지 기술에 섬광 효과를 주세요.</q><p>보상 → 스킨 디바 배틀 탱크</p><p><span class="bd bd-own">전용 · 디바 5번 🗡️슈퍼 미사일</span> · 📍 일반·인버스</p></div></details>
+<details class="ul" data-id="ed-38" data-type="사냥" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">38</span><span class="tt">디바 생크스</span><span class="k">⚔️ 사냥</span></summary>
+<div class="bdy"><q>디바 5번으로 에메랄드 디오라마의 모든 보스를 한 번에 처치하세요.</q><p>보상 → 스킨 디바 생크스</p><p><span class="bd bd-own">전용 · 디바 5번 🗡️슈퍼 미사일</span> · 📍 일반 · 모든 구역</p></div></details>
+<details class="ul" data-id="ed-39" data-type="사냥" data-scope="전용">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">39</span><span class="tt">디바 패러독스</span><span class="k">⚔️ 사냥</span></summary>
+<div class="bdy"><q>디바 5번으로 인버스 에메랄드 디오라마의 모든 보스를 한 번에 처치하세요.</q><p>보상 → 스킨 디바 패러독스</p><p><span class="bd bd-own">전용 · 디바 5번 🗡️슈퍼 미사일</span> · 📍 인버스 · 모든 구역</p></div></details>
+<details class="ul" data-id="ed-40" data-type="찾아서진화" data-scope="공통">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">40</span><span class="tt">에메랄드 휴거</span><span class="k">🔍 찾아서진화</span></summary>
+<div class="bdy"><q>에메랄드 황홀감을 발견해서 진화시키세요.</q><p>보상 → 무기 에메랄드 휴거</p><p><span class="bd">공통</span></p></div></details>
+<details class="ul" data-id="ed-41" data-type="사냥" data-scope="공통">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">41</span><span class="tt">에메랄드 디오라마</span><span class="k">⚔️ 사냥</span></summary>
+<div class="bdy"><q>에메랄드 디오라마에서 숨은 오우거를 처치하세요.</q><p>보상 → 하이퍼 에메랄드 디오라마</p><p><span class="bd">공통</span> · 📍 일반 · 아래 허브</p></div></details>
+</div>
+<p class="note">☑ 체크는 이 기기(브라우저)에만 저장됩니다. 줄을 누르면 펼쳐집니다.</p>
+<div class="ad" data-slot="end"></div>
 </main>
 <footer class="foot">© LucKey's Lab · 게임 공략 연구소<br>비공식 팬 공략 사이트입니다. 게임의 저작권은 각 제작사에 있습니다.</footer>
 <script src="/assets/site.js" defer></script>
