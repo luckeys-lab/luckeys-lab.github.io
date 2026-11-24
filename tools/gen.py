@@ -142,3 +142,41 @@ p=R/'_src/vs/ed/index.html';t=p.read_text(encoding='utf-8')
 if 'chars.html' not in t:
     t=t.replace('<div class="prog">','<a class="btn-line" href="/vs/ed/chars.html">🧛 디오라마 캐릭터 보기</a>\n<div class="prog">',1);p.write_text(t,encoding='utf-8')
 print('chars pages',len(EC))
+
+# ---------- 본편 해금 ----------
+BU=json.loads((D/'base_unlocks.json').read_text(encoding='utf-8'))
+ICON2={'발견':'⚰️','특수':'🎯','레벨':'🆙','생존':'⏱','성장':'📈','처치 수':'💀','비밀':'🔒','진화':'✨','기타':'📦'}
+bc={}
+for u in BU: bc[u['type']]=bc.get(u['type'],0)+1
+bty=lambda t:t if bc.get(t,0)>=3 else '기타'
+brows=[]
+for i,u in enumerate(BU,1):
+    t=bty(u['type']);scope='전용' if u['char'] else '공통'
+    q=f'<q>{esc(u["text"])}</q>'+(f'<div class="fix">바른 표기: {esc(u["text_fix"])}</div>' if u['text_fix']!=u['text'] else '')
+    rw=' · '.join(link_names(r) for r in u['reward'])
+    badge=('<span class="bd bd-own">전용 · '+' · '.join(pop(c) for c in u['char'])+'</span>') if u['char'] else '<span class="bd">공통</span>'
+    mode='<span class="bd">누적</span> ' if u['mode']=='누적' else ''
+    title=re.sub(r'^(스킬|패시브|캐릭터|아르카나|유물|스테이지|하이퍼|파워업|스킨) ','',u['reward'][0]) if u['reward'] else u['text'][:20]
+    extra=' <span class="bd">추가</span>' if u['group']=='추가' else ''
+    brows.append(f'''<details class="ul" data-id="b-{u['id']}" data-type="{t}" data-scope="{scope}">
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">{i}</span><span class="tt">{esc(title)}{extra}</span><span class="k">{ICON2.get(t,'')} {t}</span></summary>
+<div class="bdy">{q}<p>보상 → {rw}</p><p>{mode}{badge}</p></div></details>''')
+btypes=sorted({bty(u['type']) for u in BU},key=lambda t:(t=='기타',-sum(1 for u in BU if bty(u['type'])==t)))
+bfb=''.join(f'<button type="button" data-f="{t}">{ICON2.get(t,"")} {t} {sum(1 for u in BU if bty(u["type"])==t)}</button>' for t in btypes)
+(R/'_src/vs/base').mkdir(parents=True,exist_ok=True)
+(R/'_src/vs/base/unlocks.html').write_text(f'''title: 본편 해금 {len(BU)}개
+desc: 뱀파이어 서바이벌 본편 해금 조건 {len(BU)}개 전체 (1.0 + 추가). 게임 데이터 기준 · 보상 · 필요 캐릭터 · 해금 체크.
+<div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 본편 해금</div>
+<h1>🔓 본편 해금 {len(BU)}</h1>
+<p class="sub">1.0 + 무료 추가 업데이트 · 게임 데이터 기준 · 보상 이름을 누르면 설명이 보입니다</p>
+<div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div>
+<div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button>{bfb}</div>
+<div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
+<label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label></div>
+<div id="ulist" data-group="base">
+{chr(10).join(brows)}
+</div>
+<p class="note">☑ 체크는 이 기기(브라우저)에만 저장됩니다. 순서는 게임 데이터 순서이고, 추천 순서는 준비 중입니다.</p>
+<div class="ad" data-slot="end"></div>
+''',encoding='utf-8')
+print('base unlocks',len(BU))

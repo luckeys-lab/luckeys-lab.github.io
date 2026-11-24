@@ -1,0 +1,2633 @@
+[
+{
+"id": "ReachLV5",
+"text": "레벨 5에 도달.",
+"text_fix": "레벨 5에 도달.",
+"reward": [
+"패시브 날개"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV10",
+"text": "레벨 10에 도달.",
+"text_fix": "레벨 10에 도달.",
+"reward": [
+"패시브 왕관"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV20InMadForest",
+"text": "광기의 숲에서 레벨 20에 도달.",
+"text_fix": "광기의 숲에서 레벨 20에 도달.",
+"reward": [
+"스테이지 화려한 도서관"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV40InLibrary",
+"text": "화려한 도서관에서 레벨 40에 도달.",
+"text_fix": "화려한 도서관에서 레벨 40에 도달.",
+"reward": [
+"스테이지 유제품 공장"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV60InDairyPlant",
+"text": "유제품 공장에서 레벨 60에 도달.",
+"text_fix": "유제품 공장에서 레벨 60에 도달.",
+"reward": [
+"스테이지 갈로의 탑"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindYellowSignS5",
+"text": "갈로의 탑에서 레벨 80에 도달합니다.",
+"text_fix": "갈로의 탑에서 레벨 80에 도달합니다.",
+"reward": [
+"스테이지 마그나 예배당"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV80InverseForest",
+"text": "광기의 숲 반전 모드에서 레벨 80에 도달합니다.",
+"text_fix": "광기의 숲 반전 모드에서 레벨 80에 도달합니다.",
+"reward": [
+"스테이지 박쥐 나라",
+"하이퍼 박쥐 나라"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "ReachLV80InverseLibrary",
+"text": "반전 상감 라이브러리에서 80레벨에 도달합니다.",
+"text_fix": "반전 상감 라이브러리에서 80레벨에 도달합니다.",
+"reward": [
+"스테이지 아스트랄 계단",
+"하이퍼 아스트랄 계단"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "ReachLV80InverseWarehouse",
+"text": "인버스 유제품 공장에서 레벨 80에 도달하세요.",
+"text_fix": "인버스 유제품 공장에서 레벨 80에 도달하세요.",
+"reward": [
+"스테이지 마제렐라",
+"하이퍼 마제렐라"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "ReachLV80InverseTower",
+"text": "반전 갈로의 탑에서 80레벨에 도달합니다.",
+"text_fix": "반전 갈로의 탑에서 80레벨에 도달합니다.",
+"reward": [
+"스테이지 작은 다리",
+"하이퍼 작은 다리"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Survive1Minute",
+"text": "아무 캐릭터로 1분 생존.",
+"text_fix": "아무 캐릭터로 1분 생존.",
+"reward": [
+"패시브 검은 심장"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive5MinutesWithDiamond",
+"text": "파스콸리나로 5분 생존.",
+"text_fix": "파스콸리나로 5분 생존.",
+"reward": [
+"스킬 룬 트레이서"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive5MinutesWithKnife",
+"text": "젠나로로 5분 생존.",
+"text_fix": "젠나로로 5분 생존.",
+"reward": [
+"패시브 붉은 심장"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive10Minutes",
+"text": "아무 캐릭터로 10분 생존.",
+"text_fix": "아무 캐릭터로 10분 생존.",
+"reward": [
+"스킬 하얀 비둘기"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive10MinutesWithGuns",
+"text": "푸냘라로 10분 생존.",
+"text_fix": "푸냘라로 10분 생존.",
+"reward": [
+"스킬 피에라 데 투펠로"
+],
+"type": "생존",
+"mode": "한판",
+"char": [
+"푸냘라 프로볼라"
+],
+"group": "본편"
+},
+{
+"id": "Survive15MinutesWithGuns",
+"text": "푸냘라로 15분 생존.",
+"text_fix": "푸냘라로 15분 생존.",
+"reward": [
+"스킬 에잇 더 스패로우"
+],
+"type": "생존",
+"mode": "한판",
+"char": [
+"푸냘라 프로볼라"
+],
+"group": "본편"
+},
+{
+"id": "Survive15MinutesWithGatti",
+"text": "지오반나로 15분 생존.",
+"text_fix": "지오반나로 15분 생존.",
+"reward": [
+"스킬 마녀의 고양이"
+],
+"type": "생존",
+"mode": "한판",
+"char": [
+"지오반나 그라나"
+],
+"group": "본편"
+},
+{
+"id": "Survive15MinutesWithSong",
+"text": "포페아로 15분 생존.",
+"text_fix": "포페아로 15분 생존.",
+"reward": [
+"스킬 마나의 노래"
+],
+"type": "생존",
+"mode": "한판",
+"char": [
+"포페아 페코리나"
+],
+"group": "본편"
+},
+{
+"id": "Survive15MinutesWithShadow",
+"text": "콘체타로 15분 생존.",
+"text_fix": "콘체타로 15분 생존.",
+"reward": [
+"스킬 검은 드릴"
+],
+"type": "생존",
+"mode": "한판",
+"char": [
+"콘체타 카치오타"
+],
+"group": "본편"
+},
+{
+"id": "Survive15MinutesWithWind",
+"text": "지아순타로 15분 생존.",
+"text_fix": "지아순타로 15분 생존.",
+"reward": [
+"스킬 성스러운 바람"
+],
+"type": "생존",
+"mode": "한판",
+"char": [
+"지아순타 벨파에제"
+],
+"group": "본편"
+},
+{
+"id": "Survive20Minutes",
+"text": "아무 캐릭터로 20분 생존.",
+"text_fix": "아무 캐릭터로 20분 생존.",
+"reward": [
+"스킬 오망성"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive20MinutesWithCross",
+"text": "크로치로 20분 생존.",
+"text_fix": "크로치로 20분 생존.",
+"reward": [
+"패시브 티라미수"
+],
+"type": "생존",
+"mode": "한판",
+"char": [
+"크로치 프리토"
+],
+"group": "본편"
+},
+{
+"id": "Survive20MinutesWithCurse",
+"text": "10% 이상의 저주를 받고 20분 동안 생존.",
+"text_fix": "10% 이상의 저주를 받고 20분 동안 생존.",
+"reward": [
+"캐릭터 라마 라돈나"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "SurviveUntilTheEndOfWhiteout",
+"text": "화이트아웃에서 20분 동안 생존하기.",
+"text_fix": "화이트아웃에서 20분 동안 생존하기.",
+"reward": [
+"캐릭터 쉬문 에타"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Survive20minutesInLycaeum",
+"text": "라이케움에서 20분 동안 생존합니다.",
+"text_fix": "라이케움에서 20분 동안 생존합니다.",
+"reward": [
+"캐릭터 클레오"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Survive20MinutesInLaborratory",
+"text": "실험실에서 20분 동안 생존하세요.",
+"text_fix": "실험실에서 20분 동안 생존하세요.",
+"reward": [
+"캐릭터 산타 라돈나"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "EvolveOfGaea",
+"text": "가에야의 시선을 진화시키세요.",
+"text_fix": "가에야의 시선을 진화시키세요.",
+"reward": [
+"캐릭터 가제보"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Survive20MinutesInWestwoods",
+"text": "Survive 20 minutes in Westwoods.",
+"text_fix": "Survive 20 minutes in Westwoods.",
+"reward": [
+"캐릭터 출라레"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Survive20MinutesInSpace54",
+"text": "스페이스 24로 20분 동안 생존합니다.",
+"text_fix": "스페이스 24로 20분 동안 생존합니다.",
+"reward": [
+"캐릭터 우주 친구"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Survive30MinutesWithAxe",
+"text": "라마로 30분 생존.",
+"text_fix": "라마로 30분 생존.",
+"reward": [
+"패시브 미치광이의 두개골"
+],
+"type": "생존",
+"mode": "한판",
+"char": [
+"라마 라돈나"
+],
+"group": "본편"
+},
+{
+"id": "GetHolyBookToLevel4",
+"text": "성경 레벨 4까지 올리기.",
+"text_fix": "성경 레벨 4까지 올리기.",
+"reward": [
+"패시브 팔 보호대"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "GetHolyWaterToLevel4",
+"text": "성수 레벨 4까지 올리기.",
+"text_fix": "성수 레벨 4까지 올리기.",
+"reward": [
+"패시브 촛대"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "GetFireWandToLevel4",
+"text": "불의 지팡이 레벨 4까지 올리기.",
+"text_fix": "불의 지팡이 레벨 4까지 올리기.",
+"reward": [
+"캐릭터 아르카 라돈나"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "GetLightningRingToLevel4",
+"text": "번개 반지 레벨 4까지 올리기.",
+"text_fix": "번개 반지 레벨 4까지 올리기.",
+"reward": [
+"캐릭터 포르타 라돈나"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "GetMagicMissileToLevel7",
+"text": "마법 지팡이 레벨 7까지 올리기.",
+"text_fix": "마법 지팡이 레벨 7까지 올리기.",
+"reward": [
+"패시브 복제 반지"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "GetPeachoneToLevel7",
+"text": "하얀 비둘기 레벨 7까지 올리기.",
+"text_fix": "하얀 비둘기 레벨 7까지 올리기.",
+"reward": [
+"스킬 검은 비둘기"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "GetRunetracerToLevel7",
+"text": "룬 트레이서 레벨 7까지 올리기.",
+"text_fix": "룬 트레이서 레벨 7까지 올리기.",
+"reward": [
+"패시브 주문 속박기"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "GetGarlicToLevel7",
+"text": "마늘을 레벨 7까지 올리기.",
+"text_fix": "마늘을 레벨 7까지 올리기.",
+"reward": [
+"캐릭터 포 랏초"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "GetPentagramToLevel7",
+"text": "오망성을 레벨 7까지 올리기.",
+"text_fix": "오망성을 레벨 7까지 올리기.",
+"reward": [
+"캐릭터 크리스틴 다베인"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "GetGlassFandangoToLevel7",
+"text": "유리 판당고 레벨 7까지 올리기.",
+"text_fix": "유리 판당고 레벨 7까지 올리기.",
+"reward": [
+"스킬 유리 판당고"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "GetJavelinToLevel7",
+"text": "산타 재블린의 레벨을 7까지 올리세요.",
+"text_fix": "산타 재블린의 레벨을 7까지 올리세요.",
+"reward": [
+"스킬 산타 재블린"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "GetMagiStonetoLevel7",
+"text": "Get Magi-Stone to level 7.",
+"text_fix": "Get Magi-Stone to level 7.",
+"reward": [
+"스킬 마기 스톤"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "GetPhas3rToLevel7",
+"text": "Phas3r 레벨을 7까지 올리세요.",
+"text_fix": "Phas3r 레벨을 7까지 올리세요.",
+"reward": [
+"스킬 Phas3r"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "GetTorroneToLevel9",
+"text": "토로나의 상자 레벨 9 달성.",
+"text_fix": "토로나의 상자 레벨 9 달성.",
+"reward": [
+"파워업 전능"
+],
+"type": "성장",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Have6Evolutions",
+"text": "동시에 무기 6가지 진화.",
+"text_fix": "동시에 무기 6가지 진화.",
+"reward": [
+"패시브 토로나의 상자"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Have6DifferentWeapons",
+"text": "6개의 무기를 소지.",
+"text_fix": "6개의 무기를 소지.",
+"reward": [
+"패시브 빈 책"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Recover1000HP",
+"text": "누적 1,000의 체력을 회복.",
+"text_fix": "누적 1,000의 체력을 회복.",
+"reward": [
+"캐릭터 클레리씨"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Earn5000CoinsInASingleRun",
+"text": "한 게임에서 5,000골드 획득.",
+"text_fix": "한 게임에서 5,000골드 획득.",
+"reward": [
+"캐릭터 돔마리오"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "GalloDivano",
+"text": "갈로 또는 디바노로 30분 동안 생존합니다.",
+"text_fix": "갈로 또는 디바노로 30분 동안 생존합니다.",
+"reward": [
+"스킬 팔찌"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"갈로 발레토"
+],
+"group": "본편"
+},
+{
+"id": "Destroy20Candles",
+"text": "빛 물체 20개 파괴.",
+"text_fix": "빛 물체 20개 파괴.",
+"reward": [
+"스킬 불의 지팡이"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Eat5PotRoast",
+"text": "치킨 5개 발견.",
+"text_fix": "치킨 5개 발견.",
+"reward": [
+"스킬 마늘"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindAClover",
+"text": "작은 클로버 발견.",
+"text_fix": "작은 클로버 발견.",
+"reward": [
+"패시브 클로버"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindAVacuum",
+"text": "흡입기 발견.",
+"text_fix": "흡입기 발견.",
+"reward": [
+"패시브 매혹구"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindAnOrologion",
+"text": "회중시계 발견.",
+"text_fix": "회중시계 발견.",
+"reward": [
+"스킬 시곗바늘"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindARosary",
+"text": "묵주 발견.",
+"text_fix": "묵주 발견.",
+"reward": [
+"스킬 십자가"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindAStoneMask",
+"text": "돌가면 발견.",
+"text_fix": "돌가면 발견.",
+"reward": [
+"패시브 돌가면"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindAnArmaDio",
+"text": "아르마 디오를 찾으세요.",
+"text_fix": "아르마 디오를 찾으세요.",
+"reward": [
+"스킬 아르마 디오"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindAParmAegis",
+"text": "협동 농장에서 파마산 보호구를 찾으세요.",
+"text_fix": "협동 농장에서 파마산 보호구를 찾으세요.",
+"reward": [
+"패시브 파마산 보호구"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindKaromasMana",
+"text": "웨스트우드에서 카로마의 마나를 찾으세요.",
+"text_fix": "웨스트우드에서 카로마의 마나를 찾으세요.",
+"reward": [
+"패시브 카로마의 마나"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindManyOrologions",
+"text": "회중시계 20개 찾기.",
+"text_fix": "회중시계 20개 찾기.",
+"reward": [
+"스테이지 화이트아웃",
+"하이퍼 화이트아웃"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindManyVacuums",
+"text": "흡입기 50개를 찾으세요.",
+"text_fix": "흡입기 50개를 찾으세요.",
+"reward": [
+"스테이지 라이케움",
+"하이퍼 라이케움"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindManyRosaries",
+"text": "묵주를 33개 찾으세요.",
+"text_fix": "묵주를 33개 찾으세요.",
+"reward": [
+"스테이지 실험실",
+"하이퍼 실험실"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindManyChickens",
+"text": "플로어 치킨 500마리를 찾으세요.",
+"text_fix": "플로어 치킨 500마리를 찾으세요.",
+"reward": [
+"스테이지 협동 농장",
+"하이퍼 협동 농장"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindManyClovers",
+"text": "리틀 클로버 23개를 주우세요.",
+"text_fix": "리틀 클로버 23개를 주우세요.",
+"reward": [
+"스테이지 웨스트우드",
+"하이퍼 웨스트우드"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindManyGoldenFinger",
+"text": "골드 핑거 5개를 찾으세요.",
+"text_fix": "골드 핑거 5개를 찾으세요.",
+"reward": [
+"스테이지 스페이스 54",
+"하이퍼 스페이스 54"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "HitManyEnemiesWithTrain",
+"text": "실험실 열차로 피해를 총 25120 만큼 입히세요.",
+"text_fix": "실험실 열차로 피해를 총 25120 만큼 입히세요.",
+"reward": [
+"스테이지 카를로 카트",
+"하이퍼 카를로 카트"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindGrimoire",
+"text": "그림 그리모어 발견.",
+"text_fix": "그림 그리모어 발견.",
+"reward": [
+"유물 그림 그리모어"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindMagicBanger",
+"text": "매직 뱅어 발견.",
+"text_fix": "매직 뱅어 발견.",
+"reward": [
+"유물 매직 뱅어"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindMilkyWayMap",
+"text": "은하수 지도 발견.",
+"text_fix": "은하수 지도 발견.",
+"reward": [
+"유물 은하수 지도"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindGouda",
+"text": "괴물 도감을 찾습니다.",
+"text_fix": "괴물 도감을 찾습니다.",
+"reward": [
+"유물 괴물 도감"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindSorceressTears",
+"text": "마녀의 눈물 발견.",
+"text_fix": "마녀의 눈물 발견.",
+"reward": [
+"유물 마녀의 눈물"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindRandomazzo",
+"text": "란도마조 발견.",
+"text_fix": "란도마조 발견.",
+"reward": [
+"유물 란도마조"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "BuyGlassMask",
+"text": "유리 가면을 발견해 구매합니다.",
+"text_fix": "유리 가면을 발견해 구매합니다.",
+"reward": [
+"유물 유리 가면"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindYellowSign",
+"text": "노란색 신호 발견.",
+"text_fix": "노란색 신호 발견.",
+"reward": [
+"유물 노란색 신호"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindForbiddenScroll",
+"text": "모르베인의 금지된 두루마리를 찾습니다.",
+"text_fix": "모르베인의 금지된 두루마리를 찾습니다.",
+"reward": [
+"유물 모르베인의 금지된 두루마리"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindGGospel",
+"text": "위대한 복음을 찾습니다.",
+"text_fix": "위대한 복음을 찾습니다.",
+"reward": [
+"유물 위대한 복음"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ObtainAllRelics",
+"text": "모든 스테이지에서 모든 일반 유물을 획득합니다.",
+"text_fix": "모든 스테이지에서 모든 일반 유물을 획득합니다.",
+"reward": [
+"스테이지 에우다이모니아 M."
+],
+"type": "비밀",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ObtainGraciasMirror",
+"text": "그라시아의 거울을 획득합니다.",
+"text_fix": "그라시아의 거울을 획득합니다.",
+"reward": [
+"유물 그라시아의 거울"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ObtainSeventhTrumpet",
+"text": "일곱 번째 나팔을 획득합니다.",
+"text_fix": "일곱 번째 나팔을 획득합니다.",
+"reward": [
+"유물 일곱 번째 나팔"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindAtlas",
+"text": "보스에게서 아틀라스 게이트 획득하기",
+"text_fix": "보스에게서 아틀라스 게이트 획득하기",
+"reward": [
+"유물 아틀라스 게이트"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindApoplexy",
+"text": "박쥐 나라에서 9분 생존해 아포플렉시를 찾습니다.",
+"text_fix": "박쥐 나라에서 9분 생존해 아포플렉시를 찾습니다.",
+"reward": [
+"유물 아포플렉시"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindAntidote",
+"text": "화이트아웃에서 해독제 찾기.",
+"text_fix": "화이트아웃에서 해독제 찾기.",
+"reward": [
+"유물 해독제"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "BuyGreenEyesVizard",
+"text": "라이케움에서 녹색 눈의 가면을 찾아 구매하세요.",
+"text_fix": "라이케움에서 녹색 눈의 가면을 찾아 구매하세요.",
+"reward": [
+"유물 녹색 눈의 가면."
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindTrisection",
+"text": "아스트랄 계단에서 트라이섹션을 찾습니다.",
+"text_fix": "아스트랄 계단에서 트라이섹션을 찾습니다.",
+"reward": [
+"유물 트라이섹션"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindBraveStory",
+"text": "스페이스 54의 18분 54초에서 용감한 이야기를 찾습니다.",
+"text_fix": "스페이스 54의 18분 54초에서 용감한 이야기를 찾습니다.",
+"reward": [
+"유물 용감한 이야기"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindChickenClock",
+"text": "협동 농장 끝에서 가운데에 시계가 박힌 로스트 치킨을 찾으세요.",
+"text_fix": "협동 농장 끝에서 가운데에 시계가 박힌 로스트 치킨을 찾으세요.",
+"reward": [
+"유물 가운데에 시계가 박힌 로스트 치킨"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindMasquerade",
+"text": "웨스트우즈에서 가면무도회 유물을 찾으세요.",
+"text_fix": "웨스트우즈에서 가면무도회 유물을 찾으세요.",
+"reward": [
+"유물 가장무도회"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindRecycle",
+"text": "마제렐라에서 왁스 페티쉬를 찾으세요.",
+"text_fix": "마제렐라에서 왁스 페티쉬를 찾으세요.",
+"reward": [
+"유물 왁스 페티쉬"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindChaosMalachite",
+"text": "박쥐 나라에서 18분 생존해 카오스 말라카이트를 찾습니다.",
+"text_fix": "박쥐 나라에서 18분 생존해 카오스 말라카이트를 찾습니다.",
+"reward": [
+"유물 카오스 말라카이트"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindChaosRosalia",
+"text": "아스트랄 계단에서 카오스 로잘리아를 찾습니다.",
+"text_fix": "아스트랄 계단에서 카오스 로잘리아를 찾습니다.",
+"reward": [
+"유물 카오스 로잘리아"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindChaosLazulia",
+"text": "마제렐라에서 카오스 라줄리아를 찾으세요.",
+"text_fix": "마제렐라에서 카오스 라줄리아를 찾으세요.",
+"reward": [
+"유물 카오스 라줄리아"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindChaosAltemanna",
+"text": "작은 다리에서 카오스 알테만나 찾기.",
+"text_fix": "작은 다리에서 카오스 알테만나 찾기.",
+"reward": [
+"유물 카오스 알테만나"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindMap_AstralStair",
+"text": "아스트랄 계단 지도를 찾습니다.",
+"text_fix": "아스트랄 계단 지도를 찾습니다.",
+"reward": [
+"유물 아스트랄 계단 지도"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "FindCoffinStage1",
+"text": "광기의 숲에서 관을 찾아서 열기.",
+"text_fix": "광기의 숲에서 관을 찾아서 열기.",
+"reward": [
+"캐릭터 푸냘라 프로볼라"
+],
+"type": "비밀",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindCoffinStage2",
+"text": "화려한 도서관에서 관을 찾아서 열기.",
+"text_fix": "화려한 도서관에서 관을 찾아서 열기.",
+"reward": [
+"캐릭터 지오반나 그라나"
+],
+"type": "비밀",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindCoffinStage3",
+"text": "유제품 공장에서 관을 찾아서 열기.",
+"text_fix": "유제품 공장에서 관을 찾아서 열기.",
+"reward": [
+"캐릭터 포페아 페코리나"
+],
+"type": "비밀",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindCoffinStage4",
+"text": "갈로의 탑에서 관을 찾아서 열기.",
+"text_fix": "갈로의 탑에서 관을 찾아서 열기.",
+"reward": [
+"캐릭터 콘체타 카치오타"
+],
+"type": "비밀",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindCoffinStage5",
+"text": "마그나 예배당에서 관을 찾아서 열기.",
+"text_fix": "마그나 예배당에서 관을 찾아서 열기.",
+"reward": [
+"캐릭터 지아순타 벨파에제"
+],
+"type": "비밀",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Defeat0EnemiesInCoop",
+"text": "협동 농장에서 적 0마리룰 처치하세요.",
+"text_fix": "협동 농장에서 적 0마리룰 처치하세요.",
+"reward": [
+"스킬 가에야의 시선"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Defeat3000Skeletons",
+"text": "누적 3,000마리 스켈레톤 처치.",
+"text_fix": "누적 3,000마리 스켈레톤 처치.",
+"reward": [
+"스킬 뼈",
+"캐릭터 모르타치오"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Defeat3000Buers",
+"text": "누적 3,000마리의 라이온 헤드 처치.",
+"text_fix": "누적 3,000마리의 라이온 헤드 처치.",
+"reward": [
+"스킬 체리폭탄",
+"캐릭터 카발로"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Defeat3000Milk",
+"text": "누적 3000마리의 우유의 정령 처치.",
+"text_fix": "누적 3000마리의 우유의 정령 처치.",
+"reward": [
+"스킬 광산수레",
+"캐릭터 람바"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Defeat3000Hydra",
+"text": "누적 3.000마리의 드래곤 쉬림프 처치.",
+"text_fix": "누적 3.000마리의 드래곤 쉬림프 처치.",
+"reward": [
+"스킬 천상의 꽃",
+"캐릭터 오'솔레 미오"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Defeat6000StageKillers",
+"text": "누적 6.000마리의 스테이지 킬러 처치.",
+"text_fix": "누적 6.000마리의 스테이지 킬러 처치.",
+"reward": [
+"스킬 라 로바",
+"캐릭터 암브로조"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Defeat5000Enemies",
+"text": "누적 5,000마리 적을 처치.",
+"text_fix": "누적 5,000마리 적을 처치.",
+"reward": [
+"스킬 번개 반지"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Defeat100KEnemies",
+"text": "누적 100,000마리의 적을 처치.",
+"text_fix": "누적 100,000마리의 적을 처치.",
+"reward": [
+"캐릭터 크로치 프리토"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "DefeatManyBats",
+"text": "박쥐 총 161616마리를 처치하세요.",
+"text_fix": "박쥐 총 161616마리를 처치하세요.",
+"reward": [
+"스킬 파코 바틸리아"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "DefeatShootingEnemies",
+"text": "251096명의 사격하는 적을 처치하세요.",
+"text_fix": "251096명의 사격하는 적을 처치하세요.",
+"reward": [
+"스킬 탄약 아팔레트"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Defeat100kWithSigma",
+"text": "시그마 여왕으로 한 게임에서 적을 100000명 처치합니다.",
+"text_fix": "시그마 여왕으로 한 게임에서 적을 100000명 처치합니다.",
+"reward": [
+"스킬 승리의 검"
+],
+"type": "처치 수",
+"mode": "한판",
+"char": [
+"시그마"
+],
+"group": "본편"
+},
+{
+"id": "DefeatBossMadForest",
+"text": "광기의 숲에서 거대한 푸른 비너스를 쓰러뜨리기.",
+"text_fix": "광기의 숲에서 거대한 푸른 비너스를 쓰러뜨리기.",
+"reward": [
+"하이퍼 광기의 숲"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "DefeatBossLibrary",
+"text": "화려한 도서관에서 네스페리트를 쓰러뜨리기.",
+"text_fix": "화려한 도서관에서 네스페리트를 쓰러뜨리기.",
+"reward": [
+"하이퍼 화려한 도서관"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "DefeatBossPlant",
+"text": "유제품 공장에서 소드 가디언을 쓰러뜨리기.",
+"text_fix": "유제품 공장에서 소드 가디언을 쓰러뜨리기.",
+"reward": [
+"하이퍼 유제품 공장"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "DefeatBossTower",
+"text": "갈로의 탑에서 자이언트 크랩 쓰러뜨리기.",
+"text_fix": "갈로의 탑에서 자이언트 크랩 쓰러뜨리기.",
+"reward": [
+"하이퍼 갈로의 탑"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "DefeatBossChapel",
+"text": "마그나 예배당에서 트리나크리아를 쓰러뜨리기.",
+"text_fix": "마그나 예배당에서 트리나크리아를 쓰러뜨리기.",
+"reward": [
+"하이퍼 마그나 예배당"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "DefeatBatDragons",
+"text": "박쥐 드래곤 1마리를 처치하세요.",
+"text_fix": "박쥐 드래곤 1마리를 처치하세요.",
+"reward": [
+"스킬 저세상 번개"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Unlock3Hypers",
+"text": "보통 스테이지에서 하이퍼모드를 잠금 해제합니다.",
+"text_fix": "보통 스테이지에서 하이퍼모드를 잠금 해제합니다.",
+"reward": [
+"스테이지 일 몰리제",
+"하이퍼 일 몰리제"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Unlock2Hypers",
+"text": "2개의 일반 스테이지에서 하이퍼모드 잠금 해제.",
+"text_fix": "2개의 일반 스테이지에서 하이퍼모드 잠금 해제.",
+"reward": [
+"스테이지 푸른 초원",
+"하이퍼 푸른 초원"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Unlock3Hypers_Correct",
+"text": "3개의 일반 스테이지에서 하이퍼 모드 잠금 해제.",
+"text_fix": "3개의 일반 스테이지에서 하이퍼 모드 잠금 해제.",
+"reward": [
+"스테이지 뼈의 대지",
+"하이퍼 뼈의 대지"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Unlock4Hypers",
+"text": "4개의 일반 스테이지에서 하이퍼 모드를 달성합니다.",
+"text_fix": "4개의 일반 스테이지에서 하이퍼 모드를 달성합니다.",
+"reward": [
+"스테이지 달빛",
+"하이퍼 달빛"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Unlock5Hypers",
+"text": "5개의 모든 일반 스테이지에서 하이퍼 모드를 잠금 해제합니다.",
+"text_fix": "5개의 모든 일반 스테이지에서 하이퍼 모드를 잠금 해제합니다.",
+"reward": [
+"스테이지 보스 래쉬",
+"하이퍼 보스 래쉬"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "DefeatBossChapel2",
+"text": "마그나 예배당에서 마지막 적을 처치합니다.",
+"text_fix": "마그나 예배당에서 마지막 적을 처치합니다.",
+"reward": [
+"아르카나 게임 킬러"
+],
+"type": "처치 수",
+"mode": "누적",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithPugnala",
+"text": "푸냘라로 레벨 50에 도달합니다.",
+"text_fix": "푸냘라로 레벨 50에 도달합니다.",
+"reward": [
+"아르카나 I - 쌍둥이자리"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithDommario",
+"text": "돔마리오로 레벨 50에 도달합니다.",
+"text_fix": "돔마리오로 레벨 50에 도달합니다.",
+"reward": [
+"아르카나 II - 황혼의 진혼곡"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithPorta",
+"text": "포르타로 레벨 50 도달.",
+"text_fix": "포르타로 레벨 50 도달.",
+"reward": [
+"아르카나 III - 공주의 비련"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithKroci",
+"text": "크로치로 레벨 50 도달.",
+"text_fix": "크로치로 레벨 50 도달.",
+"reward": [
+"아르카나 IV - 각성"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithGiovanna",
+"text": "지오바나로 레벨 50 도달.",
+"text_fix": "지오바나로 레벨 50 도달.",
+"reward": [
+"아르카나 V - 혼돈이 가득한 어두운 밤"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "FindRandomazzoT06",
+"text": "란도마조 발견.",
+"text_fix": "란도마조 발견.",
+"reward": [
+"아르카나 VI - 치유의 사라반드"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithGennaro",
+"text": "젠나로로 레벨 50 도달.",
+"text_fix": "젠나로로 레벨 50 도달.",
+"reward": [
+"아르카나 VII - 푸른 강철의 의지"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive31MinutesInForest",
+"text": "광기의 숲에서 31분을 생존.",
+"text_fix": "광기의 숲에서 31분을 생존.",
+"reward": [
+"아르카나 VIII - 광기의 그루브"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithClerici",
+"text": "시스터 클레리씨로 레벨 50에 도달합니다.",
+"text_fix": "시스터 클레리씨로 레벨 50에 도달합니다.",
+"reward": [
+"아르카나 IX - 신성한 혈통"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithAntonio",
+"text": "안토니오로 레벨 50 도달.",
+"text_fix": "안토니오로 레벨 50 도달.",
+"reward": [
+"아르카나 X - 근원"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithImelda",
+"text": "이멜다로 레벨 50 도달.",
+"text_fix": "이멜다로 레벨 50 도달.",
+"reward": [
+"아르카나 XI - 진주의 왈츠"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive31MinutesInTower",
+"text": "갈로의 탑에서 31분 동안 생존합니다.",
+"text_fix": "갈로의 탑에서 31분 동안 생존합니다.",
+"reward": [
+"아르카나 XII - 한도 초과"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithChristine",
+"text": "크리스틴으로 레벨 50에 도달합니다.",
+"text_fix": "크리스틴으로 레벨 50에 도달합니다.",
+"reward": [
+"아르카나 XIII - 사악한 계절"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithPasqualina",
+"text": "파스콸리나로 레벨 50에 도달합니다.",
+"text_fix": "파스콸리나로 레벨 50에 도달합니다.",
+"reward": [
+"아르카나 XIV - 수정 감옥"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive31MinutesInLibrary",
+"text": "화려한 도서관에서 31분을 생존.",
+"text_fix": "화려한 도서관에서 31분을 생존.",
+"reward": [
+"아르카나 XV - 황금 디스코"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithLama",
+"text": "라마로 레벨 50 도달.",
+"text_fix": "라마로 레벨 50 도달.",
+"reward": [
+"아르카나 XVI - 절단"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithPoppea",
+"text": "포페아로 레벨 50 도달.",
+"text_fix": "포페아로 레벨 50 도달.",
+"reward": [
+"아르카나 XVII - 잃어버린 그림"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithConcetta",
+"text": "콘체타로 레벨 50 도달.",
+"text_fix": "콘체타로 레벨 50 도달.",
+"reward": [
+"아르카나 XVIII - 환상의 춤"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithArca",
+"text": "아르카로 레벨 50 도달.",
+"text_fix": "아르카로 레벨 50 도달.",
+"reward": [
+"아르카나 XIX - 불의 심장"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive31MinutesInDairyPlant",
+"text": "유제품 공장에서 31분을 생존.",
+"text_fix": "유제품 공장에서 31분을 생존.",
+"reward": [
+"아르카나 XX - 고요한 옛 성역"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV99WithPoe",
+"text": "포로 레벨 50에 도달합니다.",
+"text_fix": "포로 레벨 50에 도달합니다.",
+"reward": [
+"아르카나 XXI - 블러드 아스트로노미아"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ReachLV100WithMortaccio",
+"text": "모르타치오로 레벨 80 달성.",
+"text_fix": "모르타치오로 레벨 80 달성.",
+"reward": [
+"파워업 새로고침"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [
+"모르타치오"
+],
+"group": "본편"
+},
+{
+"id": "ReachLV100WithCavallo",
+"text": "야타 카발로 레벨 80 달성.",
+"text_fix": "야타 카발로 레벨 80 달성.",
+"reward": [
+"파워업 새로고침"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [
+"카발로"
+],
+"group": "본편"
+},
+{
+"id": "ReachLV100WithRamba",
+"text": "비앙카 람바로 레벨 80 도달.",
+"text_fix": "비앙카 람바로 레벨 80 도달.",
+"reward": [
+"파워업 새로고침"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [
+"람바"
+],
+"group": "본편"
+},
+{
+"id": "ReachLV100WithOsole",
+"text": "오' 솔레미오로 레벨 80 도달.",
+"text_fix": "오' 솔레미오로 레벨 80 도달.",
+"reward": [
+"파워업 새로고침"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [
+"오'솔레 미오"
+],
+"group": "본편"
+},
+{
+"id": "ReachLV100WithAmbrojoe",
+"text": "암브로조 경으로 레벨 80 도달.",
+"text_fix": "암브로조 경으로 레벨 80 도달.",
+"reward": [
+"파워업 새로고침"
+],
+"type": "레벨",
+"mode": "한판",
+"char": [
+"암브로조"
+],
+"group": "본편"
+},
+{
+"id": "Survive15MinutesInMolise",
+"text": "일 몰리제에서 15분 생존.",
+"text_fix": "일 몰리제에서 15분 생존.",
+"reward": [
+"파워업 건너뛰기"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive15MinutesInMoongolow",
+"text": "달빛에서 15분 동안 생존합니다.",
+"text_fix": "달빛에서 15분 동안 생존합니다.",
+"reward": [
+"파워업 건너뛰기"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive30MinutesInGreenAcres",
+"text": "푸른 초원에서 30분 생존.",
+"text_fix": "푸른 초원에서 30분 생존.",
+"reward": [
+"파워업 건너뛰기"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive30MinutesInBoneZone",
+"text": "뼈의 대지에서 30분 생존.",
+"text_fix": "뼈의 대지에서 30분 생존.",
+"reward": [
+"파워업 건너뛰기"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Survive15MinutesInBossRash",
+"text": "보스 래쉬에서 15분 동안 생존합니다.",
+"text_fix": "보스 래쉬에서 15분 동안 생존합니다.",
+"reward": [
+"파워업 건너뛰기"
+],
+"type": "생존",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "See50Items",
+"text": "컬렉션에 50개의 항목을 채우기.",
+"text_fix": "컬렉션에 50개의 항목을 채우기.",
+"reward": [
+"유물 코주부 안경"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "See60Items",
+"text": "컬렉션에 60개의 항목을 채우기.",
+"text_fix": "컬렉션에 60개의 항목을 채우기.",
+"reward": [
+"파워업 지우기"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "See70Items",
+"text": "컬렉션에 70개의 항목을 채우기.",
+"text_fix": "컬렉션에 70개의 항목을 채우기.",
+"reward": [
+"파워업 지우기"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "See80Items",
+"text": "컬렉션에 80개의 항목을 채우기.",
+"text_fix": "컬렉션에 80개의 항목을 채우기.",
+"reward": [
+"파워업 지우기"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "See90Items",
+"text": "컬렉션에 90개의 항목을 채우기.",
+"text_fix": "컬렉션에 90개의 항목을 채우기.",
+"reward": [
+"파워업 지우기"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "See100Items",
+"text": "컬렉션에 100개의 항목을 채우기.",
+"text_fix": "컬렉션에 100개의 항목을 채우기.",
+"reward": [
+"파워업 지우기"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "Banish10Items",
+"text": "한 게임에서 10개 이상의 무기를 지웁니다.",
+"text_fix": "한 게임에서 10개 이상의 무기를 지웁니다.",
+"reward": [
+"파워업 봉인 I"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Banish20Items",
+"text": "한 게임에서 20개 이상의 무기를 지웁니다.",
+"text_fix": "한 게임에서 20개 이상의 무기를 지웁니다.",
+"reward": [
+"파워업 봉인 II"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Banish40Items",
+"text": "한 게임에서 40개 이상의 무기를 지웁니다.",
+"text_fix": "한 게임에서 40개 이상의 무기를 지웁니다.",
+"reward": [
+"파워업 봉인 III"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Banish80Items",
+"text": "한 게임에서 80개 이상의 무기를 지우세요.",
+"text_fix": "한 게임에서 80개 이상의 무기를 지우세요.",
+"reward": [
+"파워업 모두 봉인"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "CompleteCollection",
+"text": "컬렉션 1.0을 완성합니다.",
+"text_fix": "컬렉션 1.0을 완성합니다.",
+"reward": [
+"캐릭터 시그마"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "GreatestJubilee",
+"text": "마지막 불꽃놀이를 봅니다.",
+"text_fix": "마지막 불꽃놀이를 봅니다.",
+"reward": [
+"스킬 위대한 기념제"
+],
+"type": "비밀",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ObtainTheInfiniteCorridor",
+"text": "무한 회랑 획득.",
+"text_fix": "무한 회랑 획득.",
+"reward": [
+"캐릭터 갈로 발레토"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "ObtainTheCrimsonShroud",
+"text": "진홍의 망토 획득.",
+"text_fix": "진홍의 망토 획득.",
+"reward": [
+"캐릭터 디바노 델마"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveBattilia",
+"text": "파코 바틸리아를 진화시키세요.",
+"text_fix": "파코 바틸리아를 진화시키세요.",
+"reward": [
+"캐릭터 로버트"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "EvolveAmmoAppalate",
+"text": "탄약 아팔레트를 진화시키세요.",
+"text_fix": "탄약 아팔레트를 진화시키세요.",
+"reward": [
+"캐릭터 지아푼타 벨파에제"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "EvolveUnearthlyBolt",
+"text": "저세상 번개를 진화시키세요.",
+"text_fix": "저세상 번개를 진화시키세요.",
+"reward": [
+"캐릭터 트러블러"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "EvolveWhip",
+"text": "채찍 진화.",
+"text_fix": "채찍 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveMagicWand",
+"text": "마법 지팡이 진화.",
+"text_fix": "마법 지팡이 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveKnife",
+"text": "단검 진화.",
+"text_fix": "단검 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveAxe",
+"text": "도끼 진화.",
+"text_fix": "도끼 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveSantaWater",
+"text": "성수 진화.",
+"text_fix": "성수 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveLightning",
+"text": "번개 반지 진화.",
+"text_fix": "번개 반지 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveKingBible",
+"text": "기도문 진화.",
+"text_fix": "기도문 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveCross",
+"text": "십자가 진화.",
+"text_fix": "십자가 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveFireWand",
+"text": "불의 지팡이 진화.",
+"text_fix": "불의 지팡이 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveGarlic",
+"text": "마늘 진화.",
+"text_fix": "마늘 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveRunetracer",
+"text": "룬 트레이서 진화.",
+"text_fix": "룬 트레이서 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolvePentagram",
+"text": "오망성 진화",
+"text_fix": "오망성 진화",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "UniteBirds",
+"text": "하얀 비둘기와 검은 비둘기 융합.",
+"text_fix": "하얀 비둘기와 검은 비둘기 융합.",
+"reward": [
+"골드 500"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveGuns",
+"text": "피에라 데 투펠로와 에잇 더 스패로우 진화.",
+"text_fix": "피에라 데 투펠로와 에잇 더 스패로우 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveGatti",
+"text": "마녀의 고양이 진화.",
+"text_fix": "마녀의 고양이 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveSongOfMana",
+"text": "마나의 노래 진화.",
+"text_fix": "마나의 노래 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveShadow",
+"text": "검은 드릴 진화.",
+"text_fix": "검은 드릴 진화.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveWind",
+"text": "성스러운 바람과 피눈물 융합.",
+"text_fix": "성스러운 바람과 피눈물 융합.",
+"reward": [
+"골드 500"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveBracelet",
+"text": "팔찌와 이중 팔찌를 진화시킵니다.",
+"text_fix": "팔찌와 이중 팔찌를 진화시킵니다.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "EvolveGlassFandango",
+"text": "유리 판당고 진화시키기.",
+"text_fix": "유리 판당고 진화시키기.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "EvolvePenshin",
+"text": "펜신 파차를 진화시키세요.",
+"text_fix": "펜신 파차를 진화시키세요.",
+"reward": [
+"스킬 펜신 파차"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "EvolveJavelin",
+"text": "산타 재블린.",
+"text_fix": "산타 재블린.",
+"reward": [
+"골드 500"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "EvolveOfGaea_Fix",
+"text": "가이아의 시선을 진화시키세요.",
+"text_fix": "가이아의 시선을 진화시키세요.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "EvolveMagiStone",
+"text": "마기 스톤을 진화시키세요.",
+"text_fix": "마기 스톤을 진화시키세요.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "EvolvePhas3r",
+"text": "Phas3r을 진화시키세요.",
+"text_fix": "Phas3r을 진화시키세요.",
+"reward": [
+"골드 500"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "EvolveAll",
+"text": "모든 일반 진화 및 조합을 발견합니다.",
+"text_fix": "모든 일반 진화 및 조합을 발견합니다.",
+"reward": [
+"스킬 사탕상자"
+],
+"type": "진화",
+"mode": "한판",
+"char": [],
+"group": "본편"
+},
+{
+"id": "CastForbiddenBox",
+"text": "과감하게 \"fobiddenbox\" 주문을 시전해 보세요.",
+"text_fix": "과감하게 \"fobiddenbox\" 주문을 시전해 보세요.",
+"reward": [
+"스테이지 1665호실"
+],
+"type": "비밀",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "ObtainDarkasso",
+"text": "다르카소의 품에 안겨보세요.",
+"text_fix": "다르카소의 품에 안겨보세요.",
+"reward": [
+"유물 다르카소"
+],
+"type": "비밀",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Dark_00Troubler",
+"text": "게임 킬러 아르카나를 사용하는 동안 빅 트러블러로 박쥐 드래곤을 처치하세요.",
+"text_fix": "게임 킬러 아르카나를 사용하는 동안 빅 트러블러로 박쥐 드래곤을 처치하세요.",
+"reward": [
+"아르카나 심장에 박힌 말뚝"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"트러블러"
+],
+"group": "추가"
+},
+{
+"id": "Dark_01SpaceDude",
+"text": "스페이스듀드로 쿨타임 보너스 -85%에 도달하세요.",
+"text_fix": "스페이스듀드로 쿨타임 보너스 -85%에 도달하세요.",
+"reward": [
+"아르카나 I - 사파이어 미스트,"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"우주 친구"
+],
+"group": "추가"
+},
+{
+"id": "Dark_03Gazebo",
+"text": "가제보로 최대한 많이 먹어보세요.",
+"text_fix": "가제보로 최대한 많이 먹어보세요.",
+"reward": [
+"아르카나 III - 숨겨진 혐오감"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"가제보"
+],
+"group": "추가"
+},
+{
+"id": "Dark_05Appunta",
+"text": "지아푼타의 능력으로 보물상자 10개를 한 번에 찾으세요.",
+"text_fix": "지아순타의 능력으로 보물상자 10개를 한 번에 찾으세요.",
+"reward": [
+"아르카나 V - 창백한 다이아몬드의 급습"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"지아푼타 벨파에제"
+],
+"group": "추가"
+},
+{
+"id": "Dark_06Darkasso",
+"text": "다르카소의 품에 안겨보세요.",
+"text_fix": "다르카소의 품에 안겨보세요.",
+"reward": [
+"아르카나 VI - 달빛 볼레로"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Dark_08ParaKooleo",
+"text": "파라 쿨레오로 라바트릭스 마키나를 발동시키세요.",
+"text_fix": "파라 쿨레오로 라바트릭스 마키나를 발동시키세요.",
+"reward": [
+"아르카나 VIII - 지구의 모서리"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"클레오"
+],
+"group": "추가"
+},
+{
+"id": "Dark_10Santa",
+"text": "산타 라돈나와 함께 이상한 영혼 정화기를 발동하세요.",
+"text_fix": "산타 라돈나와 함께 이상한 영혼 정화기를 발동하세요.",
+"reward": [
+"아르카나 X - 미래에서 온 우박"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"산타 라돈나"
+],
+"group": "추가"
+},
+{
+"id": "Dark_12Shemoon",
+"text": "쉬문 에타로 별빛 천국을 발동하세요.",
+"text_fix": "쉬문 에타로 별빛 천국을 발동하세요.",
+"reward": [
+"아르카나 XII - 크리스탈의 곡소리"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"쉬문 에타"
+],
+"group": "추가"
+},
+{
+"id": "Dark_13Chula",
+"text": "출라레로 +999%의 행운을 달성하세요.",
+"text_fix": "출라레로 +999%의 행운을 달성하세요.",
+"reward": [
+"아르카나 XIII - 미친 달의 부름"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"출라레"
+],
+"group": "추가"
+},
+{
+"id": "Dark_18Challenge",
+"text": "거꾸로 된 푸른 초원에서 무기 없이 30분동안 생존하세요.",
+"text_fix": "거꾸로 된 푸른 초원에서 무기 없이 30분동안 생존하세요.",
+"reward": [
+"아르카나 XVIII - 빅토리아 풍 호러"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Dark_19Challenge",
+"text": "랜덤 이벤트와 랜덤 레벨업이 발생하는 인버스 보스 래쉬에서 15분 동안 살아남으세요.",
+"text_fix": "랜덤 이벤트와 랜덤 레벨업이 발생하는 인버스 보스 래쉬에서 15분 동안 살아남으세요.",
+"reward": [
+"아르카나 XIX - 운명의 계승자"
+],
+"type": "특수",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "Dark_21Robert",
+"text": "배트 로버트로 최대 체력 665에 도달하세요.",
+"text_fix": "배트 로버트로 최대 체력 665에 도달하세요.",
+"reward": [
+"아르카나 XXI - 제트 블랙에서의 방랑"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"로버트"
+],
+"group": "추가"
+},
+{
+"id": "BuySurvarocchi",
+"text": "라이케움에서 서바로키를 찾아 구매하세요.",
+"text_fix": "라이케움에서 서바로키를 찾아 구매하세요.",
+"reward": [
+"유물 서바로키"
+],
+"type": "발견",
+"mode": "한판",
+"char": [],
+"group": "추가"
+},
+{
+"id": "CompleteAdv_WorldOfLightAndDark",
+"text": "빛과 어둠의 세계 모험을 한 번 완료하세요.",
+"text_fix": "빛과 어둠의 세계 모험을 한 번 완료하세요.",
+"reward": [
+"스킨 {'character': 'IMELDA', 'skin': 'SKIN_IMELDA_UNBLINDED'}"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"이멜다 벨파에제"
+],
+"group": "추가"
+},
+{
+"id": "CompleteAdv_AGarlicParadise",
+"text": "마늘 천국을 한 번 완료하세요.",
+"text_fix": "마늘 천국을 한 번 완료하세요.",
+"reward": [
+"스킨 {'character': 'CAMILLO', 'skin': 'SKIN_POE_RETIRED'}"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"포 랏초"
+],
+"group": "추가"
+},
+{
+"id": "CompleteAdv_ToEndAnIceAge",
+"text": "빙하기의 종말 모험을 완료하세요.",
+"text_fix": "빙하기의 종말 모험을 완료하세요.",
+"reward": [
+"스킨 {'character': 'SHEMOONITA', 'skin': 'SKIN_SHEMOON_REBORN'}"
+],
+"type": "특수",
+"mode": "한판",
+"char": [
+"쉬문 에타"
+],
+"group": "추가"
+}
+]
