@@ -37,17 +37,22 @@
 (function(){
   var ITEMS=null,loading=null;
   var VER=(function(){var c=document.querySelector('script[src*="site.js?v="]');return c?c.src.split('v=')[1]:''})();
-  function load(){if(ITEMS)return Promise.resolve(ITEMS);if(!loading)loading=fetch('/data/vs/items.json?v='+VER).then(function(r){return r.json()}).then(function(j){ITEMS=j;return j});return loading}
+  function load(){if(ITEMS)return Promise.resolve(ITEMS);if(!loading)loading=fetch('/data/vs/items.json?v='+VER).then(function(r){return r.json()}).then(function(j){ITEMS=j;mkrx(j);return j});return loading}
   function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   // 미리보기
   var box=document.createElement('div');box.id='popbox';document.body.appendChild(box);var cur=null;
-  function card(it){
-    var h='<span class="ty">'+esc(it.t)+'</span><b>'+(it.i?'<img class="ic big" src="'+it.i+'" alt="">':'')+esc(it.n)+'</b>'+esc(it.d);
-    if(it.p)h+='<div class="tip">'+esc(it.p)+'</div>';
-    if(it.s)h+='<div class="ev">'+(it.si?'<img class="ic" src="'+it.si+'" alt="">':'🗡️ ')+'시작 스킬: '+esc(it.s)+'</div>';
-    if(it.e)h+='<div class="ev">✨ 진화: '+esc(it.e)+'</div>';
-    if(it.f)h+='<div class="ev">⬅ 재료: '+it.f.map(esc).join(' / ')+'</div>';
-    if(it.u)h+='<div class="ev">🔗 이걸로 진화: '+it.u.map(esc).join(' · ')+'</div>';
+  // 카드 안 이름 자동 링크 (3글자 이상 · 자기 자신 제외)
+  var NRX=null,NMAP={};
+  function mkrx(I){Object.keys(I).forEach(function(k){var n=I[k].n;if(!n||n.length<3||NMAP[n]||n.charAt(0)==='⚰')return;NMAP[n]=k});
+    var a=Object.keys(NMAP).sort(function(x,y){return y.length-x.length}).map(function(n){return esc(n).replace(/[.*+?^${}()|[\]\\]/g,'\\$&')});NRX=a.length?new RegExp(a.join('|'),'g'):null}
+  function lk(t,self){t=esc(t);if(!NRX)return t;return t.replace(NRX,function(w){var k=NMAP[w];return (k&&k!==self)?'<span class="pop in" data-pop="'+k+'">'+w+'</span>':w})}
+  function card(it,self){
+    var h='<span class="ty">'+esc(it.t)+'</span><b>'+(it.i?'<img class="ic big" src="'+it.i+'" alt="">':'')+esc(it.n)+'</b>'+lk(it.d,self);
+    if(it.p)h+='<div class="tip">'+lk(it.p,self)+'</div>';
+    if(it.s)h+='<div class="ev">'+(it.si?'<img class="ic" src="'+it.si+'" alt="">':'🗡️ ')+'시작 스킬: '+lk(it.s,self)+'</div>';
+    if(it.e)h+='<div class="ev">✨ 진화: '+lk(it.e,self)+'</div>';
+    if(it.f)h+='<div class="ev">⬅ 재료: '+it.f.map(function(x){return lk(x,self)}).join(' / ')+'</div>';
+    if(it.u)h+='<div class="ev">🔗 이걸로 진화: '+it.u.map(function(x){return lk(x,self)}).join(' · ')+'</div>';
     if(it.sk&&it.sk.length)h+='<div class="ev">👕 스킨: '+it.sk.map(esc).join(' · ')+'</div>';
     if(it.x)it.x.forEach(function(t){h+='<div class="ev">'+esc(t)+'</div>'});
     if(it.ul&&it.ul.length)h+='<div class="uls">'+it.ul.map(function(u){return '<a href="'+u[1]+'">🔓 '+esc(u[0])+'</a>'}).join('')+'</div>';
@@ -56,12 +61,13 @@
   // 여러 카드(가까운 핀 묶음) + 우화집 옆 카드 · PC는 나란히, 폰은 위아래(우화집 접힘)
   var hover=matchMedia('(hover:hover)').matches,tShow=null,tHide=null;
   function side(it){return it.bd?'<div class="side"><span class="ty">📖 우화집</span><b>'+esc(it.bn||it.n)+'</b>'+esc(it.bd)+'</div>':''}
-  function show(el,keys){load().then(function(I){var ks=keys.split(','),main='',sd='';
-      ks.forEach(function(k,i){var it=I[k];if(!it)return;main+=(main?'<hr>':'')+card(it);sd+=side(it)});
+  function show(el,keys){var inBox=box.contains(el),keep=inBox?{l:box.style.left,t:box.style.top}:null;load().then(function(I){var ks=keys.split(','),main='',sd='';
+      ks.forEach(function(k,i){var it=I[k];if(!it)return;main+=(main?'<hr>':'')+card(it,k);sd+=side(it)});
       if(!main)return;var wide=hover&&innerWidth>=640&&sd;
       box.className=wide?'two':'';
       box.innerHTML=wide?'<div class="col">'+main+'</div><div class="col sidecol">'+sd+'</div>':main+(sd?'<details class="bdx"><summary>📖 우화집 보기</summary>'+sd+'</details>':'');
       box.style.display='flex';
+      if(keep){box.style.left=keep.l;box.style.top=keep.t;cur=box;return}
       var r=el.getBoundingClientRect(),w=box.offsetWidth,h=box.offsetHeight,x,y,pin=el.classList.contains('pin');
       if(pin){x=r.right+10;if(x+w>innerWidth-8)x=r.left-w-10;if(x<8){x=Math.max(8,Math.min(r.left,innerWidth-w-8));y=r.bottom+22}else y=r.top+r.height/2-h/2}
       else{x=Math.max(8,Math.min(r.left,innerWidth-w-8));y=r.bottom+6;if(y+h>innerHeight-8)y=r.top-h-6}
