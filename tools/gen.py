@@ -49,10 +49,16 @@ def need_note(u,here):
 BOSSN=['스피릿 비스트','어스 드래곤','최종 황제의 악마 형태','최종 황제','아이언 메이든','이와나가히메의 유령','살아있는 고뇌','숨은 오우거','모든 보스']
 CHARN=sorted(['츠나노리 미도','보니 블레어','포미나 프랭클린','디바 5번','아메야 아이슬링','시그나스','츠나노리','보니','포미나','아메야','디바'],key=len,reverse=True)
 _hlre=re.compile('('+'|'.join(map(re.escape,BOSSN+CHARN))+r'|(?<=번째 )관)')
+HLPOP={'스피릿 비스트':'EB_EME_GATEBOSS_SPIRITBEAST','어스 드래곤':'EB_EME_GATEBOSS_DRAGON','최종 황제의 악마 형태':'EB_EME_GATEBOSS_FINALEMPEROR','최종 황제':'EB_EME_GATEBOSS_FINALEMPEROR','아이언 메이든':'EB_EME_GATEBOSS_IRONMAIDEN','이와나가히메의 유령':'EB_EME_GATEBOSS_SPECTER','살아있는 고뇌':'EB_EME_GATEBOSS_LIVINGANGUISH','숨은 오우거':'EB_EME_SUSPICIOUS_OGRE'}
+for _k,_v in items.items():
+    if _k.startswith('CH_EME_'):HLPOP[_v['n']]=_k
+for _s,_f in {'츠나노리':'츠나노리 미도','보니':'보니 블레어','포미나':'포미나 프랭클린','아메야':'아메야 아이슬링','디바':'디바 5번'}.items():
+    if _f in HLPOP:HLPOP[_s]=HLPOP[_f]
 def hl(t):
     def f(m):
         w=m.group(0);c='hb' if w in BOSSN else 'hf' if w=='관' else 'hc'
-        return f'<b class="{c}">{w}</b>'
+        k=HLPOP.get(w)
+        return f'<b class="{c} pop" data-pop="{k}">{w}</b>' if k else f'<b class="{c}">{w}</b>'
     return _hlre.sub(f,t)
 
 FIXT={'시우그나스':'시그나스','디바 5호':'디바 5번'}
