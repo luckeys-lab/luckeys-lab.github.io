@@ -132,7 +132,7 @@
         try{localStorage.setItem('ll_chk',JSON.stringify(S))}catch(e){}
         msg.innerHTML='✅ '+(o.saveName?'「'+esc(o.saveName)+'」 ':'')+'세이브를 읽어 체크했어요<br>🔓 <a href="/vs/unlocks.html">본편 해금 '+nb+' / '+tb+'</a> · 💎 <a href="/vs/unlocks.html#sec-ed">디오라마 해금 '+ne+' / '+te+'</a> · 🤫 <a href="/vs/secrets.html">비밀 '+ns+' / '+SK.length+'</a>'})}
       catch(e){msg.textContent='⚠ 세이브 파일을 못 읽었어요. SaveData 파일이 맞는지 확인해 주세요.'}};r.readAsText(f)};
-    stool.querySelector('input').addEventListener('change',function(e){rd(e.target.files[0])});
+    stool.querySelector('input').addEventListener('change',function(e){rd(e.target.files[0]);e.target.value=''});   // 같은 파일을 다시 골라도 읽히게
     stool.addEventListener('dragover',function(e){e.preventDefault();stool.classList.add('over')});
     stool.addEventListener('dragleave',function(){stool.classList.remove('over')});
     stool.addEventListener('drop',function(e){e.preventDefault();stool.classList.remove('over');rd(e.dataTransfer.files[0])})}
