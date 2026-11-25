@@ -63,7 +63,7 @@
   function side(it){return it.bd?'<div class="side"><span class="ty">📖 우화집</span><b>'+esc(it.bn||it.n)+'</b>'+esc(it.bd)+'</div>':''}
   function show(el,keys){var inBox=box.contains(el),keep=inBox?{l:box.style.left,t:box.style.top}:null;load().then(function(I){var ks=keys.split(','),main='',sd='';
       ks.forEach(function(k,i){var it=I[k];if(!it)return;main+=(main?'<hr>':'')+card(it,k);sd+=side(it)});
-      if(!main)return;var wide=hover&&innerWidth>=640&&sd;
+      if(!main)return;var wide=hover&&innerWidth>=640&&sd;main='<button type="button" class="pbx" aria-label="닫기">✕</button>'+main;
       box.className=wide?'two':'';
       box.innerHTML=wide?'<div class="col">'+main+'</div><div class="col sidecol">'+sd+'</div>':main+(sd?'<details class="bdx"><summary>📖 우화집 보기</summary>'+sd+'</details>':'');
       box.style.display='flex';
@@ -73,6 +73,8 @@
       else{x=Math.max(8,Math.min(r.left,innerWidth-w-8));y=r.bottom+6;if(y+h>innerHeight-8)y=r.top-h-6}
       y=Math.max(8,Math.min(y,innerHeight-h-8));box.style.left=x+'px';box.style.top=y+'px';cur=el})}
   function hide(){clearTimeout(tShow);box.style.display='none';cur=null}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')hide()});
+  box.addEventListener('click',function(e){if(e.target.closest('.pbx')){e.stopPropagation();hide()}});
   document.addEventListener('click',function(e){var el=e.target.closest('[data-pop]');
     if(el){e.preventDefault();e.stopPropagation();if(cur===el)hide();else show(el,el.dataset.pop);return}
     if(!box.contains(e.target))hide()});
