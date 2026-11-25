@@ -208,3 +208,13 @@ img.sp{image-rendering:pixelated;display:block;max-height:96px;margin:0 auto 4px
 .skins .skin img.sp{max-height:84px}
 .ctile img.sp{max-height:72px}
 #popbox{z-index:90}
+/* 🧭 다음 판 추천 */
+.reco{border:2px solid var(--gold);border-radius:14px;padding:10px 12px;margin:10px 0 14px;background:var(--soft)}
+.reco .rh{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px;margin-bottom:6px}
+.reco .rh button{border:1px solid var(--line);background:var(--bg);color:var(--txt);border-radius:16px;padding:3px 10px;margin-left:4px;font:inherit;font-size:12.5px;cursor:pointer}
+.reco .rh button.on{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.reco .rc{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px dashed var(--line)}
+.reco .rc img.sp{max-height:70px;margin:0;flex:none}.reco .rt{font-size:14px}.reco .rw{font-size:12.5px;color:var(--sub)}
+.reco ul{margin:4px 0 0;padding-left:16px;font-size:13px}.reco li a{cursor:pointer;text-decoration:none;border-bottom:1px dotted var(--sub)}
+.reco em{font-style:normal;font-size:11.5px;padding:0 4px;border-radius:6px}.reco em.st{background:#e6f4e6;color:#2b7a2b}.reco em.lk{background:#fdeedd;color:#b5651d}
+.reco .rn{font-size:13px;color:var(--sub);margin:4px 0}
