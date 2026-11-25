@@ -261,3 +261,9 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 .mmap i{position:absolute;right:6px;bottom:5px;font-style:normal;font-size:11px;background:rgba(0,0,0,.6);color:#fff;border-radius:6px;padding:1px 6px}
 @keyframes mpulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.25)}}
 #popbox .pbx{position:absolute;top:4px;right:6px;border:0;background:none;color:var(--sub);font-size:15px;cursor:pointer;padding:2px 6px;z-index:2}#popbox{position:fixed}#popbox>.col:first-child,#popbox{padding-right:26px}
+/* 정션 포탈 구역 이름표 */
+.k-portal .zl{position:absolute;white-space:nowrap;font-style:normal;font-weight:800;font-size:12px;color:#ffd34d;
+ text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0 0 3px #000}
+.zl-l{right:calc(100% + 4px);top:50%;transform:translateY(-50%)}.zl-r{left:calc(100% + 4px);top:50%;transform:translateY(-50%)}
+.zl-t{bottom:calc(100% + 3px);left:50%;transform:translateX(-50%)}.zl-b{top:calc(100% + 3px);left:50%;transform:translateX(-50%)}
+.map.full .k-portal .zl{font-size:14px}

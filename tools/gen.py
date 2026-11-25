@@ -338,7 +338,9 @@ def pin_html(p,hub=False):
     xm=(f'<b>{"→" if p["xm"]>0 else "←"}{abs(p["xm"])}</b>' if p['xm'] else '')
     if p['kind']=='portal':
         z=int(re.search(r'biome(\d)',p['id']).group(1))
-        if hub:return f'<a class="pin k-portal" style="{st}" href="#z{z}" title="{esc(ZNAME[z])}">{z}</a>'
+        if hub:
+            side='l' if p['x']<100 else 'r' if p['x']>156 else ('t' if p['y']<140 else 'b')
+            return f'<a class="pin k-portal" style="{st}" href="#z{z}" title="{esc(ZNAME[z])}">{z}<i class="zl zl-{side}">{esc(ZNAME[z])}</i></a>'
         return f'<a class="pin k-portal" style="{st}" href="#z7" title="정션으로">🌀</a>'
     if p['kind']=='item':
         it=items.get(p['id'],{});ic=f'<img src="{it["i"]}" alt="">' if it.get('i') else '💍'
@@ -385,7 +387,6 @@ desc: 뱀파이어 서바이벌 에메랄드 디오라마 지도. 관 2개 위�
 <div id="ulist" data-group="ed">
 <section class="zone" id="z7"><h2>🌀 정션 (허브)</h2>
 {mapbox(7,hubp,True)}
-<ul class="pins">{''.join(f'<li><a href="#z{z}">{z} · {esc(ZNAME[z])}</a></li>' for z in range(1,7))}</ul>
 <h3>모든 구역 해금</h3>
 {chr(10).join(allr)}
 </section>
