@@ -120,10 +120,11 @@ FIXT={'시우그나스':'시그나스','디바 5호':'디바 5번'}
 CH=U['chars']
 FULL={'츠나노리':'츠나노리 미도','보니':'보니 블레어','포미나':'포미나 프랭클린','디바 5번':'디바 5번','아메야':'아메야 아이슬링','시그나스':'시그나스'}
 ZONE={1:'1 미야코시',2:'2 마녀 왕국 풀크라',3:'3 그렐론',4:'4 아발론',5:'5 요미',6:'6 프로비던스','hub':'숨은 구역 (오우거)','전부':'모든 구역'}
-ICON={'성장':'📈','진화':'✨','찾아서진화':'🔍','사냥':'⚔️','발견':'⚰️','특수':'🎯','기타':'📦'}
+ICON={'성장·진화':'📈','성장':'📈','진화':'✨','찾아서진화':'🔍','사냥':'⚔️','발견':'⚰️','특수':'🎯','기타':'📦'}
 cnt={}
 for u in U['unlocks']: cnt[u['type']]=cnt.get(u['type'],0)+1
-def ty(t): return t if cnt.get(t,0)>=3 else '기타'
+MERGE={'성장':'성장·진화','진화':'성장·진화'}   # 11/26 제이: 성장과 진화 카테고리 합치기
+def ty(t): return MERGE.get(t) or (t if cnt.get(t,0)>=3 else '기타')
 rows=[]
 for u in U['unlocks']:
     t=ty(u['type']);scope='전용' if u['char'] else '공통'
@@ -242,10 +243,10 @@ print('chars pages',len(EC))
 
 # ---------- 본편 해금 ----------
 BU=json.loads((D/'base_unlocks.json').read_text(encoding='utf-8'))
-ICON2={'발견':'⚰️','특수':'🎯','레벨':'🆙','생존':'⏱','성장':'📈','처치 수':'💀','비밀':'🔒','진화':'✨','기타':'📦'}
+ICON2={'성장·진화':'📈','발견':'⚰️','특수':'🎯','레벨':'🆙','생존':'⏱','성장':'📈','처치 수':'💀','비밀':'🔒','진화':'✨','기타':'📦'}
 bc={}
 for u in BU: bc[u['type']]=bc.get(u['type'],0)+1
-bty=lambda t:t if bc.get(t,0)>=3 else '기타'
+bty=lambda t:MERGE.get(t) or (t if bc.get(t,0)>=3 else '기타')
 brows=[]
 NMAIN=sum(1 for u in BU if u['group']!='추가')
 for i,u in enumerate(BU,1):
