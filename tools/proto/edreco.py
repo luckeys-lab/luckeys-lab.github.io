@@ -40,5 +40,5 @@ for k,v in A.items():
     elif 'KillXNumberOfEnemiesOfTypes' in t:o.update(k='ogre',sc=3)
     else:continue   # 조건 칸 없는 것(디바 스킨 2개)은 빼기
     rows['ed-%d'%n]=o
-json.dump({'opts':opts,'rows':rows,'wun':give['W'],'inv':'b-ObtainGraciasMirror'},open(R+'ed/reco.json','w'),ensure_ascii=False,separators=(',',':'))
+json.dump({'opts':opts,'rows':rows,'wun':give['W'],'inv':['b-ObtainGraciasMirror','ed-41']   # 인버스 = 반전 유물 + 디오라마 하이퍼(💎41 숨은 오우거)},open(R+'ed/reco.json','w'),ensure_ascii=False,separators=(',',':'))
 print(len(opts),'options',len(rows),'rows');print(opts[1]);print({k:v for k,v in list(rows.items())[:4]})

@@ -120,7 +120,7 @@
       rbox=document.createElement('div');rbox.className='reco';var nv=secED.querySelector('.secnav')||secED.querySelector('summary');nv.parentNode.insertBefore(rbox,nv.nextSibling);
       rbox.addEventListener('click',function(e){var b=e.target.closest('[data-t]');if(b){curT=+b.dataset.t;doReco();return}
         var a=e.target.closest('[data-go]');if(a){location.hash='';location.hash=a.dataset.go}});doReco()})}
-    function doReco(){if(!RECO||!rbox)return;var has=function(k){return !!S[k]},inv=has(RECO.inv),T=TIER[curT],res=[];
+    function doReco(){if(!RECO||!rbox)return;var has=function(k){return !!S[k]},inv=[].concat(RECO.inv).every(has),T=TIER[curT],res=[];
       var vis=rows.filter(function(r){return !S[r.dataset.id]&&!r.classList.contains('lock')&&RECO.rows[r.dataset.id]});
       RECO.opts.forEach(function(o){if(!o.need.every(has))return;[0,1].forEach(function(md){if(md&&!inv)return;var L=[];
         vis.forEach(function(r){var id=r.dataset.id,R=RECO.rows[id];if(R.inv&&!md)return;if(R.ch.length&&R.ch.indexOf(o.c)<0)return;
