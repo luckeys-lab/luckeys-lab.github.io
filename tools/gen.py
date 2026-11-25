@@ -106,7 +106,15 @@ def guide(u):
     if r['k']=='allboss':out.append('📍 <a href="/vs/ed/map.html#z7">정션</a>에서 6구역 보스를 한 판에 전부 · 디바 5번 필수')
     if r['k']=='ogre':out.append('⏱ 장소가 아니라 <b>21분</b>에 나오는 보스입니다 · 21분까지 버티기')
     if r['k']=='disk':out.append('🛒 에메랄드 디스크를 찾아 구매')
-    return ''.join(f'<p class="guide">{x}</p>' for x in out)
+    mm=''
+    if r['k'] in ('coffin','boss'):
+        z=r['z'];hit=[x for x in _MP['pins'] if x['zone']==z and x['kind']==r['k']][:1]
+        def _mp(x,cls):
+            ic={'coffin':'⚰️','boss':'👹','portal':'🌀','item':'💍'}[x['kind']];xm=(f'<b>{"→" if x["xm"]>0 else "←"}{abs(x["xm"])}</b>' if x['xm'] else '')
+            return f'<span class="mp {cls}" style="left:{x["x"]/256*100:.1f}%;top:{x["y"]/280*100:.1f}%">{ic}{xm if cls=="hit" else ""}</span>'
+        others=''.join(_mp(x,'dim') for x in _MP['pins'] if x['zone']==z and x not in hit)
+        mm=f'<a class="mmap" href="/vs/ed/map.html#z{z}" title="크게 보기"><img src="/assets/vs/ed/map/z{z}.png" alt="{esc(_ZN[z])} 지도" loading="lazy">{others}{"".join(_mp(x,"hit") for x in hit)}<i>🔍 {esc(_ZN[z])} 지도</i></a>'
+    return ''.join(f'<p class="guide">{x}</p>' for x in out)+mm
 
 FIXT={'시우그나스':'시그나스','디바 5호':'디바 5번'}
 CH=U['chars']
