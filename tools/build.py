@@ -43,7 +43,7 @@ BASE='https://luckeys-lab.github.io/';today=datetime.date.today().isoformat()
 urls=[]
 for src in sorted((R/'_src').rglob('*.html')):
     rel=src.relative_to(R/'_src').as_posix()
-    if rel=='404.html':continue
+    if rel=='404.html' or rel.startswith('tools/'):continue   # 테스트 도구는 검색 등록 안 함
     urls.append(BASE+(rel[:-10] if rel.endswith('index.html') else rel))
 sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls)+'</urlset>\n'
 (R/'sitemap.xml').write_text(sm,encoding='utf-8')
