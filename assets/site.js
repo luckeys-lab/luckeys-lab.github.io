@@ -138,7 +138,7 @@
   // 📌 상단 고정 추천 띠 · ll_chk로 계산 · 띠 안에서 펼치기/체크
   if(/^\/vs\//.test(location.pathname)){
     var TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],RB=null,RC=null,bar=null,curT=0,mode='min',openRow=null;
-    try{mode=localStorage.getItem('ll_rbar')||'min';curT=+(localStorage.getItem('ll_rtier')||0)}catch(e){}
+    var first=false;try{mode=localStorage.getItem('ll_rbar');if(!mode){mode='open';first=true}if(mode==='off')mode='min';curT=+(localStorage.getItem('ll_rtier')||0)}catch(e){}
     var getS=function(){try{return JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){return {}}};
     function calc(){var S=getS(),has=function(k){return !!S[k]},inv=[].concat(RC.inv).every(has),T=TIER[curT],res=[];
       var vis=Object.keys(RB).filter(function(k){return !S[k]&&RB[k].need.every(function(g){return g.some(has)})&&RC.rows[k]});
@@ -153,10 +153,9 @@
       res.forEach(function(r){if(seen[r.o.c]||top.length>=2)return;seen[r.o.c]=1;top.push(r)});return {top:top,S:S}}
     function head(r){var o=r.o;return '<b>'+esc(o.cn)+'</b>'+(o.c==='ANY'?'':' · '+esc(o.sk))+' · '+(r.md?'🔁 인버스':'일반')}
     function draw(){if(!bar)return;var c=calc(),top=c.top,S=c.S;
-      if(mode==='off'){bar.className='rbar off';bar.innerHTML='<button type="button" data-m="min" title="다음 판 추천">🧭</button>';return}
       var one=top.length?head(top[0])+' → '+top[0].pk.map(function(x){return '💎'+RB[x.id].n}).join(' · '):'추천할 판이 없어요';
-      var h='<div class="rl"><button type="button" class="rt" data-m="'+(mode==='open'?'min':'open')+'">🧭 <span>'+one+'</span> '+(mode==='open'?'▴':'▾')+'</button><button type="button" class="rx" data-m="off" title="접기">✕</button></div>';
-      if(mode==='open'){h+='<div class="rbody"><div class="rtabs">'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</div>';
+      var h='<div class="rl"><button type="button" class="rt" data-m="'+(mode==='open'?'min':'open')+'"><span class="rtag">🧭 추천 해금</span> <span>다음 판: '+one+'</span></button><button type="button" class="rx" data-m="'+(mode==='open'?'min':'open')+'">'+(mode==='open'?'접기 ▴':'펼치기 ▾')+'</button></div>';
+      if(mode==='open'){h+='<div class="rbody"><p class="rintro">체크한 해금을 보고, <b>다음 판에 한 번에 노릴 수 있는 해금</b>을 골라 줘요. 줄을 누르면 공략과 ☑ 체크가 펼쳐져요.</p><div class="rtabs">'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</div>';
         if(!top.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
         top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div class="rcb"><div class="rh2">'+head(r)+'</div>'+(o.c==='ANY'?'<div class="rw">본편 캐릭터도 OK</div>':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+
           r.pk.map(function(x){var it=RB[x.id],op=openRow===x.id;return '<li><a class="ri" data-r="'+x.id+'">💎'+it.n+' '+esc(it.t)+'</a>'+(x.st?' <em class="st">🗡️ 시작 스킬</em>':'')+(x.lk?' <em class="lk">🎲 상자 운</em>':'')+
@@ -171,6 +170,7 @@
         if(ri){openRow=openRow===ri.dataset.r?null:ri.dataset.r;draw();return}
         if(ck){var S=getS();if(ck.checked)S[ck.dataset.c]=1;else delete S[ck.dataset.c];try{localStorage.setItem('ll_chk',JSON.stringify(S))}catch(x){}
           if(ck.checked)openRow=null;draw();try{document.dispatchEvent(new CustomEvent('llchk',{detail:'bar'}))}catch(x){}}});
+      if(first){try{localStorage.setItem('ll_rbar','open')}catch(x){}}
       document.addEventListener('llchk',function(e){if(e.detail==='list')draw()});draw()})}
   // 지도 크게 보기 (⛶ 또는 빈 곳 탭)
   [].forEach.call(document.querySelectorAll('.map'),function(m){

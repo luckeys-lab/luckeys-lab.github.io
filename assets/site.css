@@ -249,3 +249,6 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 .rbar .rdet .guide{font-size:12.5px;margin:3px 0;padding-left:8px;border-left:3px solid var(--gold)}.rbar .rw2{margin:4px 0;font-size:12.5px}
 .rbar .go{font-size:12px;color:var(--gold2);font-weight:700;text-decoration:none}
 .rbar .rn{font-size:13px;color:var(--sub)}
+.rbar .rtag{display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;border-radius:6px;padding:1px 7px;margin-right:4px}
+.rbar .rx{white-space:nowrap;font-weight:700;font-size:12.5px}
+.rbar .rintro{font-size:12.5px;color:var(--sub);margin:6px 0 2px}
