@@ -60,7 +60,7 @@ def need_note(u,here):
 BOSSN=['스피릿 비스트','어스 드래곤','최종 황제의 악마 형태','최종 황제','아이언 메이든','이와나가히메의 유령','살아있는 고뇌','숨은 오우거','모든 보스']
 CHARN=sorted(['츠나노리 미도','보니 블레어','포미나 프랭클린','디바 5번','아메야 아이슬링','시그나스','츠나노리','보니','포미나','아메야','디바'],key=len,reverse=True)
 _hlre=re.compile('('+'|'.join(map(re.escape,BOSSN+CHARN))+r'|(?<=번째 )관)')
-HLPOP={'스피릿 비스트':'EB_EME_GATEBOSS_SPIRITBEAST','어스 드래곤':'EB_EME_GATEBOSS_DRAGON','최종 황제의 악마 형태':'EB_EME_GATEBOSS_FINALEMPEROR','최종 황제':'EB_EME_GATEBOSS_FINALEMPEROR','아이언 메이든':'EB_EME_GATEBOSS_IRONMAIDEN','이와나가히메의 유령':'EB_EME_GATEBOSS_SPECTER','살아있는 고뇌':'EB_EME_GATEBOSS_LIVINGANGUISH','숨은 오우거':'EB_EME_SUSPICIOUS_OGRE'}
+HLPOP={'스피릿 비스트':'EB_EME_GATEBOSS_SPIRITBEAST','어스 드래곤':'EB_EME_GATEBOSS_DRAGON','최종 황제의 악마 형태':'EB_EME_GATEBOSS_FINALEMPEROR','최종 황제':'EB_EME_GATEBOSS_FINALEMPEROR','아이언 메이든':'EB_EME_GATEBOSS_IRONMAIDEN','이와나가히메의 유령':'EB_EME_GATEBOSS_SPECTER','살아있는 고뇌':'EB_EME_GATEBOSS_LIVINGANGUISH','숨은 오우거':'EB_EME_BOSS_OGRE'}
 for _k,_v in items.items():
     if _k.startswith('CH_EME_'):HLPOP[_v['n']]=_k
 for _s,_f in {'츠나노리':'츠나노리 미도','보니':'보니 블레어','포미나':'포미나 프랭클린','아메야':'아메야 아이슬링','디바':'디바 5번'}.items():
@@ -265,6 +265,8 @@ for p in MP['pins']:
     if p['kind']=='coffin':
         ch=items.get('CH_'+p['id'],{});cn={'EME_RAPIERDUAL':2,'EME_SWORDBITE':25}.get(p['id'])
         items['EC_'+p['id']]={'i':ch.get('i'),'n':'⚰️ '+p['label'],'t':f'관 · {zn} · {side(p["xm"])}','d':ch.get('d',''),'s':ch.get('s'),'si':ch.get('si'),'ul':ulines([cn]) if cn else [],'l':ch.get('l')}
+_b=BS['EME_BOSS_OGRE']
+items['EB_EME_BOSS_OGRE']={'n':'숨은 오우거','t':'보스 · 21분','d':'맵 어딘가가 아니라 21분이 되면 나오는 보스입니다.','p':f"❤️ {_b['hp']}{'×레벨' if _b['hpxlv'] else ''} · ⚔️ {_b['power']} · 👟 {_b['speed']}",'ul':ulines([41]),'bn':'숨은 오우거','bd':''}
 (D/'items.json').write_text(json.dumps(items,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 def pin_html(p,hub=False):
     st=f'left:{p["x"]/256*100:.2f}%;top:{p["y"]/280*100:.2f}%'
@@ -323,8 +325,9 @@ desc: 뱀파이어 서바이벌 에메랄드 디오라마 지도. 관 2개 위�
 {chr(10).join(allr)}
 </section>
 {chr(10).join(zs)}
-<section class="zone" id="z9"><h2>❓ 숨은 구역 · <b class="hb">숨은 오우거</b></h2>
-<p>게임 데이터상 <b>정션보다 훨씬 아래쪽</b>에 숨은 오우거 자리가 따로 있습니다. 가는 법은 확인 중입니다. <span class="pop" data-pop="EB_EME_SUSPICIOUS_OGRE">👹 능력치 보기</span></p>
+<section class="zone" id="z9"><h2>👹 <b class="hb">숨은 오우거</b> · 21분 보스</h2>
+<p>해금 조건은 <b class="hb pop" data-pop="EB_EME_BOSS_OGRE">숨은 오우거</b>(EME_BOSS_OGRE) 1마리 처치입니다. 게임 데이터상 이 보스는 <b>21분</b>에 나옵니다. 특정 장소에 가는 게 아니라 <b>21분까지 버티면</b> 됩니다.</p>
+<p class="note">맵 데이터에는 정션 훨씬 아래에 <span class="pop" data-pop="EB_EME_SUSPICIOUS_OGRE">수상한 오우거</span> 자리가 따로 있지만, 바닥이 이어지지 않고 포탈도 없어 실제로는 갈 수 없는 자리로 보입니다.</p>
 {chr(10).join(ogr)}
 </section>
 </div>

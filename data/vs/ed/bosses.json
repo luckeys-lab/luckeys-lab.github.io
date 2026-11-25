@@ -1,4 +1,14 @@
 {
+ "EME_BOSS_OGRE": {
+  "ko": "",
+  "en": "",
+  "d": "",
+  "d_en": "",
+  "hp": 18,
+  "power": 40,
+  "speed": 140,
+  "hpxlv": true
+ },
  "EME_GATEBOSS_DRAGON": {
   "ko": "어스 드래곤",
   "en": "Earth Dragon",

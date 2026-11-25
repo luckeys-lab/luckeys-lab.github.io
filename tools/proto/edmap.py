@@ -2,7 +2,7 @@ import json,re
 O=json.load(open('/home/claude/edmap/objs.json'))
 BAND=2240
 ZN={1:'미야코시',2:'마녀 왕국 풀크라',3:'그렐론',4:'아발론',5:'요미',6:'프로비던스',7:'정션'}
-BOSS={'EME_GATEBOSS_SPIRITBEAST':'스피릿 비스트','EME_GATEBOSS_DRAGON':'어스 드래곤','EME_GATEBOSS_FINALEMPEROR':'최종 황제','EME_GATEBOSS_IRONMAIDEN':'아이언 메이든','EME_GATEBOSS_SPECTER':'이와나가히메의 유령','EME_GATEBOSS_LIVINGANGUISH':'살아있는 고뇌','EME_SUSPICIOUS_OGRE':'숨은 오우거'}
+BOSS={'EME_GATEBOSS_SPIRITBEAST':'스피릿 비스트','EME_GATEBOSS_DRAGON':'어스 드래곤','EME_GATEBOSS_FINALEMPEROR':'최종 황제','EME_GATEBOSS_IRONMAIDEN':'아이언 메이든','EME_GATEBOSS_SPECTER':'이와나가히메의 유령','EME_GATEBOSS_LIVINGANGUISH':'살아있는 고뇌','EME_SUSPICIOUS_OGRE':'수상한 오우거'}
 CH={'EME_RAPIERDUAL':'츠나노리 미도','EME_SWORDBITE':'시그나스'}
 pins=[];seen=set()
 for o in sorted(O,key=lambda o:float(o.get('m_Y',0))):

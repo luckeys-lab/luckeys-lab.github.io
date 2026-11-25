@@ -15,7 +15,7 @@ for line in open(T,encoding='utf-8'):
 E=json5.load(open('/tmp/edj/enemyData_Emeralds.json'))
 M=json.load(open('/home/claude/luckeys-lab.github.io/data/vs/ed/map.json'))
 out={}
-for b in sorted({p['id'] for p in M['pins'] if p['kind']=='boss'}):
+for b in sorted({p['id'] for p in M['pins'] if p['kind']=='boss'}|{'EME_BOSS_OGRE'}):
     v=E[b];v=v[0] if isinstance(v,list) else v
     g=lambda f,l:(I2.get(f'enemiesLang/{{{b}}}{f}') or ['']*12)[l]
     out[b]={'ko':g('bName',11),'en':g('bName',0),'d':g('bDesc',11),'d_en':g('bDesc',0),'hp':v.get('maxHp'),'power':v.get('power'),'speed':v.get('speed'),'hpxlv':'HP_x_Level' in (v.get('skills') or [])}
