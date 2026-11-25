@@ -50,7 +50,7 @@ def need_attr(u):
 def need_note(u,here):
     if not u.get('need'):return ''
     def one(k):
-        n,rw=NEEDI[k];pre='/vs/base/unlocks.html' if k.startswith('b-') else '/vs/ed/'
+        n,rw=NEEDI[k];pre='/vs/unlocks.html'
         href=('#' if pre==here else pre+'#')+k
         return f'<a href="{href}">#{n}</a> {esc(" · ".join(rw))}'
     return '<p class="need">🔒 먼저: '+' 그리고 '.join(' 또는 '.join(one(k) for k in g) for g in u['need'])+'</p>'
@@ -94,25 +94,23 @@ for u in U['unlocks']:
     q=f'<div class="fix">게임 원문: {esc(raw)}</div>' if fixed!=raw else ''
     title=fixed
     rows.append(f'''<details class="ul" data-id="ed-{u['n']}" data-type="{t}" data-scope="{scope}"{need_attr(u)}>
-<summary><input type="checkbox" aria-label="해금 체크"><span class="n">{u['n']}</span><span class="tt">{hl(esc(title))}</span><span class="k">{ICON.get(t,'')} {t}</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → {link_names(u['reward'])}</p>{q}<p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p>{need_note(u,'/vs/ed/')}</div></details>''')
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">💎{u['n']}</span><span class="tt">{hl(esc(title))}</span><span class="k">{ICON.get(t,'')} {t}</span></summary>
+<div class="bdy"><p class="rw">🎁 보상 → {link_names(u['reward'])}</p>{q}<p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p>{need_note(u,'/vs/unlocks.html')}</div></details>''')
 types=sorted({ty(u['type']) for u in U['unlocks']},key=lambda t:(t=='기타',-sum(1 for u in U['unlocks'] if ty(u['type'])==t)))
 fb=''.join(f'<button type="button" data-f="{t}">{ICON.get(t,"")} {t} {sum(1 for u in U["unlocks"] if ty(u["type"])==t)}</button>' for t in types)
 (R/'_src/vs/ed').mkdir(parents=True,exist_ok=True)
-(R/'_src/vs/ed/index.html').write_text(f'''title: 에메랄드 디오라마 해금 41개
-desc: 뱀파이어 서바이벌 에메랄드 디오라마 해금 조건 41개 전체. 게임 데이터 기준 · 필요 캐릭터와 시작 스킬 · 해금 체크.
+(R/'_src/vs/ed/index.html').write_text(f'''title: 에메랄드 디오라마
+desc: 뱀파이어 서바이벌 무료 DLC 에메랄드 디오라마 공략 · 해금 {len(U['unlocks'])}개 · 지도 · 캐릭터 · 비밀.
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 에메랄드 디오라마</div>
-<h1>💎 에메랄드 디오라마 · 해금</h1>
-<p class="sub">무료 DLC · 해금 {len(U['unlocks'])}개 · 게임 데이터 기준 · 지도와 캐릭터 페이지 있음</p>
-<div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div>
-<div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button>{fb}</div>
-<div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
-<label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label></div>
-<div id="ulist" data-group="ed" data-lock="1">
-{chr(10).join(rows)}
+<h1>💎 에메랄드 디오라마</h1>
+<p class="sub">무료 DLC · 해금 {len(U['unlocks'])}개 · 게임 데이터 기준</p>
+<div class="tiles">
+<a class="tile" href="/vs/unlocks.html#sec-ed"><b>🔓 해금</b><span>{len(U['unlocks'])}개 · 다음 판 추천</span></a>
+<a class="tile" href="/vs/ed/map.html"><b>🗺️ 지도</b><span>관 · 보스 · 패시브 위치</span></a>
+<a class="tile" href="/vs/ed/chars.html"><b>🧛 캐릭터</b><span>스킨별 시작 스킬</span></a>
+<a class="tile" href="/vs/secrets.html#sec-ed"><b>🤫 비밀</b><span>수수께끼 · 주문</span></a>
 </div>
-<p class="note">☑ 체크는 이 기기(브라우저)에만 저장됩니다. 줄을 누르면 펼쳐집니다.</p>
-<div class="ad" data-slot="end"></div>
+<script>if(/^#ed-/.test(location.hash))location.replace('/vs/unlocks.html'+location.hash)</script>
 ''',encoding='utf-8')
 
 # ---------- 본편 진화 ----------
@@ -166,7 +164,7 @@ for c in EC:
         p=_byname.get(n);return f'<img class="ic" src="{p}" alt="">' if p else '🗡️ '
     sk=''.join(f'<div class="skin">{_sim(i)}<b>{esc(s["ko"])}</b><span>{_sic(s.get("start"))}{pop(s["start"]) if s.get("start") else "-"}</span></div>' for i,s in enumerate(c['skins']))
     hero=next((x for x in seq if x),None)
-    howt=''.join(f'<li><a href="/vs/ed/#ed-{u["n"]}">{u["n"]}번</a> · {esc(u["text"])}</li>' for u in how) or '<li>처음부터 또는 확인 중</li>'
+    howt=''.join(f'<li><a href="/vs/unlocks.html#ed-{u["n"]}">💎{u["n"]}번</a> · {esc(u["text"])}</li>' for u in how) or '<li>처음부터 또는 확인 중</li>'
     tiles.append(f'<a class="tile ctile" href="/vs/ed/c/{sl}.html">{f'<img class="sp" src="{hero}" alt="" loading="lazy">' if hero else ''}<b>{esc(c["ko"])}</b><span>{_sic(c.get("start"))}{esc(c["start"] or "-")}</span></a>')
     (R/f'_src/vs/ed/c/{sl}.html').write_text(f'''title: {c["ko"]} · 에메랄드 디오라마
 desc: 뱀파이어 서바이벌 에메랄드 디오라마 캐릭터 {c["ko"]} · 시작 스킬 {c["start"]} · 스킨별 시작 스킬 · 해금 방법 · 이 캐릭터가 필요한 해금
@@ -194,7 +192,7 @@ desc: 뱀파이어 서바이벌 에메랄드 디오라마 캐릭터 {len(EC)}명
 (D/'items.json').write_text(json.dumps(items,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 # 해금 페이지 위에 캐릭터 링크
 p=R/'_src/vs/ed/index.html';t=p.read_text(encoding='utf-8')
-if 'chars.html' not in t:
+if False:
     t=t.replace('<div class="prog">','<a class="btn-line" href="/vs/ed/chars.html">🧛 디오라마 캐릭터 보기</a> <a class="btn-line" href="/vs/ed/map.html">🗺️ 디오라마 지도 보기</a>\n<div class="prog">',1);p.write_text(t,encoding='utf-8')
 print('chars pages',len(EC))
 
@@ -216,30 +214,46 @@ for i,u in enumerate(BU,1):
     extra=''
     brows.append(f'''<details class="ul" data-id="b-{u['id']}" data-type="{t}" data-scope="{scope}"{need_attr(u)}>
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">{i}</span><span class="tt">{esc(title)}{extra}</span><span class="k">{ICON2.get(t,'')} {t}</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → {rw}</p>{q}<p>{mode}{badge}</p>{need_note(u,'/vs/base/unlocks.html')}</div></details>''')
+<div class="bdy"><p class="rw">🎁 보상 → {rw}</p>{q}<p>{mode}{badge}</p>{need_note(u,'/vs/unlocks.html')}</div></details>''')
 btypes=sorted({bty(u['type']) for u in BU},key=lambda t:(t=='기타',-sum(1 for u in BU if bty(u['type'])==t)))
 bfb=''.join(f'<button type="button" data-f="{t}">{ICON2.get(t,"")} {t} {sum(1 for u in BU if bty(u["type"])==t)}</button>' for t in btypes)
 (R/'_src/vs/base').mkdir(parents=True,exist_ok=True)
-(R/'_src/vs/base/unlocks.html').write_text(f'''title: 본편 해금 {len(BU)}개
-desc: 뱀파이어 서바이벌 본편 해금 조건 {len(BU)}개 전체 (1.0 + 추가). 게임 데이터 기준 · 보상 · 필요 캐릭터 · 해금 체크.
-<div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 본편 해금</div>
-<h1>🔓 본편 해금 {len(BU)}</h1>
-<p class="sub">1.0 + 무료 추가 업데이트 · 게임 데이터 기준 · 보상 이름을 누르면 설명이 보입니다</p>
+# ── 통합 해금 페이지 /vs/unlocks.html (게임처럼 칸: 1.0 버전 · 추가 · DLC) ──
+ALLT={}
+for r in brows+rows:
+    t=re.search(r'data-type="([^"]+)"',r).group(1);ALLT[t]=ALLT.get(t,0)+1
+ICA={**ICON,**ICON2}
+afb=''.join(f'<button type="button" data-f="{t}">{ICA.get(t,"")} {t} {n}</button>' for t,n in sorted(ALLT.items(),key=lambda x:(x[0]=='기타',-x[1])))
+(R/'_src/vs/unlocks.html').write_text(f'''title: 해금 {len(BU)+len(U["unlocks"])}개 (본편 + DLC)
+desc: 뱀파이어 서바이벌 해금 조건 전체. 게임처럼 1.0 버전 · 추가 · DLC 칸으로 나눔 · 먼저 필요한 해금을 체크해야 다음 해금이 보임 · 게임 데이터 기준.
+<div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 해금</div>
+<h1>🔓 해금</h1>
+<p class="sub">게임 해금 화면처럼 칸으로 나눴습니다 · 체크하면 다음 해금이 나타납니다 · 보상 이름을 누르면 설명</p>
 <div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div>
-<div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button>{bfb}</div>
+<div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button>{afb}</div>
 <div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
 <label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label></div>
-<div id="ulist" data-group="base" data-lock="1">
-<details class="sec" open><summary>1.0 버전 <span class="sc"></span></summary>
+<div id="ulist" data-group="all" data-lock="1">
+<details class="sec" open id="sec-base"><summary>1.0 버전 <span class="sc"></span></summary>
 {chr(10).join(brows[:NMAIN])}
 </details>
-<details class="sec" open><summary>추가 <span class="sc"></span></summary>
+<details class="sec" open id="sec-extra"><summary>추가 <span class="sc"></span></summary>
 {chr(10).join(brows[NMAIN:])}
 </details>
+<details class="sec" open id="sec-ed"><summary>💎 에메랄드 디오라마 <span class="sc"></span></summary>
+<p class="secnav"><a href="/vs/ed/map.html">🗺️ 지도</a> · <a href="/vs/ed/chars.html">🧛 캐릭터</a></p>
+{chr(10).join(rows)}
+</details>
 </div>
-<p class="note">☑ 체크는 이 기기(브라우저)에만 저장됩니다. 순서는 게임 데이터 순서이고, 추천 순서는 준비 중입니다.</p>
+<p class="note">☑ 체크는 이 기기(브라우저)에만 저장됩니다. PC는 🛠 도구 → 💾 세이브 자동 체크로 한 번에 채울 수 있습니다.</p>
 <div class="ad" data-slot="end"></div>
 ''',encoding='utf-8')
+# 예전 주소 → 통합 페이지로 (검색·링크 보존)
+REDIR='''<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><title>이동 중 · LucKey's Lab</title><link rel="canonical" href="https://luckeys-lab.github.io/vs/unlocks.html{h}">
+<meta name="robots" content="noindex"><script>location.replace('/vs/unlocks.html'+(location.hash||'{h}'))</script><meta http-equiv="refresh" content="0;url=/vs/unlocks.html{h}"></head><body><a href="/vs/unlocks.html{h}">해금 페이지로 이동</a></body></html>'''
+(R/'vs/base').mkdir(parents=True,exist_ok=True);(R/'vs/base/unlocks.html').write_text(REDIR.replace('{h}',''),encoding='utf-8')
+for f in [R/'_src/vs/base/unlocks.html']:
+    if f.exists():f.unlink()
 print('base unlocks',len(BU))
 
 # ── 디오라마 지도 (/vs/ed/map.html) · 핀 = data/vs/ed/map.json (게임 맵 오브젝트 · tools/proto/edmap.py) · 보스 = data/vs/ed/bosses.json ──
@@ -334,3 +348,40 @@ desc: 뱀파이어 서바이벌 에메랄드 디오라마 지도. 관 2개 위�
 <div class="ad" data-slot="end"></div>
 ''',encoding='utf-8')
 print('ed map',len(MP['pins']))
+
+# ── 🤫 비밀 페이지 /vs/secrets.html (칸: 본편 · DLC) · data/vs/secrets.json (tools/proto/secrets.py) ──
+SEC=json.load(open(R/'data/vs/secrets.json'))
+def srow(r):
+    t={'riddle':'수수께끼','spell':'주문','mod':'모드'}[r['kind']]
+    title=r['d'] if r['kind']=='riddle' else (' · '.join(r['rw']) or r['d'])
+    sp=f'<p>🔑 주문: <span class="spoil" title="눌러서 보기">{esc(r["spell"])}</span></p>' if r['spell'] else ''
+    ds=f'<p class="fix">{esc(r["d"])}</p>' if r['kind']!='riddle' and r['d'] else ''
+    rw=' · '.join(link_names(x) for x in r['rw'])
+    return f'''<details class="ul" data-id="s-{esc(r['id'])}" data-type="{t}" data-scope="공통">
+<summary><input type="checkbox" aria-label="비밀 체크"><span class="tt">{esc(title)}</span><span class="k">{'🧩' if r['kind']=='riddle' else '🔑' if r['kind']=='spell' else '🎛️'} {t}</span></summary>
+<div class="bdy">{('<p class="rw">🎁 보상 → '+rw+'</p>') if rw else ''}{ds}{sp}</div></details>'''
+secs=[]
+for g in SEC:
+    rd=[r for r in g['rows'] if r['kind']=='riddle'];spl=[r for r in g['rows'] if r['kind']!='riddle']
+    secs.append(f'''<details class="sec" open id="sec-{g['key']}"><summary>{esc(g['name'])} <span class="sc"></span></summary>
+<h3>🧩 수수께끼 {len(rd)}</h3>
+{chr(10).join(srow(r) for r in rd)}
+<details class="spells"><summary>🔑 주문 {len(spl)}개 · 스포일러 (눌러서 펼치기)</summary>
+{chr(10).join(srow(r) for r in spl)}
+</details>
+</details>''')
+(R/'_src/vs/secrets.html').write_text(f'''title: 비밀 (본편 + DLC)
+desc: 뱀파이어 서바이벌 비밀 전체. 수수께끼 문구 · 보상 · 비밀 주문(접어 둠) · 본편과 DLC 칸으로 나눔 · 게임 데이터 기준.
+<div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 비밀</div>
+<h1>🤫 비밀</h1>
+<p class="sub">수수께끼는 게임 문구 그대로 · 주문은 스포일러라 접어 뒀습니다 · 주문 글자는 눌러야 보입니다</p>
+<div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div>
+<div class="fbar"><label class="only"><input type="checkbox" id="onlyLeft"> 못 푼 것만 보기</label></div>
+<div id="ulist" data-group="secret">
+{chr(10).join(secs)}
+</div>
+<p class="note">☑ 체크는 이 기기(브라우저)에만 저장됩니다. PC는 🛠 도구 → 💾 세이브 자동 체크로 한 번에 채울 수 있습니다.</p>
+<div class="ad" data-slot="end"></div>
+''',encoding='utf-8')
+json.dump([r['id'] for g in SEC for r in g['rows']],open(R/'data/vs/secret_keys.json','w'),ensure_ascii=False)
+print('secrets',sum(len(g['rows']) for g in SEC))

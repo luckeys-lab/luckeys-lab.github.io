@@ -115,8 +115,9 @@
     apply();
     // 🧭 꼼꼼 추천 (디오라마) · data/vs/ed/reco.json · 체크 상태로 계산
     var RECO=null,TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],curT=0,rbox=null;
-    if(LOCK&&list.dataset.group==='ed'){fetch('/data/vs/ed/reco.json?v='+VER).then(function(r){return r.json()}).then(function(j){RECO=j;
-      rbox=document.createElement('div');rbox.className='reco';var pg=document.querySelector('.prog');pg.parentNode.insertBefore(rbox,pg.nextSibling);
+    var secED=document.getElementById('sec-ed');
+    if(LOCK&&secED){fetch('/data/vs/ed/reco.json?v='+VER).then(function(r){return r.json()}).then(function(j){RECO=j;
+      rbox=document.createElement('div');rbox.className='reco';var nv=secED.querySelector('.secnav')||secED.querySelector('summary');nv.parentNode.insertBefore(rbox,nv.nextSibling);
       rbox.addEventListener('click',function(e){var b=e.target.closest('[data-t]');if(b){curT=+b.dataset.t;doReco();return}
         var a=e.target.closest('[data-go]');if(a){location.hash='';location.hash=a.dataset.go}});doReco()})}
     function doReco(){if(!RECO||!rbox)return;var has=function(k){return !!S[k]},inv=has(RECO.inv),T=TIER[curT],res=[];
@@ -142,17 +143,19 @@
   // 💾 세이브 자동 체크 (도구 · 🧪 테스트) · 파일은 이 브라우저 안에서만 읽고 ll_chk에 씀
   var stool=document.getElementById('savetool');
   if(stool){var rd=function(f){if(!f)return;var r=new FileReader();r.onload=function(){var msg=stool.querySelector('.msg');
-      try{var o=JSON.parse(r.result),A=o.Achievements||[];fetch('/data/vs/ach_keys.json?v='+VER).then(function(x){return x.json()}).then(function(K){
+      try{var o=JSON.parse(r.result),A=o.Achievements||[];Promise.all([fetch('/data/vs/ach_keys.json?v='+VER).then(function(x){return x.json()}),fetch('/data/vs/secret_keys.json?v='+VER).then(function(x){return x.json()})]).then(function(KK){var K=KK[0],SK=KK[1],SL={};(o.Secrets||[]).forEach(function(a){SL[String(a).toLowerCase()]=1});
         var S={};try{S=JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){}
         var AL={};A.forEach(function(a){AL[String(a).toLowerCase()]=1});   // 세이브와 데이터의 대소문자가 다를 때가 있음 (GetMagiStoneToLevel7)
         var nb=0,ne=0,tb=0,te=0;Object.keys(K).forEach(function(a){var k=K[a],ok=!!AL[a.toLowerCase()];if(k.charAt(0)==='b'){tb++;if(ok)nb++}else{te++;if(ok)ne++}if(ok)S[k]=1;else delete S[k]});
+        var ns=0;SK.forEach(function(id){if(SL[id.toLowerCase()]){S['s-'+id]=1;ns++}else delete S['s-'+id]});
         try{localStorage.setItem('ll_chk',JSON.stringify(S))}catch(e){}
-        msg.innerHTML='✅ '+(o.saveName?'「'+esc(o.saveName)+'」 ':'')+'세이브를 읽어 체크했어요<br>🔓 <a href="/vs/base/unlocks.html">본편 해금 '+nb+' / '+tb+'</a> · 💎 <a href="/vs/ed/">디오라마 해금 '+ne+' / '+te+'</a>'})}
+        msg.innerHTML='✅ '+(o.saveName?'「'+esc(o.saveName)+'」 ':'')+'세이브를 읽어 체크했어요<br>🔓 <a href="/vs/unlocks.html">본편 해금 '+nb+' / '+tb+'</a> · 💎 <a href="/vs/unlocks.html#sec-ed">디오라마 해금 '+ne+' / '+te+'</a> · 🤫 <a href="/vs/secrets.html">비밀 '+ns+' / '+SK.length+'</a>'})}
       catch(e){msg.textContent='⚠ 세이브 파일을 못 읽었어요. SaveData 파일이 맞는지 확인해 주세요.'}};r.readAsText(f)};
     stool.querySelector('input').addEventListener('change',function(e){rd(e.target.files[0])});
     stool.addEventListener('dragover',function(e){e.preventDefault();stool.classList.add('over')});
     stool.addEventListener('dragleave',function(){stool.classList.remove('over')});
     stool.addEventListener('drop',function(e){e.preventDefault();stool.classList.remove('over');rd(e.dataTransfer.files[0])})}
+  document.addEventListener('click',function(e){var sp=e.target.closest('.spoil');if(sp){e.preventDefault();sp.classList.add('show')}});
   // 지도 크게 보기 (⛶ 또는 빈 곳 탭)
   [].forEach.call(document.querySelectorAll('.map'),function(m){
     function tog(on){m.classList.toggle('full',on);document.body.classList.toggle('noscroll',on)}
@@ -163,7 +166,7 @@
   });
   // 검색
   var q=document.getElementById('sq'),res=document.getElementById('sres');
-  var PAGES=[['본편 해금 213개','/vs/base/unlocks.html'],['디오라마 캐릭터','/vs/ed/chars.html'],['에메랄드 디오라마 해금 41개','/vs/ed/'],['에메랄드 디오라마 지도','/vs/ed/map.html'],['본편 진화 조합','/vs/evo.html'],['뱀파이어 서바이벌','/vs/'],['전체 글','/all.html']];
+  var PAGES=[['해금 (본편 + DLC)','/vs/unlocks.html'],['비밀 (본편 + DLC)','/vs/secrets.html'],['디오라마 캐릭터','/vs/ed/chars.html'],['에메랄드 디오라마','/vs/ed/'],['에메랄드 디오라마 지도','/vs/ed/map.html'],['본편 진화 조합','/vs/evo.html'],['뱀파이어 서바이벌','/vs/'],['전체 글','/all.html']];
   var sb=document.getElementById('searchBtn');if(sb&&q)sb.addEventListener('click',function(){setTimeout(function(){q.focus()},150)});
   if(q)q.addEventListener('input',function(){var v=q.value.trim().replace(/\s/g,'');if(!v){res.innerHTML='';return}
     load().then(function(I){var out=[];PAGES.forEach(function(p){if(p[0].replace(/\s/g,'').indexOf(v)>=0)out.push('<a href="'+p[1]+'">📄 '+esc(p[0])+'</a>')});
