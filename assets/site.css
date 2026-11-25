@@ -207,3 +207,4 @@ img.sp{image-rendering:pixelated;display:block;max-height:96px;margin:0 auto 4px
 .chead{display:flex;align-items:center;gap:14px}.chead img.sp.big{max-height:150px;margin:0}
 .skins .skin img.sp{max-height:84px}
 .ctile img.sp{max-height:72px}
+#popbox{z-index:90}
