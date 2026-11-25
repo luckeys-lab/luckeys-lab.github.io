@@ -10,7 +10,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 1,
+  "ord": 10
  },
  {
   "id": "ReachLV10",
@@ -23,7 +26,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 2,
+  "ord": 10
  },
  {
   "id": "ReachLV20InMadForest",
@@ -36,7 +42,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 3,
+  "ord": 10
  },
  {
   "id": "ReachLV40InLibrary",
@@ -49,7 +58,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 4,
+  "ord": 10
  },
  {
   "id": "ReachLV60InDairyPlant",
@@ -62,7 +74,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 5,
+  "ord": 20
  },
  {
   "id": "FindYellowSignS5",
@@ -75,7 +90,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 6,
+  "ord": 30
  },
  {
   "id": "Survive1Minute",
@@ -88,7 +106,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 7,
+  "ord": 0
  },
  {
   "id": "Survive5MinutesWithDiamond",
@@ -101,7 +122,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 8,
+  "ord": 10
  },
  {
   "id": "Survive5MinutesWithKnife",
@@ -114,7 +138,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 9,
+  "ord": 10
  },
  {
   "id": "Survive10Minutes",
@@ -127,7 +154,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 10,
+  "ord": 10
  },
  {
   "id": "Survive10MinutesWithGuns",
@@ -146,7 +176,10 @@
    [
     "b-FindCoffinStage1"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 11,
+  "ord": 110
  },
  {
   "id": "Survive15MinutesWithGuns",
@@ -165,7 +198,10 @@
    [
     "b-FindCoffinStage1"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 12,
+  "ord": 120
  },
  {
   "id": "Survive15MinutesWithGatti",
@@ -184,7 +220,10 @@
    [
     "b-FindCoffinStage2"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 13,
+  "ord": 120
  },
  {
   "id": "Survive15MinutesWithSong",
@@ -203,7 +242,10 @@
    [
     "b-FindCoffinStage3"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 14,
+  "ord": 120
  },
  {
   "id": "Survive15MinutesWithShadow",
@@ -222,7 +264,10 @@
    [
     "b-FindCoffinStage4"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 15,
+  "ord": 120
  },
  {
   "id": "Survive15MinutesWithWind",
@@ -241,7 +286,10 @@
    [
     "b-FindCoffinStage5"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 16,
+  "ord": 120
  },
  {
   "id": "Survive20Minutes",
@@ -254,7 +302,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 17,
+  "ord": 30
  },
  {
   "id": "Survive20MinutesWithCross",
@@ -273,7 +324,10 @@
    [
     "b-Defeat100KEnemies"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 18,
+  "ord": 130
  },
  {
   "id": "Survive20MinutesWithCurse",
@@ -286,7 +340,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 19,
+  "ord": 30
  },
  {
   "id": "Survive30MinutesWithAxe",
@@ -305,7 +362,10 @@
    [
     "b-Survive20MinutesWithCurse"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 20,
+  "ord": 140
  },
  {
   "id": "GetHolyBookToLevel4",
@@ -318,7 +378,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 21,
+  "grp": "HOLYBOOK",
+  "grpn": "성경",
+  "step": 0,
+  "ord": 10.021
  },
  {
   "id": "GetHolyWaterToLevel4",
@@ -331,7 +397,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 22,
+  "grp": "HOLYWATER",
+  "grpn": "성수",
+  "step": 0,
+  "ord": 10.022
  },
  {
   "id": "GetFireWandToLevel4",
@@ -344,7 +416,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 23,
+  "grp": "FIREBALL",
+  "grpn": "불의 지팡이",
+  "step": 0,
+  "ord": 10.023
  },
  {
   "id": "GetLightningRingToLevel4",
@@ -357,7 +435,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 24,
+  "grp": "LIGHTNING",
+  "grpn": "번개 반지",
+  "step": 0,
+  "ord": 10.024
  },
  {
   "id": "GetMagicMissileToLevel7",
@@ -370,7 +454,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 25,
+  "grp": "MAGIC_MISSILE",
+  "grpn": "마법 지팡이",
+  "step": 0,
+  "ord": 10.025
  },
  {
   "id": "GetPeachoneToLevel7",
@@ -383,7 +473,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 26,
+  "grp": "SILF",
+  "grpn": "하얀 비둘기",
+  "step": 0,
+  "ord": 10.026
  },
  {
   "id": "GetRunetracerToLevel7",
@@ -396,7 +492,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 27,
+  "grp": "DIAMOND",
+  "grpn": "룬 트레이서",
+  "step": 0,
+  "ord": 10.027
  },
  {
   "id": "GetGarlicToLevel7",
@@ -409,7 +511,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 28,
+  "grp": "GARLIC",
+  "grpn": "마늘",
+  "step": 0,
+  "ord": 10.028
  },
  {
   "id": "GetPentagramToLevel7",
@@ -422,7 +530,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 29,
+  "grp": "PENTAGRAM",
+  "grpn": "오망성",
+  "step": 0,
+  "ord": 10.029
  },
  {
   "id": "GetTorroneToLevel9",
@@ -435,7 +549,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 30,
+  "grp": "PANDORA",
+  "grpn": "토로나의 상자",
+  "step": 0,
+  "ord": 10.03
  },
  {
   "id": "Have6Evolutions",
@@ -448,7 +568,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 31,
+  "ord": 30
  },
  {
   "id": "Have6DifferentWeapons",
@@ -461,7 +584,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 32,
+  "ord": 30
  },
  {
   "id": "Recover1000HP",
@@ -474,7 +600,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 33,
+  "ord": 30
  },
  {
   "id": "Earn5000CoinsInASingleRun",
@@ -487,7 +616,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 34,
+  "ord": 30
  },
  {
   "id": "GalloDivano",
@@ -506,7 +638,10 @@
    [
     "b-ObtainTheInfiniteCorridor"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 35,
+  "ord": 230
  },
  {
   "id": "Destroy20Candles",
@@ -519,7 +654,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 36,
+  "ord": 30
  },
  {
   "id": "Eat5PotRoast",
@@ -532,7 +670,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 37,
+  "ord": 10
  },
  {
   "id": "FindAClover",
@@ -545,7 +686,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 38,
+  "ord": 10
  },
  {
   "id": "FindAVacuum",
@@ -558,7 +702,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 39,
+  "ord": 10
  },
  {
   "id": "FindAnOrologion",
@@ -571,7 +718,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 40,
+  "ord": 10
  },
  {
   "id": "FindARosary",
@@ -584,7 +734,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 41,
+  "ord": 10
  },
  {
   "id": "FindAStoneMask",
@@ -597,7 +750,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 42,
+  "ord": 10
  },
  {
   "id": "FindGrimoire",
@@ -610,7 +766,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 43,
+  "ord": 10
  },
  {
   "id": "FindMagicBanger",
@@ -623,7 +782,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 44,
+  "ord": 10
  },
  {
   "id": "FindMilkyWayMap",
@@ -636,7 +798,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 45,
+  "ord": 10
  },
  {
   "id": "FindGouda",
@@ -649,7 +814,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 46,
+  "ord": 10
  },
  {
   "id": "FindSorceressTears",
@@ -662,7 +830,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 47,
+  "ord": 10
  },
  {
   "id": "FindRandomazzo",
@@ -675,7 +846,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 48,
+  "ord": 10
  },
  {
   "id": "BuyGlassMask",
@@ -688,7 +862,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 49,
+  "ord": 10
  },
  {
   "id": "FindYellowSign",
@@ -701,7 +878,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 50,
+  "ord": 10
  },
  {
   "id": "FindForbiddenScroll",
@@ -718,7 +898,10 @@
    [
     "b-FindYellowSign"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 51,
+  "ord": 110
  },
  {
   "id": "FindGGospel",
@@ -735,7 +918,10 @@
    [
     "b-FindYellowSign"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 52,
+  "ord": 110
  },
  {
   "id": "ObtainAllRelics",
@@ -748,7 +934,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "secret",
+  "gi": 53,
+  "ord": 60
  },
  {
   "id": "ObtainGraciasMirror",
@@ -765,7 +954,10 @@
    [
     "b-FindYellowSign"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 54,
+  "ord": 110
  },
  {
   "id": "ObtainSeventhTrumpet",
@@ -782,7 +974,10 @@
    [
     "b-FindYellowSign"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 55,
+  "ord": 110
  },
  {
   "id": "FindCoffinStage1",
@@ -795,7 +990,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "secret",
+  "gi": 56,
+  "ord": 60
  },
  {
   "id": "FindCoffinStage2",
@@ -808,7 +1006,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "secret",
+  "gi": 57,
+  "ord": 60
  },
  {
   "id": "FindCoffinStage3",
@@ -821,7 +1022,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "secret",
+  "gi": 58,
+  "ord": 60
  },
  {
   "id": "FindCoffinStage4",
@@ -834,7 +1038,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "secret",
+  "gi": 59,
+  "ord": 60
  },
  {
   "id": "FindCoffinStage5",
@@ -847,7 +1054,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "secret",
+  "gi": 60,
+  "ord": 60
  },
  {
   "id": "Defeat3000Skeletons",
@@ -861,7 +1071,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 61,
+  "ord": 10
  },
  {
   "id": "Defeat3000Buers",
@@ -875,7 +1088,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 62,
+  "ord": 10
  },
  {
   "id": "Defeat3000Milk",
@@ -889,7 +1105,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 63,
+  "ord": 10
  },
  {
   "id": "Defeat3000Hydra",
@@ -903,7 +1122,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 64,
+  "ord": 10
  },
  {
   "id": "Defeat6000StageKillers",
@@ -917,7 +1139,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 65,
+  "ord": 30
  },
  {
   "id": "Defeat5000Enemies",
@@ -930,7 +1155,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 66,
+  "ord": 30
  },
  {
   "id": "Defeat100KEnemies",
@@ -943,7 +1171,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 67,
+  "ord": 30
  },
  {
   "id": "Defeat100kWithSigma",
@@ -962,7 +1193,10 @@
    [
     "b-CompleteCollection"
    ]
-  ]
+  ],
+  "cat": "kill",
+  "gi": 68,
+  "ord": 130
  },
  {
   "id": "DefeatBossMadForest",
@@ -975,7 +1209,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 69,
+  "ord": 10
  },
  {
   "id": "DefeatBossLibrary",
@@ -988,7 +1225,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 70,
+  "ord": 10
  },
  {
   "id": "DefeatBossPlant",
@@ -1001,7 +1241,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 71,
+  "ord": 10
  },
  {
   "id": "DefeatBossTower",
@@ -1014,7 +1257,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 72,
+  "ord": 10
  },
  {
   "id": "DefeatBossChapel",
@@ -1027,7 +1273,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 73,
+  "ord": 10
  },
  {
   "id": "Unlock3Hypers",
@@ -1041,7 +1290,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 74,
+  "ord": 30
  },
  {
   "id": "Unlock2Hypers",
@@ -1055,7 +1307,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 75,
+  "ord": 30
  },
  {
   "id": "Unlock3Hypers_Correct",
@@ -1069,7 +1324,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 76,
+  "ord": 30
  },
  {
   "id": "Unlock4Hypers",
@@ -1083,7 +1341,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 77,
+  "ord": 30
  },
  {
   "id": "Unlock5Hypers",
@@ -1097,7 +1358,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 78,
+  "ord": 30
  },
  {
   "id": "DefeatBossChapel2",
@@ -1110,7 +1374,10 @@
   "mode": "누적",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "kill",
+  "gi": 79,
+  "ord": 10
  },
  {
   "id": "ReachLV99WithPugnala",
@@ -1123,7 +1390,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 80,
+  "ord": 30
  },
  {
   "id": "ReachLV99WithDommario",
@@ -1136,7 +1406,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 81,
+  "ord": 30
  },
  {
   "id": "ReachLV99WithPorta",
@@ -1149,7 +1422,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 82,
+  "ord": 30
  },
  {
   "id": "ReachLV99WithKroci",
@@ -1162,7 +1438,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 83,
+  "ord": 30
  },
  {
   "id": "ReachLV99WithGiovanna",
@@ -1175,7 +1454,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 84,
+  "ord": 30
  },
  {
   "id": "FindRandomazzoT06",
@@ -1188,7 +1470,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 85,
+  "ord": 10
  },
  {
   "id": "ReachLV99WithGennaro",
@@ -1201,7 +1486,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 86,
+  "ord": 30
  },
  {
   "id": "Survive31MinutesInForest",
@@ -1214,7 +1502,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 87,
+  "ord": 50
  },
  {
   "id": "ReachLV99WithClerici",
@@ -1227,7 +1518,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 88,
+  "ord": 30
  },
  {
   "id": "ReachLV99WithAntonio",
@@ -1240,7 +1534,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 89,
+  "ord": 30
  },
  {
   "id": "ReachLV99WithImelda",
@@ -1253,7 +1550,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 90,
+  "ord": 30
  },
  {
   "id": "Survive31MinutesInTower",
@@ -1266,7 +1566,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 91,
+  "ord": 50
  },
  {
   "id": "ReachLV99WithChristine",
@@ -1279,7 +1582,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 92,
+  "ord": 30
  },
  {
   "id": "ReachLV99WithPasqualina",
@@ -1292,7 +1598,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 93,
+  "ord": 30
  },
  {
   "id": "Survive31MinutesInLibrary",
@@ -1305,7 +1614,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 94,
+  "ord": 50
  },
  {
   "id": "ReachLV99WithLama",
@@ -1318,7 +1630,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 95,
+  "ord": 30
  },
  {
   "id": "ReachLV99WithPoppea",
@@ -1331,7 +1646,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 96,
+  "ord": 30
  },
  {
   "id": "ReachLV99WithConcetta",
@@ -1344,7 +1662,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 97,
+  "ord": 30
  },
  {
   "id": "ReachLV99WithArca",
@@ -1357,7 +1678,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 98,
+  "ord": 30
  },
  {
   "id": "Survive31MinutesInDairyPlant",
@@ -1370,7 +1694,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 99,
+  "ord": 50
  },
  {
   "id": "ReachLV99WithPoe",
@@ -1383,7 +1710,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 100,
+  "ord": 30
  },
  {
   "id": "ReachLV100WithMortaccio",
@@ -1402,7 +1732,10 @@
    [
     "b-Defeat3000Skeletons"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 101,
+  "ord": 130
  },
  {
   "id": "ReachLV100WithCavallo",
@@ -1421,7 +1754,10 @@
    [
     "b-Defeat3000Buers"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 102,
+  "ord": 130
  },
  {
   "id": "ReachLV100WithRamba",
@@ -1440,7 +1776,10 @@
    [
     "b-Defeat3000Milk"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 103,
+  "ord": 130
  },
  {
   "id": "ReachLV100WithOsole",
@@ -1459,7 +1798,10 @@
    [
     "b-Defeat3000Hydra"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 104,
+  "ord": 130
  },
  {
   "id": "ReachLV100WithAmbrojoe",
@@ -1478,7 +1820,10 @@
    [
     "b-Defeat6000StageKillers"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 105,
+  "ord": 130
  },
  {
   "id": "Survive15MinutesInMolise",
@@ -1491,7 +1836,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 106,
+  "ord": 20
  },
  {
   "id": "Survive15MinutesInMoongolow",
@@ -1504,7 +1852,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 107,
+  "ord": 20
  },
  {
   "id": "Survive30MinutesInGreenAcres",
@@ -1517,7 +1868,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 108,
+  "ord": 40
  },
  {
   "id": "Survive30MinutesInBoneZone",
@@ -1530,7 +1884,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 109,
+  "ord": 40
  },
  {
   "id": "Survive15MinutesInBossRash",
@@ -1543,7 +1900,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "survive",
+  "gi": 110,
+  "ord": 20
  },
  {
   "id": "See50Items",
@@ -1556,7 +1916,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 111,
+  "ord": 30
  },
  {
   "id": "See60Items",
@@ -1569,7 +1932,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 112,
+  "ord": 40
  },
  {
   "id": "See70Items",
@@ -1582,7 +1948,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 113,
+  "ord": 40
  },
  {
   "id": "See80Items",
@@ -1595,7 +1964,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 114,
+  "ord": 50
  },
  {
   "id": "See90Items",
@@ -1608,7 +1980,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 115,
+  "ord": 60
  },
  {
   "id": "See100Items",
@@ -1621,7 +1996,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 116,
+  "ord": 60
  },
  {
   "id": "CompleteCollection",
@@ -1634,7 +2012,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 117,
+  "ord": 30
  },
  {
   "id": "GreatestJubilee",
@@ -1647,7 +2028,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "secret",
+  "gi": 118,
+  "ord": 60
  },
  {
   "id": "ObtainTheInfiniteCorridor",
@@ -1664,7 +2048,13 @@
    [
     "b-FindYellowSign"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 119,
+  "grp": "CORRIDOR",
+  "grpn": "무한 회랑",
+  "step": 1,
+  "ord": 111.119
  },
  {
   "id": "ObtainTheCrimsonShroud",
@@ -1681,7 +2071,13 @@
    [
     "b-FindYellowSign"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 120,
+  "grp": "SHROUD",
+  "grpn": "진홍의 망토",
+  "step": 1,
+  "ord": 111.12
  },
  {
   "id": "EvolveWhip",
@@ -1694,7 +2090,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 121,
+  "grp": "WHIP",
+  "grpn": "채찍",
+  "step": 1,
+  "ord": 11.121
  },
  {
   "id": "EvolveMagicWand",
@@ -1707,7 +2109,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 122,
+  "grp": "MAGIC_MISSILE",
+  "grpn": "마법 지팡이",
+  "step": 1,
+  "ord": 11.122
  },
  {
   "id": "EvolveKnife",
@@ -1720,7 +2128,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 123,
+  "grp": "KNIFE",
+  "grpn": "단검",
+  "step": 1,
+  "ord": 11.123
  },
  {
   "id": "EvolveAxe",
@@ -1733,7 +2147,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 124,
+  "grp": "AXE",
+  "grpn": "도끼",
+  "step": 1,
+  "ord": 11.124
  },
  {
   "id": "EvolveSantaWater",
@@ -1746,7 +2166,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 125,
+  "grp": "HOLYWATER",
+  "grpn": "성수",
+  "step": 1,
+  "ord": 11.125
  },
  {
   "id": "EvolveLightning",
@@ -1759,7 +2185,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 126,
+  "grp": "LIGHTNING",
+  "grpn": "번개 반지",
+  "step": 1,
+  "ord": 11.126
  },
  {
   "id": "EvolveKingBible",
@@ -1772,7 +2204,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 127,
+  "grp": "HOLYBOOK",
+  "grpn": "성경",
+  "step": 1,
+  "ord": 11.127
  },
  {
   "id": "EvolveCross",
@@ -1785,7 +2223,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 128,
+  "grp": "CROSS",
+  "grpn": "십자가",
+  "step": 1,
+  "ord": 11.128
  },
  {
   "id": "EvolveFireWand",
@@ -1798,7 +2242,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 129,
+  "grp": "FIREBALL",
+  "grpn": "불의 지팡이",
+  "step": 1,
+  "ord": 11.129
  },
  {
   "id": "EvolveGarlic",
@@ -1811,7 +2261,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 130,
+  "grp": "GARLIC",
+  "grpn": "마늘",
+  "step": 1,
+  "ord": 11.13
  },
  {
   "id": "EvolveRunetracer",
@@ -1824,7 +2280,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 131,
+  "grp": "DIAMOND",
+  "grpn": "룬 트레이서",
+  "step": 1,
+  "ord": 11.131
  },
  {
   "id": "EvolvePentagram",
@@ -1837,7 +2299,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 132,
+  "grp": "PENTAGRAM",
+  "grpn": "오망성",
+  "step": 1,
+  "ord": 11.132
  },
  {
   "id": "UniteBirds",
@@ -1850,7 +2318,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 133,
+  "grp": "SILF",
+  "grpn": "하얀 비둘기",
+  "step": 1,
+  "ord": 11.133
  },
  {
   "id": "EvolveGuns",
@@ -1863,7 +2337,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 134,
+  "grp": "GUNS",
+  "grpn": "피에라 데 투펠로",
+  "step": 1,
+  "ord": 11.134
  },
  {
   "id": "EvolveGatti",
@@ -1876,7 +2356,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 135,
+  "grp": "GATTI",
+  "grpn": "마녀의 고양이",
+  "step": 1,
+  "ord": 11.135
  },
  {
   "id": "EvolveSongOfMana",
@@ -1889,7 +2375,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 136,
+  "grp": "SONG",
+  "grpn": "마나의 노래",
+  "step": 1,
+  "ord": 11.136
  },
  {
   "id": "EvolveShadow",
@@ -1902,7 +2394,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 137,
+  "grp": "TRAPANO",
+  "grpn": "검은 드릴",
+  "step": 1,
+  "ord": 11.137
  },
  {
   "id": "EvolveWind",
@@ -1915,7 +2413,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 138,
+  "grp": "VENTO",
+  "grpn": "성스러운 바람",
+  "step": 1,
+  "ord": 11.138
  },
  {
   "id": "EvolveBracelet",
@@ -1928,7 +2432,13 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 139,
+  "grp": "TRIASSO3",
+  "grpn": "삼중 팔찌",
+  "step": 1,
+  "ord": 11.139
  },
  {
   "id": "EvolveAll",
@@ -1941,7 +2451,10 @@
   "mode": "한판",
   "char": [],
   "group": "본편",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 140,
+  "ord": 30
  },
  {
   "id": "ReachLV80InverseForest",
@@ -1959,7 +2472,10 @@
    [
     "b-ObtainGraciasMirror"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 141,
+  "ord": 250
  },
  {
   "id": "ReachLV80InverseLibrary",
@@ -1977,7 +2493,10 @@
    [
     "b-ObtainGraciasMirror"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 142,
+  "ord": 250
  },
  {
   "id": "ReachLV80InverseWarehouse",
@@ -1995,7 +2514,10 @@
    [
     "b-ObtainGraciasMirror"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 143,
+  "ord": 250
  },
  {
   "id": "ReachLV80InverseTower",
@@ -2013,7 +2535,10 @@
    [
     "b-ObtainGraciasMirror"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 144,
+  "ord": 250
  },
  {
   "id": "SurviveUntilTheEndOfWhiteout",
@@ -2030,7 +2555,10 @@
    [
     "b-FindManyOrologions"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 145,
+  "ord": 230
  },
  {
   "id": "Survive20minutesInLycaeum",
@@ -2047,7 +2575,10 @@
    [
     "b-FindManyVacuums"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 146,
+  "ord": 230
  },
  {
   "id": "Survive20MinutesInLaborratory",
@@ -2064,7 +2595,10 @@
    [
     "b-FindManyRosaries"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 147,
+  "ord": 230
  },
  {
   "id": "EvolveOfGaea",
@@ -2084,7 +2618,10 @@
    [
     "b-Defeat0EnemiesInCoop"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 148,
+  "ord": 330
  },
  {
   "id": "Survive20MinutesInWestwoods",
@@ -2101,7 +2638,10 @@
    [
     "b-FindManyClovers"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 149,
+  "ord": 130
  },
  {
   "id": "Survive20MinutesInSpace54",
@@ -2118,7 +2658,10 @@
    [
     "b-FindManyGoldenFinger"
    ]
-  ]
+  ],
+  "cat": "survive",
+  "gi": 150,
+  "ord": 230
  },
  {
   "id": "GetGlassFandangoToLevel7",
@@ -2135,7 +2678,13 @@
    [
     "b-FindManyOrologions"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 151,
+  "grp": "ICELANCE",
+  "grpn": "유리 판당고",
+  "step": 0,
+  "ord": 210.151
  },
  {
   "id": "GetJavelinToLevel7",
@@ -2152,7 +2701,13 @@
    [
     "b-FindManyRosaries"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 152,
+  "grp": "SANTAJAVELIN",
+  "grpn": "산타 재블린",
+  "step": 0,
+  "ord": 210.152
  },
  {
   "id": "GetMagiStonetoLevel7",
@@ -2169,7 +2724,13 @@
    [
     "b-FindManyClovers"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 153,
+  "grp": "EX_MAGISTONE1",
+  "grpn": "마기 스톤",
+  "step": 0,
+  "ord": 110.153
  },
  {
   "id": "GetPhas3rToLevel7",
@@ -2186,7 +2747,13 @@
    [
     "b-FindManyGoldenFinger"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 154,
+  "grp": "PHASER",
+  "grpn": "Phas3r",
+  "step": 0,
+  "ord": 210.154
  },
  {
   "id": "FindAnArmaDio",
@@ -2203,7 +2770,13 @@
    [
     "b-FindManyRosaries"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 155,
+  "grp": "ARMADIO",
+  "grpn": "아르마 디오",
+  "step": 1,
+  "ord": 211.155
  },
  {
   "id": "FindAParmAegis",
@@ -2220,7 +2793,10 @@
    [
     "b-FindManyChickens"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 156,
+  "ord": 210
  },
  {
   "id": "FindKaromasMana",
@@ -2237,7 +2813,10 @@
    [
     "b-FindManyClovers"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 157,
+  "ord": 110
  },
  {
   "id": "FindManyOrologions",
@@ -2255,7 +2834,10 @@
    [
     "b-FindMilkyWayMap"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 158,
+  "ord": 110
  },
  {
   "id": "FindManyVacuums",
@@ -2273,7 +2855,10 @@
    [
     "b-FindMilkyWayMap"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 159,
+  "ord": 120
  },
  {
   "id": "FindManyRosaries",
@@ -2291,7 +2876,10 @@
    [
     "b-FindMilkyWayMap"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 160,
+  "ord": 110
  },
  {
   "id": "FindManyChickens",
@@ -2309,7 +2897,10 @@
    [
     "b-FindMilkyWayMap"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 161,
+  "ord": 180
  },
  {
   "id": "FindManyClovers",
@@ -2323,7 +2914,10 @@
   "mode": "한판",
   "char": [],
   "group": "추가",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 162,
+  "ord": 10
  },
  {
   "id": "FindManyGoldenFinger",
@@ -2341,7 +2935,10 @@
    [
     "b-FindMilkyWayMap"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 163,
+  "ord": 110
  },
  {
   "id": "HitManyEnemiesWithTrain",
@@ -2359,7 +2956,10 @@
    [
     "b-FindManyRosaries"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 164,
+  "ord": 230
  },
  {
   "id": "FindAtlas",
@@ -2376,7 +2976,10 @@
    [
     "b-FindYellowSign"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 165,
+  "ord": 110
  },
  {
   "id": "FindApoplexy",
@@ -2393,7 +2996,10 @@
    [
     "b-ObtainGraciasMirror"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 166,
+  "ord": 210
  },
  {
   "id": "FindAntidote",
@@ -2410,7 +3016,10 @@
    [
     "b-FindMilkyWayMap"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 167,
+  "ord": 110
  },
  {
   "id": "BuyGreenEyesVizard",
@@ -2427,7 +3036,10 @@
    [
     "b-FindManyClovers"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 168,
+  "ord": 110
  },
  {
   "id": "FindTrisection",
@@ -2444,7 +3056,10 @@
    [
     "b-ObtainGraciasMirror"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 169,
+  "ord": 210
  },
  {
   "id": "FindBraveStory",
@@ -2457,7 +3072,10 @@
   "mode": "한판",
   "char": [],
   "group": "추가",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 170,
+  "ord": 10
  },
  {
   "id": "FindChickenClock",
@@ -2470,7 +3088,10 @@
   "mode": "한판",
   "char": [],
   "group": "추가",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 171,
+  "ord": 10
  },
  {
   "id": "FindMasquerade",
@@ -2487,7 +3108,10 @@
    [
     "b-FindManyClovers"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 172,
+  "ord": 110
  },
  {
   "id": "FindRecycle",
@@ -2500,7 +3124,10 @@
   "mode": "한판",
   "char": [],
   "group": "추가",
-  "need": []
+  "need": [],
+  "cat": "find",
+  "gi": 173,
+  "ord": 10
  },
  {
   "id": "FindChaosMalachite",
@@ -2517,7 +3144,10 @@
    [
     "b-ObtainGraciasMirror"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 174,
+  "ord": 210
  },
  {
   "id": "FindChaosRosalia",
@@ -2534,7 +3164,10 @@
    [
     "b-ObtainGraciasMirror"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 175,
+  "ord": 210
  },
  {
   "id": "FindChaosLazulia",
@@ -2551,7 +3184,10 @@
    [
     "b-ObtainGraciasMirror"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 176,
+  "ord": 210
  },
  {
   "id": "FindChaosAltemanna",
@@ -2568,7 +3204,10 @@
    [
     "b-ObtainGraciasMirror"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 177,
+  "ord": 210
  },
  {
   "id": "FindMap_AstralStair",
@@ -2585,7 +3224,10 @@
    [
     "b-ReachLV80InverseLibrary"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 178,
+  "ord": 310
  },
  {
   "id": "Defeat0EnemiesInCoop",
@@ -2602,7 +3244,10 @@
    [
     "b-FindManyChickens"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 179,
+  "ord": 230
  },
  {
   "id": "DefeatManyBats",
@@ -2615,7 +3260,10 @@
   "mode": "한판",
   "char": [],
   "group": "추가",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 180,
+  "ord": 30
  },
  {
   "id": "DefeatShootingEnemies",
@@ -2628,7 +3276,10 @@
   "mode": "한판",
   "char": [],
   "group": "추가",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 181,
+  "ord": 30
  },
  {
   "id": "DefeatBatDragons",
@@ -2645,7 +3296,10 @@
    [
     "b-BuyGreenEyesVizard"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 182,
+  "ord": 230
  },
  {
   "id": "Banish10Items",
@@ -2658,7 +3312,10 @@
   "mode": "한판",
   "char": [],
   "group": "추가",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 183,
+  "ord": 30
  },
  {
   "id": "Banish20Items",
@@ -2671,7 +3328,10 @@
   "mode": "한판",
   "char": [],
   "group": "추가",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 184,
+  "ord": 30
  },
  {
   "id": "Banish40Items",
@@ -2684,7 +3344,10 @@
   "mode": "한판",
   "char": [],
   "group": "추가",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 185,
+  "ord": 30
  },
  {
   "id": "Banish80Items",
@@ -2697,7 +3360,10 @@
   "mode": "한판",
   "char": [],
   "group": "추가",
-  "need": []
+  "need": [],
+  "cat": "special",
+  "gi": 186,
+  "ord": 30
  },
  {
   "id": "EvolveBattilia",
@@ -2714,7 +3380,13 @@
    [
     "b-DefeatManyBats"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 187,
+  "grp": "BATTILIA",
+  "grpn": "파코 바틸리아",
+  "step": 1,
+  "ord": 111.187
  },
  {
   "id": "EvolveAmmoAppalate",
@@ -2727,7 +3399,13 @@
   "mode": "한판",
   "char": [],
   "group": "추가",
-  "need": []
+  "need": [],
+  "cat": "skill",
+  "gi": 188,
+  "grp": "EX_AMMO1",
+  "grpn": "탄약 아팔레트",
+  "step": 1,
+  "ord": 11.188
  },
  {
   "id": "EvolveUnearthlyBolt",
@@ -2747,7 +3425,13 @@
    [
     "b-DefeatBatDragons"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 189,
+  "grp": "EX_FLIK1",
+  "grpn": "저세상 번개",
+  "step": 1,
+  "ord": 311.189
  },
  {
   "id": "EvolveGlassFandango",
@@ -2764,7 +3448,13 @@
    [
     "b-FindManyOrologions"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 190,
+  "grp": "ICELANCE",
+  "grpn": "유리 판당고",
+  "step": 1,
+  "ord": 211.19
  },
  {
   "id": "EvolvePenshin",
@@ -2781,7 +3471,10 @@
    [
     "b-FindManyVacuums"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 191,
+  "ord": 230
  },
  {
   "id": "EvolveJavelin",
@@ -2798,7 +3491,13 @@
    [
     "b-FindManyRosaries"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 192,
+  "grp": "SANTAJAVELIN",
+  "grpn": "산타 재블린",
+  "step": 1,
+  "ord": 211.192
  },
  {
   "id": "EvolveOfGaea_Fix",
@@ -2815,7 +3514,13 @@
    [
     "b-FindManyChickens"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 193,
+  "grp": "EX_GAEA1",
+  "grpn": "가에야의 시선",
+  "step": 1,
+  "ord": 211.193
  },
  {
   "id": "EvolveMagiStone",
@@ -2832,7 +3537,13 @@
    [
     "b-FindManyClovers"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 194,
+  "grp": "EX_MAGISTONE1",
+  "grpn": "마기 스톤",
+  "step": 1,
+  "ord": 111.194
  },
  {
   "id": "EvolvePhas3r",
@@ -2849,7 +3560,13 @@
    [
     "b-FindManyGoldenFinger"
    ]
-  ]
+  ],
+  "cat": "skill",
+  "gi": 195,
+  "grp": "PHASER",
+  "grpn": "Phas3r",
+  "step": 1,
+  "ord": 211.195
  },
  {
   "id": "CastForbiddenBox",
@@ -2866,7 +3583,10 @@
    [
     "b-FindForbiddenScroll"
    ]
-  ]
+  ],
+  "cat": "secret",
+  "gi": 196,
+  "ord": 260
  },
  {
   "id": "ObtainDarkasso",
@@ -2883,7 +3603,10 @@
    [
     "b-CastForbiddenBox"
    ]
-  ]
+  ],
+  "cat": "secret",
+  "gi": 197,
+  "ord": 370
  },
  {
   "id": "Dark_00Troubler",
@@ -2905,7 +3628,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 198,
+  "ord": 430
  },
  {
   "id": "Dark_01SpaceDude",
@@ -2927,7 +3653,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 199,
+  "ord": 430
  },
  {
   "id": "Dark_03Gazebo",
@@ -2949,7 +3678,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 200,
+  "ord": 430
  },
  {
   "id": "Dark_05Appunta",
@@ -2971,7 +3703,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 201,
+  "ord": 430
  },
  {
   "id": "Dark_06Darkasso",
@@ -2988,7 +3723,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 202,
+  "ord": 410
  },
  {
   "id": "Dark_08ParaKooleo",
@@ -3010,7 +3748,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 203,
+  "ord": 430
  },
  {
   "id": "Dark_10Santa",
@@ -3032,7 +3773,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 204,
+  "ord": 430
  },
  {
   "id": "Dark_12Shemoon",
@@ -3054,7 +3798,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 205,
+  "ord": 430
  },
  {
   "id": "Dark_13Chula",
@@ -3076,7 +3823,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 206,
+  "ord": 430
  },
  {
   "id": "Dark_18Challenge",
@@ -3093,7 +3843,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 207,
+  "ord": 430
  },
  {
   "id": "Dark_19Challenge",
@@ -3110,7 +3863,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 208,
+  "ord": 430
  },
  {
   "id": "Dark_21Robert",
@@ -3132,7 +3888,10 @@
    [
     "b-ObtainDarkasso"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 209,
+  "ord": 430
  },
  {
   "id": "BuySurvarocchi",
@@ -3152,7 +3911,10 @@
    [
     "b-FindMilkyWayMap"
    ]
-  ]
+  ],
+  "cat": "find",
+  "gi": 210,
+  "ord": 210
  },
  {
   "id": "CompleteAdv_WorldOfLightAndDark",
@@ -3171,7 +3933,10 @@
    [
     "b-FindAtlas"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 211,
+  "ord": 230
  },
  {
   "id": "CompleteAdv_AGarlicParadise",
@@ -3193,7 +3958,10 @@
    [
     "b-FindAtlas"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 212,
+  "ord": 230
  },
  {
   "id": "CompleteAdv_ToEndAnIceAge",
@@ -3215,6 +3983,9 @@
    [
     "b-FindAtlas"
    ]
-  ]
+  ],
+  "cat": "special",
+  "gi": 213,
+  "ord": 330
  }
 ]

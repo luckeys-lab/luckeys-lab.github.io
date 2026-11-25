@@ -117,6 +117,13 @@
     apply();
     document.addEventListener('llchk',function(e){if(e.detail!=='bar'&&e.detail!=='save')return;try{S=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(x){}
       rows.forEach(function(rw){rw.querySelector('summary input').checked=!!S[rw.dataset.id]});apply()});
+    // 🧭 추천 순서 ↔ 📜 게임 순서 (본편 줄만 · 번호는 게임 순서 그대로)
+    var ob=document.getElementById('ordBtn');
+    if(ob){var om='rec';try{om=localStorage.getItem('ll_order')||'rec'}catch(e){}
+      var reord=function(){[].forEach.call(list.querySelectorAll('.sec'),function(sec){var rs=[].slice.call(sec.querySelectorAll(':scope > .ul[data-gi]'));if(!rs.length)return;
+          rs.sort(function(a,b){return om==='game'?(a.dataset.gi-b.dataset.gi):(a.dataset.ord-b.dataset.ord)});var anchor=rs[0].previousElementSibling;rs.forEach(function(r){sec.appendChild(r)})});
+        ob.textContent=om==='game'?'📜 게임 순서':'🧭 추천 순서';ob.classList.toggle('on',om==='rec')};
+      ob.addEventListener('click',function(){om=om==='game'?'rec':'game';try{localStorage.setItem('ll_order',om)}catch(e){}reord()});reord()}
     function goHash(){var h=location.hash.replace('#','');if(!h)return;var t=document.querySelector('[data-id="'+h+'"]');if(!t)return;
       if(t.classList.contains('hide')){showL=true;fT='';fS='';only=false;apply()}t.open=true;var sc=t.closest('.sec');if(sc)sc.open=true;t.scrollIntoView({block:'center'})}
     goHash();window.addEventListener('hashchange',goHash);

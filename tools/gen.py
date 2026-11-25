@@ -123,8 +123,11 @@ ZONE={1:'1 미야코시',2:'2 마녀 왕국 풀크라',3:'3 그렐론',4:'4 아�
 ICON={'성장·진화':'📈','성장':'📈','진화':'✨','찾아서진화':'🔍','사냥':'⚔️','발견':'⚰️','특수':'🎯','기타':'📦'}
 cnt={}
 for u in U['unlocks']: cnt[u['type']]=cnt.get(u['type'],0)+1
-MERGE={'성장':'성장·진화','진화':'성장·진화'}   # 11/26 제이: 성장과 진화 카테고리 합치기
-def ty(t): return MERGE.get(t) or (t if cnt.get(t,0)>=3 else '기타')
+# 플레이 패턴 카테고리 (11/26 제이: 한 판에 같이 하는 것끼리) · 본편 cat = tools/proto/basecat.py
+CATL={'skill':'스킬','survive':'버티기','find':'찾기','kill':'잡기','special':'특수','secret':'비밀'}
+CATI={'스킬':'🗡️','버티기':'⏱','찾기':'⚰️','잡기':'👹','특수':'🎯','비밀':'🔒'}
+EDMAP={'성장':'스킬','진화':'스킬','찾아서진화':'스킬','사냥':'잡기','발견':'찾기'}
+def ty(t): return EDMAP.get(t,'특수')
 rows=[]
 for u in U['unlocks']:
     t=ty(u['type']);scope='전용' if u['char'] else '공통'
@@ -139,7 +142,7 @@ for u in U['unlocks']:
     q=f'<div class="fix">게임 원문: {esc(raw)}</div>' if fixed!=raw else ''
     title=fixed
     rows.append(f'''<details class="ul" data-id="ed-{u['n']}" data-type="{t}" data-scope="{scope}"{need_attr(u)}>
-<summary><input type="checkbox" aria-label="해금 체크"><span class="n">💎{u['n']}</span><span class="tt">{hl(esc(title))}</span><span class="k">{ICON.get(t,'')} {t}</span></summary>
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">💎{u['n']}</span><span class="tt">{hl(esc(title))}</span><span class="k">{CATI.get(t,'')} {t}</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → {link_names(u['reward'])}</p>{q}<p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p>{guide(u)}{need_note(u,'/vs/unlocks.html')}</div></details>''')
 types=sorted({ty(u['type']) for u in U['unlocks']},key=lambda t:(t=='기타',-sum(1 for u in U['unlocks'] if ty(u['type'])==t)))
 fb=''.join(f'<button type="button" data-f="{t}">{ICON.get(t,"")} {t} {sum(1 for u in U["unlocks"] if ty(u["type"])==t)}</button>' for t in types)
@@ -246,20 +249,26 @@ BU=json.loads((D/'base_unlocks.json').read_text(encoding='utf-8'))
 ICON2={'성장·진화':'📈','발견':'⚰️','특수':'🎯','레벨':'🆙','생존':'⏱','성장':'📈','처치 수':'💀','비밀':'🔒','진화':'✨','기타':'📦'}
 bc={}
 for u in BU: bc[u['type']]=bc.get(u['type'],0)+1
-bty=lambda t:MERGE.get(t) or (t if bc.get(t,0)>=3 else '기타')
+bty=lambda t:t
 brows=[]
 NMAIN=sum(1 for u in BU if u['group']!='추가')
 for i,u in enumerate(BU,1):
-    t=bty(u['type']);scope='전용' if u['char'] else '공통'
+    t=CATL[u['cat']];scope='전용' if u['char'] else '공통'
+    gl=''
+    if u.get('grp'):
+        mates=[x for x in BU if x.get('grp')==u['grp']]
+        ev=items.get(u['grp'],{}).get('e') or ''
+        gl='<p class="guide">🔗 한 판에 같이: '+' · '.join(f'<a href="#b-{x["id"]}">#{x["gi"]}</a> {esc(x["text_fix"])}' for x in sorted(mates,key=lambda x:x['ord']))+'</p>'+(f'<p class="guide">✨ 진화: {link_names(ev)}</p>' if ev else '')
     q=(f'<div class="fix">게임 원문: {esc(u["text"])}</div>' if u['text_fix']!=u['text'] else '')
     rw=' · '.join(link_names(r) for r in u['reward'])
     badge=('<span class="bd bd-own">전용 · '+' · '.join(pop(c) for c in u['char'])+'</span>') if u['char'] else '<span class="bd">공통</span>'
     mode='<span class="bd">누적</span> ' if u['mode']=='누적' else ''
     title=u['text_fix']
     extra=''
-    brows.append(f'''<details class="ul" data-id="b-{u['id']}" data-type="{t}" data-scope="{scope}"{need_attr(u)}>
-<summary><input type="checkbox" aria-label="해금 체크"><span class="n">{i}</span><span class="tt">{esc(title)}{extra}</span><span class="k">{ICON2.get(t,'')} {t}</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → {rw}</p>{q}<p>{mode}{badge}</p>{need_note(u,'/vs/unlocks.html')}</div></details>''')
+    brows.append((u['group']!='추가',u['ord'],f'''<details class="ul" data-id="b-{u['id']}" data-type="{t}" data-scope="{scope}" data-gi="{i}" data-ord="{u['ord']}"{need_attr(u)}>
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">{i}</span><span class="tt">{esc(title)}{extra}</span><span class="k">{CATI.get(t,'')} {t}</span></summary>
+<div class="bdy"><p class="rw">🎁 보상 → {rw}</p>{q}<p>{mode}{badge}</p>{gl}{need_note(u,'/vs/unlocks.html')}</div></details>'''))
+_bm=[h for m,o,h in sorted([x for x in brows if x[0]],key=lambda x:x[1])];_be=[h for m,o,h in sorted([x for x in brows if not x[0]],key=lambda x:x[1])];brows=_bm+_be
 btypes=sorted({bty(u['type']) for u in BU},key=lambda t:(t=='기타',-sum(1 for u in BU if bty(u['type'])==t)))
 bfb=''.join(f'<button type="button" data-f="{t}">{ICON2.get(t,"")} {t} {sum(1 for u in BU if bty(u["type"])==t)}</button>' for t in btypes)
 (R/'_src/vs/base').mkdir(parents=True,exist_ok=True)
@@ -274,17 +283,17 @@ for u in U['unlocks']:
 ALLT={}
 for r in brows+rows:
     t=re.search(r'data-type="([^"]+)"',r).group(1);ALLT[t]=ALLT.get(t,0)+1
-ICA={**ICON,**ICON2}
+ICA=CATI
 afb=''.join(f'<button type="button" data-f="{t}">{ICA.get(t,"")} {t} {n}</button>' for t,n in sorted(ALLT.items(),key=lambda x:(x[0]=='기타',-x[1])))
 (R/'_src/vs/unlocks.html').write_text(f'''title: 해금 {len(BU)+len(U["unlocks"])}개 (본편 + DLC)
 desc: 뱀파이어 서바이벌 해금 조건 전체. 게임처럼 1.0 버전 · 추가 · DLC 칸으로 나눔 · 먼저 필요한 해금을 체크해야 다음 해금이 보임 · 게임 데이터 기준.
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 해금</div>
 <h1>🔓 해금</h1>
-<p class="sub">게임 해금 화면처럼 칸으로 나눴습니다 · 체크하면 다음 해금이 나타납니다 · 보상 이름을 누르면 설명</p>
+<p class="sub">게임 해금 화면처럼 칸으로 나눴습니다 · 기본은 <b>열리는 순서(추천 순서)</b> · 같은 스킬의 레벨·진화는 붙여 놨습니다(🔗 한 판에 같이) · 번호는 게임 순서</p>
 <div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div>
 <div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button>{afb}</div>
 <div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
-<label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label></div>
+<label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label> <button type="button" id="ordBtn" class="ordbtn">🧭 추천 순서</button></div>
 <div id="ulist" data-group="all" data-lock="1">
 <details class="sec" open id="sec-base"><summary>1.0 버전 <span class="sc"></span></summary>
 {chr(10).join(brows[:NMAIN])}
