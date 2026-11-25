@@ -48,6 +48,8 @@
     if(it.f)h+='<div class="ev">⬅ 재료: '+it.f.map(esc).join(' / ')+'</div>';
     if(it.u)h+='<div class="ev">🔗 이걸로 진화: '+it.u.map(esc).join(' · ')+'</div>';
     if(it.sk&&it.sk.length)h+='<div class="ev">👕 스킨: '+it.sk.map(esc).join(' · ')+'</div>';
+    if(it.x)it.x.forEach(function(t){h+='<div class="ev">'+esc(t)+'</div>'});
+    if(it.ul&&it.ul.length)h+='<div class="uls">'+it.ul.map(function(u){return '<a href="'+u[1]+'">🔓 '+esc(u[0])+'</a>'}).join('')+'</div>';
     if(it.l)h+='<a class="go" href="'+it.l+'">자세히 →</a>';
     return h}
   function show(el,key){load().then(function(I){var it=I[key];if(!it)return;box.innerHTML=card(it);box.style.display='block';
@@ -92,6 +94,14 @@
       if(t.classList.contains('hide')){showL=true;fT='';fS='';only=false;apply()}t.open=true;var sc=t.closest('.sec');if(sc)sc.open=true;t.scrollIntoView({block:'center'})}
     goHash();window.addEventListener('hashchange',goHash);
   }
+  // 지도 크게 보기 (⛶ 또는 빈 곳 탭)
+  [].forEach.call(document.querySelectorAll('.map'),function(m){
+    function tog(on){m.classList.toggle('full',on);document.body.classList.toggle('noscroll',on)}
+    m.querySelector('.mfull').addEventListener('click',function(e){e.stopPropagation();tog(!m.classList.contains('full'))});
+    m.addEventListener('click',function(e){if(e.target.closest('.pin'))return;if(m.classList.contains('full')&&!e.target.closest('.mi'))tog(false);else if(!m.classList.contains('full')&&e.target.tagName==='IMG')tog(true)});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')tog(false)});
+    m.querySelectorAll('a.pin').forEach(function(a){a.addEventListener('click',function(){tog(false)})});
+  });
   // 검색
   var q=document.getElementById('sq'),res=document.getElementById('sres');
   var PAGES=[['본편 해금 213개','/vs/base/unlocks.html'],['디오라마 캐릭터','/vs/ed/chars.html'],['에메랄드 디오라마 해금 41개','/vs/ed/'],['에메랄드 디오라마 지도','/vs/ed/map.html'],['본편 진화 조합','/vs/evo.html'],['뱀파이어 서바이벌','/vs/'],['전체 글','/all.html']];

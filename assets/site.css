@@ -175,3 +175,18 @@ details.sec>summary .sc{margin-left:auto;font-weight:700;color:var(--sub)}
 .pin img{width:22px;height:22px;image-rendering:pixelated}.pin b{font-size:10px;background:var(--navy);color:var(--gold);border-radius:6px;padding:1px 3px}
 .k-portal{background:var(--gold);color:var(--navy);border-radius:50%;min-width:22px;height:22px;justify-content:center;font-weight:800;font-size:13px}
 .pins{font-size:13.5px;padding-left:18px;margin:10px 0}.back{font-size:12.5px;text-align:right}
+/* 지도 v2: 크게 · 전체 화면 · 이름표 · 강조 */
+.map{max-width:800px;position:relative}.map .mi{position:relative}
+.map .mfull{position:absolute;right:6px;top:6px;z-index:5;border:0;border-radius:8px;background:rgba(0,0,0,.55);color:#fff;font-size:16px;width:32px;height:32px;cursor:pointer}
+.map.full{position:fixed;inset:0;z-index:80;max-width:none;margin:0;background:rgba(5,6,15,.96);display:flex;align-items:center;justify-content:center}
+.map.full .mi{width:min(100vw,calc(100vh*256/280))}.map.full img{border-radius:0}
+body.noscroll{overflow:hidden}
+.pin{z-index:1}.k-boss{z-index:2}.k-coffin{z-index:3;font-size:20px}
+.pin .lbl{position:absolute;left:50%;top:100%;transform:translateX(-50%);white-space:nowrap;font-style:normal;font-weight:800;font-size:11px;line-height:1.1;padding:0 1px;
+ text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0 0 3px #000}
+.map.full .pin .lbl{font-size:13px}
+.k-boss .lbl{color:#ff6b6b}.k-coffin .lbl{color:#ffd34d}
+b.hb{color:#e03b3b}b.hc{color:#3a7bd5}b.hf{color:var(--gold2)}
+@media (prefers-color-scheme:dark){b.hb{color:#ff7b7b}b.hc{color:#7fb0ff}b.hf{color:var(--gold)}}
+.coffins{background:var(--soft);border:1px solid var(--gold);border-radius:12px;padding:10px 14px;margin:6px 0 14px}.coffins h2{font-size:16px;margin:0 0 4px}.coffins ul{margin:0;padding-left:18px;font-size:14px}
+#popbox .uls a{display:block;font-size:12.5px;margin-top:4px;text-decoration:none}

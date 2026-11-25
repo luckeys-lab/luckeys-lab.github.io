@@ -1,0 +1,72 @@
+{
+ "EME_GATEBOSS_DRAGON": {
+  "ko": "어스 드래곤",
+  "en": "Earth Dragon",
+  "d": "원소 친화력뿐만 아니라 원소를 보면 자신을 더럽힌다고 해서 붙여진 이름입니다. 비늘 한 개의 무게가 큰 바위와 맞먹기 때문에 털갈이 시즌에는 무서운 것은 말할 것도 없고, 날아다니는 능력도 상당히 당황스럽습니다. \\n\\n브라이트홈 전쟁의 여파로 적어도 한 명의 어스 드래곤은 활공 스파이크 기술을 사용하여 아름다운 꽃과 작물을 더 효과적으로 심는 평화로운 정원 가꾸기에 뛰어들었습니다.  \\n",
+  "d_en": "Named not just for their elemental affinity, but because seeing one makes you soil yourself. A single scale is equal in weight to a large boulder, which makes its ability to fly quite baffling, not to mention terrifying during molting season. \\n\\nIn the aftermath of the War at Brighthome at least one Earth Dragon has taken to peaceful gardening, using its Gliding Spikes technique to more effectively plant rows of beautiful flowers and crops.  \\n",
+  "hp": 18,
+  "power": 5,
+  "speed": 140,
+  "hpxlv": true
+ },
+ "EME_GATEBOSS_FINALEMPEROR": {
+  "ko": "사악한 문의 정령",
+  "en": "Malevolent Door Spirit",
+  "d": "때로는 잘못된 선택 몇 번 만으로도 지역의 마법 군주가 소름 끼치는 괴수로 변신하기에는 충분합니다. 그런 괴물들은 ‘악마의 역습’이나 흉측한 발톱질로 어떤 담론이든 산산조각낼 수 있습니다. 왕국의 정치에 적극적으로 참여하면 이런 영혼들이 위협적인 태도로 당신과 가장 가까운 초차원 문을 가로막는 것을 쉽게 방지할 수 있습니다.",
+  "d_en": "Sometimes a simple string of bad decisions is all it takes for your local magical ruler to transform into one of these blood-curdling beasts, capable of interrupting any discourse with a Demonic Counter or a rude swipe of its monstrous claws. Active participation in the politics of your realm is the easiest way to prevent these spirits from menacingly blocking access to your nearest extra-dimensional door. ",
+  "hp": 50,
+  "power": 20,
+  "speed": 120,
+  "hpxlv": false
+ },
+ "EME_GATEBOSS_IRONMAIDEN": {
+  "ko": "아이언 메이든",
+  "en": "Iron Maiden",
+  "d": "이 천사에 버금가는 영혼은  악의적인 생각이 실체화된 존재로 여겨지며, 빙결 블래스터로 다른 사람을 구속하기 위해 태어났습니다. 요미의 음산한 탑들 사이로 가끔 아이언 메이든들이 모여드는데, 그 중 하나는 그렐론에서 최종 황제의 힘을 봉인한 것처럼 보였으나, 아마도 그냥 심술이 나서 그런 것 같습니다. \\n\\n결국 사람들 대부분이 품은 불길하고 사악한 생각은 어째서인지 거대한 말과 천사 사이의 어떤 존재로 형상화됩니다. 찬란하게 흩날리는 머리칼과 공중에 떠오르는 날개를 지닌 채로 말이죠. 하지만 왜 그런지는 저도 모르겠어요. 저는 심리학자도 신학자도 아니거든요. \\n",
+  "d_en": "These quasi-angelic spirits are thought to be manifestations of maleficent thoughts, born to constrain others with their Freezing Blaster. Iron Maidens coalesce occasionally amongst the dour towers of Yomi, though one appeared to seal away the power of the Final Emperor in Grelon, probably out of spite. \\n\\nAs it turns out, most folk’s nasty notions take on the physical form of a gigantic horse-angel-thing with gorgeous flowing hair and a set of floating wings, but I’m not a psychologist or a theologist so I couldn’t tell you what that means. \\n",
+  "hp": 70,
+  "power": 15,
+  "speed": 120,
+  "hpxlv": false
+ },
+ "EME_GATEBOSS_LIVINGANGUISH": {
+  "ko": "살아있는 고뇌",
+  "en": "Living Anguish",
+  "d": "콘스탄틴, 이게 숙명인가요? 아니면 그냥 운명일까요? 저 너머에는 알 수 없지만 결합된 세계를 위협할 수밖에 없는 존재가 있습니다. 금지된 가사를 기억하고, 자신의 목소리를 찾아서 최후의 노래와 춤을 보여주세요.",
+  "d_en": "Constantine, is this fate? Or just destiny? What lies Beyond, unknowable, but forced to threaten the Conjoined Worlds. Remember the forbidden lyrics, find your voice, give us one last song and dance. ",
+  "hp": 128,
+  "power": 30,
+  "speed": 160,
+  "hpxlv": false
+ },
+ "EME_GATEBOSS_SPECTER": {
+  "ko": "이와나가 히메의 유령",
+  "en": "Specter of Iwanaga-hime",
+  "d": "델타 기지의 과학자들은 이 불가사의한 유령이 속도 제한을 전혀 지키지 않는다는 점은 물론, 가시 돋힌 바퀴가 단순한 장식이 아니라는 증거도 차고 넘치게 발견했습니다. 특히 파괴적인 엑셀 턴과 함께 사용할 때 더욱 가공할 무기가 되는 것입니다. 빠르고, 불사신처럼 보이며, 적에게 폭발하는 머리를 투척하는 것을 좋아하는 이와나가 히메의 유령은 브라이트홈의 혼돈의 세력 중에서도 상위권에 듭니다. 부하들은 속도를 낼 때면 종종 명령을 잘못 알아듣기도 하지만, 이렇게 되면 작전은 확실히 혼란 그 자체가 되어버리고 말죠.",
+  "d_en": "Delta Base boffins have found no evidence of the inscrutable Specters obeying any form of speed limit, and plenty of evidence that those spiky wheels aren’t just for show, especially when use in conjunction with a devastating Axel Turn. Fast, apparently immortal, and a big fan of throwing exploding heads at its enemies, the Specter of Iwanaga-hime ranks highly amongst the forces of Chaos in Brighthome. Its subordinates often mishear its orders as it speeds around, but that just ensures truly chaotic operations. ",
+  "hp": 70,
+  "power": 10,
+  "speed": 200,
+  "hpxlv": false
+ },
+ "EME_GATEBOSS_SPIRITBEAST": {
+  "ko": "신성한 나무의 정령",
+  "en": "Divine Wood Spirit",
+  "d": "나무의 정령은 신성한 존재로 알려져 있습니다. 나무는 영혼의 대상이며, 신성한 것은 이러한 영혼을 나타내는 특성입니다. 지옥의 부시 스푸키와 혼동하지 마세요. 나무에 있는지, 영혼인지, 신성한지 스스로에게 물어보세요. 세 가지 질문에 모두 \\\"예\\\"라고 답하면 신성한 나무 영혼일 가능성이 높습니다. \\n\\n신령의 눈부신 광채는 에메랄드 꿈을 통해 많은 모험가에게 종말을 고해야 하지만, 다행히도 그들은 거의 패배한 먹이를 먹는 것보다 날아다니며 비명을 지르는 데 더 관심이 있습니다. \\n",
+  "d_en": "Spirits of the wood known for their divinity. The wood is what they are spirits of, and divine is the trait by which these spirits are known. Not to be confused with Infernal Bush Spookies. Ask yourself if it is in a wood, is a spirit, and is divine - if the answer to all three is “yes” then it’s probably a Divine Wood Spirit. \\n\\nThe stunning Brilliance of the Divine Spirit should spell the end for many adventurers through the Emerald Dream, but fortunately they’re more interested in flying about and screaming than they are with eating any nearly-defeated prey. \\n",
+  "hp": 18,
+  "power": 10,
+  "speed": 140,
+  "hpxlv": true
+ },
+ "EME_SUSPICIOUS_OGRE": {
+  "ko": "",
+  "en": "",
+  "d": "",
+  "d_en": "",
+  "hp": 40,
+  "power": 30,
+  "speed": 120,
+  "hpxlv": true
+ }
+}

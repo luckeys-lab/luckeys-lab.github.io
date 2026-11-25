@@ -44,6 +44,17 @@ def need_note(u,here):
         return f'<a href="{href}">#{n}</a> {esc(" · ".join(rw))}'
     return '<p class="need">🔒 먼저: '+' 그리고 '.join(' 또는 '.join(one(k) for k in g) for g in u['need'])+'</p>'
 
+
+# 이름 강조: 보스(빨강) · 캐릭터(파랑) · 관(금색)
+BOSSN=['스피릿 비스트','어스 드래곤','최종 황제의 악마 형태','최종 황제','아이언 메이든','이와나가히메의 유령','살아있는 고뇌','숨은 오우거','모든 보스']
+CHARN=sorted(['츠나노리 미도','보니 블레어','포미나 프랭클린','디바 5번','아메야 아이슬링','시그나스','츠나노리','보니','포미나','아메야','디바'],key=len,reverse=True)
+_hlre=re.compile('('+'|'.join(map(re.escape,BOSSN+CHARN))+r'|(?<=번째 )관)')
+def hl(t):
+    def f(m):
+        w=m.group(0);c='hb' if w in BOSSN else 'hf' if w=='관' else 'hc'
+        return f'<b class="{c}">{w}</b>'
+    return _hlre.sub(f,t)
+
 FIXT={'시우그나스':'시그나스','디바 5호':'디바 5번'}
 CH=U['chars']
 FULL={'츠나노리':'츠나노리 미도','보니':'보니 블레어','포미나':'포미나 프랭클린','디바 5번':'디바 5번','아메야':'아메야 아이슬링','시그나스':'시그나스'}
@@ -66,7 +77,7 @@ for u in U['unlocks']:
     q=f'<div class="fix">게임 원문: {esc(raw)}</div>' if fixed!=raw else ''
     title=fixed
     rows.append(f'''<details class="ul" data-id="ed-{u['n']}" data-type="{t}" data-scope="{scope}"{need_attr(u)}>
-<summary><input type="checkbox" aria-label="해금 체크"><span class="n">{u['n']}</span><span class="tt">{esc(title)}</span><span class="k">{ICON.get(t,'')} {t}</span></summary>
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">{u['n']}</span><span class="tt">{hl(esc(title))}</span><span class="k">{ICON.get(t,'')} {t}</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → {link_names(u['reward'])}</p>{q}<p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p>{need_note(u,'/vs/ed/')}</div></details>''')
 types=sorted({ty(u['type']) for u in U['unlocks']},key=lambda t:(t=='기타',-sum(1 for u in U['unlocks'] if ty(u['type'])==t)))
 fb=''.join(f'<button type="button" data-f="{t}">{ICON.get(t,"")} {t} {sum(1 for u in U["unlocks"] if ty(u["type"])==t)}</button>' for t in types)
@@ -207,57 +218,81 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 {len(BU)}개 전체 (1.0 + 
 ''',encoding='utf-8')
 print('base unlocks',len(BU))
 
-# ── 디오라마 지도 (/vs/ed/map.html) · 핀 = data/vs/ed/map.json (게임 맵 오브젝트 · tools/proto/edmap.py) ──
+# ── 디오라마 지도 (/vs/ed/map.html) · 핀 = data/vs/ed/map.json (게임 맵 오브젝트 · tools/proto/edmap.py) · 보스 = data/vs/ed/bosses.json ──
 MP=json.load(open(R/'data/vs/ed/map.json'))
+BS=json.load(open(R/'data/vs/ed/bosses.json'))
 ZNAME={int(k):v for k,v in MP['zones'].items()}
 rowby={re.search(r'data-id="(ed-\d+)"',r).group(1):r for r in rows}
+UN={u['n']:u for u in U['unlocks']}
 def side(n):return '포탈 도착 화면' if n==0 else (f'오른쪽으로 {n}칸' if n>0 else f'왼쪽으로 {-n}칸')
+def ufix(t):
+    for a,b in FIXT.items():t=t.replace(a,b)
+    return t
+def ulines(ns):return [[f'#{n} {ufix(UN[n]["text"])} → 🎁 {UN[n]["reward"]}','/vs/ed/map.html#ed-%d'%n] for n in ns]
+# 보스 · 관 미리보기 카드 (items.json에 EB_ · EC_ 로 넣음)
+for p in MP['pins']:
+    z=p['zone'];zn=ZNAME.get(z,'숨은 구역')
+    if p['kind']=='boss':
+        b=BS.get(p['id'],{});nm=p['label']
+        ns=[u['n'] for u in U['unlocks'] if nm.split(' ')[0] in u['text']]+([38,39] if p['id']!='EME_SUSPICIOUS_OGRE' else [])
+        st=f"❤️ 체력 {b.get('hp')}{' × 플레이어 레벨' if b.get('hpxlv') else ''} · ⚔️ 공격력 {b.get('power')} · 👟 속도 {b.get('speed')}"
+        alt=f"📖 우화집 이름: {b['ko']}" if b.get('ko') and b['ko']!=nm else ''
+        items['EB_'+p['id']]={'n':nm,'t':f'보스 · {zn}','d':(b.get('d') or '').strip(),'p':st,'x':[alt] if alt else [],'ul':ulines(sorted(set(ns)))}
+    if p['kind']=='coffin':
+        ch=items.get('CH_'+p['id'],{});cn={'EME_RAPIERDUAL':2,'EME_SWORDBITE':25}.get(p['id'])
+        items['EC_'+p['id']]={'n':'⚰️ '+p['label'],'t':f'관 · {zn} · {side(p["xm"])}','d':ch.get('d',''),'s':ch.get('s'),'si':ch.get('si'),'ul':ulines([cn]) if cn else [],'l':ch.get('l')}
+(D/'items.json').write_text(json.dumps(items,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 def pin_html(p,hub=False):
     st=f'left:{p["x"]/256*100:.2f}%;top:{p["y"]/280*100:.2f}%'
     xm=(f'<b>{"→" if p["xm"]>0 else "←"}{abs(p["xm"])}</b>' if p['xm'] else '')
     if p['kind']=='portal':
         z=int(re.search(r'biome(\d)',p['id']).group(1))
         if hub:return f'<a class="pin k-portal" style="{st}" href="#z{z}" title="{esc(ZNAME[z])}">{z}</a>'
-        return f'<a class="pin k-portal" style="{st}" href="#z7" title="정션으로">🌀{xm}</a>'
+        return f'<a class="pin k-portal" style="{st}" href="#z7" title="정션으로">🌀</a>'
     if p['kind']=='item':
         it=items.get(p['id'],{});ic=f'<img src="{it["i"]}" alt="">' if it.get('i') else '💍'
         return f'<span class="pin k-item" style="{st}" data-pop="{p["id"]}">{ic}{xm}</span>'
-    if p['kind']=='coffin':return f'<span class="pin k-coffin" style="{st}" data-pop="CH_{p["id"]}">⚰️{xm}</span>'
-    return f'<span class="pin k-boss" style="{st}" title="{esc(p["label"])}">👹{xm}</span>'
+    if p['kind']=='coffin':return f'<span class="pin k-coffin" style="{st}" data-pop="EC_{p["id"]}">⚰️{xm}<i class="lbl">{esc(p["label"])}</i></span>'
+    return f'<span class="pin k-boss" style="{st}" data-pop="EB_{p["id"]}">👹{xm}<i class="lbl">{esc(p["label"])}</i></span>'
 def pin_li(p):
     if p['kind']=='portal':return f'<li>🌀 정션으로 가는 포탈 · {side(p["xm"])}</li>'
     if p['kind']=='item':return f'<li>{pop(items[p["id"]]["n"]) if p["id"] in items else esc(p["id"])} · {side(p["xm"])}</li>'
-    if p['kind']=='coffin':return f'<li>⚰️ 관 · {pop(p["label"])} · {side(p["xm"])}</li>'
-    return f'<li>👹 보스 · {esc(p["label"])} · {side(p["xm"])}</li>'
-KO=['portal','boss','coffin','item']
+    if p['kind']=='coffin':return f'<li>⚰️ <b class="hf">관</b> · <span class="pop" data-pop="EC_{p["id"]}"><b class="hc">{esc(p["label"])}</b></span> · {side(p["xm"])}</li>'
+    return f'<li>👹 보스 · <span class="pop" data-pop="EB_{p["id"]}"><b class="hb">{esc(p["label"])}</b></span> · {side(p["xm"])}</li>'
+KO=['coffin','boss','portal','item']
+def mapbox(z,ps,hub=False):
+    return f'''<div class="map" data-z="{z}"><div class="mi"><img src="/assets/vs/ed/map/z{z}.png" alt="{esc(ZNAME[z])} 지도" loading="lazy">{''.join(pin_html(p,hub) for p in ps)}</div><button type="button" class="mfull" aria-label="크게 보기">⛶</button></div>'''
 zs=[]
 for z in range(1,7):
     ps=[p for p in MP['pins'] if p['zone']==z];ps.sort(key=lambda p:KO.index(p['kind']))
     ur=[rowby[f'ed-{u["n"]}'] for u in U['unlocks'] if u.get('zone')==z]
     zs.append(f'''<section class="zone" id="z{z}"><h2>{z} · {esc(ZNAME[z])}</h2>
-<div class="map"><img src="/assets/vs/ed/map/z{z}.png" alt="{esc(ZNAME[z])} 지도" loading="lazy">{''.join(pin_html(p) for p in ps)}</div>
+{mapbox(z,ps)}
 <ul class="pins">{''.join(pin_li(p) for p in ps)}</ul>
 {('<h3>이 구역 해금</h3>'+chr(10).join(ur)) if ur else ''}
 <p class="back"><a href="#z7">↑ 정션 지도로</a></p></section>''')
 hubp=[p for p in MP['pins'] if p['zone']==7]
 allr=[rowby[f'ed-{u["n"]}'] for u in U['unlocks'] if u.get('zone')=='전부']
 ogr=[rowby[f'ed-{u["n"]}'] for u in U['unlocks'] if u.get('zone')=='hub']
+cof=[p for p in MP['pins'] if p['kind']=='coffin']
+cofbox=''.join(f'<li><b class="hf">⚰️ {i}번 관</b> · <span class="pop" data-pop="EC_{p["id"]}"><b class="hc">{esc(p["label"])}</b></span> → <a href="#z{p["zone"]}">{p["zone"]} {esc(ZNAME[p["zone"]])}</a> · {side(p["xm"])}{" (시작 화면 기준)" if p["zone"]==1 else ""}</li>' for i,p in enumerate(sorted(cof,key=lambda p:p['zone']),1))
 (R/'_src/vs/ed/map.html').write_text(f'''title: 에메랄드 디오라마 지도
-desc: 뱀파이어 서바이벌 에메랄드 디오라마 지도. 정션(허브)과 구역 6곳의 관 · 보스 · 패시브 위치를 게임 데이터로 표시.
+desc: 뱀파이어 서바이벌 에메랄드 디오라마 지도. 관 2개 위치와 정션(허브) · 구역 6곳의 보스 · 패시브 위치를 게임 데이터로 표시.
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › <a href="/vs/ed/">에메랄드 디오라마</a> › 지도</div>
 <h1>🗺️ 에메랄드 디오라마 · 지도</h1>
-<p class="sub">게임 데이터 기준 · 정션에서 포탈 번호를 누르면 그 구역으로 갑니다 · 아이콘을 누르면 설명</p>
+<div class="coffins"><h2>⚰️ 관 위치</h2><ul>{cofbox}</ul></div>
+<p class="sub">게임 데이터 기준 · 정션에서 포탈 번호를 누르면 그 구역으로 · 아이콘·이름을 누르면 설명 · ⛶ 누르면 크게</p>
 <div class="howto"><b>칸</b> = 지도 그림 한 장. 구역은 옆으로 같은 무늬가 계속 반복됩니다. <b>→2</b> 표시는 포탈로 도착한 화면에서 <b>오른쪽으로 2장</b> 더 가면 있다는 뜻입니다.</div>
 <div id="ulist" data-group="ed">
 <section class="zone" id="z7"><h2>🌀 정션 (허브)</h2>
-<div class="map"><img src="/assets/vs/ed/map/z7.png" alt="정션 지도">{''.join(pin_html(p,True) for p in hubp)}</div>
+{mapbox(7,hubp,True)}
 <ul class="pins">{''.join(f'<li><a href="#z{z}">{z} · {esc(ZNAME[z])}</a></li>' for z in range(1,7))}</ul>
 <h3>모든 구역 해금</h3>
 {chr(10).join(allr)}
 </section>
 {chr(10).join(zs)}
-<section class="zone" id="z9"><h2>❓ 숨은 구역 · 오우거</h2>
-<p>게임 데이터상 <b>정션보다 훨씬 아래쪽</b>에 숨은 오우거 자리가 따로 있습니다. 가는 법은 확인 중입니다.</p>
+<section class="zone" id="z9"><h2>❓ 숨은 구역 · <b class="hb">숨은 오우거</b></h2>
+<p>게임 데이터상 <b>정션보다 훨씬 아래쪽</b>에 숨은 오우거 자리가 따로 있습니다. 가는 법은 확인 중입니다. <span class="pop" data-pop="EB_EME_SUSPICIOUS_OGRE">👹 능력치 보기</span></p>
 {chr(10).join(ogr)}
 </section>
 </div>
