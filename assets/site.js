@@ -129,10 +129,10 @@
         L.forEach(function(x){if(pk.length>=T[2]||tot+x.sc>T[3]||(x.lk&&!T[4]))return;pk.push(x);tot+=x.sc});
         if(pk.length)res.push({o:o,md:md,pk:pk,tot:tot,ns:pk.filter(function(x){return x.st}).length})})});
       res.sort(function(a,b){return (b.pk.length-a.pk.length)||(b.ns-a.ns)||(a.tot-b.tot)});var seen={},top=[];
-      res.forEach(function(r){var k=r.o.c+'|'+r.o.sk;if(seen[k]||top.length>=2)return;seen[k]=1;top.push(r)});
+      res.forEach(function(r){var k=r.o.c;if(seen[k]||top.length>=2)return;seen[k]=1;top.push(r)});
       var h='<div class="rh"><b>🧭 다음 판 추천</b><span>'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</span></div>';
       if(!top.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요. 위에서부터 해금을 체크해 보세요.</p>';
-      top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div><div class="rt"><b>'+esc(o.cn)+'</b> · 스킨 '+esc(o.sk)+' · '+(r.md?'🔁 인버스':'일반')+'</div><div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div><ul>'+
+      top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div>'+'<div class="rt"><b>'+esc(o.cn)+'</b>'+(o.c==='ANY'?' (본편 캐릭터도 OK)':' · 스킨 '+esc(o.sk))+' · '+(r.md?'🔁 인버스':'일반')+'</div>'+(o.c==='ANY'?'':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+
         r.pk.map(function(x){return '<li><a data-go="'+x.id+'">#'+x.n+' '+esc(x.t)+'</a>'+(x.st?' <em class="st">🗡️ 시작 스킬</em>':'')+(x.lk?' <em class="lk">🎲 상자 운</em>':'')+'</li>'}).join('')+'</ul></div></div>'});
       rbox.innerHTML=h}
     function goHash(){var h=location.hash.replace('#','');if(!h)return;var t=document.querySelector('[data-id="'+h+'"]');if(!t)return;
