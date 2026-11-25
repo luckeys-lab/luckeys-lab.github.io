@@ -166,3 +166,12 @@ table.evo .ic{width:24px;height:24px}
 details.sec{margin:.6em 0}details.sec>summary{cursor:pointer;font-weight:800;padding:.55em .8em;border:1px solid var(--gold);border-radius:10px;display:flex;justify-content:space-between;list-style:none}
 details.sec>summary::-webkit-details-marker{display:none}details.sec>summary::before{content:'▶ ';color:var(--gold)}details.sec[open]>summary::before{content:'▼ '}
 details.sec>summary .sc{margin-left:auto;font-weight:700;color:var(--sub)}
+
+/* 디오라마 지도 */
+.howto{font-size:13px;background:var(--soft);border-left:3px solid var(--gold);padding:8px 12px;border-radius:6px;margin:0 0 14px}
+.zone{margin:22px 0;scroll-margin-top:60px}.zone h2{font-size:18px;margin:0 0 8px}.zone h3{font-size:14px;margin:14px 0 6px;color:var(--sub)}
+.map{position:relative;max-width:512px;margin:0 auto}.map img{display:block;width:100%;image-rendering:pixelated;border-radius:10px}
+.pin{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:1px;font-size:15px;line-height:1;cursor:pointer;text-decoration:none;filter:drop-shadow(0 0 2px #000)}
+.pin img{width:22px;height:22px;image-rendering:pixelated}.pin b{font-size:10px;background:var(--navy);color:var(--gold);border-radius:6px;padding:1px 3px}
+.k-portal{background:var(--gold);color:var(--navy);border-radius:50%;min-width:22px;height:22px;justify-content:center;font-weight:800;font-size:13px}
+.pins{font-size:13.5px;padding-left:18px;margin:10px 0}.back{font-size:12.5px;text-align:right}

@@ -1,0 +1,292 @@
+{
+"zones": {
+"1": "미야코시",
+"2": "마녀 왕국 풀크라",
+"3": "그렐론",
+"4": "아발론",
+"5": "요미",
+"6": "프로비던스",
+"7": "정션"
+},
+"pins": [
+{
+"kind": "item",
+"id": "SILVER",
+"zone": 1,
+"x": 220.0,
+"y": 84.0,
+"xm": -1,
+"label": "SILVER"
+},
+{
+"kind": "coffin",
+"id": "EME_RAPIERDUAL",
+"zone": 1,
+"x": 216.0,
+"y": 88.0,
+"xm": 3,
+"label": "츠나노리 미도"
+},
+{
+"kind": "item",
+"id": "DURATION",
+"zone": 1,
+"x": 136.0,
+"y": 92.0,
+"xm": 0,
+"label": "DURATION"
+},
+{
+"kind": "portal",
+"id": "biome1_to_junction",
+"zone": 1,
+"x": 180.0,
+"y": 132.0,
+"xm": 2,
+"label": "biome1_to_junction"
+},
+{
+"kind": "boss",
+"id": "EME_GATEBOSS_SPIRITBEAST",
+"zone": 1,
+"x": 160.0,
+"y": 132.0,
+"xm": 2,
+"label": "스피릿 비스트"
+},
+{
+"kind": "portal",
+"id": "biome2_to_junction",
+"zone": 2,
+"x": 120.0,
+"y": 120.0,
+"xm": 0,
+"label": "biome2_to_junction"
+},
+{
+"kind": "boss",
+"id": "EME_GATEBOSS_DRAGON",
+"zone": 2,
+"x": 168.0,
+"y": 140.0,
+"xm": 2,
+"label": "어스 드래곤"
+},
+{
+"kind": "item",
+"id": "PARMA",
+"zone": 2,
+"x": 62.0,
+"y": 150.1,
+"xm": 1,
+"label": "PARMA"
+},
+{
+"kind": "item",
+"id": "RIGHT",
+"zone": 3,
+"x": 216.0,
+"y": 104.0,
+"xm": 4,
+"label": "RIGHT"
+},
+{
+"kind": "portal",
+"id": "biome3_to_junction",
+"zone": 3,
+"x": 160.0,
+"y": 120.0,
+"xm": 0,
+"label": "biome3_to_junction"
+},
+{
+"kind": "boss",
+"id": "EME_GATEBOSS_FINALEMPEROR",
+"zone": 3,
+"x": 190.0,
+"y": 134.1,
+"xm": 3,
+"label": "최종 황제"
+},
+{
+"kind": "item",
+"id": "POWER",
+"zone": 3,
+"x": 174.0,
+"y": 162.2,
+"xm": 2,
+"label": "POWER"
+},
+{
+"kind": "item",
+"id": "LEFT",
+"zone": 4,
+"x": 46.0,
+"y": 126.2,
+"xm": -2,
+"label": "LEFT"
+},
+{
+"kind": "portal",
+"id": "biome4_to_junction",
+"zone": 4,
+"x": 180.0,
+"y": 176.0,
+"xm": 0,
+"label": "biome4_to_junction"
+},
+{
+"kind": "boss",
+"id": "EME_GATEBOSS_IRONMAIDEN",
+"zone": 4,
+"x": 128.0,
+"y": 176.0,
+"xm": 0,
+"label": "아이언 메이든"
+},
+{
+"kind": "item",
+"id": "DOMINION",
+"zone": 4,
+"x": 138.1,
+"y": 222.4,
+"xm": 0,
+"label": "DOMINION"
+},
+{
+"kind": "item",
+"id": "GREED",
+"zone": 5,
+"x": 196.0,
+"y": 96.0,
+"xm": 2,
+"label": "GREED"
+},
+{
+"kind": "portal",
+"id": "biome5_to_junction",
+"zone": 5,
+"x": 68.0,
+"y": 104.0,
+"xm": 0,
+"label": "biome5_to_junction"
+},
+{
+"kind": "boss",
+"id": "EME_GATEBOSS_SPECTER",
+"zone": 5,
+"x": 68.0,
+"y": 108.0,
+"xm": 2,
+"label": "이와나가히메의 유령"
+},
+{
+"kind": "portal",
+"id": "biome6_to_junction",
+"zone": 6,
+"x": 128.0,
+"y": 116.0,
+"xm": 3,
+"label": "biome6_to_junction"
+},
+{
+"kind": "coffin",
+"id": "EME_SWORDBITE",
+"zone": 6,
+"x": 128.0,
+"y": 120.0,
+"xm": 2,
+"label": "시그나스"
+},
+{
+"kind": "boss",
+"id": "EME_GATEBOSS_LIVINGANGUISH",
+"zone": 6,
+"x": 128.0,
+"y": 144.0,
+"xm": 0,
+"label": "살아있는 고뇌"
+},
+{
+"kind": "item",
+"id": "GROWTH",
+"zone": 6,
+"x": 128.0,
+"y": 160.0,
+"xm": 3,
+"label": "GROWTH"
+},
+{
+"kind": "item",
+"id": "GOLD",
+"zone": 6,
+"x": 128.0,
+"y": 180.0,
+"xm": -1,
+"label": "GOLD"
+},
+{
+"kind": "portal",
+"id": "junction_to_biome1",
+"zone": 7,
+"x": 140.0,
+"y": 52.0,
+"xm": 0,
+"label": "junction_to_biome1"
+},
+{
+"kind": "portal",
+"id": "junction_to_biome2",
+"zone": 7,
+"x": 220.0,
+"y": 92.0,
+"xm": 0,
+"label": "junction_to_biome2"
+},
+{
+"kind": "portal",
+"id": "junction_to_biome5",
+"zone": 7,
+"x": 60.0,
+"y": 96.0,
+"xm": 0,
+"label": "junction_to_biome5"
+},
+{
+"kind": "portal",
+"id": "junction_to_biome3",
+"zone": 7,
+"x": 220.0,
+"y": 172.0,
+"xm": 0,
+"label": "junction_to_biome3"
+},
+{
+"kind": "portal",
+"id": "junction_to_biome4",
+"zone": 7,
+"x": 60.0,
+"y": 172.0,
+"xm": 0,
+"label": "junction_to_biome4"
+},
+{
+"kind": "portal",
+"id": "junction_to_biome6",
+"zone": 7,
+"x": 140.0,
+"y": 212.0,
+"xm": 0,
+"label": "junction_to_biome6"
+},
+{
+"kind": "boss",
+"id": "EME_SUSPICIOUS_OGRE",
+"zone": 9,
+"x": 140.0,
+"y": 188.0,
+"xm": 0,
+"label": "숨은 오우거"
+}
+]
+}

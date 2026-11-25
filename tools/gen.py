@@ -47,7 +47,7 @@ def need_note(u,here):
 FIXT={'시우그나스':'시그나스','디바 5호':'디바 5번'}
 CH=U['chars']
 FULL={'츠나노리':'츠나노리 미도','보니':'보니 블레어','포미나':'포미나 프랭클린','디바 5번':'디바 5번','아메야':'아메야 아이슬링','시그나스':'시그나스'}
-ZONE={1:'1 미야코시',2:'2 풀크라',3:'3 그렐론',4:'4 아발론',5:'5 요미',6:'6 구역','hub':'아래 허브','전부':'모든 구역'}
+ZONE={1:'1 미야코시',2:'2 마녀 왕국 풀크라',3:'3 그렐론',4:'4 아발론',5:'5 요미',6:'6 프로비던스','hub':'숨은 구역 (오우거)','전부':'모든 구역'}
 ICON={'성장':'📈','진화':'✨','찾아서진화':'🔍','사냥':'⚔️','발견':'⚰️','특수':'🎯','기타':'📦'}
 cnt={}
 for u in U['unlocks']: cnt[u['type']]=cnt.get(u['type'],0)+1
@@ -75,7 +75,7 @@ fb=''.join(f'<button type="button" data-f="{t}">{ICON.get(t,"")} {t} {sum(1 for 
 desc: 뱀파이어 서바이벌 에메랄드 디오라마 해금 조건 41개 전체. 게임 데이터 기준 · 필요 캐릭터와 시작 스킬 · 해금 체크.
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 에메랄드 디오라마</div>
 <h1>💎 에메랄드 디오라마 · 해금</h1>
-<p class="sub">무료 DLC · 해금 {len(U['unlocks'])}개 · 게임 데이터 기준 · 지도와 캐릭터 페이지는 준비 중</p>
+<p class="sub">무료 DLC · 해금 {len(U['unlocks'])}개 · 게임 데이터 기준 · 지도와 캐릭터 페이지 있음</p>
 <div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div>
 <div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button>{fb}</div>
 <div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
@@ -160,7 +160,7 @@ desc: 뱀파이어 서바이벌 에메랄드 디오라마 캐릭터 {len(EC)}명
 # 해금 페이지 위에 캐릭터 링크
 p=R/'_src/vs/ed/index.html';t=p.read_text(encoding='utf-8')
 if 'chars.html' not in t:
-    t=t.replace('<div class="prog">','<a class="btn-line" href="/vs/ed/chars.html">🧛 디오라마 캐릭터 보기</a>\n<div class="prog">',1);p.write_text(t,encoding='utf-8')
+    t=t.replace('<div class="prog">','<a class="btn-line" href="/vs/ed/chars.html">🧛 디오라마 캐릭터 보기</a> <a class="btn-line" href="/vs/ed/map.html">🗺️ 디오라마 지도 보기</a>\n<div class="prog">',1);p.write_text(t,encoding='utf-8')
 print('chars pages',len(EC))
 
 # ---------- 본편 해금 ----------
@@ -206,3 +206,61 @@ desc: 뱀파이어 서바이벌 본편 해금 조건 {len(BU)}개 전체 (1.0 + 
 <div class="ad" data-slot="end"></div>
 ''',encoding='utf-8')
 print('base unlocks',len(BU))
+
+# ── 디오라마 지도 (/vs/ed/map.html) · 핀 = data/vs/ed/map.json (게임 맵 오브젝트 · tools/proto/edmap.py) ──
+MP=json.load(open(R/'data/vs/ed/map.json'))
+ZNAME={int(k):v for k,v in MP['zones'].items()}
+rowby={re.search(r'data-id="(ed-\d+)"',r).group(1):r for r in rows}
+def side(n):return '포탈 도착 화면' if n==0 else (f'오른쪽으로 {n}칸' if n>0 else f'왼쪽으로 {-n}칸')
+def pin_html(p,hub=False):
+    st=f'left:{p["x"]/256*100:.2f}%;top:{p["y"]/280*100:.2f}%'
+    xm=(f'<b>{"→" if p["xm"]>0 else "←"}{abs(p["xm"])}</b>' if p['xm'] else '')
+    if p['kind']=='portal':
+        z=int(re.search(r'biome(\d)',p['id']).group(1))
+        if hub:return f'<a class="pin k-portal" style="{st}" href="#z{z}" title="{esc(ZNAME[z])}">{z}</a>'
+        return f'<a class="pin k-portal" style="{st}" href="#z7" title="정션으로">🌀{xm}</a>'
+    if p['kind']=='item':
+        it=items.get(p['id'],{});ic=f'<img src="{it["i"]}" alt="">' if it.get('i') else '💍'
+        return f'<span class="pin k-item" style="{st}" data-pop="{p["id"]}">{ic}{xm}</span>'
+    if p['kind']=='coffin':return f'<span class="pin k-coffin" style="{st}" data-pop="CH_{p["id"]}">⚰️{xm}</span>'
+    return f'<span class="pin k-boss" style="{st}" title="{esc(p["label"])}">👹{xm}</span>'
+def pin_li(p):
+    if p['kind']=='portal':return f'<li>🌀 정션으로 가는 포탈 · {side(p["xm"])}</li>'
+    if p['kind']=='item':return f'<li>{pop(items[p["id"]]["n"]) if p["id"] in items else esc(p["id"])} · {side(p["xm"])}</li>'
+    if p['kind']=='coffin':return f'<li>⚰️ 관 · {pop(p["label"])} · {side(p["xm"])}</li>'
+    return f'<li>👹 보스 · {esc(p["label"])} · {side(p["xm"])}</li>'
+KO=['portal','boss','coffin','item']
+zs=[]
+for z in range(1,7):
+    ps=[p for p in MP['pins'] if p['zone']==z];ps.sort(key=lambda p:KO.index(p['kind']))
+    ur=[rowby[f'ed-{u["n"]}'] for u in U['unlocks'] if u.get('zone')==z]
+    zs.append(f'''<section class="zone" id="z{z}"><h2>{z} · {esc(ZNAME[z])}</h2>
+<div class="map"><img src="/assets/vs/ed/map/z{z}.png" alt="{esc(ZNAME[z])} 지도" loading="lazy">{''.join(pin_html(p) for p in ps)}</div>
+<ul class="pins">{''.join(pin_li(p) for p in ps)}</ul>
+{('<h3>이 구역 해금</h3>'+chr(10).join(ur)) if ur else ''}
+<p class="back"><a href="#z7">↑ 정션 지도로</a></p></section>''')
+hubp=[p for p in MP['pins'] if p['zone']==7]
+allr=[rowby[f'ed-{u["n"]}'] for u in U['unlocks'] if u.get('zone')=='전부']
+ogr=[rowby[f'ed-{u["n"]}'] for u in U['unlocks'] if u.get('zone')=='hub']
+(R/'_src/vs/ed/map.html').write_text(f'''title: 에메랄드 디오라마 지도
+desc: 뱀파이어 서바이벌 에메랄드 디오라마 지도. 정션(허브)과 구역 6곳의 관 · 보스 · 패시브 위치를 게임 데이터로 표시.
+<div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › <a href="/vs/ed/">에메랄드 디오라마</a> › 지도</div>
+<h1>🗺️ 에메랄드 디오라마 · 지도</h1>
+<p class="sub">게임 데이터 기준 · 정션에서 포탈 번호를 누르면 그 구역으로 갑니다 · 아이콘을 누르면 설명</p>
+<div class="howto"><b>칸</b> = 지도 그림 한 장. 구역은 옆으로 같은 무늬가 계속 반복됩니다. <b>→2</b> 표시는 포탈로 도착한 화면에서 <b>오른쪽으로 2장</b> 더 가면 있다는 뜻입니다.</div>
+<div id="ulist" data-group="ed">
+<section class="zone" id="z7"><h2>🌀 정션 (허브)</h2>
+<div class="map"><img src="/assets/vs/ed/map/z7.png" alt="정션 지도">{''.join(pin_html(p,True) for p in hubp)}</div>
+<ul class="pins">{''.join(f'<li><a href="#z{z}">{z} · {esc(ZNAME[z])}</a></li>' for z in range(1,7))}</ul>
+<h3>모든 구역 해금</h3>
+{chr(10).join(allr)}
+</section>
+{chr(10).join(zs)}
+<section class="zone" id="z9"><h2>❓ 숨은 구역 · 오우거</h2>
+<p>게임 데이터상 <b>정션보다 훨씬 아래쪽</b>에 숨은 오우거 자리가 따로 있습니다. 가는 법은 확인 중입니다.</p>
+{chr(10).join(ogr)}
+</section>
+</div>
+<div class="ad" data-slot="end"></div>
+''',encoding='utf-8')
+print('ed map',len(MP['pins']))

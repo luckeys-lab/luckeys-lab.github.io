@@ -94,7 +94,7 @@
   }
   // 검색
   var q=document.getElementById('sq'),res=document.getElementById('sres');
-  var PAGES=[['본편 해금 213개','/vs/base/unlocks.html'],['디오라마 캐릭터','/vs/ed/chars.html'],['에메랄드 디오라마 해금 41개','/vs/ed/'],['본편 진화 조합','/vs/evo.html'],['뱀파이어 서바이벌','/vs/'],['전체 글','/all.html']];
+  var PAGES=[['본편 해금 213개','/vs/base/unlocks.html'],['디오라마 캐릭터','/vs/ed/chars.html'],['에메랄드 디오라마 해금 41개','/vs/ed/'],['에메랄드 디오라마 지도','/vs/ed/map.html'],['본편 진화 조합','/vs/evo.html'],['뱀파이어 서바이벌','/vs/'],['전체 글','/all.html']];
   var sb=document.getElementById('searchBtn');if(sb&&q)sb.addEventListener('click',function(){setTimeout(function(){q.focus()},150)});
   if(q)q.addEventListener('input',function(){var v=q.value.trim().replace(/\s/g,'');if(!v){res.innerHTML='';return}
     load().then(function(I){var out=[];PAGES.forEach(function(p){if(p[0].replace(/\s/g,'').indexOf(v)>=0)out.push('<a href="'+p[1]+'">📄 '+esc(p[0])+'</a>')});
