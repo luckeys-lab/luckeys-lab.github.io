@@ -144,7 +144,8 @@
   if(stool){var rd=function(f){if(!f)return;var r=new FileReader();r.onload=function(){var msg=stool.querySelector('.msg');
       try{var o=JSON.parse(r.result),A=o.Achievements||[];fetch('/data/vs/ach_keys.json?v='+VER).then(function(x){return x.json()}).then(function(K){
         var S={};try{S=JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){}
-        var nb=0,ne=0,tb=0,te=0;Object.keys(K).forEach(function(a){var k=K[a],ok=A.indexOf(a)>=0;if(k.charAt(0)==='b'){tb++;if(ok)nb++}else{te++;if(ok)ne++}if(ok)S[k]=1;else delete S[k]});
+        var AL={};A.forEach(function(a){AL[String(a).toLowerCase()]=1});   // 세이브와 데이터의 대소문자가 다를 때가 있음 (GetMagiStoneToLevel7)
+        var nb=0,ne=0,tb=0,te=0;Object.keys(K).forEach(function(a){var k=K[a],ok=!!AL[a.toLowerCase()];if(k.charAt(0)==='b'){tb++;if(ok)nb++}else{te++;if(ok)ne++}if(ok)S[k]=1;else delete S[k]});
         try{localStorage.setItem('ll_chk',JSON.stringify(S))}catch(e){}
         msg.innerHTML='✅ '+(o.saveName?'「'+esc(o.saveName)+'」 ':'')+'세이브를 읽어 체크했어요<br>🔓 <a href="/vs/base/unlocks.html">본편 해금 '+nb+' / '+tb+'</a> · 💎 <a href="/vs/ed/">디오라마 해금 '+ne+' / '+te+'</a>'})}
       catch(e){msg.textContent='⚠ 세이브 파일을 못 읽었어요. SaveData 파일이 맞는지 확인해 주세요.'}};r.readAsText(f)};
