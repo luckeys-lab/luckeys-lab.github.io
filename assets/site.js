@@ -36,7 +36,8 @@
 /* ---- 2차: 미리보기 · 해금 체크 · 거르기 · 검색 ---- */
 (function(){
   var ITEMS=null,loading=null;
-  function load(){if(ITEMS)return Promise.resolve(ITEMS);if(!loading)loading=fetch('/data/vs/items.json').then(function(r){return r.json()}).then(function(j){ITEMS=j;return j});return loading}
+  var VER=(function(){var c=document.querySelector('script[src*="site.js?v="]');return c?c.src.split('v=')[1]:''})();
+  function load(){if(ITEMS)return Promise.resolve(ITEMS);if(!loading)loading=fetch('/data/vs/items.json?v='+VER).then(function(r){return r.json()}).then(function(j){ITEMS=j;return j});return loading}
   function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   // 미리보기
   var box=document.createElement('div');box.id='popbox';document.body.appendChild(box);var cur=null;

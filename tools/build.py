@@ -6,6 +6,10 @@ import pathlib,re
 R=pathlib.Path(__file__).resolve().parent.parent
 HEAD=(R/'tools/head.html').read_text(encoding='utf-8')
 FOOT=(R/'tools/foot.html').read_text(encoding='utf-8')
+# 캐시 번호 자동: css·js·items.json 내용이 바뀌면 ?v= 도 자동으로 바뀜 (손으로 안 올려도 됨)
+import hashlib
+V=hashlib.md5(b''.join((R/f).read_bytes() for f in ('assets/site.css','assets/site.js','data/vs/items.json'))).hexdigest()[:8]
+HEAD=re.sub(r'site\.css\?v=\w+','site.css?v='+V,HEAD);FOOT=re.sub(r'site\.js\?v=\w+','site.js?v='+V,FOOT)
 for src in sorted((R/'_src').rglob('*.html')):
     rel=src.relative_to(R/'_src'); t=src.read_text(encoding='utf-8')
     meta={};lines=t.split('\n')
