@@ -53,16 +53,31 @@
     if(it.ul&&it.ul.length)h+='<div class="uls">'+it.ul.map(function(u){return '<a href="'+u[1]+'">🔓 '+esc(u[0])+'</a>'}).join('')+'</div>';
     if(it.l)h+='<a class="go" href="'+it.l+'">자세히 →</a>';
     return h}
-  function show(el,key){load().then(function(I){var it=I[key];if(!it)return;box.innerHTML=card(it);box.style.display='block';
-    var r=el.getBoundingClientRect(),w=box.offsetWidth,h=box.offsetHeight;var x=Math.max(8,Math.min(r.left,innerWidth-w-8));var y=r.bottom+6;if(y+h>innerHeight-8)y=Math.max(8,r.top-h-6);
-    box.style.left=x+'px';box.style.top=y+'px';cur=el})}
-  function hide(){box.style.display='none';cur=null}
-  var hover=matchMedia('(hover:hover)').matches;
+  // 여러 카드(가까운 핀 묶음) + 우화집 옆 카드 · PC는 나란히, 폰은 위아래(우화집 접힘)
+  var hover=matchMedia('(hover:hover)').matches,tShow=null,tHide=null;
+  function side(it){return it.bd?'<div class="side"><span class="ty">📖 우화집</span><b>'+esc(it.bn||it.n)+'</b>'+esc(it.bd)+'</div>':''}
+  function show(el,keys){load().then(function(I){var ks=keys.split(','),main='',sd='';
+      ks.forEach(function(k,i){var it=I[k];if(!it)return;main+=(main?'<hr>':'')+card(it);sd+=side(it)});
+      if(!main)return;var wide=hover&&innerWidth>=640&&sd;
+      box.className=wide?'two':'';
+      box.innerHTML=wide?'<div class="col">'+main+'</div><div class="col sidecol">'+sd+'</div>':main+(sd?'<details class="bdx"><summary>📖 우화집 보기</summary>'+sd+'</details>':'');
+      box.style.display='flex';
+      var r=el.getBoundingClientRect(),w=box.offsetWidth,h=box.offsetHeight,x,y,pin=el.classList.contains('pin');
+      if(pin){x=r.right+10;if(x+w>innerWidth-8)x=r.left-w-10;if(x<8){x=Math.max(8,Math.min(r.left,innerWidth-w-8));y=r.bottom+22}else y=r.top+r.height/2-h/2}
+      else{x=Math.max(8,Math.min(r.left,innerWidth-w-8));y=r.bottom+6;if(y+h>innerHeight-8)y=r.top-h-6}
+      y=Math.max(8,Math.min(y,innerHeight-h-8));box.style.left=x+'px';box.style.top=y+'px';cur=el})}
+  function hide(){clearTimeout(tShow);box.style.display='none';cur=null}
   document.addEventListener('click',function(e){var el=e.target.closest('[data-pop]');
     if(el){e.preventDefault();e.stopPropagation();if(cur===el)hide();else show(el,el.dataset.pop);return}
     if(!box.contains(e.target))hide()});
-  if(hover){document.addEventListener('mouseover',function(e){var el=e.target.closest('[data-pop]');if(el&&el!==cur)show(el,el.dataset.pop)});
-    document.addEventListener('mouseout',function(e){var el=e.target.closest('[data-pop]');if(el&&!(e.relatedTarget&&(box.contains(e.relatedTarget)||el.contains(e.relatedTarget))))setTimeout(function(){if(!box.matches(':hover'))hide()},120)});}
+  if(hover){
+    document.addEventListener('mouseover',function(e){var el=e.target.closest('[data-pop]');
+      if(box.contains(e.target)){clearTimeout(tHide);return}
+      if(!el)return;clearTimeout(tHide);if(el===cur)return;clearTimeout(tShow);tShow=setTimeout(function(){show(el,el.dataset.pop)},150)});
+    document.addEventListener('mouseout',function(e){var to=e.relatedTarget;
+      if(to&&(box.contains(to)||(cur&&cur.contains(to))))return;
+      var el=e.target.closest('[data-pop]');if(el&&!cur){clearTimeout(tShow);return}
+      if(el||box.contains(e.target)){clearTimeout(tHide);tHide=setTimeout(function(){if(!box.matches(':hover')&&!(cur&&cur.matches(':hover')))hide()},220)}});}
   addEventListener('scroll',hide,{passive:true});
   // 해금 체크 + 진행률 + 거르기
   var list=document.getElementById('ulist');

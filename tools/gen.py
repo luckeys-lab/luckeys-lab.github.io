@@ -240,10 +240,10 @@ for p in MP['pins']:
     z=p['zone'];zn=ZNAME.get(z,'숨은 구역')
     if p['kind']=='boss':
         b=BS.get(p['id'],{});nm=p['label']
-        ns=[u['n'] for u in U['unlocks'] if nm.split(' ')[0] in u['text']]+([38,39] if p['id']!='EME_SUSPICIOUS_OGRE' else [])
-        st=f"❤️ 체력 {b.get('hp')}{' × 플레이어 레벨' if b.get('hpxlv') else ''} · ⚔️ 공격력 {b.get('power')} · 👟 속도 {b.get('speed')}"
-        alt=f"📖 우화집 이름: {b['ko']}" if b.get('ko') and b['ko']!=nm else ''
-        items['EB_'+p['id']]={'n':nm,'t':f'보스 · {zn}','d':re.sub(r'\s+',' ',(b.get('d') or '').replace('\\n',' ')).strip(),'p':st,'x':[alt] if alt else [],'ul':ulines(sorted(set(ns)))}
+        ns=[u['n'] for u in U['unlocks'] if nm.split(' ')[0] in u['text'] and u['zone']!='전부']
+        st=f"❤️ {b.get('hp')}{'×레벨' if b.get('hpxlv') else ''} · ⚔️ {b.get('power')} · 👟 {b.get('speed')}"
+        bd=re.sub(r'\s+',' ',(b.get('d') or '').replace('\\n',' ')).strip()
+        items['EB_'+p['id']]={'n':nm,'t':f'보스 · {zn}','d':'','p':st,'ul':ulines(sorted(set(ns))),'bn':b.get('ko') or nm,'bd':bd}
     if p['kind']=='coffin':
         ch=items.get('CH_'+p['id'],{});cn={'EME_RAPIERDUAL':2,'EME_SWORDBITE':25}.get(p['id'])
         items['EC_'+p['id']]={'n':'⚰️ '+p['label'],'t':f'관 · {zn} · {side(p["xm"])}','d':ch.get('d',''),'s':ch.get('s'),'si':ch.get('si'),'ul':ulines([cn]) if cn else [],'l':ch.get('l')}
@@ -257,15 +257,23 @@ def pin_html(p,hub=False):
         return f'<a class="pin k-portal" style="{st}" href="#z7" title="정션으로">🌀</a>'
     if p['kind']=='item':
         it=items.get(p['id'],{});ic=f'<img src="{it["i"]}" alt="">' if it.get('i') else '💍'
-        return f'<span class="pin k-item" style="{st}" data-pop="{p["id"]}">{ic}{xm}</span>'
-    if p['kind']=='coffin':return f'<span class="pin k-coffin" style="{st}" data-pop="EC_{p["id"]}">⚰️{xm}<i class="lbl">{esc(p["label"])}</i></span>'
-    return f'<span class="pin k-boss" style="{st}" data-pop="EB_{p["id"]}">👹{xm}<i class="lbl">{esc(p["label"])}</i></span>'
+        return f'<span class="pin k-item" style="{st}" data-pop="{p["pk"]}">{ic}{xm}</span>'
+    if p['kind']=='coffin':return f'<span class="pin k-coffin" style="{st}" data-pop="{p["pk"]}">⚰️{xm}<i class="lbl">{esc(p["label"])}</i></span>'
+    return f'<span class="pin k-boss" style="{st}" data-pop="{p["pk"]}">👹{xm}<i class="lbl">{esc(p["label"])}</i></span>'
 def pin_li(p):
     if p['kind']=='portal':return f'<li>🌀 정션으로 가는 포탈 · {side(p["xm"])}</li>'
     if p['kind']=='item':return f'<li>{pop(items[p["id"]]["n"]) if p["id"] in items else esc(p["id"])} · {side(p["xm"])}</li>'
     if p['kind']=='coffin':return f'<li>⚰️ <b class="hf">관</b> · <span class="pop" data-pop="EC_{p["id"]}"><b class="hc">{esc(p["label"])}</b></span> · {side(p["xm"])}</li>'
     return f'<li>👹 보스 · <span class="pop" data-pop="EB_{p["id"]}"><b class="hb">{esc(p["label"])}</b></span> · {side(p["xm"])}</li>'
 KO=['coffin','boss','portal','item']
+def popkey(p):return {'item':p['id'],'coffin':'EC_'+p['id'],'boss':'EB_'+p['id']}.get(p['kind'])
+NEAR=10   # 지도 그림 픽셀(256 기준) · 이보다 가까우면 한 묶음
+for z in set(p['zone'] for p in MP['pins']):
+    ps=[p for p in MP['pins'] if p['zone']==z and popkey(p)]
+    for p in ps:
+        grp=[q for q in ps if abs(q['x']-p['x'])<NEAR and abs(q['y']-p['y'])<NEAR]
+        grp.sort(key=lambda q:KO.index(q['kind']))
+        p['pk']=','.join(popkey(q) for q in grp)
 def mapbox(z,ps,hub=False):
     return f'''<div class="map" data-z="{z}"><div class="mi"><img src="/assets/vs/ed/map/z{z}.png" alt="{esc(ZNAME[z])} 지도" loading="lazy">{''.join(pin_html(p,hub) for p in ps)}</div><button type="button" class="mfull" aria-label="크게 보기">⛶</button></div>'''
 zs=[]

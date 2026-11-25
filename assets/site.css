@@ -190,3 +190,8 @@ b.hb{color:#e03b3b}b.hc{color:#3a7bd5}b.hf{color:var(--gold2)}
 @media (prefers-color-scheme:dark){b.hb{color:#ff7b7b}b.hc{color:#7fb0ff}b.hf{color:var(--gold)}}
 .coffins{background:var(--soft);border:1px solid var(--gold);border-radius:12px;padding:10px 14px;margin:6px 0 14px}.coffins h2{font-size:16px;margin:0 0 4px}.coffins ul{margin:0;padding-left:18px;font-size:14px}
 #popbox .uls a{display:block;font-size:12.5px;margin-top:4px;text-decoration:none}
+/* 미리보기 v2: 묶음 · 우화집 옆 카드 */
+#popbox{flex-direction:column}#popbox.two{flex-direction:row;max-width:580px;gap:12px}
+#popbox .col{flex:1;min-width:0}#popbox .sidecol{border-left:1px dashed var(--line);padding-left:12px;max-height:60vh;overflow:auto;font-size:12.5px;color:var(--sub)}
+#popbox hr{border:0;border-top:1px dashed var(--line);margin:8px 0}
+#popbox .bdx{margin-top:6px;font-size:12.5px}#popbox .bdx summary{cursor:pointer;color:var(--gold2);font-weight:700}#popbox .bdx .side{color:var(--sub);margin-top:4px}
