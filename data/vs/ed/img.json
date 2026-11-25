@@ -1,0 +1,196 @@
+{
+"icons": {
+"EME_RAPIER1": "/assets/vs/ed/i/EME_RAPIER1.png",
+"EME_RAPIER2": "/assets/vs/ed/i/EME_RAPIER2.png",
+"EME_RAPIER3": "/assets/vs/ed/i/EME_RAPIER3.png",
+"EME_LONGSWORD1": "/assets/vs/ed/i/EME_LONGSWORD1.png",
+"EME_LONGSWORD2": "/assets/vs/ed/i/EME_LONGSWORD2.png",
+"EME_LONGSWORD3": "/assets/vs/ed/i/EME_LONGSWORD3.png",
+"EME_DUAL1": "/assets/vs/ed/i/EME_DUAL1.png",
+"EME_DUAL2": "/assets/vs/ed/i/EME_DUAL2.png",
+"EME_GREATSWORD1": "/assets/vs/ed/i/EME_GREATSWORD1.png",
+"EME_GREATSWORD2": "/assets/vs/ed/i/EME_GREATSWORD2.png",
+"EME_GREATSWORD3": "/assets/vs/ed/i/EME_GREATSWORD3.png",
+"EME_PUNCH1": "/assets/vs/ed/i/EME_PUNCH1.png",
+"EME_PUNCH2": "/assets/vs/ed/i/EME_PUNCH2.png",
+"EME_PUNCH3": "/assets/vs/ed/i/EME_PUNCH3.png",
+"EME_KICK1": "/assets/vs/ed/i/EME_KICK1.png",
+"EME_KICK2": "/assets/vs/ed/i/EME_KICK2.png",
+"EME_CANNON1": "/assets/vs/ed/i/EME_CANNON1.png",
+"EME_CANNON2": "/assets/vs/ed/i/EME_CANNON2.png",
+"EME_CANNON3": "/assets/vs/ed/i/EME_CANNON3.png",
+"EME_MECH1": "/assets/vs/ed/i/EME_MECH1.png",
+"EME_MECH2": "/assets/vs/ed/i/EME_MECH2.png",
+"EME_MECH3": "/assets/vs/ed/i/EME_MECH3.png",
+"EME_PISTOL1": "/assets/vs/ed/i/EME_PISTOL1.png",
+"EME_PISTOL2": "/assets/vs/ed/i/EME_PISTOL2.png",
+"EME_KNIFE1": "/assets/vs/ed/i/EME_KNIFE1.png",
+"EME_KNIFE2": "/assets/vs/ed/i/EME_KNIFE2.png",
+"EME_KATANA1": "/assets/vs/ed/i/EME_KATANA1.png",
+"EME_KATANA2": "/assets/vs/ed/i/EME_KATANA2.png",
+"EME_AXE1": "/assets/vs/ed/i/EME_AXE1.png",
+"EME_AXE2": "/assets/vs/ed/i/EME_AXE2.png",
+"EME_BLOOD1": "/assets/vs/ed/i/EME_BLOOD1.png",
+"EME_BLOOD2": "/assets/vs/ed/i/EME_BLOOD2.png",
+"EME_SPEAR1": "/assets/vs/ed/i/EME_SPEAR1.png",
+"EME_SPEAR2": "/assets/vs/ed/i/EME_SPEAR2.png",
+"EME_SPEAR3": "/assets/vs/ed/i/EME_SPEAR3.png",
+"EME_MAGIC1": "/assets/vs/ed/i/EME_MAGIC1.png",
+"EME_MAGIC2": "/assets/vs/ed/i/EME_MAGIC2.png",
+"EME_WAVE": "/assets/vs/ed/i/EME_WAVE1.png",
+"EME_WAVE2": "/assets/vs/ed/i/EME_WAVE2.png",
+"EME_SELECTOR": "/assets/vs/ed/i/EME_SELECTOR.png",
+"EME_RING_FIRE": "/assets/vs/ed/i/EME_MAGICRED.png",
+"EME_RING_WATER": "/assets/vs/ed/i/EME_MAGICBLACK.png",
+"EME_RING_WOOD": "/assets/vs/ed/i/EME_MAGIC1.png",
+"EME_RING_EARTH": "/assets/vs/ed/i/EME_MAGICYELLOW.png",
+"EME_RING_METAL": "/assets/vs/ed/i/EME_MAGICWHITE.png",
+"EME_RING_CHAOS": "/assets/vs/ed/i/EME_MAGICCHAOS.png",
+"EME_MECH_RAVE": "/assets/vs/ed/i/EME_MECH3.png",
+"EME_MECH_BALLMISS": "/assets/vs/ed/i/EME_MECH3.png",
+"EME_AXE_HELLFURY": "/assets/vs/ed/i/EME_AXE1.png",
+"EME_BLOOD_BLOODRAGE": "/assets/vs/ed/i/EME_BLOOD1.png",
+"EME_SWORD_SWALLOW": "/assets/vs/ed/i/EME_LONGSWORD1.png",
+"EME_SWORD_GALE": "/assets/vs/ed/i/EME_LONGSWORD2.png",
+"RELIC_EME_DISK": "/assets/vs/ed/i/relic_emerald_disk.png",
+"EME_TELEPORTER": "/assets/vs/ed/i/Healer.png"
+},
+"chars": {
+"EME_RAPIERDUAL": {
+"DEFAULT": "/assets/vs/ed/c/eme_rapierdual_default.png",
+"SKIN_DUALSWORDSMAN": "/assets/vs/ed/c/eme_rapierdual_skin_dualswordsman.png",
+"SKIN_EME_SOLO_FLEURET": "/assets/vs/ed/c/eme_rapierdual_skin_eme_solo_fleuret.png",
+"SKIN_EME_SOLO_DUAL": "/assets/vs/ed/c/eme_rapierdual_skin_eme_solo_dual.png"
+},
+"EME_PUNCHKICK": {
+"DEFAULT": "/assets/vs/ed/c/eme_punchkick_default.png",
+"SKIN_EME_B_KICK": "/assets/vs/ed/c/eme_punchkick_skin_eme_b_kick.png",
+"SKIN_EME_SOLO_PUNCH": "/assets/vs/ed/c/eme_punchkick_skin_eme_solo_punch.png",
+"SKIN_EME_SOLO_KICK": "/assets/vs/ed/c/eme_punchkick_skin_eme_solo_kick.png"
+},
+"EME_CANNONGUN": {
+"DEFAULT": "/assets/vs/ed/c/eme_cannongun_default.png",
+"SKIN_EME_F_PISTOL": "/assets/vs/ed/c/eme_cannongun_skin_eme_f_pistol.png",
+"SKIN_EME_SOLO_CANNON": "/assets/vs/ed/c/eme_cannongun_skin_eme_solo_cannon.png",
+"SKIN_EME_SOLO_PISTOL": "/assets/vs/ed/c/eme_cannongun_skin_eme_solo_pistol.png"
+},
+"EME_MECHKATANA": {
+"SKIN_EME_D_RETRO": "/assets/vs/ed/c/eme_mechkatana_skin_eme_d_retro.png",
+"SKIN_EME_D_TANK": "/assets/vs/ed/c/eme_mechkatana_skin_eme_d_tank.png",
+"SKIN_EME_D_MOVE": "/assets/vs/ed/c/eme_mechkatana_skin_eme_d_move.png",
+"SKIN_EME_D_SHAN": "/assets/vs/ed/c/eme_mechkatana_skin_eme_d_shan.png",
+"SKIN_EME_D_PARA": "/assets/vs/ed/c/eme_mechkatana_skin_eme_d_para.png",
+"SKIN_EME_D_KATANA": "/assets/vs/ed/c/eme_mechkatana_skin_eme_d_katana.png"
+},
+"EME_MAGICALL": {
+"DEFAULT": "/assets/vs/ed/c/eme_magicall_default.png",
+"SKIN_EME_SELECT": "/assets/vs/ed/c/eme_magicall_skin_eme_select.png"
+},
+"EME_SWORDBITE": {
+"DEFAULT": "/assets/vs/ed/c/eme_swordbite_default.png",
+"SKIN_EME_S_BLOOD": "/assets/vs/ed/c/eme_swordbite_skin_eme_s_blood.png"
+},
+"EME_EXGREATSWORD": {
+"DEFAULT": "/assets/vs/ed/c/eme_exgreatsword_default.png"
+},
+"EME_EXAXE": {
+"DEFAULT": "/assets/vs/ed/c/eme_exaxe_default.png"
+},
+"EME_EXKNIFE": {
+"DEFAULT": "/assets/vs/ed/c/eme_exknife_default.png"
+},
+"EME_EXSPEAR": {
+"DEFAULT": "/assets/vs/ed/c/eme_exspear_default.png"
+},
+"EME_PUPALL": {
+"SKIN_EME_MUS": "/assets/vs/ed/c/eme_pupall_skin_eme_mus.png",
+"SKIN_EME_KOM": "/assets/vs/ed/c/eme_pupall_skin_eme_kom.png",
+"SKIN_EME_BOH": "/assets/vs/ed/c/eme_pupall_skin_eme_boh.png",
+"SKIN_EME_SUK": "/assets/vs/ed/c/eme_pupall_skin_eme_suk.png"
+},
+"EME_MRS": {
+"DEFAULT": "/assets/vs/ed/c/eme_mrs_default.png"
+},
+"EME_CATS": {
+"DEFAULT": "/assets/vs/ed/c/eme_cats_default.png"
+},
+"EME_KINA": {
+"DEFAULT": "/assets/vs/ed/c/eme_kina_default.png"
+},
+"EME_IMAKOO": {
+"DEFAULT": "/assets/vs/ed/c/eme_imakoo_default.png"
+},
+"EME_DEMON": {
+"DEFAULT": "/assets/vs/ed/c/eme_demon_default.png"
+}
+},
+"order": {
+"EME_RAPIERDUAL": [
+"/assets/vs/ed/c/eme_rapierdual_default.png",
+"/assets/vs/ed/c/eme_rapierdual_skin_dualswordsman.png",
+"/assets/vs/ed/c/eme_rapierdual_skin_eme_solo_fleuret.png",
+"/assets/vs/ed/c/eme_rapierdual_skin_eme_solo_dual.png"
+],
+"EME_PUNCHKICK": [
+"/assets/vs/ed/c/eme_punchkick_default.png",
+"/assets/vs/ed/c/eme_punchkick_skin_eme_b_kick.png",
+"/assets/vs/ed/c/eme_punchkick_skin_eme_solo_punch.png",
+"/assets/vs/ed/c/eme_punchkick_skin_eme_solo_kick.png"
+],
+"EME_CANNONGUN": [
+"/assets/vs/ed/c/eme_cannongun_default.png",
+"/assets/vs/ed/c/eme_cannongun_skin_eme_f_pistol.png",
+"/assets/vs/ed/c/eme_cannongun_skin_eme_solo_cannon.png",
+"/assets/vs/ed/c/eme_cannongun_skin_eme_solo_pistol.png"
+],
+"EME_MECHKATANA": [
+"/assets/vs/ed/c/eme_mechkatana_skin_eme_d_retro.png",
+"/assets/vs/ed/c/eme_mechkatana_skin_eme_d_tank.png",
+"/assets/vs/ed/c/eme_mechkatana_skin_eme_d_move.png",
+"/assets/vs/ed/c/eme_mechkatana_skin_eme_d_shan.png",
+"/assets/vs/ed/c/eme_mechkatana_skin_eme_d_para.png",
+"/assets/vs/ed/c/eme_mechkatana_skin_eme_d_katana.png"
+],
+"EME_MAGICALL": [
+"/assets/vs/ed/c/eme_magicall_default.png",
+"/assets/vs/ed/c/eme_magicall_skin_eme_select.png"
+],
+"EME_SWORDBITE": [
+"/assets/vs/ed/c/eme_swordbite_default.png",
+"/assets/vs/ed/c/eme_swordbite_skin_eme_s_blood.png"
+],
+"EME_EXGREATSWORD": [
+"/assets/vs/ed/c/eme_exgreatsword_default.png"
+],
+"EME_EXAXE": [
+"/assets/vs/ed/c/eme_exaxe_default.png"
+],
+"EME_EXKNIFE": [
+"/assets/vs/ed/c/eme_exknife_default.png"
+],
+"EME_EXSPEAR": [
+"/assets/vs/ed/c/eme_exspear_default.png"
+],
+"EME_PUPALL": [
+"/assets/vs/ed/c/eme_pupall_skin_eme_mus.png",
+"/assets/vs/ed/c/eme_pupall_skin_eme_kom.png",
+"/assets/vs/ed/c/eme_pupall_skin_eme_boh.png",
+"/assets/vs/ed/c/eme_pupall_skin_eme_suk.png"
+],
+"EME_MRS": [
+"/assets/vs/ed/c/eme_mrs_default.png"
+],
+"EME_CATS": [
+"/assets/vs/ed/c/eme_cats_default.png"
+],
+"EME_KINA": [
+"/assets/vs/ed/c/eme_kina_default.png"
+],
+"EME_IMAKOO": [
+"/assets/vs/ed/c/eme_imakoo_default.png"
+],
+"EME_DEMON": [
+"/assets/vs/ed/c/eme_demon_default.png"
+]
+}
+}

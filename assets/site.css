@@ -202,3 +202,8 @@ b.hb{color:#e03b3b}b.hc{color:#3a7bd5}b.hf{color:var(--gold2)}
 /* [[태그]] · 카드 안 링크 */
 .tg{font-weight:700;border-bottom:1px dotted currentColor;cursor:pointer}.tg.hb{color:#e03b3b}.tg.hc{color:#3a7bd5}.tg.hi{color:var(--gold2)}
 #popbox .pop.in{color:var(--gold2);font-weight:700;border-bottom:1px dotted;cursor:pointer}
+/* 디오라마 캐릭터 그림 */
+img.sp{image-rendering:pixelated;display:block;max-height:96px;margin:0 auto 4px}
+.chead{display:flex;align-items:center;gap:14px}.chead img.sp.big{max-height:150px;margin:0}
+.skins .skin img.sp{max-height:84px}
+.ctile img.sp{max-height:72px}

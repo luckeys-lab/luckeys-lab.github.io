@@ -5,6 +5,17 @@ import json,pathlib,html,re
 R=pathlib.Path(__file__).resolve().parent.parent
 D=R/'data/vs'
 items=json.loads((D/'items.json').read_text(encoding='utf-8'))
+# 디오라마 그림 (tools/proto/edimg.py → data/vs/ed/img.json)
+IMG=json.loads((D/'ed/img.json').read_text(encoding='utf-8'))
+for _k,_p in IMG['icons'].items():
+    if 'ED_'+_k in items:items['ED_'+_k]['i']=_p
+_byname={v['n']:v.get('i') for k,v in items.items() if k.startswith('ED_')}
+for _k,_seq in IMG['order'].items():
+    c=items.get('CH_'+_k)
+    if not c:continue
+    _f=next((x for x in _seq if x),None)
+    if _f:c['i']=_f
+    if c.get('s') and _byname.get(c['s']):c['si']=_byname[c['s']]
 esc=html.escape
 name2id={}
 for k,v in items.items(): name2id.setdefault(v['n'],k)
@@ -147,14 +158,21 @@ for c in EC:
     need=[u for u in U['unlocks'] if u['char'] and short in u['char'].split('|')]
     how=[u for u in U['unlocks'] if c['ko'] in u['reward']]
     rws=[r for r in rows if any(f'data-id="ed-{u["n"]}"' in r for u in need)]
-    sk=''.join(f'<div class="skin"><b>{esc(s["ko"])}</b><span>🗡️ {pop(s["start"]) if s.get("start") else "-"}</span></div>' for s in c['skins'])
+    seq=IMG['order'].get(c['id'],[])
+    def _sim(i):
+        p=seq[i] if i<len(seq) else None
+        return f'<img class="sp" src="{p}" alt="" loading="lazy">' if p else ''
+    def _sic(n):
+        p=_byname.get(n);return f'<img class="ic" src="{p}" alt="">' if p else '🗡️ '
+    sk=''.join(f'<div class="skin">{_sim(i)}<b>{esc(s["ko"])}</b><span>{_sic(s.get("start"))}{pop(s["start"]) if s.get("start") else "-"}</span></div>' for i,s in enumerate(c['skins']))
+    hero=next((x for x in seq if x),None)
     howt=''.join(f'<li><a href="/vs/ed/#ed-{u["n"]}">{u["n"]}번</a> · {esc(u["text"])}</li>' for u in how) or '<li>처음부터 또는 확인 중</li>'
-    tiles.append(f'<a class="tile" href="/vs/ed/c/{sl}.html"><b>{esc(c["ko"])}</b><span>🗡️ {esc(c["start"] or "-")}</span></a>')
+    tiles.append(f'<a class="tile ctile" href="/vs/ed/c/{sl}.html">{f'<img class="sp" src="{hero}" alt="" loading="lazy">' if hero else ''}<b>{esc(c["ko"])}</b><span>{_sic(c.get("start"))}{esc(c["start"] or "-")}</span></a>')
     (R/f'_src/vs/ed/c/{sl}.html').write_text(f'''title: {c["ko"]} · 에메랄드 디오라마
 desc: 뱀파이어 서바이벌 에메랄드 디오라마 캐릭터 {c["ko"]} · 시작 스킬 {c["start"]} · 스킨별 시작 스킬 · 해금 방법 · 이 캐릭터가 필요한 해금
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › <a href="/vs/ed/">에메랄드 디오라마</a> › <a href="/vs/ed/chars.html">캐릭터</a></div>
-<h1>{esc(c["ko"])}</h1>
-<p class="sub">🗡️ 시작 스킬 {pop(c["start"]) if c.get("start") else "-"}</p>
+<div class="chead">{f'<img class="sp big" src="{hero}" alt="{esc(c["ko"])}">' if hero else ''}<div><h1>{esc(c["ko"])}</h1>
+<p class="sub">{_sic(c.get("start"))}시작 스킬 {pop(c["start"]) if c.get("start") else "-"}</p></div></div>
 <div class="quote">{link_names(c["desc"] or "")}</div>
 <h2>능력치</h2>{stat_rows(c.get("stats",{}))}
 <h2>스킨 {len(c["skins"])}</h2><div class="skins">{sk}</div>
@@ -246,7 +264,7 @@ for p in MP['pins']:
         items['EB_'+p['id']]={'n':nm,'t':f'보스 · {zn}','d':'','p':st,'ul':ulines(sorted(set(ns))),'bn':b.get('ko') or nm,'bd':bd}
     if p['kind']=='coffin':
         ch=items.get('CH_'+p['id'],{});cn={'EME_RAPIERDUAL':2,'EME_SWORDBITE':25}.get(p['id'])
-        items['EC_'+p['id']]={'n':'⚰️ '+p['label'],'t':f'관 · {zn} · {side(p["xm"])}','d':ch.get('d',''),'s':ch.get('s'),'si':ch.get('si'),'ul':ulines([cn]) if cn else [],'l':ch.get('l')}
+        items['EC_'+p['id']]={'i':ch.get('i'),'n':'⚰️ '+p['label'],'t':f'관 · {zn} · {side(p["xm"])}','d':ch.get('d',''),'s':ch.get('s'),'si':ch.get('si'),'ul':ulines([cn]) if cn else [],'l':ch.get('l')}
 (D/'items.json').write_text(json.dumps(items,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 def pin_html(p,hub=False):
     st=f'left:{p["x"]/256*100:.2f}%;top:{p["y"]/280*100:.2f}%'
