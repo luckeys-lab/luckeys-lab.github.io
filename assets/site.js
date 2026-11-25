@@ -113,6 +113,22 @@
     var o=document.getElementById('onlyLeft');if(o){try{o.checked=localStorage.getItem('ll_only')==='1'}catch(e){}only=o.checked;
       o.addEventListener('change',function(){only=o.checked;try{localStorage.setItem('ll_only',only?'1':'0')}catch(e){}apply()})}
     apply();
+    // 💾 세이브 파일 → 자동 체크 (PC · 파일은 이 브라우저 안에서만 읽음)
+    if(LOCK){var sv=document.createElement('div');sv.className='savebox';
+      sv.innerHTML='<b>💾 PC 세이브로 자동 체크</b> 세이브 파일을 여기로 끌어다 놓거나 <label>📂 파일 고르기<input type="file" hidden></label><div class="path">스팀: C:\\Program Files (x86)\\Steam\\userdata\\(내 번호)\\1794680\\remote\\SaveData1~5 · 파일은 서버로 안 올라가요</div><div class="msg"></div>';
+      var pg0=document.querySelector('.prog');pg0.parentNode.insertBefore(sv,pg0);
+      var rd=function(f){if(!f)return;var r=new FileReader();r.onload=function(){var msg=sv.querySelector('.msg');
+        try{var o=JSON.parse(r.result),A=o.Achievements||[];fetch('/data/vs/ach_keys.json?v='+VER).then(function(x){return x.json()}).then(function(K){
+          var keys={};A.forEach(function(a){if(K[a])keys[K[a]]=1});
+          Object.keys(K).forEach(function(a){var k=K[a];if(keys[k])S[k]=1;else delete S[k]});
+          try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}
+          rows.forEach(function(rw){rw.querySelector('summary input').checked=!!S[rw.dataset.id]});apply();
+          msg.textContent='✅ '+(o.saveName?'「'+o.saveName+'」 ':'')+'세이브에서 해금 '+Object.keys(keys).length+'개를 읽어 체크했어요 (본편 + 디오라마 같이 반영)'})}
+        catch(e){msg.textContent='⚠ 세이브 파일을 못 읽었어요. SaveData 파일이 맞는지 확인해 주세요.'}};r.readAsText(f)};
+      sv.querySelector('input').addEventListener('change',function(e){rd(e.target.files[0])});
+      sv.addEventListener('dragover',function(e){e.preventDefault();sv.classList.add('over')});
+      sv.addEventListener('dragleave',function(){sv.classList.remove('over')});
+      sv.addEventListener('drop',function(e){e.preventDefault();sv.classList.remove('over');rd(e.dataTransfer.files[0])})}
     // 🧭 꼼꼼 추천 (디오라마) · data/vs/ed/reco.json · 체크 상태로 계산
     var RECO=null,TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],curT=0,rbox=null;
     if(LOCK&&list.dataset.group==='ed'){fetch('/data/vs/ed/reco.json?v='+VER).then(function(r){return r.json()}).then(function(j){RECO=j;
