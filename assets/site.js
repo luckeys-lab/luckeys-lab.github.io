@@ -99,7 +99,7 @@
         var h=(fT&&r.dataset.type!==fT)||(fS&&r.dataset.scope!==fS)||(only&&d)||(lk&&!showL);r.classList.toggle('hide',h)});
       [].forEach.call(list.querySelectorAll('.sec'),function(sec){var a=0,b=0;[].forEach.call(sec.querySelectorAll('.ul'),function(r){if(!r.classList.contains('lock'))b++;if(r.classList.contains('done'))a++});
         var sc=sec.querySelector('.sc');if(sc)sc.textContent=a+' / '+b});
-      if(typeof doReco==='function')setTimeout(doReco,0);
+      try{document.dispatchEvent(new CustomEvent('llchk',{detail:'list'}))}catch(e){}
       if(lb){lb.style.display=nl?'':'none';lb.textContent=showL?'🔓 숨은 해금 다시 접기':'🔒 아직 숨은 해금 '+nl+'개 · 게임처럼 먼저 필요한 해금을 체크하면 나타나요 (눌러서 미리 보기)'}
       var pt=document.getElementById('ptxt'),pb=document.getElementById('pbar');if(pt)pt.textContent=n+' / '+rows.length;if(pb)pb.style.width=(n/rows.length*100)+'%';
       var y=document.getElementById('yay');if(!y&&pb){y=document.createElement('div');y.id='yay';y.className='yay';y.innerHTML='<img src="/assets/mascot_yay.svg" alt=""><div><b>전부 해금! 🎉</b><br>축하합니다. 다음 열쇠도 같이 찾아봐요.</div>';var pr=pb.closest('.prog');pr.parentNode.insertBefore(y,pr)}
@@ -113,29 +113,8 @@
     var o=document.getElementById('onlyLeft');if(o){try{o.checked=localStorage.getItem('ll_only')==='1'}catch(e){}only=o.checked;
       o.addEventListener('change',function(){only=o.checked;try{localStorage.setItem('ll_only',only?'1':'0')}catch(e){}apply()})}
     apply();
-    // 🧭 꼼꼼 추천 (디오라마) · data/vs/ed/reco.json · 체크 상태로 계산
-    var RECO=null,TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],curT=0,rbox=null;
-    var secED=document.getElementById('sec-ed');
-    if(LOCK&&secED){fetch('/data/vs/ed/reco.json?v='+VER).then(function(r){return r.json()}).then(function(j){RECO=j;
-      rbox=document.createElement('div');rbox.className='reco';var nv=secED.querySelector('.secnav')||secED.querySelector('summary');nv.parentNode.insertBefore(rbox,nv.nextSibling);
-      rbox.addEventListener('click',function(e){var b=e.target.closest('[data-t]');if(b){curT=+b.dataset.t;doReco();return}
-        var a=e.target.closest('[data-go]');if(a){location.hash='';location.hash=a.dataset.go}});doReco()})}
-    function doReco(){if(!RECO||!rbox)return;var has=function(k){return !!S[k]},inv=[].concat(RECO.inv).every(has),T=TIER[curT],res=[];
-      var vis=rows.filter(function(r){return !S[r.dataset.id]&&!r.classList.contains('lock')&&RECO.rows[r.dataset.id]});
-      RECO.opts.forEach(function(o){if(!o.need.every(has))return;[0,1].forEach(function(md){if(md&&!inv)return;var L=[];
-        vis.forEach(function(r){var id=r.dataset.id,R=RECO.rows[id];if(R.inv&&!md)return;if(R.ch.length&&R.ch.indexOf(o.c)<0)return;
-          var sc=R.sc,lk=false,st=false;if(R.f){if(R.f===o.w)st=true;else{if(RECO.wun[R.f]&&!has(RECO.wun[R.f]))return;lk=true;sc+=1}}
-          L.push({id:id,sc:sc,lk:lk,st:st,sp:(R.ch.length||R.inv||R.k==='coffin'||R.k==='boss')?0:1,t:r.querySelector('.tt').textContent,n:r.querySelector('.n').textContent})});
-        L.sort(function(a,b){return (b.st-a.st)||(a.sp-b.sp)||(a.sc-b.sc)});var pk=[],tot=0;
-        L.forEach(function(x){if(pk.length>=T[2]||tot+x.sc>T[3]||(x.lk&&!T[4]))return;pk.push(x);tot+=x.sc});
-        if(pk.length)res.push({o:o,md:md,pk:pk,tot:tot,ns:pk.filter(function(x){return x.st}).length})})});
-      res.sort(function(a,b){return (b.pk.length-a.pk.length)||(b.ns-a.ns)||(a.tot-b.tot)});var seen={},top=[];
-      res.forEach(function(r){var k=r.o.c;if(seen[k]||top.length>=2)return;seen[k]=1;top.push(r)});
-      var h='<div class="rh"><b>🧭 다음 판 추천</b><span>'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</span></div>';
-      if(!top.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요. 위에서부터 해금을 체크해 보세요.</p>';
-      top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div>'+'<div class="rt"><b>'+esc(o.cn)+'</b>'+(o.c==='ANY'?' (본편 캐릭터도 OK)':' · 스킨 '+esc(o.sk))+' · '+(r.md?'🔁 인버스':'일반')+'</div>'+(o.c==='ANY'?'':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+
-        r.pk.map(function(x){return '<li><a data-go="'+x.id+'">#'+x.n+' '+esc(x.t)+'</a>'+(x.st?' <em class="st">🗡️ 시작 스킬</em>':'')+(x.lk?' <em class="lk">🎲 상자 운</em>':'')+'</li>'}).join('')+'</ul></div></div>'});
-      rbox.innerHTML=h}
+    document.addEventListener('llchk',function(e){if(e.detail!=='bar')return;try{S=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(x){}
+      rows.forEach(function(rw){rw.querySelector('summary input').checked=!!S[rw.dataset.id]});apply()});
     function goHash(){var h=location.hash.replace('#','');if(!h)return;var t=document.querySelector('[data-id="'+h+'"]');if(!t)return;
       if(t.classList.contains('hide')){showL=true;fT='';fS='';only=false;apply()}t.open=true;var sc=t.closest('.sec');if(sc)sc.open=true;t.scrollIntoView({block:'center'})}
     goHash();window.addEventListener('hashchange',goHash);
@@ -156,6 +135,43 @@
     stool.addEventListener('dragleave',function(){stool.classList.remove('over')});
     stool.addEventListener('drop',function(e){e.preventDefault();stool.classList.remove('over');rd(e.dataTransfer.files[0])})}
   document.addEventListener('click',function(e){var sp=e.target.closest('.spoil');if(sp){e.preventDefault();sp.classList.add('show')}});
+  // 📌 상단 고정 추천 띠 · ll_chk로 계산 · 띠 안에서 펼치기/체크
+  if(/^\/vs\//.test(location.pathname)){
+    var TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],RB=null,RC=null,bar=null,curT=0,mode='min',openRow=null;
+    try{mode=localStorage.getItem('ll_rbar')||'min';curT=+(localStorage.getItem('ll_rtier')||0)}catch(e){}
+    var getS=function(){try{return JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){return {}}};
+    function calc(){var S=getS(),has=function(k){return !!S[k]},inv=[].concat(RC.inv).every(has),T=TIER[curT],res=[];
+      var vis=Object.keys(RB).filter(function(k){return !S[k]&&RB[k].need.every(function(g){return g.some(has)})&&RC.rows[k]});
+      RC.opts.forEach(function(o){if(!o.need.every(has))return;[0,1].forEach(function(md){if(md&&!inv)return;var L=[];
+        vis.forEach(function(id){var R=RC.rows[id];if(R.inv&&!md)return;if(R.ch.length&&R.ch.indexOf(o.c)<0)return;
+          var sc=R.sc,lk=false,st=false;if(R.f){if(R.f===o.w)st=true;else{if(RC.wun[R.f]&&!has(RC.wun[R.f]))return;lk=true;sc+=1}}
+          L.push({id:id,sc:sc,lk:lk,st:st,sp:(R.ch.length||R.inv||R.k==='coffin'||R.k==='boss')?0:1})});
+        L.sort(function(a,b){return (b.st-a.st)||(a.sp-b.sp)||(a.sc-b.sc)});var pk=[],tot=0;
+        L.forEach(function(x){if(pk.length>=T[2]||tot+x.sc>T[3]||(x.lk&&!T[4]))return;pk.push(x);tot+=x.sc});
+        if(pk.length)res.push({o:o,md:md,pk:pk,tot:tot,ns:pk.filter(function(x){return x.st}).length})})});
+      res.sort(function(a,b){return (b.pk.length-a.pk.length)||(b.ns-a.ns)||(a.tot-b.tot)});var seen={},top=[];
+      res.forEach(function(r){if(seen[r.o.c]||top.length>=2)return;seen[r.o.c]=1;top.push(r)});return {top:top,S:S}}
+    function head(r){var o=r.o;return '<b>'+esc(o.cn)+'</b>'+(o.c==='ANY'?'':' · '+esc(o.sk))+' · '+(r.md?'🔁 인버스':'일반')}
+    function draw(){if(!bar)return;var c=calc(),top=c.top,S=c.S;
+      if(mode==='off'){bar.className='rbar off';bar.innerHTML='<button type="button" data-m="min" title="다음 판 추천">🧭</button>';return}
+      var one=top.length?head(top[0])+' → '+top[0].pk.map(function(x){return '💎'+RB[x.id].n}).join(' · '):'추천할 판이 없어요';
+      var h='<div class="rl"><button type="button" class="rt" data-m="'+(mode==='open'?'min':'open')+'">🧭 <span>'+one+'</span> '+(mode==='open'?'▴':'▾')+'</button><button type="button" class="rx" data-m="off" title="접기">✕</button></div>';
+      if(mode==='open'){h+='<div class="rbody"><div class="rtabs">'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</div>';
+        if(!top.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
+        top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div class="rcb"><div class="rh2">'+head(r)+'</div>'+(o.c==='ANY'?'<div class="rw">본편 캐릭터도 OK</div>':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+
+          r.pk.map(function(x){var it=RB[x.id],op=openRow===x.id;return '<li><a class="ri" data-r="'+x.id+'">💎'+it.n+' '+esc(it.t)+'</a>'+(x.st?' <em class="st">🗡️ 시작 스킬</em>':'')+(x.lk?' <em class="lk">🎲 상자 운</em>':'')+
+            (op?'<div class="rdet"><label class="rck"><input type="checkbox" data-c="'+x.id+'"'+(S[x.id]?' checked':'')+'> 해금 완료</label><p class="rw2">🎁 보상 → '+esc(it.rw)+'</p>'+it.g+'<a class="go" href="/vs/unlocks.html#'+x.id+'">목록에서 보기 →</a></div>':'')+'</li>'}).join('')+'</ul></div></div>'});
+        h+='</div>'}
+      bar.className='rbar '+mode;bar.innerHTML=h}
+    Promise.all([fetch('/data/vs/ed/rbar.json?v='+VER).then(function(r){return r.json()}),fetch('/data/vs/ed/reco.json?v='+VER).then(function(r){return r.json()})]).then(function(j){RB=j[0];RC=j[1];
+      bar=document.createElement('div');var hd=document.querySelector('header.bar');hd.parentNode.insertBefore(bar,hd.nextSibling);
+      bar.addEventListener('click',function(e){var m=e.target.closest('[data-m]'),t=e.target.closest('[data-t]'),ri=e.target.closest('.ri'),ck=e.target.closest('[data-c]');
+        if(m){mode=m.dataset.m;try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw();return}
+        if(t){curT=+t.dataset.t;try{localStorage.setItem('ll_rtier',curT)}catch(x){}draw();return}
+        if(ri){openRow=openRow===ri.dataset.r?null:ri.dataset.r;draw();return}
+        if(ck){var S=getS();if(ck.checked)S[ck.dataset.c]=1;else delete S[ck.dataset.c];try{localStorage.setItem('ll_chk',JSON.stringify(S))}catch(x){}
+          if(ck.checked)openRow=null;draw();try{document.dispatchEvent(new CustomEvent('llchk',{detail:'bar'}))}catch(x){}}});
+      document.addEventListener('llchk',function(e){if(e.detail==='list')draw()});draw()})}
   // 지도 크게 보기 (⛶ 또는 빈 곳 탭)
   [].forEach.call(document.querySelectorAll('.map'),function(m){
     function tog(on){m.classList.toggle('full',on);document.body.classList.toggle('noscroll',on)}

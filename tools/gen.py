@@ -254,6 +254,13 @@ for i,u in enumerate(BU,1):
 btypes=sorted({bty(u['type']) for u in BU},key=lambda t:(t=='기타',-sum(1 for u in BU if bty(u['type'])==t)))
 bfb=''.join(f'<button type="button" data-f="{t}">{ICON2.get(t,"")} {t} {sum(1 for u in BU if bty(u["type"])==t)}</button>' for t in btypes)
 (R/'_src/vs/base').mkdir(parents=True,exist_ok=True)
+# 📌 상단 추천 띠용 데이터: data/vs/ed/rbar.json
+_rb={}
+for u in U['unlocks']:
+    t=u['text']
+    for a,b in FIXT.items():t=t.replace(a,b)
+    _rb['ed-%d'%u['n']]={'n':u['n'],'t':t,'rw':u['reward'],'need':u.get('need',[]),'g':guide(u)}
+(D/'ed/rbar.json').write_text(json.dumps(_rb,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 # ── 통합 해금 페이지 /vs/unlocks.html (게임처럼 칸: 1.0 버전 · 추가 · DLC) ──
 ALLT={}
 for r in brows+rows:

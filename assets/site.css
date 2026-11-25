@@ -230,3 +230,22 @@ img.sp{image-rendering:pixelated;display:block;max-height:96px;margin:0 auto 4px
 details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:700;color:var(--gold2);padding:6px 4px}
 .secnav{font-size:13px;margin:4px 0 8px}
 .ul .guide{font-size:13px;margin:4px 0;padding-left:8px;border-left:3px solid var(--gold)}
+/* 📌 상단 고정 추천 띠 */
+.rbar{position:sticky;top:var(--bar);z-index:38;background:var(--navy);color:#fff;border-bottom:2px solid var(--gold);font-size:13px}
+.rbar .rl{display:flex;align-items:center;max-width:var(--max,960px);margin:0 auto;padding:0 8px}
+.rbar button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.rbar .rt{flex:1;text-align:left;padding:7px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rbar .rt b{color:var(--gold)}
+.rbar .rx{padding:4px 8px;color:var(--gold)}
+.rbar.off{position:fixed;top:auto;bottom:70px;left:12px;border:2px solid var(--gold);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center}
+.rbar.off button{font-size:20px}
+.rbar .rbody{max-width:var(--max,960px);margin:0 auto;padding:4px 10px 10px;max-height:60vh;overflow:auto;background:var(--bg);color:var(--txt);border-radius:0 0 12px 12px}
+.rbar .rtabs{margin:6px 0}.rbar .rtabs button{border:1px solid var(--line);border-radius:16px;padding:3px 10px;margin-right:4px;font-size:12.5px;background:var(--bg);color:var(--txt)}
+.rbar .rtabs button.on{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.rbar .rc{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px dashed var(--line)}.rbar .rc img.sp{max-height:64px;margin:0;flex:none}
+.rbar .rcb{flex:1;min-width:0}.rbar .rh2{font-size:14px}.rbar .rh2 b{color:var(--gold2)}.rbar .rw{font-size:12.5px;color:var(--sub)}
+.rbar ul{margin:4px 0 0;padding-left:16px}.rbar li{margin:3px 0}.rbar .ri{cursor:pointer;border-bottom:1px dotted var(--sub);text-decoration:none}
+.rbar em{font-style:normal;font-size:11.5px;padding:0 4px;border-radius:6px}.rbar em.st{background:#e6f4e6;color:#2b7a2b}.rbar em.lk{background:#fdeedd;color:#b5651d}
+.rbar .rdet{background:var(--soft);border-radius:8px;padding:6px 10px;margin:4px 0 6px}.rbar .rck{font-weight:700;color:var(--gold2);cursor:pointer}
+.rbar .rdet .guide{font-size:12.5px;margin:3px 0;padding-left:8px;border-left:3px solid var(--gold)}.rbar .rw2{margin:4px 0;font-size:12.5px}
+.rbar .go{font-size:12px;color:var(--gold2);font-weight:700;text-decoration:none}
+.rbar .rn{font-size:13px;color:var(--sub)}
