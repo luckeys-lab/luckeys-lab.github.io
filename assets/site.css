@@ -229,3 +229,4 @@ img.sp{image-rendering:pixelated;display:block;max-height:96px;margin:0 auto 4px
 .spoil{background:var(--txt);color:transparent;border-radius:4px;padding:0 6px;cursor:pointer;user-select:none}.spoil.show{background:none;color:var(--gold2);font-weight:700;user-select:text}
 details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:700;color:var(--gold2);padding:6px 4px}
 .secnav{font-size:13px;margin:4px 0 8px}
+.ul .guide{font-size:13px;margin:4px 0;padding-left:8px;border-left:3px solid var(--gold)}

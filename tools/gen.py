@@ -72,6 +72,42 @@ def hl(t):
         return f'<b class="{c} pop" data-pop="{k}">{w}</b>' if k else f'<b class="{c}">{w}</b>'
     return _hlre.sub(f,t)
 
+
+# 💡 디오라마 해금 자동 공략 (데이터로): 시작 스킬 캐릭/스킨 · 진화 단계 · 위치 · 보스
+RC=json.loads((D/'ed/reco.json').read_text(encoding='utf-8'))
+_MP=json.loads((D/'ed/map.json').read_text(encoding='utf-8'));_BS=json.loads((D/'ed/bosses.json').read_text(encoding='utf-8'))
+_ZN={int(k):v for k,v in _MP['zones'].items()}
+_EW={k[3:]:v for k,v in items.items() if k.startswith('ED_')}
+def _side(n):return '포탈 도착 화면' if n==0 else (f'오른쪽으로 {n}칸' if n>0 else f'왼쪽으로 {-n}칸')
+def guide(u):
+    r=RC['rows'].get('ed-%d'%u['n']);out=[]
+    if not r:return ''
+    if r.get('f'):
+        f=r['f'];who=[f"{o['cn']}{'' if o['sk'] in ('기본','') else ' ['+o['sk'].strip('()')+']'}" for o in RC['opts'] if o['w']==f]
+        nm=_EW.get(f+'1',{}).get('n') or _EW.get(f,{}).get('n') or f
+        if who:out.append(f"🗡️ 시작 스킬 <b>{esc(nm)}</b>로 시작하는 캐릭터: "+' · '.join(esc(x) for x in dict.fromkeys(who)))
+        else:
+            un=RC['wun'].get(f);out.append(f"🎲 {esc(nm)} 시작 캐릭터 없음 · 레벨업에서 골라야 합니다"+(f" (먼저 <a href=\"#{un}\">💎{un[3:]}</a>에서 스킬 해금)" if un else ''))
+        if r['k']=='evo':
+            line=[k for k in _EW if re.sub(r'\d+$','',k)==f and re.search(r'\d+$',k)];line.sort()
+            if not line and f in _EW:line=[f,f+'2']
+            steps=' → '.join(esc(_EW[k]['n']) for k in line if k in _EW)
+            if steps:out.append('✨ 진화 단계: '+steps)
+            for k in line[1:]:
+                tp=(_EW.get(k,{}).get('p') or '').strip()
+                if tp and tp not in ('-','.'):out.append(f"✨ {esc(_EW[k]['n'])}: {esc(tp)}")
+    if r['k']=='coffin':
+        pc=[x for x in _MP['pins'] if x['kind']=='coffin' and x['zone']==r['z']]
+        if pc:out.append(f"📍 <a href=\"/vs/ed/map.html#z{r['z']}\">{esc(_ZN[r['z']])}</a> · {_side(pc[0]['xm'])}"+(' (시작 화면 기준)' if r['z']==1 else ''))
+    if r['k']=='boss':
+        pb=[x for x in _MP['pins'] if x['kind']=='boss' and x['zone']==r['z']]
+        b=_BS.get(pb[0]['id'],{}) if pb else {}
+        out.append(f"📍 <a href=\"/vs/ed/map.html#z{r['z']}\">{esc(_ZN[r['z']])}</a> 보스 · {_side(pb[0]['xm']) if pb else ''} · ❤️ {b.get('hp')}{'×레벨' if b.get('hpxlv') else ''} · 🔁 인버스(하이퍼 해금 후)")
+    if r['k']=='allboss':out.append('📍 <a href="/vs/ed/map.html#z7">정션</a>에서 6구역 보스를 한 판에 전부 · 디바 5번 필수')
+    if r['k']=='ogre':out.append('⏱ 장소가 아니라 <b>21분</b>에 나오는 보스입니다 · 21분까지 버티기')
+    if r['k']=='disk':out.append('🛒 에메랄드 디스크를 찾아 구매')
+    return ''.join(f'<p class="guide">{x}</p>' for x in out)
+
 FIXT={'시우그나스':'시그나스','디바 5호':'디바 5번'}
 CH=U['chars']
 FULL={'츠나노리':'츠나노리 미도','보니':'보니 블레어','포미나':'포미나 프랭클린','디바 5번':'디바 5번','아메야':'아메야 아이슬링','시그나스':'시그나스'}
@@ -95,7 +131,7 @@ for u in U['unlocks']:
     title=fixed
     rows.append(f'''<details class="ul" data-id="ed-{u['n']}" data-type="{t}" data-scope="{scope}"{need_attr(u)}>
 <summary><input type="checkbox" aria-label="해금 체크"><span class="n">💎{u['n']}</span><span class="tt">{hl(esc(title))}</span><span class="k">{ICON.get(t,'')} {t}</span></summary>
-<div class="bdy"><p class="rw">🎁 보상 → {link_names(u['reward'])}</p>{q}<p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p>{need_note(u,'/vs/unlocks.html')}</div></details>''')
+<div class="bdy"><p class="rw">🎁 보상 → {link_names(u['reward'])}</p>{q}<p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p>{guide(u)}{need_note(u,'/vs/unlocks.html')}</div></details>''')
 types=sorted({ty(u['type']) for u in U['unlocks']},key=lambda t:(t=='기타',-sum(1 for u in U['unlocks'] if ty(u['type'])==t)))
 fb=''.join(f'<button type="button" data-f="{t}">{ICON.get(t,"")} {t} {sum(1 for u in U["unlocks"] if ty(u["type"])==t)}</button>' for t in types)
 (R/'_src/vs/ed').mkdir(parents=True,exist_ok=True)
