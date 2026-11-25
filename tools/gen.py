@@ -237,7 +237,7 @@ for p in MP['pins']:
         ns=[u['n'] for u in U['unlocks'] if nm.split(' ')[0] in u['text']]+([38,39] if p['id']!='EME_SUSPICIOUS_OGRE' else [])
         st=f"❤️ 체력 {b.get('hp')}{' × 플레이어 레벨' if b.get('hpxlv') else ''} · ⚔️ 공격력 {b.get('power')} · 👟 속도 {b.get('speed')}"
         alt=f"📖 우화집 이름: {b['ko']}" if b.get('ko') and b['ko']!=nm else ''
-        items['EB_'+p['id']]={'n':nm,'t':f'보스 · {zn}','d':(b.get('d') or '').strip(),'p':st,'x':[alt] if alt else [],'ul':ulines(sorted(set(ns)))}
+        items['EB_'+p['id']]={'n':nm,'t':f'보스 · {zn}','d':re.sub(r'\s+',' ',(b.get('d') or '').replace('\\n',' ')).strip(),'p':st,'x':[alt] if alt else [],'ul':ulines(sorted(set(ns)))}
     if p['kind']=='coffin':
         ch=items.get('CH_'+p['id'],{});cn={'EME_RAPIERDUAL':2,'EME_SWORDBITE':25}.get(p['id'])
         items['EC_'+p['id']]={'n':'⚰️ '+p['label'],'t':f'관 · {zn} · {side(p["xm"])}','d':ch.get('d',''),'s':ch.get('s'),'si':ch.get('si'),'ul':ulines([cn]) if cn else [],'l':ch.get('l')}
