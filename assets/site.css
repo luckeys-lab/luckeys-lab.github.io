@@ -270,3 +270,7 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 .k-portal .zl small{display:block;font-size:10.5px;color:#ff7b7b;font-weight:800;text-align:inherit}
 .zl-l{text-align:right}.zl-r{text-align:left}.zl-t,.zl-b{text-align:center}
 .map.full .k-portal .zl small{font-size:12.5px}
+.saveconn{border:2px solid var(--gold);border-radius:12px;padding:10px 12px;margin:8px 0;font-size:13px;background:var(--soft)}
+.saveconn button{font:inherit;font-weight:800;background:var(--navy);color:var(--gold);border:0;border-radius:8px;padding:7px 14px;cursor:pointer}
+.saveconn button:disabled{opacity:.6;cursor:default}.saveconn p{margin:6px 0 0;line-height:1.6}#saveinfo{font-weight:700;color:var(--gold2)}
+.rbar .rs{white-space:nowrap;font-weight:700;font-size:12.5px;color:#fff;border:1px solid var(--gold)!important;border-radius:8px;padding:2px 8px;margin-right:6px}

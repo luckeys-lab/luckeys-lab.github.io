@@ -115,31 +115,54 @@
     var o=document.getElementById('onlyLeft');if(o){try{o.checked=localStorage.getItem('ll_only')==='1'}catch(e){}only=o.checked;
       o.addEventListener('change',function(){only=o.checked;try{localStorage.setItem('ll_only',only?'1':'0')}catch(e){}apply()})}
     apply();
-    document.addEventListener('llchk',function(e){if(e.detail!=='bar')return;try{S=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(x){}
+    document.addEventListener('llchk',function(e){if(e.detail!=='bar'&&e.detail!=='save')return;try{S=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(x){}
       rows.forEach(function(rw){rw.querySelector('summary input').checked=!!S[rw.dataset.id]});apply()});
     function goHash(){var h=location.hash.replace('#','');if(!h)return;var t=document.querySelector('[data-id="'+h+'"]');if(!t)return;
       if(t.classList.contains('hide')){showL=true;fT='';fS='';only=false;apply()}t.open=true;var sc=t.closest('.sec');if(sc)sc.open=true;t.scrollIntoView({block:'center'})}
     goHash();window.addEventListener('hashchange',goHash);
   }
-  // 💾 세이브 자동 체크 (도구 · 🧪 테스트) · 파일은 이 브라우저 안에서만 읽고 ll_chk에 씀
-  var stool=document.getElementById('savetool');
-  if(stool){var rd=function(f){if(!f)return;var r=new FileReader();r.onload=function(){var msg=stool.querySelector('.msg');
-      try{var o=JSON.parse(r.result),A=o.Achievements||[];Promise.all([fetch('/data/vs/ach_keys.json?v='+VER).then(function(x){return x.json()}),fetch('/data/vs/secret_keys.json?v='+VER).then(function(x){return x.json()})]).then(function(KK){var K=KK[0],SK=KK[1],SL={};(o.Secrets||[]).forEach(function(a){SL[String(a).toLowerCase()]=1});
+  // 💾 세이브 → 체크 (공통) · 파일 핸들 연결(크롬·엣지)이면 다시 고르지 않고 최신 세이브를 다시 읽음
+  var SAVE={
+    apply:function(txt){var o=JSON.parse(txt),A=o.Achievements||[];
+      return Promise.all([fetch('/data/vs/ach_keys.json?v='+VER).then(function(x){return x.json()}),fetch('/data/vs/secret_keys.json?v='+VER).then(function(x){return x.json()})]).then(function(KK){
+        var K=KK[0],SK=KK[1],AL={},SL={};A.forEach(function(a){AL[String(a).toLowerCase()]=1});(o.Secrets||[]).forEach(function(a){SL[String(a).toLowerCase()]=1});   // 대소문자 무시 (GetMagiStoneToLevel7)
         var S={};try{S=JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){}
-        var AL={};A.forEach(function(a){AL[String(a).toLowerCase()]=1});   // 세이브와 데이터의 대소문자가 다를 때가 있음 (GetMagiStoneToLevel7)
-        var nb=0,ne=0,tb=0,te=0;Object.keys(K).forEach(function(a){var k=K[a],ok=!!AL[a.toLowerCase()];if(k.charAt(0)==='b'){tb++;if(ok)nb++}else{te++;if(ok)ne++}if(ok)S[k]=1;else delete S[k]});
-        var ns=0;SK.forEach(function(id){if(SL[id.toLowerCase()]){S['s-'+id]=1;ns++}else delete S['s-'+id]});
-        try{localStorage.setItem('ll_chk',JSON.stringify(S))}catch(e){}
-        msg.innerHTML='✅ '+(o.saveName?'「'+esc(o.saveName)+'」 ':'')+'세이브를 읽어 체크했어요<br>🔓 <a href="/vs/unlocks.html">본편 해금 '+nb+' / '+tb+'</a> · 💎 <a href="/vs/unlocks.html#sec-ed">디오라마 해금 '+ne+' / '+te+'</a> · 🤫 <a href="/vs/secrets.html">비밀 '+ns+' / '+SK.length+'</a>'})}
-      catch(e){msg.textContent='⚠ 세이브 파일을 못 읽었어요. SaveData 파일이 맞는지 확인해 주세요.'}};r.readAsText(f)};
+        var r={nb:0,tb:0,ne:0,te:0,ns:0,ts:SK.length,name:o.saveName||''};
+        Object.keys(K).forEach(function(a){var k=K[a],ok=!!AL[a.toLowerCase()];if(k.charAt(0)==='b'){r.tb++;if(ok)r.nb++}else{r.te++;if(ok)r.ne++}if(ok)S[k]=1;else delete S[k]});
+        SK.forEach(function(id){if(SL[id.toLowerCase()]){S['s-'+id]=1;r.ns++}else delete S['s-'+id]});
+        try{localStorage.setItem('ll_chk',JSON.stringify(S));localStorage.setItem('ll_saveinfo',JSON.stringify({t:Date.now(),name:r.name}))}catch(e){}
+        try{document.dispatchEvent(new CustomEvent('llchk',{detail:'save'}))}catch(e){}return r})},
+    db:function(){return new Promise(function(ok,no){if(!window.indexedDB)return no();var q=indexedDB.open('ll',1);q.onupgradeneeded=function(){q.result.createObjectStore('h')};q.onsuccess=function(){ok(q.result)};q.onerror=no})},
+    getH:function(){return SAVE.db().then(function(d){return new Promise(function(ok){var t=d.transaction('h').objectStore('h').get('save');t.onsuccess=function(){ok(t.result||null)};t.onerror=function(){ok(null)}})}).catch(function(){return null})},
+    setH:function(h){return SAVE.db().then(function(d){d.transaction('h','readwrite').objectStore('h').put(h,'save')})},
+    // ask=true면 권한을 물어봄(버튼 클릭 때만) · last보다 새 파일일 때만 반영(force면 항상)
+    reread:function(ask,force){return SAVE.getH().then(function(h){if(!h)return null;
+      var go=function(){return h.getFile().then(function(f){var last=+(localStorage.getItem('ll_savemod')||0);if(!force&&f.lastModified<=last)return {same:true};
+        return f.text().then(SAVE.apply).then(function(r){try{localStorage.setItem('ll_savemod',f.lastModified)}catch(e){}r.mod=f.lastModified;return r})})};
+      return h.queryPermission({mode:'read'}).then(function(p){if(p==='granted')return go();if(!ask)return {need:true};
+        return h.requestPermission({mode:'read'}).then(function(p2){return p2==='granted'?go():{need:true}})})})}};
+  var hhmm=function(t){var d=new Date(t);return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)};
+  var stool=document.getElementById('savetool');
+  if(stool){var msg=stool.querySelector('.msg');
+    var show=function(r){msg.innerHTML='✅ '+(r.name?'「'+esc(r.name)+'」 ':'')+'세이브를 읽어 체크했어요'+(r.mod?' · 게임 저장 '+hhmm(r.mod):'')+'<br>🔓 <a href="/vs/unlocks.html">본편 해금 '+r.nb+' / '+r.tb+'</a> · 💎 <a href="/vs/unlocks.html#sec-ed">디오라마 해금 '+r.ne+' / '+r.te+'</a> · 🤫 <a href="/vs/secrets.html">비밀 '+r.ns+' / '+r.ts+'</a>'};
+    var fail=function(){msg.textContent='⚠ 세이브 파일을 못 읽었어요. SaveData 파일이 맞는지 확인해 주세요.'};
+    var rd=function(f){if(!f)return;f.text().then(SAVE.apply).then(show).catch(fail)};
     stool.querySelector('input').addEventListener('change',function(e){rd(e.target.files[0]);e.target.value=''});   // 같은 파일을 다시 골라도 읽히게
     stool.addEventListener('dragover',function(e){e.preventDefault();stool.classList.add('over')});
     stool.addEventListener('dragleave',function(){stool.classList.remove('over')});
-    stool.addEventListener('drop',function(e){e.preventDefault();stool.classList.remove('over');rd(e.dataTransfer.files[0])})}
+    stool.addEventListener('drop',function(e){e.preventDefault();stool.classList.remove('over');rd(e.dataTransfer.files[0])});
+    var cb=document.getElementById('saveconn');
+    if(cb){if(!window.showOpenFilePicker){cb.disabled=true;cb.textContent='📌 연결은 크롬·엣지(PC)에서만 돼요'}
+      cb.addEventListener('click',function(){window.showOpenFilePicker({multiple:false}).then(function(hs){var h=hs[0];return SAVE.setH(h).then(function(){return h.getFile()})})
+        .then(function(f){return f.text().then(SAVE.apply).then(function(r){try{localStorage.setItem('ll_savemod',f.lastModified)}catch(e){}r.mod=f.lastModified;show(r);msg.innerHTML+='<br>📌 연결했어요. 이제 위쪽 띠의 🔄 버튼이나, 사이트로 돌아올 때 자동으로 최신 세이브를 읽어요.'})}).catch(function(e){if(e&&e.name!=='AbortError')fail()})});
+      SAVE.getH().then(function(h){if(h){var i=document.getElementById('saveinfo');if(i)i.textContent='📌 연결된 세이브: '+h.name}})}}
+  // 사이트로 돌아올 때(탭 다시 보기) 연결된 세이브가 바뀌었으면 자동으로 다시 읽기
+  var autoRe=function(){if(document.visibilityState!=='visible')return;SAVE.reread(false,false).catch(function(){})};
+  document.addEventListener('visibilitychange',autoRe);window.addEventListener('focus',autoRe);setTimeout(autoRe,800);
   document.addEventListener('click',function(e){var sp=e.target.closest('.spoil');if(sp){e.preventDefault();sp.classList.add('show')}});
   // 📌 상단 고정 추천 띠 · ll_chk로 계산 · 띠 안에서 펼치기/체크
   if(/^\/vs\//.test(location.pathname)){
-    var TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],RB=null,RC=null,bar=null,curT=0,mode='min',openRow=null;
+    var HAS=false,TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],RB=null,RC=null,bar=null,curT=0,mode='min',openRow=null;
     var first=false;try{mode=localStorage.getItem('ll_rbar');if(!mode){mode='open';first=true}if(mode==='off')mode='min';curT=+(localStorage.getItem('ll_rtier')||0)}catch(e){}
     var getS=function(){try{return JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){return {}}};
     function calc(){var S=getS(),has=function(k){return !!S[k]},inv=[].concat(RC.inv).every(has),T=TIER[curT],res=[];
@@ -156,7 +179,7 @@
     function head(r){var o=r.o;return '<b>'+esc(o.cn)+'</b>'+(o.c==='ANY'?'':' · '+esc(o.sk))+' · '+(r.md?'🔁 인버스':'일반')}
     function draw(){if(!bar)return;var c=calc(),top=c.top,S=c.S;
       var one=top.length?head(top[0])+' → '+top[0].pk.map(function(x){return '💎'+RB[x.id].n}).join(' · '):'추천할 판이 없어요';
-      var h='<div class="rl"><button type="button" class="rt" data-m="'+(mode==='open'?'min':'open')+'"><span class="rtag">🧭 추천 해금</span> <span>다음 판: '+one+'</span></button><button type="button" class="rx" data-m="'+(mode==='open'?'min':'open')+'">'+(mode==='open'?'접기 ▴':'펼치기 ▾')+'</button></div>';
+      var h='<div class="rl"><button type="button" class="rt" data-m="'+(mode==='open'?'min':'open')+'"><span class="rtag">🧭 추천 해금</span> <span>다음 판: '+one+'</span></button>'+(HAS?'<button type="button" class="rs" title="연결된 세이브를 다시 읽기">🔄 세이브</button>':'')+'<button type="button" class="rx" data-m="'+(mode==='open'?'min':'open')+'">'+(mode==='open'?'접기 ▴':'펼치기 ▾')+'</button></div>';
       if(mode==='open'){h+='<div class="rbody"><p class="rintro">체크한 해금을 보고, <b>다음 판에 한 번에 노릴 수 있는 해금</b>을 골라 줘요. 줄을 누르면 공략과 ☑ 체크가 펼쳐져요.</p><div class="rtabs">'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</div>';
         if(!top.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
         top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div class="rcb"><div class="rh2">'+head(r)+'</div>'+(o.c==='ANY'?'<div class="rw">본편 캐릭터도 OK</div>':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+
@@ -167,6 +190,7 @@
     Promise.all([fetch('/data/vs/ed/rbar.json?v='+VER).then(function(r){return r.json()}),fetch('/data/vs/ed/reco.json?v='+VER).then(function(r){return r.json()})]).then(function(j){RB=j[0];RC=j[1];
       bar=document.createElement('div');var hd=document.querySelector('header.bar');hd.parentNode.insertBefore(bar,hd.nextSibling);
       bar.addEventListener('click',function(e){var m=e.target.closest('[data-m]'),t=e.target.closest('[data-t]'),ri=e.target.closest('.ri'),ck=e.target.closest('[data-c]');
+        if(e.target.closest('.rs')){var b=e.target.closest('.rs');b.textContent='⏳';SAVE.reread(true,true).then(function(r){b.textContent=r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod):'');setTimeout(draw,1500)}).catch(function(){b.textContent='⚠'});return}
         if(m){mode=m.dataset.m;try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw();return}
         if(t){curT=+t.dataset.t;try{localStorage.setItem('ll_rtier',curT)}catch(x){}draw();return}
         if(ri){openRow=openRow===ri.dataset.r?null:ri.dataset.r;draw();return}
@@ -179,7 +203,8 @@
       document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mode==='open'){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
       // 카드 머리(캐릭터 이름·그림)를 눌러도 접기
       bar.addEventListener('click',function(e){if(e.target.closest('.rh2')||e.target.closest('.rc img.sp')){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
-      document.addEventListener('llchk',function(e){if(e.detail==='list')draw()});draw()})}
+      document.addEventListener('llchk',function(e){if(e.detail==='list'||e.detail==='save')draw()});
+      SAVE.getH().then(function(h){HAS=!!h;draw()});draw()})}
   // 지도 크게 보기 (⛶ 또는 빈 곳 탭)
   [].forEach.call(document.querySelectorAll('.map'),function(m){
     function tog(on){m.classList.toggle('full',on);document.body.classList.toggle('noscroll',on)}
