@@ -340,7 +340,8 @@ def pin_html(p,hub=False):
         z=int(re.search(r'biome(\d)',p['id']).group(1))
         if hub:
             side='l' if p['x']<100 else 'r' if p['x']>156 else ('t' if p['y']<140 else 'b')
-            return f'<a class="pin k-portal" style="{st}" href="#z{z}" title="{esc(ZNAME[z])}">{z}<i class="zl zl-{side}">{esc(ZNAME[z])}</i></a>'
+            bn=next((x['label'] for x in MP['pins'] if x['zone']==z and x['kind']=='boss'),'')
+            return f'<a class="pin k-portal" style="{st}" href="#z{z}" title="{esc(ZNAME[z])}">{z}<i class="zl zl-{side}">{esc(ZNAME[z])}<small>👹 {esc(bn)}</small></i></a>'
         return f'<a class="pin k-portal" style="{st}" href="#z7" title="정션으로">🌀</a>'
     if p['kind']=='item':
         it=items.get(p['id'],{});ic=f'<img src="{it["i"]}" alt="">' if it.get('i') else '💍'

@@ -267,3 +267,6 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 .zl-l{right:calc(100% + 4px);top:50%;transform:translateY(-50%)}.zl-r{left:calc(100% + 4px);top:50%;transform:translateY(-50%)}
 .zl-t{bottom:calc(100% + 3px);left:50%;transform:translateX(-50%)}.zl-b{top:calc(100% + 3px);left:50%;transform:translateX(-50%)}
 .map.full .k-portal .zl{font-size:14px}
+.k-portal .zl small{display:block;font-size:10.5px;color:#ff7b7b;font-weight:800;text-align:inherit}
+.zl-l{text-align:right}.zl-r{text-align:left}.zl-t,.zl-b{text-align:center}
+.map.full .k-portal .zl small{font-size:12.5px}
