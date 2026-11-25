@@ -171,6 +171,11 @@
         if(ck){var S=getS();if(ck.checked)S[ck.dataset.c]=1;else delete S[ck.dataset.c];try{localStorage.setItem('ll_chk',JSON.stringify(S))}catch(x){}
           if(ck.checked)openRow=null;draw();try{document.dispatchEvent(new CustomEvent('llchk',{detail:'bar'}))}catch(x){}}});
       if(first){try{localStorage.setItem('ll_rbar','open')}catch(x){}}
+      // 띠 밖을 누르거나 ESC → 접기 (펼친 채 남아 화면을 가리지 않게)
+      document.addEventListener('click',function(e){if(mode==='open'&&!bar.contains(e.target)&&!e.target.closest('#popbox')){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mode==='open'){mode='min';draw()}});
+      // 카드 머리(캐릭터 이름·그림)를 눌러도 접기
+      bar.addEventListener('click',function(e){if(e.target.closest('.rh2')||e.target.closest('.rc img.sp')){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
       document.addEventListener('llchk',function(e){if(e.detail==='list')draw()});draw()})}
   // 지도 크게 보기 (⛶ 또는 빈 곳 탭)
   [].forEach.call(document.querySelectorAll('.map'),function(m){
