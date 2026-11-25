@@ -176,7 +176,7 @@
       // 띠 밖을 누르거나 ESC → 접기 (펼친 채 남아 화면을 가리지 않게)
       document.addEventListener('click',function(e){if(!e.target.isConnected)return;   // 띠를 다시 그리면서 사라진 버튼 클릭 = 띠 안 클릭
         if(mode==='open'&&!bar.contains(e.target)&&!e.target.closest('#popbox')){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
-      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mode==='open'){mode='min';draw()}});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mode==='open'){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
       // 카드 머리(캐릭터 이름·그림)를 눌러도 접기
       bar.addEventListener('click',function(e){if(e.target.closest('.rh2')||e.target.closest('.rc img.sp')){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
       document.addEventListener('llchk',function(e){if(e.detail==='list')draw()});draw()})}
