@@ -2088,8 +2088,8 @@
  },
  {
   "id": "Survive20MinutesInWestwoods",
-  "text": "Survive 20 minutes in Westwoods.",
-  "text_fix": "웨스트우드에서 20분 동안 생존하기.",
+  "text": "웨스트우즈에서 20분 동안 생존하세요.",
+  "text_fix": "웨스트우즈에서 20분 동안 생존하세요.",
   "reward": [
    "캐릭터 출라레"
   ],
@@ -2156,8 +2156,8 @@
  },
  {
   "id": "GetMagiStonetoLevel7",
-  "text": "Get Magi-Stone to level 7.",
-  "text_fix": "마기 스톤 레벨 7까지 올리기.",
+  "text": "마기 스톤을 레벨 7에 맞추세요.",
+  "text_fix": "마기 스톤을 레벨 7에 맞추세요.",
   "reward": [
    "스킬 마기 스톤"
   ],
