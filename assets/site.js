@@ -10,6 +10,7 @@
     });
   }
   var dim=document.querySelector('.dim');if(dim)dim.addEventListener('click',close);
+  var lx=document.querySelector('.layer .lx');if(lx)lx.addEventListener('click',close);
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
   // 메뉴 묶음 펼치기
   document.querySelectorAll('.grp>button').forEach(function(b){
@@ -167,13 +168,20 @@
   // 🔄 세이브 버튼 (버튼 모음 빈 칸) · 연결된 세이브가 있을 때만 · 크롬이 다시 허락을 원하면 "!" 표시
   var sbtn=null,gap=document.querySelector('.dock .dk-gap');
   var sflash=function(t){if(!sbtn)return;sbtn.querySelector('i').textContent=t;sbtn.classList.add('msg');clearTimeout(sbtn._t);sbtn._t=setTimeout(function(){sbtn.classList.remove('msg')},3500)};
-  SAVE.getH().then(function(h){if(!gap||!window.showOpenFilePicker||!/^\/vs\//.test(location.pathname))return;sbtn=document.createElement('button');sbtn.type='button';sbtn.className='dk dk-save';sbtn.title='연결된 세이브 다시 읽기';sbtn.innerHTML='🔄<i></i>';gap.parentNode.replaceChild(sbtn,gap);
-    if(!h){sbtn.innerHTML='💾<i></i>';sbtn.title='PC 세이브 파일 연결';sbtn.classList.add('nolink');
-      sbtn.addEventListener('click',function(){if(!sbtn.classList.contains('nolink'))return;window.showOpenFilePicker({multiple:false}).then(function(hs){var hh=hs[0];return SAVE.setH(hh).then(function(){return hh.getFile()})})
-        .then(function(f){return f.text().then(SAVE.apply).then(function(){try{localStorage.setItem('ll_savemod',f.lastModified)}catch(e){}sbtn.classList.remove('nolink');sbtn.innerHTML='🔄<i></i>';sbtn.title='연결된 세이브 다시 읽기';sflash('✅ 연결 · '+hhmm(f.lastModified)+' 저장분 반영')})})
-        .catch(function(e){if(e&&e.name!=='AbortError')sflash('⚠ 못 열었어요 · 도구 페이지에서 끌어다 놓기')})});
-      setTimeout(function(){sflash('💾 세이브 연결하면 자동 체크')},1500)}
-    sbtn.addEventListener('click',function(){if(sbtn.classList.contains('nolink'))return;sflash('⏳');SAVE.reread(true,true).then(function(r){sbtn.classList.remove('need');sflash(r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod)+' 저장분 반영':'반영'))}).catch(function(){sflash('⚠ 못 읽음')})})});
+  var loadFile=function(f){if(!f)return;sflash('⏳');f.text().then(SAVE.apply).then(function(r){sflash('✅ 세이브 로드 · 💎 '+r.ne+'/'+r.te+' · 본편 '+r.nb+'/'+r.tb)}).catch(function(){sflash('⚠ 세이브 파일이 아니에요')})};
+  if(gap&&/^\/vs\//.test(location.pathname)){
+    sbtn=document.createElement('button');sbtn.type='button';sbtn.className='dk dk-save';sbtn.title='💾 세이브 파일 로드';sbtn.innerHTML='💾<i></i><input type="file" hidden>';gap.parentNode.replaceChild(sbtn,gap);
+    var fin=sbtn.querySelector('input');fin.addEventListener('change',function(e){loadFile(e.target.files[0]);e.target.value=''});
+    sbtn.addEventListener('click',function(e){if(e.target===fin)return;
+      if(sbtn.classList.contains('linked')){sflash('⏳');SAVE.reread(true,true).then(function(r){sbtn.classList.remove('need');sflash(r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod)+' 저장분 반영':'반영'))}).catch(function(){sflash('⚠ 못 읽음')});return}
+      fin.click()});
+    SAVE.getH().then(function(h){if(h){sbtn.classList.add('linked');sbtn.firstChild.textContent='🔄';sbtn.title='연결된 세이브 다시 읽기'}});
+    // 페이지 아무 데나 끌어다 놓기
+    var dz=document.createElement('div');dz.className='dropzone';dz.textContent='💾 여기에 놓으면 세이브 파일 로드';document.body.appendChild(dz);
+    var dc=0;document.addEventListener('dragenter',function(e){if(e.dataTransfer&&[].indexOf.call(e.dataTransfer.types||[],'Files')>=0){dc++;dz.classList.add('on')}});
+    document.addEventListener('dragleave',function(){if(--dc<=0){dc=0;dz.classList.remove('on')}});
+    document.addEventListener('dragover',function(e){if(dz.classList.contains('on'))e.preventDefault()});
+    document.addEventListener('drop',function(e){if(!dz.classList.contains('on'))return;e.preventDefault();dc=0;dz.classList.remove('on');loadFile(e.dataTransfer.files[0])})}
   var autoRe=function(){if(document.visibilityState!=='visible')return;SAVE.reread(false,false).then(function(r){if(r&&r.need&&sbtn)sbtn.classList.add('need');else if(r&&r.mod)sflash('✅ '+hhmm(r.mod)+' 저장분 반영')}).catch(function(){})};
   document.addEventListener('visibilitychange',autoRe);window.addEventListener('focus',autoRe);setTimeout(autoRe,800);
   document.addEventListener('click',function(e){var sp=e.target.closest('.spoil');if(sp){e.preventDefault();sp.classList.add('show')}});
