@@ -170,7 +170,7 @@
   // 📌 상단 고정 추천 띠 · ll_chk로 계산 · 띠 안에서 펼치기/체크
   if(/^\/vs\//.test(location.pathname)){
     var HAS=false,TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],RB=null,RC=null,bar=null,curT=0,mode='min',openRow=null;
-    var first=false;try{mode=localStorage.getItem('ll_rbar');if(!mode){mode='open';first=true}if(mode==='off')mode='min';curT=+(localStorage.getItem('ll_rtier')||0)}catch(e){}
+    var first=false;try{mode=localStorage.getItem('ll_rbar');if(!mode){mode='min';first=true}if(mode==='off')mode='min';curT=+(localStorage.getItem('ll_rtier')||0)}catch(e){}
     var getS=function(){try{return JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){return {}}};
     function calc(){var S=getS(),has=function(k){return !!S[k]},inv=[].concat(RC.inv).every(has),T=TIER[curT],res=[];
       var vis=Object.keys(RB).filter(function(k){return !S[k]&&RB[k].need.every(function(g){return g.some(has)})&&RC.rows[k]});
@@ -185,8 +185,10 @@
       res.forEach(function(r){if(seen[r.o.c]||top.length>=2)return;seen[r.o.c]=1;top.push(r)});return {top:top,S:S}}
     function head(r){var o=r.o;return '<b>'+esc(o.cn)+'</b>'+(o.c==='ANY'?'':' · '+esc(o.sk))+' · '+(r.md?'🔁 인버스':'일반')}
     function draw(){if(!bar)return;var c=calc(),top=c.top,S=c.S;
-      var one=top.length?head(top[0])+' → '+top[0].pk.map(function(x){return '💎'+RB[x.id].n}).join(' · '):'추천할 판이 없어요';
-      var h='<div class="rl"><button type="button" class="rt" data-m="'+(mode==='open'?'min':'open')+'"><span class="rtag">🧭 추천 해금</span> <span>다음 판: '+one+'</span></button>'+(HAS?'<button type="button" class="rs" title="연결된 세이브를 다시 읽기">🔄 세이브</button>':'')+'<button type="button" class="rx" data-m="'+(mode==='open'?'min':'open')+'">'+(mode==='open'?'접기 ▴':'펼치기 ▾')+'</button></div>';
+      var one=top.length?head(top[0])+' → '+top[0].pk.map(function(x){return '💎'+RB[x.id].n}).join(' · '):'추천할 판이 없어요',cnt=top.length?top[0].pk.length:0;
+      // 접힘 = 왼쪽 아래 둥근 버튼 (11/26 제이: 화면엔 페이지 내용만)
+      if(mode!=='open'){bar.className='rbar fab'+(first?' hint':'');bar.innerHTML='<button type="button" class="rfab" data-m="open" title="추천 해금">🧭<span class="rlab">추천 해금</span>'+(cnt?'<i class="rcnt">'+cnt+'</i>':'')+'</button>';return}
+      var h='<div class="rl"><span class="rtag">🧭 추천 해금</span><span class="rone">다음 판: '+one+'</span>'+(HAS?'<button type="button" class="rs" title="연결된 세이브를 다시 읽기">🔄 세이브</button>':'')+'<button type="button" class="rx" data-m="min">닫기 ✕</button></div>';
       if(mode==='open'){h+='<div class="rbody"><p class="rintro">체크한 해금을 보고, <b>다음 판에 한 번에 노릴 수 있는 해금</b>을 골라 줘요. 줄을 누르면 공략과 ☑ 체크가 펼쳐져요.</p><div class="rtabs">'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</div>';
         if(!top.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
         top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div class="rcb"><div class="rh2">'+head(r)+'</div>'+(o.c==='ANY'?'<div class="rw">본편 캐릭터도 OK</div>':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+
@@ -195,7 +197,7 @@
         h+='</div>'}
       bar.className='rbar '+mode;bar.innerHTML=h}
     Promise.all([fetch('/data/vs/ed/rbar.json?v='+VER).then(function(r){return r.json()}),fetch('/data/vs/ed/reco.json?v='+VER).then(function(r){return r.json()})]).then(function(j){RB=j[0];RC=j[1];
-      bar=document.createElement('div');var hd=document.querySelector('header.bar');hd.parentNode.insertBefore(bar,hd.nextSibling);
+      bar=document.createElement('div');document.body.appendChild(bar);
       bar.addEventListener('click',function(e){var m=e.target.closest('[data-m]'),t=e.target.closest('[data-t]'),ri=e.target.closest('.ri'),ck=e.target.closest('[data-c]');
         if(e.target.closest('.rs')){var b=e.target.closest('.rs');b.textContent='⏳';SAVE.reread(true,true).then(function(r){b.textContent=r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod):'');setTimeout(draw,1500)}).catch(function(){b.textContent='⚠'});return}
         if(m){mode=m.dataset.m;try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw();return}
@@ -203,7 +205,7 @@
         if(ri){openRow=openRow===ri.dataset.r?null:ri.dataset.r;draw();return}
         if(ck){var S=getS();if(ck.checked)S[ck.dataset.c]=1;else delete S[ck.dataset.c];try{localStorage.setItem('ll_chk',JSON.stringify(S))}catch(x){}
           if(ck.checked)openRow=null;draw();try{document.dispatchEvent(new CustomEvent('llchk',{detail:'bar'}))}catch(x){}}});
-      if(first){try{localStorage.setItem('ll_rbar','open')}catch(x){}}
+      if(first){try{localStorage.setItem('ll_rbar','min')}catch(x){}setTimeout(function(){first=false;draw()},6000)}
       // 띠 밖을 누르거나 ESC → 접기 (펼친 채 남아 화면을 가리지 않게)
       document.addEventListener('click',function(e){if(!e.target.isConnected)return;   // 띠를 다시 그리면서 사라진 버튼 클릭 = 띠 안 클릭
         if(mode==='open'&&!bar.contains(e.target)&&!e.target.closest('#popbox')){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
