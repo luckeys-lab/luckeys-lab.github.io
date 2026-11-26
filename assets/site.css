@@ -461,3 +461,13 @@ html.inv .k-ogre .lbl{bottom:auto;top:calc(100% + 2px)}
 .dock .dk-save .dkl{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);font-size:9.5px;font-weight:800;background:var(--gold);color:var(--navy);border-radius:6px;padding:0 4px;line-height:13px}
 .savebox .tqr{margin-top:8px;border:0;cursor:pointer}
 .dock .dk-save .dkl{white-space:nowrap}
+/* 🔖 체크 저장 · 불러오기 */
+.dock .dk-bk{position:relative;font-size:20px}
+.dock .dk-bk b{position:absolute;top:-5px;right:-6px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:#e03b3b;color:#fff;font-size:11px;line-height:18px;text-align:center}.dock .dk-bk b:empty{display:none}
+.bktabs{display:flex;gap:6px;margin:8px 0}.bktabs button{flex:1;border:2px solid var(--line);background:var(--soft);border-radius:999px;padding:6px;font-weight:800;cursor:pointer;color:var(--txt)}
+.bktabs button.on{border-color:var(--gold);background:var(--navy);color:var(--gold)}
+.bkp{display:none}.bkp.on{display:block}.bkp p{font-size:13.5px}
+.qrbox img{display:block;width:100%;height:auto;border-radius:8px}
+.bkbtn{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}.bkbtn button,.bkpick,.scgo{border:0;cursor:pointer}
+.bkol{padding-left:20px;font-size:13.5px;line-height:1.8}.bkol small{color:var(--sub)}.bkpick{display:inline-block}
+.bkmsg{font-weight:800;color:#e03b3b}

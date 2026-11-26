@@ -191,7 +191,7 @@
   var hhmm=function(t){var d=new Date(t);return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)};
   var stool=document.getElementById('savetool');
   if(stool){var msg=stool.querySelector('.msg');
-    var show=function(r){msg.innerHTML='✅ '+(r.name?'「'+esc(r.name)+'」 ':'')+'세이브를 읽어 체크했어요'+(r.mod?' · 게임 저장 '+hhmm(r.mod):'')+'<br>🔓 <a href="/vs/unlocks.html">본편 해금 '+r.nb+' / '+r.tb+'</a> · 💎 <a href="/vs/unlocks.html#sec-ed">디오라마 해금 '+r.ne+' / '+r.te+'</a> · 🤫 <a href="/vs/secrets.html">비밀 '+r.ns+' / '+r.ts+'</a><br><button type="button" class="tqr fgbtn">📲 폰으로 보내기</button> <small>PC 체크를 폰 화면에서도 보기 (QR)</small>'};
+    var show=function(r){msg.innerHTML='✅ '+(r.name?'「'+esc(r.name)+'」 ':'')+'세이브를 읽어 체크했어요'+(r.mod?' · 게임 저장 '+hhmm(r.mod):'')+'<br>🔓 <a href="/vs/unlocks.html">본편 해금 '+r.nb+' / '+r.tb+'</a> · 💎 <a href="/vs/unlocks.html#sec-ed">디오라마 해금 '+r.ne+' / '+r.te+'</a> · 🤫 <a href="/vs/secrets.html">비밀 '+r.ns+' / '+r.ts+'</a><br><button type="button" class="tqr fgbtn">🔖 저장 · 폰으로 보내기</button> <small>링크·QR로 저장 · 폰 카메라로 찍으면 폰에서도 같은 체크</small>'};
     var fail=function(){msg.textContent='⚠ 세이브 파일을 못 읽었어요. SaveData 파일이 맞는지 확인해 주세요.'};
     var rd=function(f){if(!f)return;f.text().then(SAVE.apply).then(show).catch(fail)};
     stool.querySelector('input').addEventListener('change',function(e){rd(e.target.files[0]);e.target.value=''});   // 같은 파일을 다시 골라도 읽히게
@@ -207,7 +207,7 @@
   // 🔄 세이브 버튼 (버튼 모음 빈 칸) · 연결된 세이브가 있을 때만 · 크롬이 다시 허락을 원하면 "!" 표시
   var sbtn=null,gap=document.querySelector('.dock .dk-gap');
   var sflash=function(t){if(!sbtn)return;sbtn.querySelector('i').textContent=t;sbtn.classList.add('msg');clearTimeout(sbtn._t);sbtn._t=setTimeout(function(){sbtn.classList.remove('msg')},3500)};
-  var loadFile=function(f){if(!f)return;sflash('⏳');f.text().then(SAVE.apply).then(function(r){sflash('✅ 세이브 로드 · 💎 '+r.ne+'/'+r.te+' · 본편 '+r.nb+'/'+r.tb);toast('✅ 세이브 로드 완료 · 폰으로 공략 보면 <button type="button" class="tqr">📲 폰으로 보내기</button>')}).catch(function(){sflash('⚠ 세이브 파일이 아니에요')})};
+  var loadFile=function(f){if(!f)return;sflash('⏳');f.text().then(SAVE.apply).then(function(r){sflash('✅ 세이브 로드 · 💎 '+r.ne+'/'+r.te+' · 본편 '+r.nb+'/'+r.tb);toast('✅ 세이브 로드 완료 · <button type="button" class="tqr">🔖 저장 · 폰으로 보내기</button>')}).catch(function(){sflash('⚠ 세이브 파일이 아니에요')})};
   var isPC=matchMedia('(hover:hover) and (pointer:fine)').matches;   // 폰·태블릿엔 세이브 로드 안 보이게 (11/26 제이)
   if(gap&&isPC&&/^\/vs\//.test(location.pathname)){
     sbtn=document.createElement('button');sbtn.type='button';sbtn.className='dk dk-save';sbtn.title='💾 세이브 파일 로드';sbtn.innerHTML='💾<i></i><input type="file" hidden>';gap.parentNode.replaceChild(sbtn,gap);
@@ -226,9 +226,7 @@
         if(e.target.closest('.sggo')){cl();fin.click()}});
       try{localStorage.setItem('ll_saveguide','1')}catch(e){}};
     var q=document.createElement('span');q.className='sq';q.textContent='?';q.title='사용 방법';sbtn.appendChild(q);
-    var q2=document.createElement('span');q2.className='sp2';q2.textContent='📲';q2.title='📲 폰으로 보내기 (QR)';sbtn.appendChild(q2);
-    var sp2=function(){var c='';try{c=localStorage.getItem('ll_chk')||''}catch(e){}q2.style.display=c&&c!=='{}'?'':'none'};sp2();document.addEventListener('llchk',sp2);
-    sbtn.addEventListener('click',function(e){if(e.target===fin)return;if(e.target.closest('.sq')){guide();return}if(e.target.closest('.sp2')){sendQR();return}
+    sbtn.addEventListener('click',function(e){if(e.target===fin)return;if(e.target.closest('.sq')){guide();return}
       if(sbtn.classList.contains('linked')){sflash('⏳');SAVE.reread(true,true).then(function(r){sbtn.classList.remove('need');sflash(r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod)+' 저장분 반영':'반영'))}).catch(function(){sflash('⚠ 못 읽음')});return}
       var seen=false;try{seen=localStorage.getItem('ll_saveguide')==='1'}catch(x){}if(!seen){guide();return}
       fin.click()});
@@ -328,22 +326,53 @@
     g.addEventListener('click',function(e){if(e.target===g||e.target.closest('.sgx'))g.remove()});return g};
   var toast=function(t){var d=document.createElement('div');d.className='lltoast';d.innerHTML=t;document.body.appendChild(d);setTimeout(function(){d.classList.add('out')},3800);setTimeout(function(){d.remove()},4400)};
   document.addEventListener('click',function(e){if(e.target.closest('.tqr')){e.preventDefault();sendQR()}});
-  // 📱 폰 독: 💾 자리에 📲 (PC에서 보낸 체크 받기)
-  var gap2=document.querySelector('.dock .dk-gap');
-  if(gap2&&!isPC&&/^\/vs\//.test(location.pathname)){var pb=document.createElement('button');pb.type='button';pb.className='dk dk-save';pb.title='📲 PC 체크 받기';pb.innerHTML='📲<small class="dkl">받기</small><i></i>';gap2.parentNode.replaceChild(pb,gap2);
-    pb.addEventListener('click',function(){var last=+(localStorage.getItem('ll_sync')||0);
-      var g=modal('<h3>📲 PC 체크 받기</h3><p>PC로 게임하면서 폰으로 공략 볼 때 쓰는 기능이에요. <b>게임 진행이 옮겨지는 건 아니에요.</b></p><h4>QR로 (제일 쉬움)</h4><p>PC 사이트에서 💾 세이브 로드 → <b>📲 폰으로 보내기</b> → 폰 <b>기본 카메라</b>로 QR 찍기</p><h4>코드로</h4><p><input class="scin" placeholder="코드 붙여넣기" autocomplete="off"> <button type="button" class="sggo scgo">받기</button></p>'+
-        '<p class="note">'+(last?'마지막으로 받은 때: '+KST(last):'아직 받은 적 없어요')+' · 📱 모바일 게임은 세이브 파일을 꺼낼 수 없어서 <a href="/vs/unlocks.html">☑ 직접 체크</a>해요</p>');
-      g.querySelector('.scgo').addEventListener('click',function(){var v=g.querySelector('.scin').value;if(!v)return;SYNC.take(v).then(function(n){g.remove();toast('📲 받았어요 · ☑ '+n+'개')}).catch(function(){toast('⚠ 코드가 잘못됐어요')})})})}
+  // 🔖 독 버튼 (뱀서 페이지 · PC·폰 모두) · 저장 뒤로 체크가 바뀌면 작은 숫자로 "다시 저장" 알림
+  var bkb=null,bkBadge=function(){if(!bkb)return;var n=nChk(),bk=null;try{bk=JSON.parse(localStorage.getItem('ll_bk')||'null')}catch(e){}
+    var d=bk?n-bk.n:(n>=10?n:0),i=bkb.querySelector('b');i.textContent=d?(d>0?'+'+d:d):'';bkb.title=d?'🔖 저장한 뒤로 체크가 바뀌었어요 · 다시 저장':'🔖 내 체크 저장 · 불러오기'};
+  var rs=document.getElementById('dkReco');
+  if(rs&&/^\/vs\//.test(location.pathname)){bkb=document.createElement('button');bkb.type='button';bkb.className='dk dk-bk';bkb.innerHTML='🔖<b></b>';rs.parentNode.insertBefore(bkb,rs.nextSibling);
+    bkb.addEventListener('click',function(){bookmark()});setTimeout(bkBadge,0);document.addEventListener('llchk',function(){setTimeout(bkBadge,0)})}
   // 받는 쪽: 주소에 #s=코드 → 바로 반영 후 주소에서 지움
   if(/[#&]s=/.test(location.hash)){var hc=location.hash;try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}
-    SYNC.take(hc).then(function(n){toast('📲 PC 체크를 받았어요 · ☑ '+n+'개')}).catch(function(){toast('⚠ 코드가 잘못됐어요')})}
-  var sendQR=function(){SYNC.make().then(function(r){var url=location.origin+'/vs/unlocks.html#s='+r.code;
-    var g=modal('<h3>📲 폰으로 보내기</h3><p>PC에서 한 <b>체크</b>를 폰 화면에서도 보게 해요. <b>게임 진행이 옮겨지는 건 아니에요.</b></p><div class="qrbox"></div><p>① 폰 <b>기본 카메라</b>로 이 QR을 비추기 → ② 뜨는 링크 누르기 → 끝<br>· 폰에 원래 있던 체크는 이걸로 바뀌어요</p><details><summary>QR이 안 되면 코드 복사</summary><p><code class="sccode"></code> <button type="button" class="sgcp">📋 복사</button></p><p>폰에서 독의 📲 버튼 → 붙여넣기</p></details>');
-    g.querySelector('.sccode').textContent=r.code;
-    var draw=function(){var q=qrcode(0,'M');q.addData(url);q.make();g.querySelector('.qrbox').innerHTML=q.createSvgTag({cellSize:5,margin:2,scalable:true})};
-    if(window.qrcode)draw();else{var sc=document.createElement('script');sc.src='/assets/qrcode.min.js?v='+VER;sc.onload=draw;document.head.appendChild(sc)}
-    g.querySelector('.sgcp').addEventListener('click',function(e){var b=e.target;(navigator.clipboard?navigator.clipboard.writeText(r.code):Promise.reject()).then(function(){b.textContent='✅ 복사됨'}).catch(function(){b.textContent='길게 눌러 복사'})})})};
+    SYNC.take(hc).then(function(n){toast('📥 저장한 체크를 불러왔어요 · ☑ '+n+'개')}).catch(function(){toast('⚠ 코드가 잘못됐어요')})}
+  // 🔖 내 체크 저장 · 불러오기 (11/26 제이: 모바일 유저가 링크·QR 이미지로 백업 → 링크 누르기 / QR 사진 고르기 / 코드 붙여넣기로 복구)
+  var nChk=function(){try{return Object.keys(JSON.parse(localStorage.getItem('ll_chk')||'{}')).length}catch(e){return 0}};
+  var loadJS=function(src,name){return window[name]?Promise.resolve(window[name]):new Promise(function(ok,no){var sc=document.createElement('script');sc.src=src+'?v='+VER;sc.onload=function(){ok(window[name])};sc.onerror=no;document.head.appendChild(sc)})};
+  var bookmark=function(tab){
+    var g=modal('<h3>🔖 내 체크 저장 · 불러오기</h3><div class="bktabs"><button type="button" data-bt="save">💾 저장</button><button type="button" data-bt="load">📥 불러오기</button></div><div class="bkp" data-bt="save"></div><div class="bkp" data-bt="load"></div>');
+    var ps=g.querySelector('.bkp[data-bt="save"]'),pl=g.querySelector('.bkp[data-bt="load"]');
+    var show=function(t){[].forEach.call(g.querySelectorAll('[data-bt]'),function(e){e.classList.toggle('on',e.dataset.bt===t)})};
+    g.querySelector('.bktabs').addEventListener('click',function(e){var b=e.target.closest('[data-bt]');if(b)show(b.dataset.bt)});
+    var n=nChk(),bk=null;try{bk=JSON.parse(localStorage.getItem('ll_bk')||'null')}catch(e){}
+    if(!n){ps.innerHTML='<p>아직 ☑ 체크한 게 없어요. <a href="/vs/unlocks.html">🔓 해금</a>에서 체크하고 오세요.</p>'}
+    else SYNC.make().then(function(r){var url=location.origin+'/vs/unlocks.html#s='+r.code;
+      ps.innerHTML='<p>지금 체크 <b>☑ '+r.n+'개</b>를 링크·QR로 저장해요. 폰을 바꾸거나 브라우저 기록을 지워도 이걸로 되살려요.</p><div class="qrbox"><img alt="체크 저장 QR"></div>'+
+        '<div class="bkbtn"><button type="button" class="fgbtn bkcp">🔗 링크 복사</button><button type="button" class="fgbtn bkimg">🖼️ QR 이미지 저장</button></div>'+
+        '<p class="note">추천: 링크를 카톡 <b>나에게 보내기</b>에 붙여 두면, 나중에 <b>누르기만</b> 하면 불러와져요 · PC 화면의 QR은 폰 카메라로 찍어도 돼요 · 체크를 더 하면 다시 저장해 주세요</p>'+
+        '<details><summary>코드만 보기</summary><p><code class="sccode"></code></p></details>';
+      ps.querySelector('.sccode').textContent=r.code;
+      var done=function(){try{localStorage.setItem('ll_bk',JSON.stringify({t:Date.now(),n:r.n}))}catch(e){}bkBadge()};
+      loadJS('/assets/qrcode.min.js','qrcode').then(function(qrcode){var q=qrcode(0,'M');q.addData(url);q.make();
+        var im=new Image();im.onload=function(){var c=document.createElement('canvas'),W=im.width+40,H=im.height+90;c.width=W;c.height=H;var x=c.getContext('2d');
+          x.fillStyle='#fff';x.fillRect(0,0,W,H);x.fillStyle='#1E2346';x.fillRect(0,0,W,46);x.fillStyle='#E6B84F';x.font='bold 17px sans-serif';x.textAlign='center';x.fillText("🔖 LucKey's Lab 체크 저장",W/2,29);
+          x.drawImage(im,20,56);x.fillStyle='#1E2346';x.font='14px sans-serif';x.fillText(KST(Date.now())+' · ☑ '+r.n+'개',W/2,H-14);
+          var png=c.toDataURL('image/png');ps.querySelector('.qrbox img').src=png;
+          ps.querySelector('.bkimg').onclick=function(){c.toBlob(function(bl){var f=new File([bl],'luckeys-lab-check.png',{type:'image/png'});
+            if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f],title:"LucKey's Lab 체크 저장"}).then(done).catch(function(){});
+            else{var a=document.createElement('a');a.href=png;a.download='luckeys-lab-check.png';document.body.appendChild(a);a.click();a.remove();done()}})}};
+        im.src=q.createDataURL(6,2)});
+      ps.querySelector('.bkcp').onclick=function(e){var b=e.target;(navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(function(){b.textContent='✅ 복사됨 · 카톡 나에게 붙여넣기';done()}).catch(function(){b.textContent='길게 눌러 코드 복사';ps.querySelector('details').open=true})}});
+    var last=+(localStorage.getItem('ll_sync')||0);
+    pl.innerHTML='<p>저장해 둔 걸 불러와요. <b>지금 체크는 불러온 걸로 바뀌어요.</b></p><ol class="bkol"><li><b>🔗 링크</b>를 저장했으면 → 그 링크를 누르면 끝</li><li><b>🖼️ QR 이미지</b>를 저장했으면 → <label class="fgbtn bkpick">QR 사진 고르기<input type="file" accept="image/*" hidden></label><br><small>갤러리에서 저장한 QR 사진을 고르면 돼요 · 카메라는 안 써요</small></li><li><b>⌨️ 코드</b>면 → <input class="scin" placeholder="코드 또는 링크 붙여넣기" autocomplete="off"> <button type="button" class="fgbtn scgo">불러오기</button></li></ol>'+
+      '<p class="note">'+(last?'마지막으로 불러온 때: '+KST(last):'아직 불러온 적 없어요')+(bk?' · 마지막 저장: '+KST(bk.t)+' (☑ '+bk.n+'개)':'')+'</p><p class="bkmsg"></p>';
+    var msg=pl.querySelector('.bkmsg'),take=function(v){SYNC.take(v).then(function(n){g.remove();toast('📥 불러왔어요 · ☑ '+n+'개');bkBadge()}).catch(function(){msg.textContent='⚠ 코드를 못 읽었어요'})};
+    pl.querySelector('.scgo').onclick=function(){var v=pl.querySelector('.scin').value;if(v)take(v)};
+    pl.querySelector('.bkpick input').onchange=function(e){var f=e.target.files[0];e.target.value='';if(!f)return;msg.textContent='⏳ 사진 읽는 중…';
+      loadJS('/assets/jsqr.min.js','jsQR').then(function(jsQR){var im=new Image();im.onload=function(){var sc=Math.min(1,1600/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*sc;c.height=im.height*sc;
+        var x=c.getContext('2d');x.drawImage(im,0,0,c.width,c.height);var d=x.getImageData(0,0,c.width,c.height),q=jsQR(d.data,c.width,c.height);URL.revokeObjectURL(im.src);
+        if(q&&/[#&]s=/.test(q.data))take(q.data);else msg.textContent='⚠ 이 사진에서 저장 QR을 못 찾았어요'};im.src=URL.createObjectURL(f)}).catch(function(){msg.textContent='⚠ 읽기 실패'})};
+    show(tab||(n?'save':'load'))};
+  var sendQR=function(){bookmark('save')};
   // 🔄 지도 일반/인버스 토글 (인버스 = 180° 회전) · ?inv=1 로 들어오면 인버스로
   var isw=document.querySelector('.invsw');
   if(isw){var setInv=function(v){document.documentElement.classList.toggle('inv',v);[].forEach.call(isw.querySelectorAll('[data-inv]'),function(b){b.classList.toggle('on',(b.dataset.inv==='1')===v)});try{localStorage.setItem('ll_inv',v?'1':'0')}catch(e){}};
