@@ -275,3 +275,4 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 .saveconn button:disabled{opacity:.6;cursor:default}.saveconn p{margin:6px 0 0;line-height:1.6}#saveinfo{font-weight:700;color:var(--gold2)}
 .rbar .rs{white-space:nowrap;font-weight:700;font-size:12.5px;color:#fff;border:1px solid var(--gold)!important;border-radius:8px;padding:2px 8px;margin-right:6px}
 .ordbtn{font:inherit;font-size:12.5px;font-weight:700;border:1px solid var(--gold);background:var(--bg);color:var(--txt);border-radius:16px;padding:3px 10px;cursor:pointer;margin-left:6px}.ordbtn.on{background:var(--navy);color:var(--gold)}
+.statsframe{position:relative;width:100%;aspect-ratio:4/3;max-height:80vh;border:2px solid var(--gold);border-radius:12px;overflow:hidden;margin:10px 0}.statsframe iframe{width:100%;height:100%}
