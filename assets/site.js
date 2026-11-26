@@ -191,7 +191,7 @@
   var hhmm=function(t){var d=new Date(t);return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)};
   var stool=document.getElementById('savetool');
   if(stool){var msg=stool.querySelector('.msg');
-    var show=function(r){msg.innerHTML='✅ '+(r.name?'「'+esc(r.name)+'」 ':'')+'세이브를 읽어 체크했어요'+(r.mod?' · 게임 저장 '+hhmm(r.mod):'')+'<br>🔓 <a href="/vs/unlocks.html">본편 해금 '+r.nb+' / '+r.tb+'</a> · 💎 <a href="/vs/unlocks.html#sec-ed">디오라마 해금 '+r.ne+' / '+r.te+'</a> · 🤫 <a href="/vs/secrets.html">비밀 '+r.ns+' / '+r.ts+'</a>'};
+    var show=function(r){msg.innerHTML='✅ '+(r.name?'「'+esc(r.name)+'」 ':'')+'세이브를 읽어 체크했어요'+(r.mod?' · 게임 저장 '+hhmm(r.mod):'')+'<br>🔓 <a href="/vs/unlocks.html">본편 해금 '+r.nb+' / '+r.tb+'</a> · 💎 <a href="/vs/unlocks.html#sec-ed">디오라마 해금 '+r.ne+' / '+r.te+'</a> · 🤫 <a href="/vs/secrets.html">비밀 '+r.ns+' / '+r.ts+'</a><br><button type="button" class="tqr fgbtn">📲 폰으로 보내기</button> <small>PC 체크를 폰 화면에서도 보기 (QR)</small>'};
     var fail=function(){msg.textContent='⚠ 세이브 파일을 못 읽었어요. SaveData 파일이 맞는지 확인해 주세요.'};
     var rd=function(f){if(!f)return;f.text().then(SAVE.apply).then(show).catch(fail)};
     stool.querySelector('input').addEventListener('change',function(e){rd(e.target.files[0]);e.target.value=''});   // 같은 파일을 다시 골라도 읽히게
@@ -226,7 +226,9 @@
         if(e.target.closest('.sggo')){cl();fin.click()}});
       try{localStorage.setItem('ll_saveguide','1')}catch(e){}};
     var q=document.createElement('span');q.className='sq';q.textContent='?';q.title='사용 방법';sbtn.appendChild(q);
-    sbtn.addEventListener('click',function(e){if(e.target===fin)return;if(e.target.closest('.sq')){guide();return}
+    var q2=document.createElement('span');q2.className='sp2';q2.textContent='📲';q2.title='📲 폰으로 보내기 (QR)';sbtn.appendChild(q2);
+    var sp2=function(){var c='';try{c=localStorage.getItem('ll_chk')||''}catch(e){}q2.style.display=c&&c!=='{}'?'':'none'};sp2();document.addEventListener('llchk',sp2);
+    sbtn.addEventListener('click',function(e){if(e.target===fin)return;if(e.target.closest('.sq')){guide();return}if(e.target.closest('.sp2')){sendQR();return}
       if(sbtn.classList.contains('linked')){sflash('⏳');SAVE.reread(true,true).then(function(r){sbtn.classList.remove('need');sflash(r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod)+' 저장분 반영':'반영'))}).catch(function(){sflash('⚠ 못 읽음')});return}
       var seen=false;try{seen=localStorage.getItem('ll_saveguide')==='1'}catch(x){}if(!seen){guide();return}
       fin.click()});
@@ -328,7 +330,7 @@
   document.addEventListener('click',function(e){if(e.target.closest('.tqr')){e.preventDefault();sendQR()}});
   // 📱 폰 독: 💾 자리에 📲 (PC에서 보낸 체크 받기)
   var gap2=document.querySelector('.dock .dk-gap');
-  if(gap2&&!isPC&&/^\/vs\//.test(location.pathname)){var pb=document.createElement('button');pb.type='button';pb.className='dk dk-save';pb.title='📲 PC 체크 받기';pb.innerHTML='📲<i></i>';gap2.parentNode.replaceChild(pb,gap2);
+  if(gap2&&!isPC&&/^\/vs\//.test(location.pathname)){var pb=document.createElement('button');pb.type='button';pb.className='dk dk-save';pb.title='📲 PC 체크 받기';pb.innerHTML='📲<small class="dkl">받기</small><i></i>';gap2.parentNode.replaceChild(pb,gap2);
     pb.addEventListener('click',function(){var last=+(localStorage.getItem('ll_sync')||0);
       var g=modal('<h3>📲 PC 체크 받기</h3><p>PC로 게임하면서 폰으로 공략 볼 때 쓰는 기능이에요. <b>게임 진행이 옮겨지는 건 아니에요.</b></p><h4>QR로 (제일 쉬움)</h4><p>PC 사이트에서 💾 세이브 로드 → <b>📲 폰으로 보내기</b> → 폰 <b>기본 카메라</b>로 QR 찍기</p><h4>코드로</h4><p><input class="scin" placeholder="코드 붙여넣기" autocomplete="off"> <button type="button" class="sggo scgo">받기</button></p>'+
         '<p class="note">'+(last?'마지막으로 받은 때: '+KST(last):'아직 받은 적 없어요')+' · 📱 모바일 게임은 세이브 파일을 꺼낼 수 없어서 <a href="/vs/unlocks.html">☑ 직접 체크</a>해요</p>');
