@@ -358,3 +358,27 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 /* 🧛 캐릭터: 세이브 기준 */
 .ctile.locked img.sp{filter:brightness(0)}.ctile.locked::after{content:'🔒 미해금';font-size:11px;color:var(--sub)}
 .ctile.unbought::after{content:'🛒 구매 전';font-size:11px;color:var(--gold2)}
+
+/* 🔄 인버스 (11/26): 배지 · 지도 180° 토글 · 숨은 오우거 핀 */
+.binv{display:inline-block;background:#6d3bbf;color:#fff;font-weight:800;font-size:.82em;border-radius:6px;padding:0 6px;margin-right:2px;white-space:nowrap}
+.hinv{color:#8b4ee0}
+.iv{display:none}html.inv .nv{display:none}html.inv .iv{display:inline}
+.invsw{position:sticky;top:64px;z-index:6;display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0;padding:6px 8px;background:var(--card,#fff);border:1px solid rgba(0,0,0,.08);border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.invsw button{border:2px solid #ccc;background:#fff;border-radius:999px;padding:4px 12px;font-weight:800;cursor:pointer}
+.invsw button.on{border-color:var(--gold);background:var(--navy);color:var(--gold)}
+.invsw button[data-inv="1"].on{border-color:#a678f0;background:#6d3bbf;color:#fff}
+.invsw span{font-size:12.5px;opacity:.8}
+.map .pin{left:var(--x);top:var(--y)}
+html.inv .map .pin{left:calc(100% - var(--x));top:calc(100% - var(--y))}
+.map .mi img,.mmap img{transition:transform .35s}
+html.inv .map .mi img,.mmap.inv img{transform:rotate(180deg)}
+html.inv .map .mi{outline:3px solid #8b4ee0;border-radius:10px}
+.mmap.inv{border-color:#8b4ee0}
+html.inv .zl-l{right:auto;left:calc(100% + 4px);text-align:left}
+html.inv .zl-r{left:auto;right:calc(100% + 4px);text-align:right}
+html.inv .zl-t{bottom:auto;top:calc(100% + 3px)}
+html.inv .zl-b{top:auto;bottom:calc(100% + 3px)}
+.k-ogre{z-index:3;font-size:20px;width:30px;height:30px;justify-content:center;border:2px dashed #ff5a5a;border-radius:50%;background:rgba(0,0,0,.45);animation:mpulse 1.6s ease-in-out infinite}
+.k-ogre .lbl{top:auto;bottom:calc(100% + 2px);color:#ff7b7b;text-align:center}
+.k-ogre .lbl small{display:block;font-size:10px;color:#fff;font-weight:700}
+html.inv .k-ogre .lbl{bottom:auto;top:calc(100% + 2px)}

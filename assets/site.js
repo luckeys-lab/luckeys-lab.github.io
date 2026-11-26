@@ -220,7 +220,7 @@
         if(pk.length)res.push({o:o,md:md,pk:pk,tot:tot,ns:pk.filter(function(x){return x.st}).length})})});
       res.sort(function(a,b){return (b.pk.length-a.pk.length)||(b.ns-a.ns)||(a.tot-b.tot)});var seen={},top=[];
       res.forEach(function(r){if(seen[r.o.c]||top.length>=2)return;seen[r.o.c]=1;top.push(r)});return {top:top,S:S}}
-    function head(r){var o=r.o;return '<b>'+esc(o.cn)+'</b>'+(o.c==='ANY'?'':' · '+esc(o.sk))+' · '+(r.md?'🔁 인버스':'일반')}
+    function head(r){var o=r.o;return '<b>'+esc(o.cn)+'</b>'+(o.c==='ANY'?'':' · '+esc(o.sk))+' · '+(r.md?'<span class="binv">🔄 인버스 모드</span>':'🌍 일반')}
     function draw(){if(!bar)return;var c=calc(),top=c.top,S=c.S;
       var one=top.length?head(top[0])+' → '+top[0].pk.map(function(x){return '💎'+RB[x.id].n}).join(' · '):'추천할 판이 없어요',cnt=top.length?top[0].pk.length:0;
       // 접힘 = 왼쪽 아래 둥근 버튼 (11/26 제이: 화면엔 페이지 내용만)
@@ -259,6 +259,11 @@
     [].forEach.call(document.querySelectorAll('[data-ch]'),function(el){var id=el.dataset.ch;el.classList.toggle('locked',!uc[id]);el.classList.toggle('unbought',!!uc[id]&&!bc[id])});
     [].forEach.call(document.querySelectorAll('.savestat'),function(el){var k=el.dataset.kind;el.innerHTML=k==='col'?'💾 세이브 기준 모은 것 <b>'+nc+' / '+tc+'</b>':'💾 세이브 기준 잡은 몹 <b>'+nk+' / '+tk+'</b>';el.classList.add('on')})};
   showExtra();document.addEventListener('llchk',function(e){if(e.detail==='save')showExtra()});
+  // 🔄 지도 일반/인버스 토글 (인버스 = 180° 회전) · ?inv=1 로 들어오면 인버스로
+  var isw=document.querySelector('.invsw');
+  if(isw){var setInv=function(v){document.documentElement.classList.toggle('inv',v);[].forEach.call(isw.querySelectorAll('[data-inv]'),function(b){b.classList.toggle('on',(b.dataset.inv==='1')===v)});try{localStorage.setItem('ll_inv',v?'1':'0')}catch(e){}};
+    var q=/[?&]inv=1/.test(location.search),st=false;try{st=localStorage.getItem('ll_inv')==='1'}catch(e){}
+    setInv(q||st);isw.addEventListener('click',function(e){var b=e.target.closest('[data-inv]');if(b)setInv(b.dataset.inv==='1')})}
   // 지도 크게 보기 (⛶ 또는 빈 곳 탭)
   [].forEach.call(document.querySelectorAll('.map'),function(m){
     function tog(on){m.classList.toggle('full',on);document.body.classList.toggle('noscroll',on)}

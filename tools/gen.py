@@ -79,9 +79,13 @@ _MP=json.loads((D/'ed/map.json').read_text(encoding='utf-8'));_BS=json.loads((D/
 _ZN={int(k):v for k,v in _MP['zones'].items()}
 _EW={k[3:]:v for k,v in items.items() if k.startswith('ED_')}
 def _side(n):return '포탈 도착 화면' if n==0 else (f'오른쪽으로 {n}칸' if n>0 else f'왼쪽으로 {-n}칸')
+def _arr(n):return f'{"→" if n>0 else "←"}{abs(n)}'
+def dual(a,b):return a if a==b else f'<span class="nv">{a}</span><span class="iv">{b}</span>'   # 지도 🔄 토글: 일반/인버스 글자 (인버스 = 180° 회전, 11/26 제이 스샷)
+INVM=lambda u:str(u.get('map','')).startswith('인버스')
 def guide(u):
-    r=RC['rows'].get('ed-%d'%u['n']);out=[]
+    r=RC['rows'].get('ed-%d'%u['n']);out=[];iv=INVM(u)
     if not r:return ''
+    if iv:out.append('🔄 <b class="hinv">인버스(반전) 모드에서만</b> 해금돼요 · 일반 모드에서는 잡아도 안 쳐줘요 · 맵이 180° 돌아가 있어요')
     if r.get('f'):
         f=r['f'];who=[f"{o['cn']}{'' if o['sk'] in ('기본','') else ' ['+o['sk'].strip('()')+']'}" for o in RC['opts'] if o['w']==f]
         nm=_EW.get(f+'1',{}).get('n') or _EW.get(f,{}).get('n') or f
@@ -102,18 +106,20 @@ def guide(u):
     if r['k']=='boss':
         pb=[x for x in _MP['pins'] if x['kind']=='boss' and x['zone']==r['z']]
         b=_BS.get(pb[0]['id'],{}) if pb else {}
-        out.append(f"📍 <a href=\"/vs/ed/map.html#z{r['z']}\">{esc(_ZN[r['z']])}</a> 보스 · {_side(pb[0]['xm']) if pb else ''} · ❤️ {b.get('hp')}{'×레벨' if b.get('hpxlv') else ''} · 🔁 인버스(하이퍼 해금 후)")
+        out.append(f"📍 <a href=\"/vs/ed/map.html#z{r['z']}\">{esc(_ZN[r['z']])}</a> 보스 · {(_side(-pb[0]['xm']) if iv else _side(pb[0]['xm'])) if pb else ''} · ❤️ {b.get('hp')}{'×레벨' if b.get('hpxlv') else ''}")
     if r['k']=='allboss':out.append('📍 <a href="/vs/ed/map.html#z7">정션</a>에서 6구역 보스를 한 판에 전부 · 디바 5번 필수')
-    if r['k']=='ogre':out.append('⏱ 장소가 아니라 <b>21~25분쯤</b> 나오는 시간 보스입니다 (확인 중) · 그때까지 버티기')
+    if r['k']=='ogre':out.append('⏱ <b>21~25분쯤</b> 나오는 숨은 보스 (시간 확인 중) · 화면 가장자리 💀 표시를 따라가기 · 일반 <b>6시</b>(정션 아래쪽) · 인버스 <b>12시</b>')
     if r['k']=='disk':out.append('🛒 에메랄드 디스크를 찾아 구매')
     mm=''
     if r['k'] in ('coffin','boss'):
         z=r['z'];hit=[x for x in _MP['pins'] if x['zone']==z and x['kind']==r['k']][:1]
         def _mp(x,cls):
-            ic={'coffin':'⚰️','boss':'👹','portal':'🌀','item':'💍'}[x['kind']];xm=(f'<b>{"→" if x["xm"]>0 else "←"}{abs(x["xm"])}</b>' if x['xm'] else '')
-            return f'<span class="mp {cls}" style="left:{x["x"]/256*100:.1f}%;top:{x["y"]/280*100:.1f}%">{ic}{xm if cls=="hit" else ""}</span>'
+            ic={'coffin':'⚰️','boss':'👹','portal':'🌀','item':'💍'}[x['kind']];xm=(f'<b>{_arr(-x["xm"] if iv else x["xm"])}</b>' if x['xm'] else '')
+            px,py=x["x"]/256*100,x["y"]/280*100
+            if iv:px,py=100-px,100-py
+            return f'<span class="mp {cls}" style="left:{px:.1f}%;top:{py:.1f}%">{ic}{xm if cls=="hit" else ""}</span>'
         others=''.join(_mp(x,'dim') for x in _MP['pins'] if x['zone']==z and x not in hit)
-        mm=f'<a class="mmap" href="/vs/ed/map.html#z{z}" title="크게 보기"><img src="/assets/vs/ed/map/z{z}.png" alt="{esc(_ZN[z])} 지도" loading="lazy">{others}{"".join(_mp(x,"hit") for x in hit)}<i>🔍 {esc(_ZN[z])} 지도</i></a>'
+        mm=f'<a class="mmap{" inv" if iv else ""}" href="/vs/ed/map.html{"?inv=1" if iv else ""}#z{z}" title="크게 보기"><img src="/assets/vs/ed/map/z{z}.png" alt="{esc(_ZN[z])} 지도" loading="lazy">{others}{"".join(_mp(x,"hit") for x in hit)}<i>🔍 {esc(_ZN[z])} 지도{" · 🔄 인버스" if iv else ""}</i></a>'
     return ''.join(f'<p class="guide">{x}</p>' for x in out)+mm
 
 FIXT={'시우그나스':'시그나스','디바 5호':'디바 5번'}
@@ -142,7 +148,7 @@ for u in U['unlocks']:
     q=f'<div class="fix">게임 원문: {esc(raw)}</div>' if fixed!=raw else ''
     title=fixed
     rows.append(f'''<details class="ul" data-id="ed-{u['n']}" data-type="{t}" data-scope="{scope}"{need_attr(u)}>
-<summary><input type="checkbox" aria-label="해금 체크"><span class="n">💎{u['n']}</span><span class="tt">{hl(esc(title))}</span><span class="k">{CATI.get(t,'')} {t}</span></summary>
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">💎{u['n']}</span><span class="tt">{'<span class="binv">🔄 인버스</span> ' if INVM(u) else ''}{hl(esc(title))}</span><span class="k">{CATI.get(t,'')} {t}</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → {link_names(u['reward'])}</p>{q}<p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p>{guide(u)}{need_note(u,'/vs/unlocks.html')}</div></details>''')
 types=sorted({ty(u['type']) for u in U['unlocks']},key=lambda t:(t=='기타',-sum(1 for u in U['unlocks'] if ty(u['type'])==t)))
 fb=''.join(f'<button type="button" data-f="{t}">{ICON.get(t,"")} {t} {sum(1 for u in U["unlocks"] if ty(u["type"])==t)}</button>' for t in types)
@@ -282,6 +288,7 @@ for u in U['unlocks']:
     t=u['text']
     for a,b in FIXT.items():t=t.replace(a,b)
     _th=_hlre2.sub(lambda m:f'<span class="{"hz" if m.group(0) in ZONEN else "hbx"}">{m.group(0)}</span>',esc(t))   # 추천 창: 구역 노랑 · 보스 빨강 · 링크 없음 (11/26 제이)
+    if INVM(u):_th='<span class="binv">🔄 인버스</span> '+_th
     _rb['ed-%d'%u['n']]={'n':u['n'],'t':t,'th':_th,'rw':u['reward'],'need':u.get('need',[]),'g':guide(u)}
 (D/'ed/rbar.json').write_text(json.dumps(_rb,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 # ── 통합 해금 페이지 /vs/unlocks.html (게임처럼 칸: 1.0 버전 · 추가 · DLC) ──
@@ -328,7 +335,7 @@ BS=json.load(open(R/'data/vs/ed/bosses.json'))
 ZNAME={int(k):v for k,v in MP['zones'].items()}
 rowby={re.search(r'data-id="(ed-\d+)"',r).group(1):r for r in rows}
 UN={u['n']:u for u in U['unlocks']}
-def side(n):return '포탈 도착 화면' if n==0 else (f'오른쪽으로 {n}칸' if n>0 else f'왼쪽으로 {-n}칸')
+def side(n):return dual(_side(n),_side(-n))
 def ufix(t):
     for a,b in FIXT.items():t=t.replace(a,b)
     return t
@@ -344,13 +351,13 @@ for p in MP['pins']:
         items['EB_'+p['id']]={'n':nm,'t':f'보스 · {zn}','d':'','p':st,'ul':ulines(sorted(set(ns))),'bn':b.get('ko') or nm,'bd':bd}
     if p['kind']=='coffin':
         ch=items.get('CH_'+p['id'],{});cn={'EME_RAPIERDUAL':2,'EME_SWORDBITE':25}.get(p['id'])
-        items['EC_'+p['id']]={'i':ch.get('i'),'n':'⚰️ '+p['label'],'t':f'관 · {zn} · {side(p["xm"])}','d':ch.get('d',''),'s':ch.get('s'),'si':ch.get('si'),'ul':ulines([cn]) if cn else [],'l':ch.get('l')}
+        items['EC_'+p['id']]={'i':ch.get('i'),'n':'⚰️ '+p['label'],'t':f'관 · {zn} · {_side(p["xm"])}','d':ch.get('d',''),'s':ch.get('s'),'si':ch.get('si'),'ul':ulines([cn]) if cn else [],'l':ch.get('l')}
 _b=BS['EME_BOSS_OGRE']
-items['EB_EME_BOSS_OGRE']={'n':'숨은 오우거','t':'보스 · 21~25분쯤','d':'맵 어딘가가 아니라 21~25분쯤 나오는 시간 보스입니다 (정확한 시간 확인 중).','p':f"❤️ {_b['hp']}{'×레벨' if _b['hpxlv'] else ''} · ⚔️ {_b['power']} · 👟 {_b['speed']}",'ul':ulines([41]),'bn':'숨은 오우거','bd':''}
+items['EB_EME_BOSS_OGRE']={'n':'숨은 오우거','t':'보스 · 21~25분쯤','d':'21~25분쯤 나타나요 (시간 확인 중). 화면 가장자리 💀 표시를 따라가면 돼요 · 일반 6시(정션 아래쪽) · 인버스 12시.','p':f"❤️ {_b['hp']}{'×레벨' if _b['hpxlv'] else ''} · ⚔️ {_b['power']} · 👟 {_b['speed']}",'ul':ulines([41]),'bn':'숨은 오우거','bd':''}
 (D/'items.json').write_text(json.dumps(items,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 def pin_html(p,hub=False):
-    st=f'left:{p["x"]/256*100:.2f}%;top:{p["y"]/280*100:.2f}%'
-    xm=(f'<b>{"→" if p["xm"]>0 else "←"}{abs(p["xm"])}</b>' if p['xm'] else '')
+    st=f'--x:{p["x"]/256*100:.2f}%;--y:{p["y"]/280*100:.2f}%'
+    xm=(f'<b>{dual(_arr(p["xm"]),_arr(-p["xm"]))}</b>' if p['xm'] else '')
     if p['kind']=='portal':
         z=int(re.search(r'biome(\d)',p['id']).group(1))
         if hub:
@@ -377,8 +384,9 @@ for z in set(p['zone'] for p in MP['pins']):
         grp=[q for q in ps if abs(q['x']-p['x'])<NEAR and abs(q['y']-p['y'])<NEAR]
         grp.sort(key=lambda q:KO.index(q['kind']))
         p['pk']=','.join(popkey(q) for q in grp)
+OGPIN='<span class="pin k-ogre" style="--x:54.69%;--y:96%" data-pop="EB_EME_BOSS_OGRE">💀<i class="lbl">숨은 오우거 {}<small>21~25분쯤</small></i></span>'.format(dual('⬇','⬆'))
 def mapbox(z,ps,hub=False):
-    return f'''<div class="map" data-z="{z}"><div class="mi"><img src="/assets/vs/ed/map/z{z}.png" alt="{esc(ZNAME[z])} 지도" loading="lazy">{''.join(pin_html(p,hub) for p in ps)}</div><button type="button" class="mfull" aria-label="크게 보기">⛶</button></div>'''
+    return f'''<div class="map" data-z="{z}"><div class="mi"><img src="/assets/vs/ed/map/z{z}.png" alt="{esc(ZNAME[z])} 지도" loading="lazy">{''.join(pin_html(p,hub) for p in ps)}{OGPIN if hub else ''}</div><button type="button" class="mfull" aria-label="크게 보기">⛶</button></div>'''
 zs=[]
 for z in range(1,7):
     ps=[p for p in MP['pins'] if p['zone']==z];ps.sort(key=lambda p:KO.index(p['kind']))
@@ -400,6 +408,7 @@ desc: 뱀파이어 서바이벌 에메랄드 디오라마 지도. 관 2개 위�
 <div class="coffins"><h2>⚰️ 관 위치</h2><ul>{cofbox}</ul></div>
 <p class="sub">게임 데이터 기준 · 정션에서 포탈 번호를 누르면 그 구역으로 · 아이콘·이름을 누르면 설명 · ⛶ 누르면 크게</p>
 <div class="howto"><b>칸</b> = 지도 그림 한 장. 구역은 옆으로 같은 무늬가 계속 반복됩니다. <b>→2</b> 표시는 포탈로 도착한 화면에서 <b>오른쪽으로 2장</b> 더 가면 있다는 뜻입니다.</div>
+<div class="invsw" role="group" aria-label="지도 모드"><button type="button" data-inv="0" class="on">🌍 일반</button><button type="button" data-inv="1">🔄 인버스</button><span>인버스 = 맵 전체가 <b>180°</b> 돌아가요 (좌우·위아래 모두)</span></div>
 <div id="ulist" data-group="ed">
 <section class="zone" id="z7"><h2>🌀 정션 (허브)</h2>
 {mapbox(7,hubp,True)}
@@ -407,9 +416,10 @@ desc: 뱀파이어 서바이벌 에메랄드 디오라마 지도. 관 2개 위�
 {chr(10).join(allr)}
 </section>
 {chr(10).join(zs)}
-<section class="zone" id="z9"><h2>👹 <b class="hb">숨은 오우거</b> · 시간 보스 (21~25분쯤)</h2>
-<p>해금 조건은 <b class="hb pop" data-pop="EB_EME_BOSS_OGRE">숨은 오우거</b>(EME_BOSS_OGRE) 1마리 처치입니다. 게임 데이터상 21분 칸에 있고 해금 이름은 25분(DefeatBoss25m)이라 <b>21~25분쯤</b> 나오는 시간 보스로 보입니다. 특정 장소가 아니라 <b>그때까지 버티면</b> 됩니다 (정확한 시간 확인 중).</p>
-<p class="note">맵 데이터에는 정션 훨씬 아래에 <span class="pop" data-pop="EB_EME_SUSPICIOUS_OGRE">수상한 오우거</span> 자리가 따로 있지만, 바닥이 이어지지 않고 포탈도 없어 실제로는 갈 수 없는 자리로 보입니다.</p>
+<section class="zone" id="z9"><h2>💀 <b class="hb">숨은 오우거</b> · 21~25분쯤</h2>
+<p>해금 조건은 <b class="hb pop" data-pop="EB_EME_BOSS_OGRE">숨은 오우거</b> 1마리 처치입니다. <b>21~25분쯤</b> 나타나요 (정확한 시간 확인 중).</p>
+<p>나타나면 화면 가장자리에 <b>💀 해골 표시</b>가 방향을 알려줘요. 일반 모드는 <b>6시</b>(정션 아래쪽, 지도의 💀 핀), <b>인버스는 맵이 돌아가서 12시</b>예요. 위 🔄 버튼으로 바꿔 보세요.</p>
+<p class="note">게임 데이터에도 정션 훨씬 아래에 <span class="pop" data-pop="EB_EME_SUSPICIOUS_OGRE">수상한 오우거</span> 자리가 있어요.</p>
 {chr(10).join(ogr)}
 </section>
 </div>
