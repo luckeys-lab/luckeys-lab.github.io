@@ -283,7 +283,8 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 .rfab .rlab{font-size:13px;font-weight:800;max-width:0;overflow:hidden;white-space:nowrap;transition:max-width .4s}
 .rbar.hint .rfab .rlab,.rfab:hover .rlab{max-width:120px}
 .rfab .rcnt{position:absolute;top:-6px;right:-6px;font-style:normal;font-size:11px;font-weight:800;background:#e03b3b;color:#fff;border-radius:10px;min-width:18px;height:18px;line-height:18px;text-align:center;padding:0 4px}
-.rbar.open{left:50%;bottom:16px;transform:translateX(-50%);width:min(940px,calc(100% - 24px));z-index:70;background:var(--navy);border:2px solid var(--gold);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.55);overflow:hidden}
+.rbar.open{left:50%;bottom:16px;transform:translateX(-50%);width:min(940px,calc(100% - 24px));z-index:70;background:var(--navy);border:2px solid var(--gold);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.55)}
+.rbar.open .rbody{border-radius:0 0 14px 14px}
 .rbar.open .rl{display:flex;align-items:center;gap:8px;padding:8px 12px;max-width:none}
 .rbar.open .rone{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#fff;font-size:13px}.rbar.open .rone b{color:var(--gold)}
 .rbar.open .rbody{position:static;transform:none;width:auto;max-height:65vh;overflow:auto;border:0;border-radius:0;box-shadow:none;background:var(--soft);margin:0;padding:6px 14px 12px}
