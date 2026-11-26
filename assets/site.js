@@ -353,13 +353,13 @@
       ps.querySelector('.sccode').textContent=r.code;
       var done=function(){try{localStorage.setItem('ll_bk',JSON.stringify({t:Date.now(),n:r.n}))}catch(e){}bkBadge()};
       loadJS('/assets/qrcode.min.js','qrcode').then(function(qrcode){var q=qrcode(0,'M');q.addData(url);q.make();
-        var im=new Image();im.onload=function(){var c=document.createElement('canvas'),W=im.width+40,H=im.height+90;c.width=W;c.height=H;var x=c.getContext('2d');
+        var im=new Image();im.onload=function(){var c=document.createElement('canvas'),W=im.width+40,H=im.height+112,dn=new Date(),ds=dn.getFullYear()+'. '+(dn.getMonth()+1)+'. '+dn.getDate()+'.',fn='luckeys-lab-check-'+dn.getFullYear()+'-'+('0'+(dn.getMonth()+1)).slice(-2)+'-'+('0'+dn.getDate()).slice(-2)+'.png';c.width=W;c.height=H;var x=c.getContext('2d');
           x.fillStyle='#fff';x.fillRect(0,0,W,H);x.fillStyle='#1E2346';x.fillRect(0,0,W,46);x.fillStyle='#E6B84F';x.font='bold 17px sans-serif';x.textAlign='center';x.fillText("🔖 LucKey's Lab 체크 저장",W/2,29);
-          x.drawImage(im,20,56);x.fillStyle='#1E2346';x.font='14px sans-serif';x.fillText(KST(Date.now())+' · ☑ '+r.n+'개',W/2,H-14);
+          x.drawImage(im,20,56);x.fillStyle='#1E2346';x.font='bold 22px sans-serif';x.fillText('📅 '+ds,W/2,H-36);x.font='14px sans-serif';x.fillText(KST(Date.now())+' · ☑ '+r.n+'개',W/2,H-12);
           var png=c.toDataURL('image/png');ps.querySelector('.qrbox img').src=png;
-          ps.querySelector('.bkimg').onclick=function(){c.toBlob(function(bl){var f=new File([bl],'luckeys-lab-check.png',{type:'image/png'});
+          ps.querySelector('.bkimg').onclick=function(){c.toBlob(function(bl){var f=new File([bl],fn,{type:'image/png'});
             if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f],title:"LucKey's Lab 체크 저장"}).then(done).catch(function(){});
-            else{var a=document.createElement('a');a.href=png;a.download='luckeys-lab-check.png';document.body.appendChild(a);a.click();a.remove();done()}})}};
+            else{var a=document.createElement('a');a.href=png;a.download=fn;document.body.appendChild(a);a.click();a.remove();done()}})}};
         im.src=q.createDataURL(6,2)});
       ps.querySelector('.bkcp').onclick=function(e){var b=e.target;(navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(function(){b.textContent='✅ 복사됨 · 카톡 나에게 붙여넣기';done()}).catch(function(){b.textContent='길게 눌러 코드 복사';ps.querySelector('details').open=true})}});
     var last=+(localStorage.getItem('ll_sync')||0);
