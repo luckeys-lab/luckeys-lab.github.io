@@ -167,8 +167,13 @@
   // 🔄 세이브 버튼 (버튼 모음 빈 칸) · 연결된 세이브가 있을 때만 · 크롬이 다시 허락을 원하면 "!" 표시
   var sbtn=null,gap=document.querySelector('.dock .dk-gap');
   var sflash=function(t){if(!sbtn)return;sbtn.querySelector('i').textContent=t;sbtn.classList.add('msg');clearTimeout(sbtn._t);sbtn._t=setTimeout(function(){sbtn.classList.remove('msg')},3500)};
-  SAVE.getH().then(function(h){if(!h||!gap)return;sbtn=document.createElement('button');sbtn.type='button';sbtn.className='dk dk-save';sbtn.title='연결된 세이브 다시 읽기';sbtn.innerHTML='🔄<i></i>';gap.parentNode.replaceChild(sbtn,gap);
-    sbtn.addEventListener('click',function(){sflash('⏳');SAVE.reread(true,true).then(function(r){sbtn.classList.remove('need');sflash(r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod)+' 저장분 반영':'반영'))}).catch(function(){sflash('⚠ 못 읽음')})})});
+  SAVE.getH().then(function(h){if(!gap||!window.showOpenFilePicker||!/^\/vs\//.test(location.pathname))return;sbtn=document.createElement('button');sbtn.type='button';sbtn.className='dk dk-save';sbtn.title='연결된 세이브 다시 읽기';sbtn.innerHTML='🔄<i></i>';gap.parentNode.replaceChild(sbtn,gap);
+    if(!h){sbtn.innerHTML='💾<i></i>';sbtn.title='PC 세이브 파일 연결';sbtn.classList.add('nolink');
+      sbtn.addEventListener('click',function(){if(!sbtn.classList.contains('nolink'))return;window.showOpenFilePicker({multiple:false}).then(function(hs){var hh=hs[0];return SAVE.setH(hh).then(function(){return hh.getFile()})})
+        .then(function(f){return f.text().then(SAVE.apply).then(function(){try{localStorage.setItem('ll_savemod',f.lastModified)}catch(e){}sbtn.classList.remove('nolink');sbtn.innerHTML='🔄<i></i>';sbtn.title='연결된 세이브 다시 읽기';sflash('✅ 연결 · '+hhmm(f.lastModified)+' 저장분 반영')})})
+        .catch(function(e){if(e&&e.name!=='AbortError')sflash('⚠ 못 열었어요 · 도구 페이지에서 끌어다 놓기')})});
+      setTimeout(function(){sflash('💾 세이브 연결하면 자동 체크')},1500)}
+    sbtn.addEventListener('click',function(){if(sbtn.classList.contains('nolink'))return;sflash('⏳');SAVE.reread(true,true).then(function(r){sbtn.classList.remove('need');sflash(r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod)+' 저장분 반영':'반영'))}).catch(function(){sflash('⚠ 못 읽음')})})});
   var autoRe=function(){if(document.visibilityState!=='visible')return;SAVE.reread(false,false).then(function(r){if(r&&r.need&&sbtn)sbtn.classList.add('need');else if(r&&r.mod)sflash('✅ '+hhmm(r.mod)+' 저장분 반영')}).catch(function(){})};
   document.addEventListener('visibilitychange',autoRe);window.addEventListener('focus',autoRe);setTimeout(autoRe,800);
   document.addEventListener('click',function(e){var sp=e.target.closest('.spoil');if(sp){e.preventDefault();sp.classList.add('show')}});
