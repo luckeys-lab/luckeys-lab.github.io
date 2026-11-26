@@ -303,3 +303,10 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 .dock .totop{position:static;width:44px;height:44px;margin-right:2px;border:2px solid var(--gold)}
 .dock .rbar.fab{position:static}
 .dock .rfab .rlab{order:-1}
+/* 버튼 모음 왼쪽 · 광고 오른쪽 (11/26 제이) */
+.dock{right:auto;left:14px;align-items:flex-start}
+.dock .totop{margin-right:0;margin-left:2px}
+.dock .rfab .rlab{order:0}
+.ad-rail{position:fixed;right:12px;top:calc(var(--bar) + 16px);width:160px;max-height:calc(100vh - var(--bar) - 32px);margin:0;z-index:5}
+.ad-rail.on{display:none}
+@media (min-width:1280px){.ad-rail.on{display:block}}
