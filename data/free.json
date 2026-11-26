@@ -1,0 +1,7 @@
+{"_about":"🎁 이번주 무료게임 카드 · 시간은 UTC(Z) · 페이지 JS가 지금 시각으로 '지금 무료 / 곧 무료 / 지난 무료' 자동 분류 · 매주 금요일 아침 예약 작업이 갱신 · 출처 = 각 스토어 공식(에픽 freeGamesPromotions API)",
+"updated":"2026-11-26T13:10:00Z",
+"games":[
+{"store":"epic","title":"Bread and Fred","start":"2026-11-26T16:00:00Z","end":"2026-12-03T16:00:00Z","img":"https://cdn1.epicgames.com/spt-assets/545b4dd8bb364c12b719268198a93ef3/bread-and-fred-3jnwn.jpg","url":"https://store.epicgames.com/ko/p/bread-and-fred-1db362","genre":"협동 · 플랫포머","desc":"펭귄 두 마리가 줄로 묶인 채 눈 덮인 산을 함께 오르는 협동 게임. 점프하고 벽에 매달리고 줄을 흔들어 건너요.","fit":"친구·연인이랑 같이 웃고 싸우면서 할 게임을 찾는 사람"},
+{"store":"epic","title":"파이어스톤 - 방치 클릭커 온라인 RPG","start":"2026-11-26T16:00:00Z","end":"2026-12-03T16:00:00Z","img":"https://cdn1.epicgames.com/spt-assets/69576a28f7154fe9a0dce97508da5163/firestone-online-idle-rpg-ed9ba.jpg","url":"https://store.epicgames.com/ko/p/firestone-online-idle-rpg-bfd04b","genre":"방치형 · RPG","desc":"영웅을 모으고 장비·스킬을 키우면 알아서 싸우는 방치형 판타지 RPG. 길드와 PVP도 있어요.","fit":"켜 두고 가끔 들여다보는 가벼운 성장 게임을 좋아하는 사람"},
+{"store":"epic","title":"Mark of the Deep","start":"2026-11-19T16:00:00Z","end":"2026-11-26T16:00:00Z","img":"https://cdn1.epicgames.com/spt-assets/83a240506a884c10ad8fb99694e57a0d/mark-of-the-deep-w1ygr.png","url":"https://store.epicgames.com/ko/p/mark-of-the-deep-f7dc08","genre":"메트로이드바니아 · 소울라이크","desc":"저주받은 섬에서 사라진 선원들을 찾아 나서는 신참 해적의 모험. 탐험은 메트로이드바니아, 전투는 소울라이크.","fit":"어려운 보스전과 맵 구석구석 뒤지는 탐험을 좋아하는 사람"}
+]}

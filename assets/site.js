@@ -88,6 +88,22 @@
       var el=e.target.closest('[data-pop]');if(el&&!cur){clearTimeout(tShow);return}
       if(el||box.contains(e.target)){clearTimeout(tHide);tHide=setTimeout(function(){if(!box.matches(':hover')&&!(cur&&cur.matches(':hover')))hide()},220)}});}
   addEventListener('scroll',hide,{passive:true});
+  // 🎁 이번주 무료게임: 지금 시각으로 지금/곧/지난 분류 + 남은 시간 (11/26)
+  var KST=function(d){return new Date(d).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',month:'numeric',day:'numeric',weekday:'short',hour:'numeric',minute:'2-digit'})};
+  var left=function(ms){var m=Math.max(0,Math.floor(ms/60000)),d=Math.floor(m/1440),h=Math.floor(m%1440/60),mi=m%60;return d?d+'일 '+h+'시간':h?h+'시간 '+mi+'분':mi+'분'};
+  var fb=document.getElementById('freebox');
+  if(fb){var put=function(){var now=Date.now(),L={};['now','next','past'].forEach(function(k){L[k]=fb.querySelector('.fgl[data-k="'+k+'"]')});
+      [].forEach.call(fb.querySelectorAll('.fg'),function(c){var s=Date.parse(c.dataset.start),e=Date.parse(c.dataset.end),k=now<s?'next':now<e?'now':'past';L[k].appendChild(c);
+        c.className='fg '+k;var t=c.querySelector('.fgt'),d=c.querySelector('.fgd');
+        if(k==='now'){t.textContent='⏰ '+left(e-now)+' 남음';d.innerHTML='🟢 <b>'+KST(e)+'</b>까지 무료'}
+        else if(k==='next'){t.textContent='⏳ '+left(s-now)+' 뒤 시작';d.innerHTML='⏳ <b>'+KST(s)+'</b>부터 <b>'+KST(e)+'</b>까지'}
+        else{t.textContent='종료';d.textContent='📜 '+KST(s)+' ~ '+KST(e)}});
+      ['now','next'].forEach(function(k){var h=fb.querySelector('.fh[data-k="'+k+'"]');if(h)h.style.display=L[k].children.length?'':'none'});
+      var p=fb.querySelector('.fpast');if(p)p.style.display=L.past.children.length?'':'none'};
+    put();setInterval(put,60000);var u=document.querySelector('.fupd');if(u)u.textContent=KST(u.dataset.t)}
+  var f1=document.getElementById('freeone');
+  if(f1)fetch('/data/free.json?v='+VER).then(function(r){return r.json()}).then(function(j){var now=Date.now(),g=j.games.filter(function(x){return Date.parse(x.start)<=now&&now<Date.parse(x.end)});
+    if(g.length)f1.textContent=g[0].title+(g.length>1?' 외 '+(g.length-1)+'개':'')+' · '+left(Date.parse(g[0].end)-now)+' 남음'}).catch(function(){});
   // 🗂 콘텐츠 틀: 왼쪽 DLC 탭 (11/26) · #base #ed … · 다른 콘텐츠로 가도 같은 탭(ll_tab)
   var CP=document.querySelector('.cp');
   function cpCount(){if(!CP)return;var X=null;try{X=JSON.parse(localStorage.getItem('ll_extra')||'null')}catch(e){}

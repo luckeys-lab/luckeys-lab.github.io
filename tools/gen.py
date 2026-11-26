@@ -517,3 +517,35 @@ desc: 뱀파이어 서바이벌 진화 조합 전체 · 본편 기본 · 합체 
 <div class="ad" data-slot="end"></div>
 ''',encoding='utf-8')
 print('evo',len(eb),len(ex),len(UNI),len(edl))
+
+# ── 🎁 이번주 무료게임 /review/free.html (11/26 · data/free.json · 예약 작업이 매주 금요일 갱신 · 분류는 페이지 JS가 지금 시각으로) ──
+FR=json.loads((R/'data/free.json').read_text(encoding='utf-8'))
+STORE={'epic':('에픽','#2a2a2a'),'gog':('GOG','#86328a'),'stove':('스토브','#ff5a1f'),'steam':('스팀','#1b2838'),'ea':('EA 앱','#ff4747'),'ubisoft':('유비소프트','#0070ff'),'prime':('프라임 게이밍','#00a8e1')}
+def fcard(g):
+    sn,sc=STORE.get(g['store'],(g['store'],'#555'))
+    return f'''<article class="fg" data-start="{g['start']}" data-end="{g['end']}">
+<a class="fgimg" href="{g['url']}" target="_blank" rel="noopener"><img src="{g['img']}" alt="{esc(g['title'])}" loading="lazy" referrerpolicy="no-referrer"><span class="fgst" style="background:{sc}">{sn}</span><span class="fgt"></span></a>
+<div class="fgb"><h3>{esc(g['title'])}</h3><p class="fgg">{esc(g.get('genre',''))}</p><p>{esc(g['desc'])}</p>{('<p class="fgfit">👍 <b>이런 사람에게</b> · '+esc(g['fit'])+'</p>') if g.get('fit') else ''}
+<p class="fgd"></p><a class="fgbtn" href="{g['url']}" target="_blank" rel="noopener">스토어에서 받기 ›</a></div></article>'''
+(R/'_src/review').mkdir(parents=True,exist_ok=True)
+(R/'_src/review/free.html').write_text(f'''title: 이번주 무료게임 (에픽 · GOG · 스토브)
+desc: 이번주 에픽게임즈 무료게임 · 언제까지 무료인지 남은 시간 · 다음 주 무료게임 미리보기 · 매주 금요일 갱신 · 받으면 계속 내 것.
+<div class="crumb"><a href="/">홈</a> › <a href="/review/">리뷰</a> › 이번주 무료게임</div>
+<h1>🎁 이번주 무료게임</h1>
+<p class="sub">기간 안에 받으면 <b>계속 내 것</b> · 시간은 한국 시간 · 에픽은 매주 <b>금요일 새벽 1시</b>에 바뀌어요 · 매주 금요일 아침 갱신</p>
+<div id="freebox">
+<h2 class="fh" data-k="now">🟢 지금 무료</h2><div class="fgl" data-k="now"></div>
+<h2 class="fh" data-k="next">⏳ 곧 무료</h2><div class="fgl" data-k="next"></div>
+<details class="fpast"><summary>📜 지난 무료게임</summary><div class="fgl" data-k="past"></div></details>
+<div class="fgl" data-k="all">{''.join(fcard(g) for g in sorted(FR['games'],key=lambda g:g['start'],reverse=True))}</div>
+</div>
+<p class="note">GOG · 스토브 같은 다른 스토어는 무료 배포가 있을 때만 올라와요 · 무료 여부는 각 스토어 공식 정보 기준이고, 받기 전에 스토어에서 한 번 더 확인해 주세요 · 마지막 확인 <span class="fupd" data-t="{FR['updated']}"></span></p>
+<div class="ad" data-slot="end"></div>
+''',encoding='utf-8')
+(R/'_src/review/index.html').write_text('''title: 리뷰
+desc: LucKey's Lab 게임 리뷰 · 이번주 무료게임.
+<div class="crumb"><a href="/">홈</a> › 리뷰</div>
+<h1>🎬 리뷰</h1>
+<div class="tiles"><a class="tile on" href="/review/free.html"><b>🎁 이번주 무료게임</b><span>에픽 · 남은 시간 · 매주 금요일 갱신</span></a><div class="tile off"><b>게임 리뷰</b><span>준비 중</span></div></div>
+''',encoding='utf-8')
+print('free',len(FR['games']))
