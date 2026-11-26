@@ -169,7 +169,8 @@
   var sbtn=null,gap=document.querySelector('.dock .dk-gap');
   var sflash=function(t){if(!sbtn)return;sbtn.querySelector('i').textContent=t;sbtn.classList.add('msg');clearTimeout(sbtn._t);sbtn._t=setTimeout(function(){sbtn.classList.remove('msg')},3500)};
   var loadFile=function(f){if(!f)return;sflash('⏳');f.text().then(SAVE.apply).then(function(r){sflash('✅ 세이브 로드 · 💎 '+r.ne+'/'+r.te+' · 본편 '+r.nb+'/'+r.tb)}).catch(function(){sflash('⚠ 세이브 파일이 아니에요')})};
-  if(gap&&/^\/vs\//.test(location.pathname)){
+  var isPC=matchMedia('(hover:hover) and (pointer:fine)').matches;   // 폰·태블릿엔 세이브 로드 안 보이게 (11/26 제이)
+  if(gap&&isPC&&/^\/vs\//.test(location.pathname)){
     sbtn=document.createElement('button');sbtn.type='button';sbtn.className='dk dk-save';sbtn.title='💾 세이브 파일 로드';sbtn.innerHTML='💾<i></i><input type="file" hidden>';gap.parentNode.replaceChild(sbtn,gap);
     var fin=sbtn.querySelector('input');fin.addEventListener('change',function(e){loadFile(e.target.files[0]);e.target.value=''});
     sbtn.addEventListener('click',function(e){if(e.target===fin)return;

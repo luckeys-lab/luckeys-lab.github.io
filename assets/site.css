@@ -323,3 +323,4 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 @media (max-width:640px){.layer{left:0;right:0;bottom:0;width:auto;border-radius:16px 16px 0 0;max-height:80vh}}
 .adv{margin:14px 0}.adv>summary{cursor:pointer;font-weight:700;color:var(--sub)}
 .dropzone{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;background:rgba(5,6,15,.6);color:var(--gold);font-size:22px;font-weight:800;border:4px dashed var(--gold);pointer-events:none}.dropzone.on{display:flex}
+@media (hover:none),(pointer:coarse){.pc-only{display:none!important}}
