@@ -164,7 +164,12 @@
         .then(function(f){return f.text().then(SAVE.apply).then(function(r){try{localStorage.setItem('ll_savemod',f.lastModified)}catch(e){}r.mod=f.lastModified;show(r);msg.innerHTML+='<br>📌 연결했어요. 이제 위쪽 띠의 🔄 버튼이나, 사이트로 돌아올 때 자동으로 최신 세이브를 읽어요.'})}).catch(function(e){if(e&&e.name!=='AbortError')fail()})});
       SAVE.getH().then(function(h){if(h){var i=document.getElementById('saveinfo');if(i)i.textContent='📌 연결된 세이브: '+h.name}})}}
   // 사이트로 돌아올 때(탭 다시 보기) 연결된 세이브가 바뀌었으면 자동으로 다시 읽기
-  var autoRe=function(){if(document.visibilityState!=='visible')return;SAVE.reread(false,false).catch(function(){})};
+  // 🔄 세이브 버튼 (버튼 모음 빈 칸) · 연결된 세이브가 있을 때만 · 크롬이 다시 허락을 원하면 "!" 표시
+  var sbtn=null,gap=document.querySelector('.dock .dk-gap');
+  var sflash=function(t){if(!sbtn)return;sbtn.querySelector('i').textContent=t;sbtn.classList.add('msg');clearTimeout(sbtn._t);sbtn._t=setTimeout(function(){sbtn.classList.remove('msg')},3500)};
+  SAVE.getH().then(function(h){if(!h||!gap)return;sbtn=document.createElement('button');sbtn.type='button';sbtn.className='dk dk-save';sbtn.title='연결된 세이브 다시 읽기';sbtn.innerHTML='🔄<i></i>';gap.parentNode.replaceChild(sbtn,gap);
+    sbtn.addEventListener('click',function(){sflash('⏳');SAVE.reread(true,true).then(function(r){sbtn.classList.remove('need');sflash(r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod)+' 저장분 반영':'반영'))}).catch(function(){sflash('⚠ 못 읽음')})})});
+  var autoRe=function(){if(document.visibilityState!=='visible')return;SAVE.reread(false,false).then(function(r){if(r&&r.need&&sbtn)sbtn.classList.add('need');else if(r&&r.mod)sflash('✅ '+hhmm(r.mod)+' 저장분 반영')}).catch(function(){})};
   document.addEventListener('visibilitychange',autoRe);window.addEventListener('focus',autoRe);setTimeout(autoRe,800);
   document.addEventListener('click',function(e){var sp=e.target.closest('.spoil');if(sp){e.preventDefault();sp.classList.add('show')}});
   // 📌 상단 고정 추천 띠 · ll_chk로 계산 · 띠 안에서 펼치기/체크
