@@ -492,3 +492,5 @@ html.inv .k-ogre .lbl{bottom:auto;top:calc(100% + 2px)}
 .fmini img{width:96px;height:54px;object-fit:cover;border-radius:8px;flex:0 0 auto;background:var(--navy)}
 .fmini span{flex:1;min-width:0;display:flex;flex-direction:column}.fmini b{font-size:14px;line-height:1.25}.fmini small{color:var(--sub);font-size:12px}
 .fmini i{font-style:normal;font-weight:800;color:var(--gold2);font-size:12.5px;white-space:nowrap}
+/* 📱 폰: 왼쪽 아래 독과 안 겹치게 체크칸을 오른쪽 끝으로 · 누르기 쉽게 조금 크게 (11/27 제이) */
+@media (max-width:720px){.ul summary input{order:9;width:22px;height:22px;margin-left:auto}}
