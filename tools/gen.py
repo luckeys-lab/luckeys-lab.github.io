@@ -41,6 +41,8 @@ def cpage(icon,name,tabs,top='',wrap=''):
     return f'''<div class="cp"><div class="cphead"><span class="cpi">{icon}</span><h1>{name}</h1><span class="cpn"></span><span class="cpc"></span></div>
 {top}
 <div class="cpw"><nav class="cpside" aria-label="DLC">{''.join(side)}</nav><div class="cpbody"{(' '+wrap) if wrap else ''}>{''.join(body)}</div></div></div>'''
+def RSW(k,lb):   # 🧭 추천 ON/OFF (11/27 제이: 칸마다 맨 위 · 처음엔 본편만 ON)
+    return f'<div class="rsw" data-grp="{k}"><span>🧭 <b>{lb} 추천</b><small>켜면 왼쪽 아래 🧭 추천 해금에 이 칸이 들어가요</small></span><button type="button" class="sw" role="switch" aria-checked="false" aria-label="{lb} 추천 켜기"><i></i></button></div>'
 def redir(path,target,dh):
     """옛 주소 → 새 주소 (검색·링크 보존 · ?inv · #해시 그대로)"""
     f=R/'_src'/path
@@ -130,7 +132,7 @@ def guide(u):
         out.append(f"📍 <a href=\"/vs/map.html#z{r['z']}\">{esc(_ZN[r['z']])}</a> 보스 · {(_side(-pb[0]['xm']) if iv else _side(pb[0]['xm'])) if pb else ''} · ❤️ {b.get('hp')}{'×레벨' if b.get('hpxlv') else ''}")
     if r['k']=='allboss':out.append('📍 <a href="/vs/map.html#z7">정션</a>에서 6구역 보스를 한 판에 전부 · 디바 5번 필수')
     if r['k']=='ogre':out.append('⏱ <b>21~25분쯤</b> 나오는 숨은 보스 (시간 확인 중) · 화면 가장자리 💀 표시를 따라가기 · 일반 <b>6시</b>(정션 아래쪽) · 인버스 <b>12시</b>')
-    if r['k']=='disk':out.append('🛒 에메랄드 디스크를 찾아 구매')
+    if r['k']=='disk':out.append('🛒 본편 <b>달빛</b> 스테이지 상인 <b>크산티아</b>가 DLC 디스크를 팔아요 · 달빛은 <a href="/vs/unlocks.html#b-Unlock4Hypers">본편 #77</a>(하이퍼 4개)로 열려요')
     mm=''
     if r['k'] in ('coffin','boss'):
         z=r['z'];hit=[x for x in _MP['pins'] if x['zone']==z and x['kind']==r['k']][:1]
@@ -305,7 +307,7 @@ afb=''.join(f'<button type="button" data-f="{t}">{ICA.get(t,"")} {t} {n}</button
 (R/'_src/vs/unlocks.html').write_text(f'''title: 해금 {len(BU)+len(U["unlocks"])}개 (본편 + DLC)
 desc: 뱀파이어 서바이벌 해금 조건 전체. 게임처럼 1.0 버전 · 추가 · DLC 칸으로 나눔 · 먼저 필요한 해금을 체크해야 다음 해금이 보임 · 게임 데이터 기준.
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 해금</div>
-{cpage('🔓','해금',{'base':chr(10).join(brows[:NMAIN]),'extra':chr(10).join(brows[NMAIN:]),'ed':'<p class="secnav"><a href="/vs/map.html#ed">🗺️ 지도</a> · <a href="/vs/chars.html#ed">🧛 캐릭터</a></p>'+chr(10).join(rows)},top='''<p class="sub">게임 해금 화면처럼 칸으로 나눴습니다 · 기본은 <b>열리는 순서(추천 순서)</b> · 같은 스킬의 레벨·진화는 붙여 놨습니다(🔗 한 판에 같이) · 번호는 게임 순서</p>
+{cpage('🔓','해금',{'base':RSW('base','🧛 본편')+chr(10).join(brows[:NMAIN]),'extra':RSW('extra','➕ 추가')+chr(10).join(brows[NMAIN:]),'ed':RSW('ed','💎 디오라마')+'<p class="secnav"><a href="/vs/map.html#ed">🗺️ 지도</a> · <a href="/vs/chars.html#ed">🧛 캐릭터</a></p>'+chr(10).join(rows)},top=f'''<p class="sub">게임 해금 화면처럼 칸으로 나눴습니다 · 기본은 <b>열리는 순서(추천 순서)</b> · 같은 스킬의 레벨·진화는 붙여 놨습니다(🔗 한 판에 같이) · 번호는 게임 순서</p>
 <div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div>
 <div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button>{afb}</div>
 <div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
@@ -577,7 +579,7 @@ _have=set(SKL)
 _new=[k for k in list(json.loads((D/'ach_keys.json').read_text(encoding='utf-8')).values())+['ed-%d'%u['n'] for u in U['unlocks']]+['s-'+x for x in json.loads((D/'secret_keys.json').read_text(encoding='utf-8'))]
       +['cw:'+k for k in sorted(items) if not k.startswith(('CH_','EB_','EC_','TP_'))]
       +['uc:'+k[3:] for k in sorted(items) if k.startswith('CH_')]+['bc:'+k[3:] for k in sorted(items) if k.startswith('CH_')]
-      +['kc:'+b['id'] for b in BE] if k not in _have]
+      +['kc:'+b['id'] for b in BE]+['rg:base','rg:extra','rg:ed'] if k not in _have]
 SKL+=list(dict.fromkeys(_new))
 SKF.write_text(json.dumps(SKL,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 print('sync keys',len(SKL))

@@ -104,6 +104,13 @@
   var f1=document.getElementById('freeone');
   if(f1)fetch('/data/free.json?v='+VER).then(function(r){return r.json()}).then(function(j){var now=Date.now(),g=j.games.filter(function(x){return Date.parse(x.start)<=now&&now<Date.parse(x.end)});
     if(g.length)f1.textContent=g[0].title+(g.length>1?' 외 '+(g.length-1)+'개':'')+' · '+left(Date.parse(g[0].end)-now)+' 남음'}).catch(function(){});
+  // 🧭 추천 범위 ON/OFF (11/27) · ll_rgrp · 처음엔 본편만
+  var GRPN={base:'🧛 본편',extra:'➕ 추가',ed:'💎 디오라마'};
+  var getG=function(){try{var g=JSON.parse(localStorage.getItem('ll_rgrp')||'null');if(g)return g}catch(e){}return {base:1}};
+  var setG=function(g){try{localStorage.setItem('ll_rgrp',JSON.stringify(g))}catch(e){}try{document.dispatchEvent(new CustomEvent('llchk',{detail:'grp'}))}catch(e){}};
+  var swDraw=function(){var G=getG();[].forEach.call(document.querySelectorAll('.rsw'),function(r){var on=!!G[r.dataset.grp];r.classList.toggle('on',on);var b=r.querySelector('.sw');b.setAttribute('aria-checked',on?'true':'false')})};
+  document.addEventListener('click',function(e){var b=e.target.closest('.rsw .sw');if(!b)return;var k=b.closest('.rsw').dataset.grp,G=getG();if(G[k])delete G[k];else G[k]=1;setG(G);swDraw()});
+  swDraw();document.addEventListener('llchk',function(e){if(e.detail==='grp'||e.detail==='save')swDraw()});
   // 🗂 콘텐츠 틀: 왼쪽 DLC 탭 (11/26) · #base #ed … · 다른 콘텐츠로 가도 같은 탭(ll_tab)
   var CP=document.querySelector('.cp');
   function cpCount(){if(!CP)return;var X=null,C=false;try{X=JSON.parse(localStorage.getItem('ll_extra')||'null');C=localStorage.getItem('ll_chk')&&localStorage.getItem('ll_chk')!=='{}'}catch(e){}
@@ -245,7 +252,7 @@
     var HAS=false,TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],RB=null,RC=null,bar=null,curT=0,mode='min',openRow=null;
     var first=false;try{mode=localStorage.getItem('ll_rbar');if(!mode){mode='min';first=true}if(mode==='off')mode='min';curT=+(localStorage.getItem('ll_rtier')||0)}catch(e){}
     var getS=function(){try{return JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){return {}}};
-    function calc(){var S=getS(),has=function(k){return !!S[k]},inv=[].concat(RC.inv).every(has),T=TIER[curT],res=[];
+    function calc(){var S=getS();if(!getG().ed)return {top:[],S:S};var has=function(k){return !!S[k]},inv=[].concat(RC.inv).every(has),T=TIER[curT],res=[];
       var vis=Object.keys(RB).filter(function(k){return !S[k]&&RB[k].need.every(function(g){return g.some(has)})&&RC.rows[k]});
       RC.opts.forEach(function(o){if(!o.need.every(has))return;[0,1].forEach(function(md){if(md&&!inv)return;var L=[];
         vis.forEach(function(id){var R=RC.rows[id];if(R.inv&&!md)return;if(R.ch.length&&R.ch.indexOf(o.c)<0)return;
@@ -263,7 +270,11 @@
       if(mode!=='open'){bar.className='rbar fab'+(first?' hint':'');bar.innerHTML='<button type="button" class="rfab" data-m="open" title="추천 해금">🧭<span class="rlab">추천 해금</span>'+(cnt?'<i class="rcnt">'+cnt+'</i>':'')+'</button>';return}
       var h='<div class="rl"><span class="rtag">🧭 추천 해금</span><span class="rone">다음 판: '+one+'</span>'+(HAS?'<button type="button" class="rs" title="연결된 세이브를 다시 읽기">🔄 세이브</button>':'')+'<a class="rhelp" href="/vs/howto.html">❓ 사용법</a><button type="button" class="rx" data-m="min">닫기 ✕</button></div>';
       if(mode==='open'){h+='<div class="rbody"><p class="rintro">체크한 해금을 보고, <b>다음 판에 한 번에 노릴 수 있는 해금</b>을 골라 줘요. 줄을 누르면 공략과 ☑ 체크가 펼쳐져요.</p><div class="rtabs">'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</div>';
-        if(!top.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
+        var G=getG(),gl=Object.keys(GRPN).filter(function(k){return G[k]});
+        h+='<p class="rscope">추천 범위: '+(gl.length?gl.map(function(k){return '<b>'+GRPN[k]+'</b>'}).join(' · '):'<b>없음</b>')+' · <a href="/vs/unlocks.html">해금 페이지 맨 위에서 켜기/끄기</a></p>';
+        if(G.base||G.extra)h+='<p class="rn">🛠 '+[G.base?'🧛 본편':'',G.extra?'➕ 추가':''].filter(Boolean).join(' · ')+' 추천은 만드는 중이에요 · 곧 열려요</p>';
+        if(!top.length&&G.ed)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
+        if(!gl.length)h+='<p class="rn">켜진 칸이 없어요 · 해금 페이지 각 칸 맨 위 🧭 스위치를 켜 주세요</p>';
         top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div class="rcb"><div class="rh2">'+head(r)+'</div>'+(o.c==='ANY'?'<div class="rw">본편 캐릭터도 OK</div>':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+
           r.pk.map(function(x){var it=RB[x.id],op=openRow===x.id;return '<li><a class="ri" data-r="'+x.id+'">💎'+it.n+' '+(it.th||esc(it.t))+'</a>'+(x.st?' <em class="st">🗡️ 시작 스킬</em>':'')+(x.lk?' <em class="lk">🎲 상자 운</em>':'')+
             (op?'<div class="rdet"><label class="rck"><input type="checkbox" data-c="'+x.id+'"'+(S[x.id]?' checked':'')+'> 해금 완료</label><p class="rw2">🎁 보상 → '+esc(it.rw)+'</p>'+it.g+'<a class="go" href="/vs/unlocks.html#'+x.id+'">목록에서 보기 →</a></div>':'')+'</li>'}).join('')+'</ul></div></div>'});
@@ -285,7 +296,7 @@
       document.addEventListener('keydown',function(e){if(e.key==='Escape'&&mode==='open'){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
       // 카드 머리(캐릭터 이름·그림)를 눌러도 접기
       bar.addEventListener('click',function(e){if(e.target.closest('.rh2')||e.target.closest('.rc img.sp')){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
-      document.addEventListener('llchk',function(e){if(e.detail==='list'||e.detail==='save')draw()});
+      document.addEventListener('llchk',function(e){if(e.detail==='list'||e.detail==='save'||e.detail==='grp')draw()});
       SAVE.getH().then(function(h){HAS=!!h;draw()});draw()})}
   // 🔒 해금 표시 (11/26): ☑ 체크(모바일 OK) → 해금/미해금 · 💾 세이브 → 모음(금테)/아직(흐림) · 아무것도 없으면 전부 원래 색
   var LM=null,LMing=false;
@@ -313,14 +324,14 @@
       var U=function(k){return String(k).toUpperCase().replace(/^ED_/,'')},cw={},uc={},bc={};if(X){X.cw.forEach(function(k){cw[U(k)]=1});X.uc.forEach(function(k){uc[k]=1});X.bc.forEach(function(k){bc[k]=1})}
       var u8=new Uint8Array(Math.ceil(K.length/8)),n=0;
       K.forEach(function(k,i){var v=false,p=k.indexOf(':'),t=p>0?k.slice(0,p):'',id=p>0?k.slice(p+1):k;
-        if(!t)v=!!S[k];else if(X){if(t==='cw')v=!!cw[U(id)];else if(t==='uc')v=!!uc[id];else if(t==='bc')v=!!bc[id];else if(t==='kc')v=!!X.kc[id]}
+        if(!t)v=!!S[k];else if(t==='rg')v=!!getG()[id];else if(X){if(t==='cw')v=!!cw[U(id)];else if(t==='uc')v=!!uc[id];else if(t==='bc')v=!!bc[id];else if(t==='kc')v=!!X.kc[id]}
         if(v){u8[i>>3]|=1<<(i&7);n++}});
       var end=u8.length;while(end>0&&!u8[end-1])end--;return {code:(X?'2':'1')+SYNC.b64(u8.slice(0,end)),n:n}})},
     take:function(code){code=String(code).trim();var m=code.match(/[#&]s=([A-Za-z0-9_-]+)/);if(m)code=m[1];
-      return SYNC.keys().then(function(K){var hx=code.charAt(0)==='2',u8=SYNC.unb64(code.slice(1)),S={},X=hx?{cw:[],kc:{},uc:[],bc:[]}:null,nb=0;
+      return SYNC.keys().then(function(K){var hx=code.charAt(0)==='2',u8=SYNC.unb64(code.slice(1)),S={},RG={},X=hx?{cw:[],kc:{},uc:[],bc:[]}:null,nb=0;
         K.forEach(function(k,i){if(!(u8[i>>3]&(1<<(i&7))))return;var p=k.indexOf(':'),t=p>0?k.slice(0,p):'',id=p>0?k.slice(p+1):k;
-          if(!t){S[k]=1;nb++}else if(X){if(t==='cw')X.cw.push(id.replace(/^ED_/,''));else if(t==='uc')X.uc.push(id);else if(t==='bc')X.bc.push(id);else if(t==='kc')X.kc[id]=-1}});
-        try{localStorage.setItem('ll_chk',JSON.stringify(S));if(X)localStorage.setItem('ll_extra',JSON.stringify(X));localStorage.setItem('ll_sync',String(Date.now()))}catch(e){}
+          if(!t){S[k]=1;nb++}else if(t==='rg')RG[id]=1;else if(X){if(t==='cw')X.cw.push(id.replace(/^ED_/,''));else if(t==='uc')X.uc.push(id);else if(t==='bc')X.bc.push(id);else if(t==='kc')X.kc[id]=-1}});
+        try{localStorage.setItem('ll_chk',JSON.stringify(S));if(Object.keys(RG).length)localStorage.setItem('ll_rgrp',JSON.stringify(RG));if(X)localStorage.setItem('ll_extra',JSON.stringify(X));localStorage.setItem('ll_sync',String(Date.now()))}catch(e){}
         try{document.dispatchEvent(new CustomEvent('llchk',{detail:'save'}))}catch(e){}return nb})}};
   var modal=function(html){var g=document.createElement('div');g.className='sguide';g.innerHTML='<div class="sgc"><button type="button" class="sgx" aria-label="닫기">✕</button>'+html+'</div>';document.body.appendChild(g);
     g.addEventListener('click',function(e){if(e.target===g||e.target.closest('.sgx'))g.remove()});return g};

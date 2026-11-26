@@ -471,3 +471,13 @@ html.inv .k-ogre .lbl{bottom:auto;top:calc(100% + 2px)}
 .bkbtn{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:8px 0}.bkbtn button,.bkpick,.scgo{border:0;cursor:pointer}
 .bkol{padding-left:20px;font-size:13.5px;line-height:1.8}.bkol small{color:var(--sub)}.bkpick{display:inline-block}
 .bkmsg{font-weight:800;color:#e03b3b}
+
+/* 🧭 추천 ON/OFF */
+.rsw{display:flex;align-items:center;gap:10px;justify-content:space-between;border:2px dashed var(--line);border-radius:12px;padding:8px 12px;margin:4px 0 10px;background:var(--soft)}
+.rsw span{display:flex;flex-direction:column}.rsw small{font-size:11.5px;color:var(--sub)}
+.rsw.on{border:2px solid var(--gold)}
+.sw{position:relative;flex:0 0 auto;width:54px;height:30px;border-radius:15px;border:0;background:#b9bccb;cursor:pointer;transition:.2s}
+.sw i{position:absolute;left:3px;top:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.sw::after{content:'OFF';position:absolute;right:7px;top:8px;font-size:10px;font-weight:800;color:#fff}
+.rsw.on .sw{background:var(--gold)}.rsw.on .sw i{left:27px}.rsw.on .sw::after{content:'ON';left:8px;right:auto;color:var(--navy)}
+.rscope{font-size:12.5px;margin:4px 0}.rscope a{color:var(--gold)}
