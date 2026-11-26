@@ -324,3 +324,12 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 .adv{margin:14px 0}.adv>summary{cursor:pointer;font-weight:700;color:var(--sub)}
 .dropzone{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;background:rgba(5,6,15,.6);color:var(--gold);font-size:22px;font-weight:800;border:4px dashed var(--gold);pointer-events:none}.dropzone.on{display:flex}
 @media (hover:none),(pointer:coarse){.pc-only{display:none!important}}
+/* 💾 첫 로드 안내 */
+.dock .dk-save .sq{position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;background:var(--gold);color:var(--navy);font-size:11px;font-weight:800;line-height:18px;text-align:center;cursor:pointer}
+.sguide{position:fixed;inset:0;z-index:95;background:rgba(5,6,15,.6);display:flex;align-items:center;justify-content:center;padding:14px}
+.sguide .sgc{position:relative;max-width:520px;width:100%;max-height:85vh;overflow:auto;background:var(--bg);color:var(--txt);border:2px solid var(--gold);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.55);padding:16px 18px}
+.sguide h3{margin:0 0 6px;color:var(--gold2)}.sguide h4{margin:12px 0 4px;font-size:14px}.sguide p{margin:0;font-size:13.5px;line-height:1.7}
+.sguide code{background:var(--soft);padding:2px 6px;border-radius:6px;word-break:break-all}
+.sguide .sgx{position:absolute;top:8px;right:10px;border:0;background:none;color:var(--sub);font-size:16px;cursor:pointer}
+.sguide .sgcp{font:inherit;font-size:12px;border:1px solid var(--gold);background:var(--soft);color:var(--txt);border-radius:8px;padding:1px 8px;cursor:pointer}
+.sguide .sggo{display:block;width:100%;margin-top:14px;font:inherit;font-weight:800;background:var(--navy);color:var(--gold);border:0;border-radius:10px;padding:10px;cursor:pointer}

@@ -173,8 +173,23 @@
   if(gap&&isPC&&/^\/vs\//.test(location.pathname)){
     sbtn=document.createElement('button');sbtn.type='button';sbtn.className='dk dk-save';sbtn.title='💾 세이브 파일 로드';sbtn.innerHTML='💾<i></i><input type="file" hidden>';gap.parentNode.replaceChild(sbtn,gap);
     var fin=sbtn.querySelector('input');fin.addEventListener('change',function(e){loadFile(e.target.files[0]);e.target.value=''});
-    sbtn.addEventListener('click',function(e){if(e.target===fin)return;
+    // 처음 💾 누를 때만 사용 방법 안내 (💾 옆 ? 로 다시 보기)
+    var PATH='C:\\Program Files (x86)\\Steam\\userdata';
+    var guide=function(){var g=document.createElement('div');g.className='sguide';
+      g.innerHTML='<div class="sgc"><button type="button" class="sgx" aria-label="닫기">✕</button><h3>💾 세이브 파일 로드</h3><p>게임 세이브를 넣으면 해금 체크가 한 번에 채워져요.</p>'+
+        '<h4>① 세이브 위치</h4><p><code>'+PATH+'</code> <button type="button" class="sgcp">📋 복사</button><br>→ 숫자 폴더 → <b>1794680</b> → <b>remote</b> → <b>SaveData</b> (슬롯 번호: SaveData, SaveData2 …)</p>'+
+        '<h4>② 빠르게 가기</h4><p>파일 열기 창 아래 <b>"파일 이름"</b> 칸에 붙여넣고 <b>엔터</b>를 치면 그 폴더로 바로 가요.</p>'+
+        '<h4>③ 알아두기</h4><p>· 지금 체크는 <b>세이브 기준으로 바뀌어요</b><br>· 다음부터는 창이 마지막 폴더를 기억해서 더 빨라요<br>· 파일은 이 브라우저 안에서만 읽어요</p>'+
+        '<button type="button" class="sggo">📂 파일 고르기</button></div>';
+      document.body.appendChild(g);var cl=function(){g.remove()};
+      g.addEventListener('click',function(e){if(e.target===g||e.target.closest('.sgx'))cl();
+        if(e.target.closest('.sgcp')){var b=e.target.closest('.sgcp');(navigator.clipboard?navigator.clipboard.writeText(PATH):Promise.reject()).then(function(){b.textContent='✅ 복사됨'}).catch(function(){b.textContent='복사 실패 · 직접 선택'})}
+        if(e.target.closest('.sggo')){cl();fin.click()}});
+      try{localStorage.setItem('ll_saveguide','1')}catch(e){}};
+    var q=document.createElement('span');q.className='sq';q.textContent='?';q.title='사용 방법';sbtn.appendChild(q);
+    sbtn.addEventListener('click',function(e){if(e.target===fin)return;if(e.target.closest('.sq')){guide();return}
       if(sbtn.classList.contains('linked')){sflash('⏳');SAVE.reread(true,true).then(function(r){sbtn.classList.remove('need');sflash(r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod)+' 저장분 반영':'반영'))}).catch(function(){sflash('⚠ 못 읽음')});return}
+      var seen=false;try{seen=localStorage.getItem('ll_saveguide')==='1'}catch(x){}if(!seen){guide();return}
       fin.click()});
     SAVE.getH().then(function(h){if(h){sbtn.classList.add('linked');sbtn.firstChild.textContent='🔄';sbtn.title='연결된 세이브 다시 읽기'}});
     // 페이지 아무 데나 끌어다 놓기
