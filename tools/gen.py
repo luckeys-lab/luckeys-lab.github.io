@@ -488,6 +488,8 @@ print('ed collection',len(cw),'bestiary',len(BE))
 
 # ── ✨ 진화 /vs/evo.html (11/26 · 탭: 본편 · 추가 · 💎 디오라마 · 세이브: data-evo 줄 got/miss/locked) ──
 evo=json.loads((D/'evo_rows.json').read_text(encoding='utf-8'))
+EVSKIP={'FOLLOWER_KNIFE2'}   # 혼돈의 룬 → 사악한 통치자: 해금 보상·그림 없음 · 제이도 처음 봄 → 안 쓰는 데이터로 보고 뺌 (11/26)
+evo=[e for e in evo if e['to'] not in EVSKIP]
 def evchip(k,cls=''):
     it=items.get(k,{});ic=f'<img src="{it["i"]}" alt="" loading="lazy">' if it.get('i') else ''
     return f'<span class="ec{cls}" data-pop="{k}" data-ek="{k}">{ic}<b>{esc(it.get("n",k))}</b></span>'
