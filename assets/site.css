@@ -333,3 +333,4 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 .sguide .sgx{position:absolute;top:8px;right:10px;border:0;background:none;color:var(--sub);font-size:16px;cursor:pointer}
 .sguide .sgcp{font:inherit;font-size:12px;border:1px solid var(--gold);background:var(--soft);color:var(--txt);border-radius:8px;padding:1px 8px;cursor:pointer}
 .sguide .sggo{display:block;width:100%;margin-top:14px;font:inherit;font-weight:800;background:var(--navy);color:var(--gold);border:0;border-radius:10px;padding:10px;cursor:pointer}
+.rbar .hz{color:var(--gold2);font-weight:800}.rbar .hbx{color:#e03b3b;font-weight:800}@media (prefers-color-scheme:dark){.rbar .hz{color:var(--gold)}.rbar .hbx{color:#ff7b7b}}

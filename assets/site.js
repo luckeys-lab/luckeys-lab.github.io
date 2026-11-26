@@ -226,7 +226,7 @@
       if(mode==='open'){h+='<div class="rbody"><p class="rintro">체크한 해금을 보고, <b>다음 판에 한 번에 노릴 수 있는 해금</b>을 골라 줘요. 줄을 누르면 공략과 ☑ 체크가 펼쳐져요.</p><div class="rtabs">'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</div>';
         if(!top.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
         top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div class="rcb"><div class="rh2">'+head(r)+'</div>'+(o.c==='ANY'?'<div class="rw">본편 캐릭터도 OK</div>':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+
-          r.pk.map(function(x){var it=RB[x.id],op=openRow===x.id;return '<li><a class="ri" data-r="'+x.id+'">💎'+it.n+' '+esc(it.t)+'</a>'+(x.st?' <em class="st">🗡️ 시작 스킬</em>':'')+(x.lk?' <em class="lk">🎲 상자 운</em>':'')+
+          r.pk.map(function(x){var it=RB[x.id],op=openRow===x.id;return '<li><a class="ri" data-r="'+x.id+'">💎'+it.n+' '+(it.th||esc(it.t))+'</a>'+(x.st?' <em class="st">🗡️ 시작 스킬</em>':'')+(x.lk?' <em class="lk">🎲 상자 운</em>':'')+
             (op?'<div class="rdet"><label class="rck"><input type="checkbox" data-c="'+x.id+'"'+(S[x.id]?' checked':'')+'> 해금 완료</label><p class="rw2">🎁 보상 → '+esc(it.rw)+'</p>'+it.g+'<a class="go" href="/vs/unlocks.html#'+x.id+'">목록에서 보기 →</a></div>':'')+'</li>'}).join('')+'</ul></div></div>'});
         h+='</div>'}
       bar.className='rbar '+mode;bar.innerHTML=h}

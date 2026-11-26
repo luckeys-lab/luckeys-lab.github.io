@@ -273,11 +273,14 @@ btypes=sorted({bty(u['type']) for u in BU},key=lambda t:(t=='기타',-sum(1 for 
 bfb=''.join(f'<button type="button" data-f="{t}">{ICON2.get(t,"")} {t} {sum(1 for u in BU if bty(u["type"])==t)}</button>' for t in btypes)
 (R/'_src/vs/base').mkdir(parents=True,exist_ok=True)
 # 📌 상단 추천 띠용 데이터: data/vs/ed/rbar.json
+ZONEN=['마녀 왕국 풀크라','미야코시','풀크라','그렐론','아발론','요미','프로비던스','정션']
+_hlre2=re.compile('('+'|'.join(map(re.escape,sorted(ZONEN+BOSSN,key=len,reverse=True)))+')')
 _rb={}
 for u in U['unlocks']:
     t=u['text']
     for a,b in FIXT.items():t=t.replace(a,b)
-    _rb['ed-%d'%u['n']]={'n':u['n'],'t':t,'rw':u['reward'],'need':u.get('need',[]),'g':guide(u)}
+    _th=_hlre2.sub(lambda m:f'<span class="{"hz" if m.group(0) in ZONEN else "hbx"}">{m.group(0)}</span>',esc(t))   # 추천 창: 구역 노랑 · 보스 빨강 · 링크 없음 (11/26 제이)
+    _rb['ed-%d'%u['n']]={'n':u['n'],'t':t,'th':_th,'rw':u['reward'],'need':u.get('need',[]),'g':guide(u)}
 (D/'ed/rbar.json').write_text(json.dumps(_rb,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 # ── 통합 해금 페이지 /vs/unlocks.html (게임처럼 칸: 1.0 버전 · 추가 · DLC) ──
 ALLT={}
