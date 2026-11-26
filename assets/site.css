@@ -382,3 +382,37 @@ html.inv .zl-b{top:auto;bottom:calc(100% + 3px)}
 .k-ogre .lbl{top:auto;bottom:calc(100% + 2px);color:#ff7b7b;text-align:center}
 .k-ogre .lbl small{display:block;font-size:10px;color:#fff;font-weight:700}
 html.inv .k-ogre .lbl{bottom:auto;top:calc(100% + 2px)}
+
+/* 🗂 콘텐츠 틀 (11/26): 위 = 콘텐츠 이름 · 왼쪽 = DLC 세로 탭 · 모바일 = 가로 줄 */
+.cp{--tc:var(--gold)}
+.cphead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0 8px;padding-bottom:8px;border-bottom:3px solid var(--tc)}
+.cphead .cpi{font-size:30px;line-height:1}.cphead h1{margin:0;font-size:24px}
+.cpn{font-weight:800;color:var(--sub);font-size:16px}
+.cpc{margin-left:auto;font-weight:800;background:var(--navy);color:var(--gold);border-radius:999px;padding:2px 12px;font-size:13px}.cpc:empty{display:none}
+.cpw{display:grid;grid-template-columns:74px minmax(0,1fr);gap:12px;align-items:start;margin-top:10px}
+.cpside{position:sticky;top:calc(var(--bar) + 8px);display:flex;flex-direction:column;gap:4px;max-height:calc(100vh - var(--bar) - 90px);overflow-y:auto;scrollbar-width:thin}
+.cpt-b{display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 2px;border-radius:10px;text-decoration:none;color:var(--txt);border:2px solid transparent;background:var(--soft);text-align:center}
+.cpt-b i{font-style:normal;font-size:21px;line-height:1.1}.cpt-b b{font-size:11px;line-height:1.15;word-break:keep-all}.cpt-b small{font-size:10px;color:var(--sub);min-height:12px}
+.cpt-b:hover{border-color:var(--line)}
+.cpt-b.on{border-color:var(--tc);background:var(--bg);box-shadow:0 2px 8px rgba(0,0,0,.12)}.cpt-b.on b{color:var(--tc)}
+.cpt-b.off{opacity:.38;cursor:default}
+.cpt{display:none}.cpt.on{display:block}.cpbody{min-width:0}
+@media (max-width:720px){.cpw{grid-template-columns:1fr;gap:6px}
+ .cpside{flex-direction:row;top:var(--bar);z-index:8;overflow-x:auto;max-height:none;background:var(--bg);padding:6px 0;margin:0 -12px;padding-left:12px}
+ .cpt-b{min-width:62px;flex:0 0 auto}}
+.invsw{background:var(--soft)}
+/* ✨ 진화 줄 */
+.evl{display:flex;flex-direction:column;gap:8px;margin:8px 0 18px}
+.evr{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px;border-radius:12px;border:1px solid var(--line);background:var(--soft);position:relative}
+.evr .pl,.evr .ar{font-style:normal;font-weight:900;color:var(--sub)}.evr .ar{color:var(--gold2);font-size:18px}
+.ec{display:inline-flex;align-items:center;gap:4px;padding:3px 8px 3px 4px;border-radius:8px;background:var(--bg);border:1px solid var(--line);cursor:pointer;font-size:13px}
+.ec img{width:26px;height:26px;image-rendering:pixelated}.ec.to{border-color:var(--gold);font-weight:800}
+.ereq{flex-basis:100%;margin:2px 0 0;font-size:12px;color:var(--sub)}
+/* 💾 세이브 회색 규칙 (세이브 없으면 전부 원래 색) · 다 모음 = 금테 · 아직 = 흐린 회색 · 미해금 = 회색 + 🔒 */
+.evr.got{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+.evr.miss{opacity:.6;filter:grayscale(1)}
+.evr.locked{opacity:.42;filter:grayscale(1)}
+.evr.locked::after,.ctile.locked::after{content:'🔒 미해금';font-size:11px;color:var(--sub);font-weight:700}
+.evr.locked::after{content:'🔒 재료 아직';margin-left:auto}
+.ctile.locked img.sp{filter:grayscale(1);opacity:.45}.ctile.locked{opacity:.7}
+.bcard.miss .bimg img{filter:grayscale(1);opacity:.4}.bcard.miss{opacity:.75}

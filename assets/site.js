@@ -88,6 +88,26 @@
       var el=e.target.closest('[data-pop]');if(el&&!cur){clearTimeout(tShow);return}
       if(el||box.contains(e.target)){clearTimeout(tHide);tHide=setTimeout(function(){if(!box.matches(':hover')&&!(cur&&cur.matches(':hover')))hide()},220)}});}
   addEventListener('scroll',hide,{passive:true});
+  // 🗂 콘텐츠 틀: 왼쪽 DLC 탭 (11/26) · #base #ed … · 다른 콘텐츠로 가도 같은 탭(ll_tab)
+  var CP=document.querySelector('.cp');
+  function cpCount(){if(!CP)return;var X=null;try{X=JSON.parse(localStorage.getItem('ll_extra')||'null')}catch(e){}
+    [].forEach.call(CP.querySelectorAll('.cpt'),function(p){var b=CP.querySelector('.cpt-b[data-tab="'+p.dataset.tab+'"] .cn'),t='',its=p.querySelectorAll('[data-col],[data-kill],[data-ch],[data-evo]');
+      if(its.length)t=X?p.querySelectorAll('.sok').length+' / '+its.length:''+its.length;
+      else{var a=0,n=0;[].forEach.call(p.querySelectorAll('.ul'),function(r){if(r.classList.contains('lock'))return;n++;if(r.classList.contains('done'))a++});if(n)t=a+' / '+n}
+      if(b)b.textContent=t;if(p.classList.contains('on')){var c=CP.querySelector('.cpc');if(c)c.textContent=t}})}
+  if(CP){var tabs=[].slice.call(CP.querySelectorAll('.cpt-b[data-tab]')),pans=[].slice.call(CP.querySelectorAll('.cpt'));
+    var act=function(k,save){var b=tabs.filter(function(x){return x.dataset.tab===k})[0];if(!b)return false;
+      tabs.forEach(function(x){x.classList.toggle('on',x===b)});pans.forEach(function(p){p.classList.toggle('on',p.dataset.tab===k)});
+      var p=CP.querySelector('.cpt[data-tab="'+k+'"]');CP.querySelector('.cpn').textContent=p?'· '+p.dataset.lb:'';CP.style.setProperty('--tc',b.style.getPropertyValue('--tc'));
+      var sd=b.parentNode;if(sd.scrollWidth>sd.clientWidth)sd.scrollLeft=b.offsetLeft-sd.clientWidth/2+b.offsetWidth/2;
+      if(save){try{localStorage.setItem('ll_tab',k)}catch(e){}}cpCount();return true};
+    var fromHash=function(){var h=decodeURIComponent(location.hash.slice(1)).replace(/^sec-/,'');if(!h)return false;if(act(h,true))return true;
+      var el=document.getElementById(h)||document.querySelector('[data-id="'+h+'"]'),p=el&&el.closest('.cpt');if(p){act(p.dataset.tab,true);return true}return false};
+    if(!fromHash()){var st=null;try{st=localStorage.getItem('ll_tab')}catch(e){}if(!(st&&act(st)))act(tabs[0].dataset.tab)}
+    addEventListener('hashchange',fromHash);
+    tabs.forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();act(b.dataset.tab,true);try{history.replaceState(null,'','#'+b.dataset.tab)}catch(x){}
+      var r=CP.getBoundingClientRect();if(r.top<0)scrollTo({top:scrollY+r.top-56})})});
+    document.addEventListener('llchk',function(){setTimeout(cpCount,0)})}
   // 해금 체크 + 진행률 + 거르기
   var list=document.getElementById('ulist');
   if(list){
@@ -101,7 +121,7 @@
         var lk=locked(r)&&!d;if(lk)nl++;r.classList.toggle('lock',lk);
         var h=(fT&&r.dataset.type!==fT)||(fS&&r.dataset.scope!==fS)||(only&&d)||(lk&&!showL);r.classList.toggle('hide',h)});
       [].forEach.call(list.querySelectorAll('.sec'),function(sec){var a=0,b=0;[].forEach.call(sec.querySelectorAll('.ul'),function(r){if(!r.classList.contains('lock'))b++;if(r.classList.contains('done'))a++});
-        var sc=sec.querySelector('.sc');if(sc)sc.textContent=a+' / '+b});
+        var sc=sec.querySelector('.sc');if(sc)sc.textContent=a+' / '+b});cpCount();
       try{document.dispatchEvent(new CustomEvent('llchk',{detail:'list'}))}catch(e){}
       if(lb){lb.style.display=nl?'':'none';lb.textContent=showL?'🔓 숨은 해금 다시 접기':'🔒 아직 숨은 해금 '+nl+'개 · 게임처럼 먼저 필요한 해금을 체크하면 나타나요 (눌러서 미리 보기)'}
       var pt=document.getElementById('ptxt'),pb=document.getElementById('pbar');if(pt)pt.textContent=n+' / '+rows.length;if(pb)pb.style.width=(n/rows.length*100)+'%';
@@ -253,11 +273,13 @@
       SAVE.getH().then(function(h){HAS=!!h;draw()});draw()})}
   // 💾 세이브 연동 표시: 컬렉션(data-col) · 우화집 처치 수(data-kill) · 캐릭터(data-ch)
   var showExtra=function(){var X=null;try{X=JSON.parse(localStorage.getItem('ll_extra')||'null')}catch(e){}if(!X)return;
-    var cw={};X.cw.forEach(function(k){cw[k]=1});var uc={},bc={};X.uc.forEach(function(k){uc[k]=1});X.bc.forEach(function(k){bc[k]=1});
-    var nc=0,tc=0;[].forEach.call(document.querySelectorAll('[data-col]'),function(el){tc++;var ok=!!cw[el.dataset.col];if(ok)nc++;el.classList.toggle('got',ok);el.classList.toggle('miss',!ok)});
-    var nk=0,tk=0;[].forEach.call(document.querySelectorAll('[data-kill]'),function(el){tk++;var n=X.kc[el.dataset.kill]||0;if(n)nk++;el.classList.toggle('miss',!n);var b=el.querySelector('.bkill');if(b)b.textContent=n?'처치 '+n.toLocaleString():'아직 못 잡음'});
-    [].forEach.call(document.querySelectorAll('[data-ch]'),function(el){var id=el.dataset.ch;el.classList.toggle('locked',!uc[id]);el.classList.toggle('unbought',!!uc[id]&&!bc[id])});
-    [].forEach.call(document.querySelectorAll('.savestat'),function(el){var k=el.dataset.kind;el.innerHTML=k==='col'?'💾 세이브 기준 모은 것 <b>'+nc+' / '+tc+'</b>':'💾 세이브 기준 잡은 몹 <b>'+nk+' / '+tk+'</b>';el.classList.add('on')})};
+    var U=function(k){return String(k).toUpperCase().replace(/^ED_/,'')},cw={};X.cw.forEach(function(k){cw[U(k)]=1});var uc={},bc={};X.uc.forEach(function(k){uc[k]=1});X.bc.forEach(function(k){bc[k]=1});
+    var nc=0,tc=0;[].forEach.call(document.querySelectorAll('[data-col]'),function(el){tc++;var ok=!!cw[U(el.dataset.col)];if(ok)nc++;el.classList.toggle('got',ok);el.classList.toggle('miss',!ok);el.classList.toggle('sok',ok)});
+    var nk=0,tk=0;[].forEach.call(document.querySelectorAll('[data-kill]'),function(el){tk++;var n=X.kc[el.dataset.kill]||0;if(n)nk++;el.classList.toggle('miss',!n);el.classList.toggle('sok',!!n);var b=el.querySelector('.bkill');if(b)b.textContent=n?'처치 '+n.toLocaleString():'아직 못 잡음'});
+    [].forEach.call(document.querySelectorAll('[data-ch]'),function(el){var id=el.dataset.ch;el.classList.toggle('locked',!uc[id]);el.classList.toggle('sok',!!uc[id]);el.classList.toggle('unbought',!!uc[id]&&!bc[id])});
+    [].forEach.call(document.querySelectorAll('[data-evo]'),function(el){var g=!!cw[U(el.dataset.evo)],lk=!g&&el.dataset.parts.split(',').some(function(p){return !cw[U(p)]});
+      el.classList.toggle('got',g);el.classList.toggle('locked',lk);el.classList.toggle('miss',!g&&!lk);el.classList.toggle('sok',g)});
+    [].forEach.call(document.querySelectorAll('.savestat'),function(el){var k=el.dataset.kind;el.innerHTML=k==='col'?'💾 세이브 기준 모은 것 <b>'+nc+' / '+tc+'</b>':'💾 세이브 기준 잡은 몹 <b>'+nk+' / '+tk+'</b>';el.classList.add('on')});cpCount()};
   showExtra();document.addEventListener('llchk',function(e){if(e.detail==='save')showExtra()});
   // 🔄 지도 일반/인버스 토글 (인버스 = 180° 회전) · ?inv=1 로 들어오면 인버스로
   var isw=document.querySelector('.invsw');
