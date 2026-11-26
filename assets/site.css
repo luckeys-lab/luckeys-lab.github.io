@@ -433,3 +433,24 @@ html.inv .k-ogre .lbl{bottom:auto;top:calc(100% + 2px)}
 .freehome{display:flex;align-items:center;gap:10px;margin:12px 0;padding:12px 14px;border:2px solid var(--gold);border-radius:14px;text-decoration:none;color:var(--txt);background:var(--soft)}
 .freehome b{white-space:nowrap}.freehome span{color:var(--sub);font-size:13.5px;flex:1}.freehome i{font-style:normal;font-weight:900;color:var(--gold2)}
 .fgimg img{color:transparent;font-size:0}
+
+/* 🔒 ☑ 체크 기준 미해금 (컬렉션 칸 · 진화 칩) */
+.ct.locked{opacity:.32;filter:grayscale(1);position:relative}.ct.locked::after{content:'🔒';position:absolute;right:4px;top:2px;font-size:12px}
+.ec.locked{opacity:.5;filter:grayscale(1)}.ec.locked b::after{content:' 🔒';font-size:10px}
+/* 📲 QR · 알림 */
+.qrbox{width:220px;max-width:70vw;margin:8px auto;background:#fff;padding:6px;border-radius:10px}.qrbox svg{display:block;width:100%;height:auto}
+.sccode{word-break:break-all;font-size:11px}.scin{width:min(220px,60vw);padding:6px 8px;border:1px solid var(--line);border-radius:8px;font-size:14px}
+.lltoast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:120;background:var(--navy);color:#fff;border:2px solid var(--gold);border-radius:14px;padding:10px 14px;font-size:14px;box-shadow:0 6px 20px rgba(0,0,0,.3);transition:opacity .5s;max-width:92vw}
+.lltoast.out{opacity:0}.lltoast .tqr{margin-left:6px;border:0;border-radius:999px;background:var(--gold);color:var(--navy);font-weight:800;padding:4px 10px;cursor:pointer}
+.rhelp{color:var(--gold);font-weight:800;font-size:12.5px;text-decoration:none;margin-left:auto;white-space:nowrap}
+/* 🧭 사용법 */
+.howgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;margin:10px 0 20px}
+.howc{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--soft)}.howc h3{margin:0 0 8px;font-size:16px}.howc p{font-size:13.5px;margin:8px 0 0}.howc ol{padding-left:20px;font-size:14px;line-height:1.7}
+.hdemo{background:var(--bg);border:1px dashed var(--line);border-radius:12px;padding:8px;margin-top:6px}.hdemo small{display:block;font-size:11px;color:var(--sub);font-weight:800;margin-bottom:4px}
+.hdemo.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hrc b{display:block}.hrc span{font-size:12.5px;color:var(--sub)}.hrc ul{margin:6px 0 0;padding-left:16px;font-size:13px}.hrc em{font-style:normal;font-size:11px;color:var(--gold2);font-weight:800}
+.hul{list-style:none;margin:0;padding:0;font-size:12.5px}.hul li{padding:4px 6px;border-bottom:1px solid var(--line)}.hul .hlk{color:var(--sub);font-style:italic}.hul .hok{color:var(--gold2);font-weight:800}
+.htiles{display:flex;gap:6px}.htiles .tile{flex:1;min-width:0;padding:4px;font-size:11px}.htiles .tile img.sp{max-height:46px}
+.hdemo .evr{margin:4px 0}
+.howt{width:100%;border-collapse:collapse;font-size:13.5px}.howt td{border-bottom:1px solid var(--line);padding:6px}.howt td:first-child{white-space:nowrap;font-weight:800}
+.faq{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:6px 0}.faq summary{cursor:pointer;font-weight:800}

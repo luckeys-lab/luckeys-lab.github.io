@@ -106,9 +106,9 @@
     if(g.length)f1.textContent=g[0].title+(g.length>1?' 외 '+(g.length-1)+'개':'')+' · '+left(Date.parse(g[0].end)-now)+' 남음'}).catch(function(){});
   // 🗂 콘텐츠 틀: 왼쪽 DLC 탭 (11/26) · #base #ed … · 다른 콘텐츠로 가도 같은 탭(ll_tab)
   var CP=document.querySelector('.cp');
-  function cpCount(){if(!CP)return;var X=null;try{X=JSON.parse(localStorage.getItem('ll_extra')||'null')}catch(e){}
+  function cpCount(){if(!CP)return;var X=null,C=false;try{X=JSON.parse(localStorage.getItem('ll_extra')||'null');C=localStorage.getItem('ll_chk')&&localStorage.getItem('ll_chk')!=='{}'}catch(e){}
     [].forEach.call(CP.querySelectorAll('.cpt'),function(p){var b=CP.querySelector('.cpt-b[data-tab="'+p.dataset.tab+'"] .cn'),t='',its=p.querySelectorAll('[data-col],[data-kill],[data-ch],[data-evo]');
-      if(its.length)t=X?p.querySelectorAll('.sok').length+' / '+its.length:''+its.length;
+      if(its.length){var kl=p.querySelector('[data-kill]');t=(X||(C&&!kl))?p.querySelectorAll('.sok').length+' / '+its.length:''+its.length}
       else{var a=0,n=0;[].forEach.call(p.querySelectorAll('.ul'),function(r){if(r.classList.contains('lock'))return;n++;if(r.classList.contains('done'))a++});if(n)t=a+' / '+n}
       if(b)b.textContent=t;if(p.classList.contains('on')){var c=CP.querySelector('.cpc');if(c)c.textContent=t}})}
   if(CP){var tabs=[].slice.call(CP.querySelectorAll('.cpt-b[data-tab]')),pans=[].slice.call(CP.querySelectorAll('.cpt'));
@@ -207,7 +207,7 @@
   // 🔄 세이브 버튼 (버튼 모음 빈 칸) · 연결된 세이브가 있을 때만 · 크롬이 다시 허락을 원하면 "!" 표시
   var sbtn=null,gap=document.querySelector('.dock .dk-gap');
   var sflash=function(t){if(!sbtn)return;sbtn.querySelector('i').textContent=t;sbtn.classList.add('msg');clearTimeout(sbtn._t);sbtn._t=setTimeout(function(){sbtn.classList.remove('msg')},3500)};
-  var loadFile=function(f){if(!f)return;sflash('⏳');f.text().then(SAVE.apply).then(function(r){sflash('✅ 세이브 로드 · 💎 '+r.ne+'/'+r.te+' · 본편 '+r.nb+'/'+r.tb)}).catch(function(){sflash('⚠ 세이브 파일이 아니에요')})};
+  var loadFile=function(f){if(!f)return;sflash('⏳');f.text().then(SAVE.apply).then(function(r){sflash('✅ 세이브 로드 · 💎 '+r.ne+'/'+r.te+' · 본편 '+r.nb+'/'+r.tb);toast('✅ 세이브 로드 완료 · 폰으로 공략 보면 <button type="button" class="tqr">📲 폰으로 보내기</button>')}).catch(function(){sflash('⚠ 세이브 파일이 아니에요')})};
   var isPC=matchMedia('(hover:hover) and (pointer:fine)').matches;   // 폰·태블릿엔 세이브 로드 안 보이게 (11/26 제이)
   if(gap&&isPC&&/^\/vs\//.test(location.pathname)){
     sbtn=document.createElement('button');sbtn.type='button';sbtn.className='dk dk-save';sbtn.title='💾 세이브 파일 로드';sbtn.innerHTML='💾<i></i><input type="file" hidden>';gap.parentNode.replaceChild(sbtn,gap);
@@ -261,7 +261,7 @@
       var one=top.length?head(top[0])+' → '+top[0].pk.map(function(x){return '💎'+RB[x.id].n}).join(' · '):'추천할 판이 없어요',cnt=top.length?top[0].pk.length:0;
       // 접힘 = 왼쪽 아래 둥근 버튼 (11/26 제이: 화면엔 페이지 내용만)
       if(mode!=='open'){bar.className='rbar fab'+(first?' hint':'');bar.innerHTML='<button type="button" class="rfab" data-m="open" title="추천 해금">🧭<span class="rlab">추천 해금</span>'+(cnt?'<i class="rcnt">'+cnt+'</i>':'')+'</button>';return}
-      var h='<div class="rl"><span class="rtag">🧭 추천 해금</span><span class="rone">다음 판: '+one+'</span>'+(HAS?'<button type="button" class="rs" title="연결된 세이브를 다시 읽기">🔄 세이브</button>':'')+'<button type="button" class="rx" data-m="min">닫기 ✕</button></div>';
+      var h='<div class="rl"><span class="rtag">🧭 추천 해금</span><span class="rone">다음 판: '+one+'</span>'+(HAS?'<button type="button" class="rs" title="연결된 세이브를 다시 읽기">🔄 세이브</button>':'')+'<a class="rhelp" href="/vs/howto.html">❓ 사용법</a><button type="button" class="rx" data-m="min">닫기 ✕</button></div>';
       if(mode==='open'){h+='<div class="rbody"><p class="rintro">체크한 해금을 보고, <b>다음 판에 한 번에 노릴 수 있는 해금</b>을 골라 줘요. 줄을 누르면 공략과 ☑ 체크가 펼쳐져요.</p><div class="rtabs">'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</div>';
         if(!top.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
         top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div class="rcb"><div class="rh2">'+head(r)+'</div>'+(o.c==='ANY'?'<div class="rw">본편 캐릭터도 OK</div>':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+
@@ -287,16 +287,61 @@
       bar.addEventListener('click',function(e){if(e.target.closest('.rh2')||e.target.closest('.rc img.sp')){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
       document.addEventListener('llchk',function(e){if(e.detail==='list'||e.detail==='save')draw()});
       SAVE.getH().then(function(h){HAS=!!h;draw()});draw()})}
-  // 💾 세이브 연동 표시: 컬렉션(data-col) · 우화집 처치 수(data-kill) · 캐릭터(data-ch)
-  var showExtra=function(){var X=null;try{X=JSON.parse(localStorage.getItem('ll_extra')||'null')}catch(e){}if(!X)return;
-    var U=function(k){return String(k).toUpperCase().replace(/^ED_/,'')},cw={};X.cw.forEach(function(k){cw[U(k)]=1});var uc={},bc={};X.uc.forEach(function(k){uc[k]=1});X.bc.forEach(function(k){bc[k]=1});
-    var nc=0,tc=0;[].forEach.call(document.querySelectorAll('[data-col]'),function(el){tc++;var ok=!!cw[U(el.dataset.col)];if(ok)nc++;el.classList.toggle('got',ok);el.classList.toggle('miss',!ok);el.classList.toggle('sok',ok)});
-    var nk=0,tk=0;[].forEach.call(document.querySelectorAll('[data-kill]'),function(el){tk++;var n=X.kc[el.dataset.kill]||0;if(n)nk++;el.classList.toggle('miss',!n);el.classList.toggle('sok',!!n);var b=el.querySelector('.bkill');if(b)b.textContent=n?'처치 '+n.toLocaleString():'아직 못 잡음'});
-    [].forEach.call(document.querySelectorAll('[data-ch]'),function(el){var id=el.dataset.ch;el.classList.toggle('locked',!uc[id]);el.classList.toggle('sok',!!uc[id]);el.classList.toggle('unbought',!!uc[id]&&!bc[id])});
-    [].forEach.call(document.querySelectorAll('[data-evo]'),function(el){var g=!!cw[U(el.dataset.evo)],lk=!g&&el.dataset.parts.split(',').some(function(p){return !cw[U(p)]});
-      el.classList.toggle('got',g);el.classList.toggle('locked',lk);el.classList.toggle('miss',!g&&!lk);el.classList.toggle('sok',g)});
-    [].forEach.call(document.querySelectorAll('.savestat'),function(el){var k=el.dataset.kind;el.innerHTML=k==='col'?'💾 세이브 기준 모은 것 <b>'+nc+' / '+tc+'</b>':'💾 세이브 기준 잡은 몹 <b>'+nk+' / '+tk+'</b>';el.classList.add('on')});cpCount()};
-  showExtra();document.addEventListener('llchk',function(e){if(e.detail==='save')showExtra()});
+  // 🔒 해금 표시 (11/26): ☑ 체크(모바일 OK) → 해금/미해금 · 💾 세이브 → 모음(금테)/아직(흐림) · 아무것도 없으면 전부 원래 색
+  var LM=null,LMing=false;
+  var showExtra=function(){var X=null,S={};try{X=JSON.parse(localStorage.getItem('ll_extra')||'null');S=JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){}
+    var C=Object.keys(S).length>0,els=document.querySelectorAll('[data-col],[data-kill],[data-ch],[data-evo],[data-ek]');if(!els.length)return;
+    if(C&&!LM){if(!LMing){LMing=true;fetch('/data/vs/lockmap.json?v='+VER).then(function(r){return r.json()}).then(function(j){LM=j;showExtra()}).catch(function(){})}if(!X)return}
+    var U=function(k){return String(k).toUpperCase().replace(/^ED_/,'')},cw={},uc={},bc={};
+    if(X){X.cw.forEach(function(k){cw[U(k)]=1});X.uc.forEach(function(k){uc[k]=1});X.bc.forEach(function(k){bc[k]=1})}
+    var lk=function(k){var a=C&&LM&&LM[k];return !!a&&!a.some(function(x){return S[x]})};
+    var T=function(el,c,v){el.classList.toggle(c,!!v)};
+    [].forEach.call(document.querySelectorAll('[data-col]'),function(el){var L=lk('ED_'+el.dataset.col),g=X&&cw[U(el.dataset.col)];T(el,'locked',L&&!g);T(el,'got',g);T(el,'miss',X&&!g&&!L);T(el,'sok',X?g:!L)});
+    [].forEach.call(document.querySelectorAll('[data-kill]'),function(el){var n=X?(X.kc[el.dataset.kill]||0):0;T(el,'miss',X&&!n);T(el,'sok',n);var b=el.querySelector('.bkill');if(b)b.textContent=!X?'':n>0?'처치 '+n.toLocaleString():n<0?'처치함':'아직 못 잡음'});
+    [].forEach.call(document.querySelectorAll('[data-ch]'),function(el){var id=el.dataset.ch,L=lk('CH_'+id)||(X&&!uc[id]);T(el,'locked',L);T(el,'unbought',X&&!L&&!bc[id]);T(el,'sok',(X||C)&&!L)});
+    [].forEach.call(document.querySelectorAll('[data-ek]'),function(el){T(el,'locked',lk(el.dataset.ek))});
+    [].forEach.call(document.querySelectorAll('[data-evo]'),function(el){var g=X&&cw[U(el.dataset.evo)],L=!g&&el.dataset.parts.split(',').some(function(p){return lk(p)||(X&&!cw[U(p)])});
+      T(el,'got',g);T(el,'locked',L);T(el,'miss',X&&!g&&!L);T(el,'sok',X?g:!L)});
+    cpCount()};
+  showExtra();document.addEventListener('llchk',function(){setTimeout(showExtra,0)});
+  // 📲 폰으로 보내기 (11/26): PC 체크·세이브 표시를 QR/코드 한 줄로 → 폰 카메라로 찍으면 사이트가 열리며 그대로 들어감 (게임 진행을 옮기는 게 아님)
+  var SYNC={
+    keys:function(){return SYNC._k||(SYNC._k=fetch('/data/vs/sync_keys.json?v='+VER).then(function(r){return r.json()}))},
+    b64:function(u8){var s='';u8.forEach(function(b){s+=String.fromCharCode(b)});return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')},
+    unb64:function(t){t=t.replace(/-/g,'+').replace(/_/g,'/');var s=atob(t),u=new Uint8Array(s.length);for(var i=0;i<s.length;i++)u[i]=s.charCodeAt(i);return u},
+    make:function(){return SYNC.keys().then(function(K){var S={},X=null;try{S=JSON.parse(localStorage.getItem('ll_chk')||'{}');X=JSON.parse(localStorage.getItem('ll_extra')||'null')}catch(e){}
+      var U=function(k){return String(k).toUpperCase().replace(/^ED_/,'')},cw={},uc={},bc={};if(X){X.cw.forEach(function(k){cw[U(k)]=1});X.uc.forEach(function(k){uc[k]=1});X.bc.forEach(function(k){bc[k]=1})}
+      var u8=new Uint8Array(Math.ceil(K.length/8)),n=0;
+      K.forEach(function(k,i){var v=false,p=k.indexOf(':'),t=p>0?k.slice(0,p):'',id=p>0?k.slice(p+1):k;
+        if(!t)v=!!S[k];else if(X){if(t==='cw')v=!!cw[U(id)];else if(t==='uc')v=!!uc[id];else if(t==='bc')v=!!bc[id];else if(t==='kc')v=!!X.kc[id]}
+        if(v){u8[i>>3]|=1<<(i&7);n++}});
+      var end=u8.length;while(end>0&&!u8[end-1])end--;return {code:(X?'2':'1')+SYNC.b64(u8.slice(0,end)),n:n}})},
+    take:function(code){code=String(code).trim();var m=code.match(/[#&]s=([A-Za-z0-9_-]+)/);if(m)code=m[1];
+      return SYNC.keys().then(function(K){var hx=code.charAt(0)==='2',u8=SYNC.unb64(code.slice(1)),S={},X=hx?{cw:[],kc:{},uc:[],bc:[]}:null,nb=0;
+        K.forEach(function(k,i){if(!(u8[i>>3]&(1<<(i&7))))return;var p=k.indexOf(':'),t=p>0?k.slice(0,p):'',id=p>0?k.slice(p+1):k;
+          if(!t){S[k]=1;nb++}else if(X){if(t==='cw')X.cw.push(id.replace(/^ED_/,''));else if(t==='uc')X.uc.push(id);else if(t==='bc')X.bc.push(id);else if(t==='kc')X.kc[id]=-1}});
+        try{localStorage.setItem('ll_chk',JSON.stringify(S));if(X)localStorage.setItem('ll_extra',JSON.stringify(X));localStorage.setItem('ll_sync',String(Date.now()))}catch(e){}
+        try{document.dispatchEvent(new CustomEvent('llchk',{detail:'save'}))}catch(e){}return nb})}};
+  var modal=function(html){var g=document.createElement('div');g.className='sguide';g.innerHTML='<div class="sgc"><button type="button" class="sgx" aria-label="닫기">✕</button>'+html+'</div>';document.body.appendChild(g);
+    g.addEventListener('click',function(e){if(e.target===g||e.target.closest('.sgx'))g.remove()});return g};
+  var toast=function(t){var d=document.createElement('div');d.className='lltoast';d.innerHTML=t;document.body.appendChild(d);setTimeout(function(){d.classList.add('out')},3800);setTimeout(function(){d.remove()},4400)};
+  document.addEventListener('click',function(e){if(e.target.closest('.tqr')){e.preventDefault();sendQR()}});
+  // 📱 폰 독: 💾 자리에 📲 (PC에서 보낸 체크 받기)
+  var gap2=document.querySelector('.dock .dk-gap');
+  if(gap2&&!isPC&&/^\/vs\//.test(location.pathname)){var pb=document.createElement('button');pb.type='button';pb.className='dk dk-save';pb.title='📲 PC 체크 받기';pb.innerHTML='📲<i></i>';gap2.parentNode.replaceChild(pb,gap2);
+    pb.addEventListener('click',function(){var last=+(localStorage.getItem('ll_sync')||0);
+      var g=modal('<h3>📲 PC 체크 받기</h3><p>PC로 게임하면서 폰으로 공략 볼 때 쓰는 기능이에요. <b>게임 진행이 옮겨지는 건 아니에요.</b></p><h4>QR로 (제일 쉬움)</h4><p>PC 사이트에서 💾 세이브 로드 → <b>📲 폰으로 보내기</b> → 폰 <b>기본 카메라</b>로 QR 찍기</p><h4>코드로</h4><p><input class="scin" placeholder="코드 붙여넣기" autocomplete="off"> <button type="button" class="sggo scgo">받기</button></p>'+
+        '<p class="note">'+(last?'마지막으로 받은 때: '+KST(last):'아직 받은 적 없어요')+' · 📱 모바일 게임은 세이브 파일을 꺼낼 수 없어서 <a href="/vs/unlocks.html">☑ 직접 체크</a>해요</p>');
+      g.querySelector('.scgo').addEventListener('click',function(){var v=g.querySelector('.scin').value;if(!v)return;SYNC.take(v).then(function(n){g.remove();toast('📲 받았어요 · ☑ '+n+'개')}).catch(function(){toast('⚠ 코드가 잘못됐어요')})})})}
+  // 받는 쪽: 주소에 #s=코드 → 바로 반영 후 주소에서 지움
+  if(/[#&]s=/.test(location.hash)){var hc=location.hash;try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+    SYNC.take(hc).then(function(n){toast('📲 PC 체크를 받았어요 · ☑ '+n+'개')}).catch(function(){toast('⚠ 코드가 잘못됐어요')})}
+  var sendQR=function(){SYNC.make().then(function(r){var url=location.origin+'/vs/unlocks.html#s='+r.code;
+    var g=modal('<h3>📲 폰으로 보내기</h3><p>PC에서 한 <b>체크</b>를 폰 화면에서도 보게 해요. <b>게임 진행이 옮겨지는 건 아니에요.</b></p><div class="qrbox"></div><p>① 폰 <b>기본 카메라</b>로 이 QR을 비추기 → ② 뜨는 링크 누르기 → 끝<br>· 폰에 원래 있던 체크는 이걸로 바뀌어요</p><details><summary>QR이 안 되면 코드 복사</summary><p><code class="sccode"></code> <button type="button" class="sgcp">📋 복사</button></p><p>폰에서 독의 📲 버튼 → 붙여넣기</p></details>');
+    g.querySelector('.sccode').textContent=r.code;
+    var draw=function(){var q=qrcode(0,'M');q.addData(url);q.make();g.querySelector('.qrbox').innerHTML=q.createSvgTag({cellSize:5,margin:2,scalable:true})};
+    if(window.qrcode)draw();else{var sc=document.createElement('script');sc.src='/assets/qrcode.min.js?v='+VER;sc.onload=draw;document.head.appendChild(sc)}
+    g.querySelector('.sgcp').addEventListener('click',function(e){var b=e.target;(navigator.clipboard?navigator.clipboard.writeText(r.code):Promise.reject()).then(function(){b.textContent='✅ 복사됨'}).catch(function(){b.textContent='길게 눌러 복사'})})})};
   // 🔄 지도 일반/인버스 토글 (인버스 = 180° 회전) · ?inv=1 로 들어오면 인버스로
   var isw=document.querySelector('.invsw');
   if(isw){var setInv=function(v){document.documentElement.classList.toggle('inv',v);[].forEach.call(isw.querySelectorAll('[data-inv]'),function(b){b.classList.toggle('on',(b.dataset.inv==='1')===v)});try{localStorage.setItem('ll_inv',v?'1':'0')}catch(e){}};

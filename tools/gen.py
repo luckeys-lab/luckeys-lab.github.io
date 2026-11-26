@@ -549,3 +549,98 @@ desc: LucKey's Lab 게임 리뷰 · 이번주 무료게임.
 <div class="tiles"><a class="tile on" href="/review/free.html"><b>🎁 이번주 무료게임</b><span>에픽 · 남은 시간 · 매주 금요일 갱신</span></a><div class="tile off"><b>게임 리뷰</b><span>준비 중</span></div></div>
 ''',encoding='utf-8')
 print('free',len(FR['games']))
+
+# ── 🔒 ☑ 체크 → 해금/미해금 (11/26 · 모바일 유저용) · data/vs/lockmap.json = {아이템키: [이걸 주는 해금 체크키…]} ──
+# 해금 보상에 있는 스킬·패시브·캐릭터·무기 = 그 해금을 체크해야 "해금됨" · 맵에 없는 건 처음부터 있는 것
+LMAP={}
+_n2=lambda nm,pre:next((k for k,v in items.items() if v.get('n')==nm and any(k.startswith(p) for p in pre)),None)
+for u in BU:
+    for r in u['reward']:
+        p,_,nm=r.partition(' ')
+        if p in ('스킬','패시브','캐릭터'):
+            k=_n2(nm,('CH_',) if p=='캐릭터' else ('',)) if p=='캐릭터' else name2id.get(nm)
+            if k and not k.startswith(('ED_','EB_','EC_')):LMAP.setdefault(k,[]).append('b-'+u['id'])
+for u in U['unlocks']:
+    p,_,nm=u['reward'].partition(' ')
+    if p in ('무기','캐릭터'):
+        k=_n2(nm,('CH_EME_',) if p=='캐릭터' else ('ED_',))
+        if k:LMAP.setdefault(k,[]).append('ed-%d'%u['n'])
+(D/'lockmap.json').write_text(json.dumps(LMAP,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+print('lockmap',len(LMAP),sum(1 for k in LMAP if k.startswith('CH_')),'chars')
+
+# ── 📲 폰으로 보내기 (QR) · data/vs/sync_keys.json = 비트 순서 (⚠ 뒤에 붙이기만 · 순서 바꾸면 예전 코드가 깨짐) ──
+SKF=D/'sync_keys.json'
+SKL=json.loads(SKF.read_text(encoding='utf-8')) if SKF.exists() else []
+_have=set(SKL)
+_new=[k for k in list(json.loads((D/'ach_keys.json').read_text(encoding='utf-8')).values())+['ed-%d'%u['n'] for u in U['unlocks']]+['s-'+x for x in json.loads((D/'secret_keys.json').read_text(encoding='utf-8'))]
+      +['cw:'+k for k in sorted(items) if not k.startswith(('CH_','EB_','EC_','TP_'))]
+      +['uc:'+k[3:] for k in sorted(items) if k.startswith('CH_')]+['bc:'+k[3:] for k in sorted(items) if k.startswith('CH_')]
+      +['kc:'+b['id'] for b in BE] if k not in _have]
+SKL+=list(dict.fromkeys(_new))
+SKF.write_text(json.dumps(SKL,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+print('sync keys',len(SKL))
+
+# ── 🧭 사용법 /vs/howto.html (11/26 · 혜택 먼저 → 따라 하기 · 진짜 화면 조각으로 "전/후") ──
+def _demo(h):return re.sub(r' data-(evo|parts|ek|ch|col|kill)="[^"]*"','',h)
+_ec=[c for c in EC][:3]
+def _dt(c,cls=''):
+    hero=next((x for x in IMG['order'].get(c['id'],[]) if x),None)
+    return f'<span class="tile ctile{cls}">{f"<img class=sp src={hero} alt=>" if hero else ""}<b>{esc(c["ko"])}</b></span>'
+_e1=[e for e in evo if e['g']=='BASE'][4]
+_ev=lambda cls:_demo(evrow(_e1['parts'],_e1['to'])).replace('class="evr"',f'class="evr {cls}"')
+HOW=f'''title: 🧭 사용법 · 체크하면 뭐가 좋나요?
+desc: LucKey's Lab 뱀파이어 서바이벌 공략 사용법 · 해금 체크 하나로 추천 해금 · 캐릭터 · 진화 · 컬렉션이 내 진행에 맞춰 바뀝니다 · 모바일은 직접 체크 · PC 스팀판은 세이브 파일로 자동.
+<div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 사용법</div>
+<h1>🧭 사용법</h1>
+<p class="sub">해금을 <b>☑ 체크</b>하면 사이트 전체가 <b>내 진행 상황</b>에 맞춰 바뀌어요 · 체크는 이 기기 브라우저에만 저장돼요 (로그인 없음)</p>
+
+<h2>✨ 체크하면 이렇게 돼요</h2>
+<div class="howgrid">
+<section class="howc"><h3>🧭 다음 판에 뭘 할지 골라 줘요</h3>
+<div class="hdemo"><div class="hrc"><b>보니 블레어 · 기본 · 🌍 일반</b><span>🗡️ 시작 스킬 펀치</span><ul><li>💎7 펀치 레벨을 6에 맞추세요 <em class="st">🗡️ 시작 스킬</em></li><li>💎8 펀치를 완전히 진화시키세요 <em class="st">🗡️ 시작 스킬</em></li><li>💎33 <span class="binv">🔄 인버스</span> 아발론에서 아이언 메이든 처치</li></ul></div></div>
+<p>체크한 걸 보고 <b>한 판에 같이 노릴 수 있는 해금</b>을 캐릭터 + 스킨으로 묶어 줘요. 왼쪽 아래 <b>🧭</b> 버튼.</p></section>
+<section class="howc"><h3>🔓 게임처럼 다음 해금이 열려요</h3>
+<div class="hdemo two"><div><small>체크 전</small><ul class="hul"><li>☐ 💎2 첫 번째 관을 찾아서 여세요</li><li class="hlk">🔒 아직 숨은 해금 12개</li></ul></div><div><small>체크 후</small><ul class="hul"><li class="hok">☑ 💎2 첫 번째 관을 찾아서 여세요</li><li>☐ 💎3 플뢰레 레벨을 6에 맞추세요</li><li>☐ 💎5 스플래셔 레벨을 6에…</li></ul></div></div>
+<p>먼저 필요한 해금을 체크해야 다음 줄이 보여요. 스포일러 걱정 없이 게임 화면이랑 똑같이.</p></section>
+<section class="howc"><h3>🧛 캐릭터 · ✨ 진화 · 📦 컬렉션이 회색으로 나뉘어요</h3>
+<div class="hdemo two"><div><small>체크 전 (아직 미해금)</small><div class="htiles">{_dt(_ec[0])}{_dt(_ec[1],' locked')}{_dt(_ec[2],' locked')}</div></div><div><small>체크 후</small><div class="htiles">{_dt(_ec[0])}{_dt(_ec[1])}{_dt(_ec[2],' locked')}</div></div></div>
+<div class="hdemo"><small>✨ 진화 줄</small>{_ev('locked')}{_ev('')}</div>
+<p>해금 안 된 캐릭터 · 재료가 아직인 진화는 <b>회색 + 🔒</b>. 뭘 먼저 풀어야 하는지 한눈에 보여요. 체크를 하나도 안 했으면 전부 원래 색이에요.</p></section>
+<section class="howc"><h3>💾 PC 스팀판은 세이브로 한 번에</h3>
+<div class="hdemo"><small>세이브를 넣으면 실제로 진화한 것까지 금테</small>{_ev('got')}{_ev('miss')}</div>
+<p>세이브 파일을 넣으면 해금 체크가 자동으로 채워지고, <b>진화한 것 · 모은 것 · 잡은 몹</b>까지 표시돼요.</p></section>
+</div>
+
+<h2>👣 따라 하기</h2>
+<div class="howgrid">
+<section class="howc"><h3>📱 모바일 게임으로 할 때</h3><p class="note">모바일 게임은 세이브 파일을 꺼낼 수 없어서 직접 체크해요</p><ol>
+<li><a href="/vs/unlocks.html">🔓 해금</a>에서 게임 해금 화면을 보면서 끝낸 걸 <b>☑ 체크</b> (DLC는 왼쪽 탭에서)</li>
+<li>왼쪽 아래 <b>🧭 추천 해금</b> → 🟢 쉬움 · 🟡 보통 · 🔥 지옥 중 고르기</li>
+<li>추천 카드의 <b>캐릭터 + 스킨</b>으로 게임 시작 · 줄을 누르면 공략 · 미니 지도</li>
+<li>판이 끝나면 해낸 걸 <b>☑</b> → 추천이 다음 판으로 바뀜</li></ol></section>
+<section class="howc"><h3>🖥️ PC 스팀판으로 할 때</h3><ol>
+<li>왼쪽 아래 <b>💾</b> → 세이브 파일 고르기 (처음엔 위치 안내가 떠요) · 화면 아무 데나 끌어다 놓아도 돼요</li>
+<li>해금 체크 + 금테 표시가 한 번에 채워짐</li>
+<li>폰으로 공략을 보고 싶으면 <b>📲 폰으로 보내기</b> → 폰 기본 카메라로 QR 찍기 <span class="note">(사이트 체크만 옮겨요 · 게임 진행이 옮겨지는 건 아니에요)</span></li>
+<li>게임을 하고 나면 💾 다시 → 최신으로</li></ol>
+<p class="pc-only"><button type="button" class="tqr fgbtn">📲 지금 폰으로 보내기</button></p></section>
+</div>
+
+<h2>🔍 표시 뜻</h2>
+<table class="howt"><tr><td>🟢 🟡 🔥</td><td>추천 난이도 · 쉬움 / 보통 / 지옥 (한 판에 노리는 개수와 어려움)</td></tr>
+<tr><td>🗡️ 시작 스킬</td><td>그 캐릭터 · 스킨이 처음부터 들고 있는 스킬이라 확실해요</td></tr>
+<tr><td>🎲 상자 운</td><td>레벨업 · 상자에서 그 스킬이 나와 줘야 해요</td></tr>
+<tr><td><span class="binv">🔄 인버스</span></td><td>인버스(반전) 모드에서만 해금 · 맵이 180° 돌아가 있어요</td></tr>
+<tr><td>🔒 회색</td><td>아직 해금 안 됨 (☑ 체크 또는 💾 세이브 기준)</td></tr>
+<tr><td>금테</td><td>💾 세이브 기준 진화함 · 모음 · 잡음</td></tr>
+<tr><td>💎7</td><td>에메랄드 디오라마 해금 7번 (게임 순서)</td></tr></table>
+
+<h2>❔ 자주 묻는 것</h2>
+<details class="faq"><summary>체크가 사라졌어요</summary><p>체크는 이 기기 브라우저에만 저장돼요. 브라우저 기록 · 사이트 데이터를 지우거나 다른 브라우저로 열면 비어 보여요.</p></details>
+<details class="faq"><summary>PC 체크를 폰에서도 보고 싶어요</summary><p>PC에서 💾 세이브 로드 → 📲 폰으로 보내기 → 폰 카메라로 QR. 폰 화면의 📲 버튼에 코드를 붙여넣어도 돼요.</p></details>
+<details class="faq"><summary>모바일 게임 세이브는 못 넣나요?</summary><p>모바일 게임은 세이브 파일을 밖으로 꺼낼 수 없어서 ☑ 직접 체크해요. 체크만 해도 추천 · 🔒 표시는 똑같이 돼요.</p></details>
+<details class="faq"><summary>DLC를 안 샀어요</summary><p>왼쪽 탭에서 본편 · 산 DLC만 보면 돼요. 추천은 체크한 것 기준이라 안 산 DLC는 신경 안 써도 돼요.</p></details>
+<div class="ad" data-slot="end"></div>
+'''
+(R/'_src/vs/howto.html').write_text(HOW,encoding='utf-8')
+print('howto ok')
