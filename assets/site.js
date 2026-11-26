@@ -249,10 +249,10 @@
   document.addEventListener('click',function(e){var sp=e.target.closest('.spoil');if(sp){e.preventDefault();sp.classList.add('show')}});
   // 📌 상단 고정 추천 띠 · ll_chk로 계산 · 띠 안에서 펼치기/체크
   if(/^\/vs\//.test(location.pathname)){
-    var HAS=false,TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],RB=null,RC=null,bar=null,curT=0,mode='min',openRow=null;
+    var HAS=false,BR=null,TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],RB=null,RC=null,bar=null,curT=0,mode='min',openRow=null;
     var first=false;try{mode=localStorage.getItem('ll_rbar');if(!mode){mode='min';first=true}if(mode==='off')mode='min';curT=+(localStorage.getItem('ll_rtier')||0)}catch(e){}
     var getS=function(){try{return JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){return {}}};
-    function calc(){var S=getS();if(!getG().ed)return {top:[],S:S};var has=function(k){return !!S[k]},inv=[].concat(RC.inv).every(has),T=TIER[curT],res=[];
+    function calcEd(S){var has=function(k){return !!S[k]},inv=[].concat(RC.inv).every(has),T=TIER[curT],res=[];
       var vis=Object.keys(RB).filter(function(k){return !S[k]&&RB[k].need.every(function(g){return g.some(has)})&&RC.rows[k]});
       RC.opts.forEach(function(o){if(!o.need.every(has))return;[0,1].forEach(function(md){if(md&&!inv)return;var L=[];
         vis.forEach(function(id){var R=RC.rows[id];if(R.inv&&!md)return;if(R.ch.length&&R.ch.indexOf(o.c)<0)return;
@@ -261,26 +261,47 @@
         L.sort(function(a,b){return (b.st-a.st)||(a.sp-b.sp)||(a.sc-b.sc)});var pk=[],tot=0;
         L.forEach(function(x){if(pk.length>=T[2]||tot+x.sc>T[3]||(x.lk&&!T[4]))return;pk.push(x);tot+=x.sc});
         if(pk.length)res.push({o:o,md:md,pk:pk,tot:tot,ns:pk.filter(function(x){return x.st}).length})})});
-      res.sort(function(a,b){return (b.pk.length-a.pk.length)||(b.ns-a.ns)||(a.tot-b.tot)});var seen={},top=[];
-      res.forEach(function(r){if(seen[r.o.c]||top.length>=2)return;seen[r.o.c]=1;top.push(r)});return {top:top,S:S}}
+      return res}
+    // 🧛 본편 v1: 캐릭터 1 + 스테이지 1 조합마다 한 판에 되는 해금 묶기 (11/27)
+    function calcBase(S,G){var has=function(k){return !!S[k]},T=TIER[curT],res=[],B=BR,ok=function(nd){return !nd.length||nd.some(has)};
+      var n=Object.keys(S).length,early=n<40;
+      var vis=Object.keys(B.rows).filter(function(k){var R=B.rows[k];return G[R.g]&&!S[k]&&RB[k]&&RB[k].need.every(function(g){return g.some(has)})});
+      var CH=B.chars.filter(function(c){return ok(c.need)}),ST=B.stages.filter(function(x){return ok(x.need)}),inv=has(B.invk);
+      CH.forEach(function(c){ST.forEach(function(st){var L=[];
+        vis.forEach(function(id){var R=B.rows[id];if(R.ch.length&&R.ch.indexOf(c.c)<0)return;if(R.st.length&&R.st.indexOf(st.s)<0)return;if(R.inv&&!inv)return;
+          var sc=R.sc+(early&&R.sec>=1800?2:0),lk=false,stt=false,bad=false;
+          R.w.forEach(function(w){if(c.w.indexOf(w)>=0)stt=true;else{var l=B.lock[w];if(l&&!l.some(has))bad=true;lk=true;sc+=1}});
+          R.it.forEach(function(w){var l=B.lock[w];if(l&&!l.some(has))bad=true});if(bad)return;
+          L.push({id:id,sc:sc,lk:lk,st:stt,sp:(R.ch.length||R.st.length)?0:1})});
+        L.sort(function(a,b){return (b.st-a.st)||(a.sp-b.sp)||(a.sc-b.sc)});var pk=[],tot=0;
+        L.forEach(function(x){if(pk.length>=T[2]||tot+x.sc>T[3]||(x.lk&&!T[4]))return;pk.push(x);tot+=x.sc});
+        if(pk.length)res.push({o:{c:'B_'+c.c,cn:c.cn,sk:'📍 '+st.sn,wn:c.wn,ci:c.ci,wi:c.wi},md:0,pk:pk,tot:tot,ns:pk.filter(function(x){return x.st}).length,b:1})})});
+      return res}
+    function calc(){var S=getS(),G=getG(),parts=[];
+      if(G.ed)parts.push(calcEd(S));if((G.base||G.extra)&&BR)parts.push(calcBase(S,G));
+      var srt=function(a,b){return (b.pk.length-a.pk.length)||(b.ns-a.ns)||(a.tot-b.tot)},seen={},top=[];
+      parts.forEach(function(p){p.sort(srt)});
+      parts.forEach(function(p){for(var i=0;i<p.length;i++){if(!seen[p[i].o.c]){seen[p[i].o.c]=1;top.push(p[i]);break}}});   // 켠 칸마다 1장씩
+      parts.forEach(function(p){p.forEach(function(r){if(top.length>=3||seen[r.o.c])return;seen[r.o.c]=1;top.push(r)})});
+      return {top:top,S:S}}
     function head(r){var o=r.o;return '<b>'+esc(o.cn)+'</b>'+(o.c==='ANY'?'':' · '+esc(o.sk))+' · '+(r.md?'<span class="binv">🔄 인버스 모드</span>':'🌍 일반')}
     function draw(){if(!bar)return;var c=calc(),top=c.top,S=c.S;
-      var one=top.length?head(top[0])+' → '+top[0].pk.map(function(x){return '💎'+RB[x.id].n}).join(' · '):'추천할 판이 없어요',cnt=top.length?top[0].pk.length:0;
+      var one=top.length?head(top[0])+' → '+top[0].pk.map(function(x){return (x.id.charAt(0)==='b'?'#':'💎')+RB[x.id].n}).join(' · '):'추천할 판이 없어요',cnt=top.length?top[0].pk.length:0;
       // 접힘 = 왼쪽 아래 둥근 버튼 (11/26 제이: 화면엔 페이지 내용만)
       if(mode!=='open'){bar.className='rbar fab'+(first?' hint':'');bar.innerHTML='<button type="button" class="rfab" data-m="open" title="추천 해금">🧭<span class="rlab">추천 해금</span>'+(cnt?'<i class="rcnt">'+cnt+'</i>':'')+'</button>';return}
       var h='<div class="rl"><span class="rtag">🧭 추천 해금</span><span class="rone">다음 판: '+one+'</span>'+(HAS?'<button type="button" class="rs" title="연결된 세이브를 다시 읽기">🔄 세이브</button>':'')+'<a class="rhelp" href="/vs/howto.html">❓ 사용법</a><button type="button" class="rx" data-m="min">닫기 ✕</button></div>';
       if(mode==='open'){h+='<div class="rbody"><p class="rintro">체크한 해금을 보고, <b>다음 판에 한 번에 노릴 수 있는 해금</b>을 골라 줘요. 줄을 누르면 공략과 ☑ 체크가 펼쳐져요.</p><div class="rtabs">'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</div>';
         var G=getG(),gl=Object.keys(GRPN).filter(function(k){return G[k]});
         h+='<p class="rscope">추천 범위: '+(gl.length?gl.map(function(k){return '<b>'+GRPN[k]+'</b>'}).join(' · '):'<b>없음</b>')+' · <a href="/vs/unlocks.html">해금 페이지 맨 위에서 켜기/끄기</a></p>';
-        if(G.base||G.extra)h+='<p class="rn">🛠 '+[G.base?'🧛 본편':'',G.extra?'➕ 추가':''].filter(Boolean).join(' · ')+' 추천은 만드는 중이에요 · 곧 열려요</p>';
-        if(!top.length&&G.ed)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
+        if((G.base||G.extra)&&BR){var nc=BR.cum.filter(function(k){return !S[k]&&RB[k]&&RB[k].need.every(function(g){return g.some(function(x){return S[x]})})}).length;if(nc)h+='<p class="rn">🔁 아무 판에서나 쌓이는 해금 '+nc+'개는 따로 · <a href="/vs/unlocks.html#base">해금 목록</a> · 🧛 본편 추천은 v1이라 같이 다듬는 중</p>'}
+        if(!top.length&&gl.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
         if(!gl.length)h+='<p class="rn">켜진 칸이 없어요 · 해금 페이지 각 칸 맨 위 🧭 스위치를 켜 주세요</p>';
         top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div class="rcb"><div class="rh2">'+head(r)+'</div>'+(o.c==='ANY'?'<div class="rw">본편 캐릭터도 OK</div>':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+
-          r.pk.map(function(x){var it=RB[x.id],op=openRow===x.id;return '<li><a class="ri" data-r="'+x.id+'">💎'+it.n+' '+(it.th||esc(it.t))+'</a>'+(x.st?' <em class="st">🗡️ 시작 스킬</em>':'')+(x.lk?' <em class="lk">🎲 상자 운</em>':'')+
+          r.pk.map(function(x){var it=RB[x.id],op=openRow===x.id;return '<li><a class="ri" data-r="'+x.id+'">'+(x.id.charAt(0)==='b'?'#':'💎')+it.n+' '+(it.th||esc(it.t))+'</a>'+(x.st?' <em class="st">🗡️ 시작 스킬</em>':'')+(x.lk?' <em class="lk">🎲 상자 운</em>':'')+
             (op?'<div class="rdet"><label class="rck"><input type="checkbox" data-c="'+x.id+'"'+(S[x.id]?' checked':'')+'> 해금 완료</label><p class="rw2">🎁 보상 → '+esc(it.rw)+'</p>'+it.g+'<a class="go" href="/vs/unlocks.html#'+x.id+'">목록에서 보기 →</a></div>':'')+'</li>'}).join('')+'</ul></div></div>'});
         h+='</div>'}
       bar.className='rbar '+mode;bar.innerHTML=h}
-    Promise.all([fetch('/data/vs/ed/rbar.json?v='+VER).then(function(r){return r.json()}),fetch('/data/vs/ed/reco.json?v='+VER).then(function(r){return r.json()})]).then(function(j){RB=j[0];RC=j[1];
+    Promise.all([fetch('/data/vs/ed/rbar.json?v='+VER).then(function(r){return r.json()}),fetch('/data/vs/ed/reco.json?v='+VER).then(function(r){return r.json()}),fetch('/data/vs/breco.json?v='+VER).then(function(r){return r.json()}).catch(function(){return null})]).then(function(j){RB=j[0];RC=j[1];BR=j[2];
       bar=document.createElement('div');(document.getElementById('dkReco')||document.body).appendChild(bar);
       bar.addEventListener('click',function(e){var m=e.target.closest('[data-m]'),t=e.target.closest('[data-t]'),ri=e.target.closest('.ri'),ck=e.target.closest('[data-c]');
         if(e.target.closest('.rs')){var b=e.target.closest('.rs');b.textContent='⏳';SAVE.reread(true,true).then(function(r){b.textContent=r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod):'');setTimeout(draw,1500)}).catch(function(){b.textContent='⚠'});return}

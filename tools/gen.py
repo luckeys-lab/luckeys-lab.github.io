@@ -660,3 +660,38 @@ desc: LucKey's Lab 뱀파이어 서바이벌 공략 사용법 · 해금 체크 �
 '''
 (R/'_src/vs/howto.html').write_text(HOW,encoding='utf-8')
 print('howto ok')
+
+# ── 🧛 본편 추천 v1 (11/27 · 제이가 극초반부터 플레이하며 다듬기) · data/vs/breco.json + rbar.json에 b- 줄 추가 ──
+BC=json.loads((D/'base_cond.json').read_text(encoding='utf-8'));BCO=BC['cond'];BST=BC['start'];BSN=BC['stn']
+_sn2id={v:k for k,v in BSN.items() if not k.startswith(('ADV_','OTC_'))}
+_stneed={}
+for u in BU:
+    for r in u['reward']:
+        p,_,nm=r.partition(' ')
+        if p=='스테이지' and nm in _sn2id:_stneed.setdefault(_sn2id[nm],[]).append('b-'+u['id'])
+MAINST=['FOREST','LIBRARY','WAREHOUSE','TOWER','CHAPEL','GREENACRES','MOLISE','BONEZONE','SINKING','RASH','MACHINE','BATCOUNTRY','ASTRALSTAIR','TOWERBRIDGE','EX_MAZERELLA','WHITEOUT','EX_LYCAEUM','LABORRATORY','COOP','EX_WESTWOODS','SPAZIE','CARLOCART','DEVILROOM','EX_WESTWOODS']
+DEFCH=['ANTONIO','IMELDA','PASQUALINA','GENNARO']   # 처음부터 있는 4명 (나머지는 해금 보상)
+def _bsc(c):
+    s=0;sec=c.get('sec',0);s+=0 if sec<=60 else 1 if sec<=600 else 2 if sec<=900 else 3 if sec<=1200 else 4
+    l=c.get('lvl',0);s+=0 if not l else 1 if l<=40 else 2 if l<=60 else 3 if l<=80 else 4
+    s+=2*len(c.get('mods',[]))+2*len(c.get('evo',[]))+len(c.get('items',[]))+(1 if c.get('kill') else 0)
+    return max(s,1)
+BRC={'rows':{},'chars':[],'stages':[],'invk':'b-ObtainGraciasMirror','lock':{k:v for k,v in LMAP.items() if not k.startswith(('CH_','ED_'))},'cum':[]}
+for u in BU:
+    c=BCO.get(u['id'],{});k='b-'+u['id']
+    if c.get('kind')=='누적':BRC['cum'].append(k)
+    if c.get('kind')!='한판':continue
+    BRC['rows'][k]={'g':'extra' if u['group']=='추가' else 'base','ch':c.get('chars',[]),'st':[x for x in c.get('stage',[])],'w':[w[0] for w in c.get('weap',[])],'it':c.get('items',[]),'inv':'Inverse' in c.get('mods',[]),'sc':_bsc(c),'sec':c.get('sec',0)}
+for ck in [k for k in items if k.startswith('CH_') and not k.startswith('CH_EME')]:
+    cid=ck[3:];nd=LMAP.get(ck,[])
+    if not nd and cid not in DEFCH:continue
+    w=BST.get(cid,[]);w0=w[0] if w else None;it=items[ck]
+    BRC['chars'].append({'c':cid,'cn':it['n'],'ci':it.get('i'),'w':w,'wn':items.get(w0,{}).get('n',''),'wi':items.get(w0,{}).get('i'),'need':nd})
+for st in dict.fromkeys(MAINST):
+    if st in BSN:BRC['stages'].append({'s':st,'sn':BSN[st],'need':_stneed.get(st,[])})
+(D/'breco.json').write_text(json.dumps(BRC,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+_rb=json.loads((D/'ed/rbar.json').read_text(encoding='utf-8'))
+for u in BU:
+    _rb['b-'+u['id']]={'n':u['gi'],'t':u['text_fix'],'th':esc(u['text_fix']),'rw':' · '.join(u['reward']),'need':u.get('need',[]),'g':''}
+(D/'ed/rbar.json').write_text(json.dumps(_rb,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+print('breco rows',len(BRC['rows']),'chars',len(BRC['chars']),'stages',len(BRC['stages']),'cum',len(BRC['cum']))

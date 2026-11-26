@@ -8,7 +8,7 @@ HEAD=(R/'tools/head.html').read_text(encoding='utf-8')
 FOOT=(R/'tools/foot.html').read_text(encoding='utf-8')
 # 캐시 번호 자동: css·js·items.json 내용이 바뀌면 ?v= 도 자동으로 바뀜 (손으로 안 올려도 됨)
 import hashlib
-V=hashlib.md5(b''.join((R/f).read_bytes() for f in ('assets/site.css','assets/site.js','data/vs/items.json','data/free.json'))).hexdigest()[:8]
+V=hashlib.md5(b''.join((R/f).read_bytes() for f in ('assets/site.css','assets/site.js','data/vs/items.json','data/free.json','data/vs/breco.json','data/vs/ed/rbar.json'))).hexdigest()[:8]
 HEAD=re.sub(r'site\.css\?v=\w+','site.css?v='+V,HEAD);FOOT=re.sub(r'site\.js\?v=\w+','site.js?v='+V,FOOT)
 # [[이름]] 태그 → 카드 링크 (카드집 이름으로 찾음 · 캐릭터는 앞 이름만 써도 됨)
 import json,html as _h
