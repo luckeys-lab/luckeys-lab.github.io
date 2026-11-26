@@ -20,7 +20,7 @@
   if(sb)sb.addEventListener('click',function(){root.classList.add('menu-open');});
   // 위로 가기
   var t=document.createElement('button');t.className='totop';t.type='button';t.setAttribute('aria-label','맨 위로');t.textContent='▲';
-  document.body.appendChild(t);
+  var dk=document.getElementById('dock');(dk||document.body).appendChild(t);   // 오른쪽 아래 한 곳: ☰ → 🧭 → (빈 칸) → ▲
   t.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});
   addEventListener('scroll',function(){t.classList.toggle('show',scrollY>500)},{passive:true});
   // 광고 설정 표 (data/ads.json) · 꺼져 있으면 아무것도 안 함
@@ -197,7 +197,7 @@
         h+='</div>'}
       bar.className='rbar '+mode;bar.innerHTML=h}
     Promise.all([fetch('/data/vs/ed/rbar.json?v='+VER).then(function(r){return r.json()}),fetch('/data/vs/ed/reco.json?v='+VER).then(function(r){return r.json()})]).then(function(j){RB=j[0];RC=j[1];
-      bar=document.createElement('div');document.body.appendChild(bar);
+      bar=document.createElement('div');(document.getElementById('dkReco')||document.body).appendChild(bar);
       bar.addEventListener('click',function(e){var m=e.target.closest('[data-m]'),t=e.target.closest('[data-t]'),ri=e.target.closest('.ri'),ck=e.target.closest('[data-c]');
         if(e.target.closest('.rs')){var b=e.target.closest('.rs');b.textContent='⏳';SAVE.reread(true,true).then(function(r){b.textContent=r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod):'');setTimeout(draw,1500)}).catch(function(){b.textContent='⚠'});return}
         if(m){mode=m.dataset.m;try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw();return}

@@ -290,3 +290,16 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 .rbar.open .rbody{position:static;transform:none;width:auto;max-height:65vh;overflow:auto;border:0;border-radius:0;box-shadow:none;background:var(--soft);margin:0;padding:6px 14px 12px}
 .rbar.open::before{content:'';position:fixed;left:-100vw;right:-100vw;top:-100vh;bottom:-100vh;background:rgba(5,6,15,.5);z-index:-1;pointer-events:none}
 @media (max-width:640px){.rbar.open{left:0;right:0;bottom:0;transform:none;width:auto;border-radius:16px 16px 0 0;border-bottom:0}.rbar.open .rbody{max-height:72vh}}
+/* 헤더 검색창 (항상 펼침) + 오른쪽 아래 버튼 모음 (11/26 제이) */
+.bar .hsrch{flex:1;max-width:460px;margin-left:12px;position:relative}
+.bar .hsrch input{width:100%;font:inherit;font-size:14px;padding:7px 12px;border:1px solid var(--gold);border-radius:18px;background:var(--navy2,#151a3a);color:#fff;outline:none}
+.bar .hsrch input::placeholder{color:#aab}
+.bar #sres{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--bg);color:var(--txt);border:2px solid var(--gold);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.4);max-height:60vh;overflow:auto;padding:0 10px;z-index:60}
+.bar #sres:empty{display:none}
+@media (max-width:640px){.bar .brand{font-size:0;gap:0}.bar .brand img{margin:0}.bar .hsrch{margin-left:8px}}
+.dock{position:fixed;right:14px;bottom:18px;z-index:46;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.dock .dk{width:48px;height:48px;border-radius:50%;background:var(--navy);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(0,0,0,.4);cursor:pointer}
+.dock .dk-gap{height:18px}
+.dock .totop{position:static;width:44px;height:44px;margin-right:2px;border:2px solid var(--gold)}
+.dock .rbar.fab{position:static}
+.dock .rfab .rlab{order:-1}
