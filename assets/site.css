@@ -481,3 +481,14 @@ html.inv .k-ogre .lbl{bottom:auto;top:calc(100% + 2px)}
 .sw::after{content:'OFF';position:absolute;right:7px;top:8px;font-size:10px;font-weight:800;color:#fff}
 .rsw.on .sw{background:var(--gold)}.rsw.on .sw i{left:27px}.rsw.on .sw::after{content:'ON';left:8px;right:auto;color:var(--navy)}
 .rscope{font-size:12.5px;margin:4px 0}.rscope a{color:var(--gold)}
+
+/* 🎁 무료게임 독 버튼 */
+.dock .dk-free{position:relative;font-size:18px;width:40px;height:40px}
+.dock .dk-free b{display:none;position:absolute;top:0;right:0;width:11px;height:11px;border-radius:50%;background:#e03b3b;border:2px solid var(--navy)}
+.dock .dk-free.new b{display:block}.dock .dk-free.new{animation:fwig 2.4s ease-in-out infinite}
+@keyframes fwig{0%,86%,100%{transform:rotate(0)}89%{transform:rotate(-14deg)}93%{transform:rotate(12deg)}97%{transform:rotate(-6deg)}}
+.fmh{font-weight:800;font-size:13px;margin:10px 0 6px}
+.fmini{display:flex;align-items:center;gap:10px;padding:6px;border:1px solid var(--line);border-radius:12px;margin:6px 0;text-decoration:none;color:var(--txt);background:var(--soft)}
+.fmini img{width:96px;height:54px;object-fit:cover;border-radius:8px;flex:0 0 auto;background:var(--navy)}
+.fmini span{flex:1;min-width:0;display:flex;flex-direction:column}.fmini b{font-size:14px;line-height:1.25}.fmini small{color:var(--sub);font-size:12px}
+.fmini i{font-style:normal;font-weight:800;color:var(--gold2);font-size:12.5px;white-space:nowrap}

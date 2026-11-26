@@ -364,6 +364,19 @@
   var rs=document.getElementById('dkReco');
   if(rs&&/^\/vs\//.test(location.pathname)){bkb=document.createElement('button');bkb.type='button';bkb.className='dk dk-bk';bkb.innerHTML='🔖<b></b>';rs.parentNode.insertBefore(bkb,rs.nextSibling);
     bkb.addEventListener('click',function(){bookmark()});setTimeout(bkBadge,0);document.addEventListener('llchk',function(){setTimeout(bkBadge,0)})}
+  // 🎁 이번주 무료게임 독 버튼 (11/27 · 사이트 전체 · 새 게임을 아직 안 봤으면 빨간 점 · 누르면 작은 창)
+  var mb2=document.getElementById('menuBtn');
+  if(mb2&&!document.getElementById('freebox')){var fbB=document.createElement('button');fbB.type='button';fbB.className='dk dk-free';fbB.title='🎁 이번주 무료게임';fbB.innerHTML='🎁<b></b>';mb2.parentNode.insertBefore(fbB,mb2.nextSibling);
+    var FJ=null,fload=function(){return FJ?Promise.resolve(FJ):fetch('/data/free.json?v='+VER).then(function(r){return r.json()}).then(function(j){FJ=j;return j})};
+    var fstate=function(j){var now=Date.now(),cur=j.games.filter(function(g){return Date.parse(g.start)<=now&&now<Date.parse(g.end)}),nx=j.games.filter(function(g){return now<Date.parse(g.start)});return {now:now,cur:cur,nx:nx}};
+    var fdot=function(){fload().then(function(j){var st=fstate(j),seen=+(localStorage.getItem('ll_freeseen')||0),nw=st.cur.some(function(g){return Date.parse(g.start)>seen});fbB.classList.toggle('new',nw)}).catch(function(){})};
+    fdot();
+    fbB.addEventListener('click',function(){fload().then(function(j){var st=fstate(j);
+      var card=function(g,k){var t=k==='cur'?'⏰ '+left(Date.parse(g.end)-st.now)+' 남음':'⏳ '+KST(g.start)+'부터';
+        return '<a class="fmini" href="'+g.url+'" target="_blank" rel="noopener"><img src="'+g.img+'" alt="" referrerpolicy="no-referrer"><span><b>'+esc(g.title)+'</b><small>'+t+'</small></span><i>받기 ›</i></a>'};
+      modal('<h3>🎁 이번주 무료게임</h3>'+(st.cur.length?'<p class="fmh">🟢 지금 무료 · 받으면 계속 내 것</p>'+st.cur.map(function(g){return card(g,'cur')}).join(''):'<p>지금 무료인 게임이 없어요</p>')+
+        (st.nx.length?'<p class="fmh">⏳ 곧 무료</p>'+st.nx.map(function(g){return card(g,'nx')}).join(''):'')+'<p><a class="fgbtn" href="/review/free.html">전체 보기 ›</a></p>');
+      try{localStorage.setItem('ll_freeseen',String(Date.now()))}catch(e){}fbB.classList.remove('new')})})}
   // 받는 쪽: 주소에 #s=코드 → 바로 반영 후 주소에서 지움
   if(/[#&]s=/.test(location.hash)){var hc=location.hash;try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}
     SYNC.take(hc).then(function(n){toast('📥 저장한 체크를 불러왔어요 · ☑ '+n+'개')}).catch(function(){toast('⚠ 코드가 잘못됐어요')})}
