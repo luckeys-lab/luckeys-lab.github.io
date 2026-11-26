@@ -334,3 +334,27 @@ details.spells{margin:8px 0}details.spells>summary{cursor:pointer;font-weight:70
 .sguide .sgcp{font:inherit;font-size:12px;border:1px solid var(--gold);background:var(--soft);color:var(--txt);border-radius:8px;padding:1px 8px;cursor:pointer}
 .sguide .sggo{display:block;width:100%;margin-top:14px;font:inherit;font-weight:800;background:var(--navy);color:var(--gold);border:0;border-radius:10px;padding:10px;cursor:pointer}
 .rbar .hz{color:var(--gold2);font-weight:800}.rbar .hbx{color:#e03b3b;font-weight:800}@media (prefers-color-scheme:dark){.rbar .hz{color:var(--gold)}.rbar .hbx{color:#ff7b7b}}
+/* 📦 컬렉션 */
+.cgrid{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.cline{display:flex;flex-wrap:wrap;gap:6px;padding:6px;border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+.ct{display:flex;flex-direction:column;align-items:center;width:92px;padding:6px 4px;border-radius:10px;background:var(--bg);border:1px solid var(--line);cursor:pointer;text-align:center}
+.ct img{width:42px;height:42px;image-rendering:pixelated}.ct b{font-size:11.5px;font-weight:600;line-height:1.3;margin-top:3px}
+.ct.got{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}.ct.miss{opacity:.38;filter:grayscale(1)}
+.savestat{display:none;font-size:13.5px;margin:6px 0;padding:6px 10px;border-left:3px solid var(--gold);background:var(--soft);border-radius:6px}.savestat.on{display:block}
+/* 📖 우화집 (꾸밈) */
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin:12px 0}
+.bcard{border:2px solid #2e8a5a;border-radius:14px;overflow:hidden;background:var(--bg);box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.bcard.boss{border-color:var(--gold);box-shadow:0 0 0 2px rgba(230,184,79,.35),0 6px 18px rgba(0,0,0,.35)}
+.bimg{position:relative;height:150px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 60%,#1f6a4a 0%,#0c2a22 60%,#071612 100%)}
+.bcard.boss .bimg{background:radial-gradient(circle at 50% 60%,#7a5a14 0%,#2a1c06 62%,#120c03 100%)}
+.bimg img{max-height:120px;max-width:90%;image-rendering:pixelated;filter:drop-shadow(0 4px 4px rgba(0,0,0,.6))}
+.bno{position:absolute;left:8px;top:6px;font-family:Outfit,sans-serif;font-weight:800;font-size:12px;color:#9fe3c0}
+.bboss{position:absolute;right:8px;top:6px;font-size:11.5px;font-weight:800;color:var(--navy);background:var(--gold);border-radius:8px;padding:1px 7px}
+.bkill{position:absolute;right:8px;bottom:6px;font-size:11.5px;font-weight:800;color:#fff;background:rgba(0,0,0,.55);border-radius:8px;padding:1px 7px}.bkill:empty{display:none}
+.binfo{padding:8px 12px 10px}.binfo h3{margin:0;font-size:16px}.binfo h3 small{display:block;font-size:11px;color:var(--sub);font-weight:500}
+.bst{margin:4px 0;font-size:12.5px;color:var(--sub)}.brs{margin:4px 0}.rz{display:inline-block;font-size:11px;background:var(--soft);border-radius:8px;padding:1px 6px;margin:0 4px 4px 0}
+.blore summary{cursor:pointer;font-size:12.5px;font-weight:700;color:var(--gold2)}.blore p{font-size:12.5px;line-height:1.7;margin:4px 0 0}
+.bcard.miss .bimg img{filter:brightness(0) drop-shadow(0 0 2px rgba(159,227,192,.6))}.bcard.miss .binfo h3{opacity:.6}
+/* 🧛 캐릭터: 세이브 기준 */
+.ctile.locked img.sp{filter:brightness(0)}.ctile.locked::after{content:'🔒 미해금';font-size:11px;color:var(--sub)}
+.ctile.unbought::after{content:'🛒 구매 전';font-size:11px;color:var(--gold2)}

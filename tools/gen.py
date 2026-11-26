@@ -157,6 +157,8 @@ desc: 뱀파이어 서바이벌 무료 DLC 에메랄드 디오라마 공략 · �
 <a class="tile" href="/vs/ed/map.html"><b>🗺️ 지도</b><span>관 · 보스 · 패시브 위치</span></a>
 <a class="tile" href="/vs/ed/chars.html"><b>🧛 캐릭터</b><span>스킨별 시작 스킬</span></a>
 <a class="tile" href="/vs/secrets.html#sec-ed"><b>🤫 비밀</b><span>수수께끼 · 주문</span></a>
+<a class="tile" href="/vs/ed/collection.html"><b>📦 컬렉션</b><span>스킬 진화 단계별</span></a>
+<a class="tile" href="/vs/ed/bestiary.html"><b>📖 우화집</b><span>몹 그림 · 능력치 · 이야기</span></a>
 </div>
 <script>if(/^#ed-/.test(location.hash))location.replace('/vs/unlocks.html'+location.hash)</script>
 ''',encoding='utf-8')
@@ -213,7 +215,7 @@ for c in EC:
     sk=''.join(f'<div class="skin">{_sim(i)}<b>{esc(s["ko"])}</b><span>{_sic(s.get("start"))}{pop(s["start"]) if s.get("start") else "-"}</span></div>' for i,s in enumerate(c['skins']))
     hero=next((x for x in seq if x),None)
     howt=''.join(f'<li><a href="/vs/unlocks.html#ed-{u["n"]}">💎{u["n"]}번</a> · {esc(u["text"])}</li>' for u in how) or '<li>처음부터 또는 확인 중</li>'
-    tiles.append(f'<a class="tile ctile" href="/vs/ed/c/{sl}.html">{f'<img class="sp" src="{hero}" alt="" loading="lazy">' if hero else ''}<b>{esc(c["ko"])}</b><span>{_sic(c.get("start"))}{esc(c["start"] or "-")}</span></a>')
+    tiles.append(f'<a class="tile ctile" data-ch="{c['id']}" href="/vs/ed/c/{sl}.html">{f'<img class="sp" src="{hero}" alt="" loading="lazy">' if hero else ''}<b>{esc(c["ko"])}</b><span>{_sic(c.get("start"))}{esc(c["start"] or "-")}</span></a>')
     (R/f'_src/vs/ed/c/{sl}.html').write_text(f'''title: {c["ko"]} · 에메랄드 디오라마
 desc: 뱀파이어 서바이벌 에메랄드 디오라마 캐릭터 {c["ko"]} · 시작 스킬 {c["start"]} · 스킨별 시작 스킬 · 해금 방법 · 이 캐릭터가 필요한 해금
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › <a href="/vs/ed/">에메랄드 디오라마</a> › <a href="/vs/ed/chars.html">캐릭터</a></div>
@@ -451,3 +453,39 @@ desc: 뱀파이어 서바이벌 비밀 전체. 수수께끼 문구 · 보상 · 
 ''',encoding='utf-8')
 json.dump([r['id'] for g in SEC for r in g['rows']],open(R/'data/vs/secret_keys.json','w'),ensure_ascii=False)
 print('secrets',sum(len(g['rows']) for g in SEC))
+
+
+# ── 디오라마 📦 컬렉션 · 📖 우화집 (11/26 · 세이브 연동: data-col / data-kill · site.js ll_extra) ──
+SUBS={'EME_RING_FIRE','EME_RING_WATER','EME_RING_WOOD','EME_RING_EARTH','EME_RING_METAL','EME_RING_CHAOS','EME_MECH_RAVE','EME_MECH_BALLMISS','EME_AXE_HELLFURY','EME_BLOOD_BLOODRAGE','EME_SWORD_SWALLOW','EME_SWORD_GALE'}
+cw=[k[3:] for k in items if k.startswith('ED_') and k[3:] not in SUBS]
+fams={}
+for k in cw:fams.setdefault(re.sub(r'\d+$','',k),[]).append(k)
+tiles=[]
+for f,ks in fams.items():
+    ks.sort();cells=''.join(f'<span class="ct" data-col="{k}" data-pop="ED_{k}">{"<img src=%s alt=>"%items["ED_"+k]["i"] if items["ED_"+k].get("i") else ""}<b>{esc(items["ED_"+k]["n"])}</b></span>' for k in ks)
+    tiles.append(f'<div class="cline">{cells}</div>')
+(R/'_src/vs/ed/collection.html').write_text(f'''title: 에메랄드 디오라마 컬렉션 {len(cw)}
+desc: 뱀파이어 서바이벌 에메랄드 디오라마 컬렉션 {len(cw)}개 · 스킬 진화 단계별 · PC 세이브 파일로 모은 것 표시.
+<div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › <a href="/vs/ed/">에메랄드 디오라마</a> › 컬렉션</div>
+<h1>📦 에메랄드 디오라마 · 컬렉션</h1>
+<p class="sub">{len(cw)}개 · 한 줄 = 한 스킬의 진화 단계 · 아이콘을 누르면 설명 · PC는 💾 세이브를 넣으면 모은 것만 밝게 보여요</p>
+<div class="savestat" data-kind="col" data-total="{len(cw)}"></div>
+<div class="cgrid">{''.join(tiles)}</div>
+''',encoding='utf-8')
+BE=json.loads((D/'ed/bestiary.json').read_text(encoding='utf-8'))
+def bcard(i,b):
+    st=f"❤️ {b['hp']}{'×Lv' if b['hpxlv'] else ''} · ⚔️ {b['pw']} · 👟 {b['sp']} · ✨ XP {b['xp']}"
+    res=''.join(f'<span class="rz">{ {"Freeze":"❄️ 빙결","Rosary":"📿 묵주","Debuffs":"🌀 약화","Defang":"🦷 무력화"}.get(k,k)} 저항</span>' for k in b['res'])
+    return f'''<article class="bcard{' boss' if b['boss'] else ''}" data-kill="{b['id']}">
+<div class="bimg"><span class="bno">No.{i:02d}</span>{'<span class="bboss">👑 보스</span>' if b['boss'] else ''}<img src="{b['i']}" alt="{esc(b['n'])}" loading="lazy"><span class="bkill"></span></div>
+<div class="binfo"><h3>{esc(b['n'])}<small>{esc(b['en'])}</small></h3><p class="bst">{st}</p>{('<p class="brs">'+res+'</p>') if res else ''}
+{('<details class="blore"><summary>📖 이야기</summary><p>'+esc(b['d'])+'</p></details>') if b['d'] else ''}</div></article>'''
+(R/'_src/vs/ed/bestiary.html').write_text(f'''title: 에메랄드 디오라마 우화집 {len(BE)}
+desc: 뱀파이어 서바이벌 에메랄드 디오라마 우화집 {len(BE)}마리 · 몹 그림 · 능력치 · 저항 · 이야기 · PC 세이브로 처치 수 표시.
+<div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › <a href="/vs/ed/">에메랄드 디오라마</a> › 우화집</div>
+<h1>📖 에메랄드 디오라마 · 우화집</h1>
+<p class="sub">{len(BE)}마리 · 게임 우화집 순서 · PC는 💾 세이브를 넣으면 처치 수가 붙고, 아직 못 잡은 몹은 그림자로 보여요</p>
+<div class="savestat" data-kind="kill" data-total="{len(BE)}"></div>
+<div class="bgrid">{''.join(bcard(i,b) for i,b in enumerate(BE,1))}</div>
+''',encoding='utf-8')
+print('ed collection',len(cw),'bestiary',len(BE))

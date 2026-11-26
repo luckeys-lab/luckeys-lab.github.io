@@ -139,6 +139,9 @@
         Object.keys(K).forEach(function(a){var k=K[a],ok=!!AL[a.toLowerCase()];if(k.charAt(0)==='b'){r.tb++;if(ok)r.nb++}else{r.te++;if(ok)r.ne++}if(ok)S[k]=1;else delete S[k]});
         SK.forEach(function(id){if(SL[id.toLowerCase()]){S['s-'+id]=1;r.ns++}else delete S['s-'+id]});
         try{localStorage.setItem('ll_chk',JSON.stringify(S));localStorage.setItem('ll_saveinfo',JSON.stringify({t:Date.now(),name:r.name}))}catch(e){}
+        var X={cw:(o.CollectedWeapons||[]).concat(o.CollectedItems||[]),kc:{},uc:o.UnlockedCharacters||[],bc:o.BoughtCharacters||[]};
+        var KC=o.KillCount||{};Object.keys(KC).forEach(function(k){if(/^EME_/.test(k))X.kc[k]=KC[k]});   // 지금은 디오라마 몹만 (본편은 우화집 만들 때)
+        try{localStorage.setItem('ll_extra',JSON.stringify(X))}catch(e){}
         try{document.dispatchEvent(new CustomEvent('llchk',{detail:'save'}))}catch(e){}return r})},
     db:function(){return new Promise(function(ok,no){if(!window.indexedDB)return no();var q=indexedDB.open('ll',1);q.onupgradeneeded=function(){q.result.createObjectStore('h')};q.onsuccess=function(){ok(q.result)};q.onerror=no})},
     getH:function(){return SAVE.db().then(function(d){return new Promise(function(ok){var t=d.transaction('h').objectStore('h').get('save');t.onsuccess=function(){ok(t.result||null)};t.onerror=function(){ok(null)}})}).catch(function(){return null})},
@@ -248,6 +251,14 @@
       bar.addEventListener('click',function(e){if(e.target.closest('.rh2')||e.target.closest('.rc img.sp')){mode='min';try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw()}});
       document.addEventListener('llchk',function(e){if(e.detail==='list'||e.detail==='save')draw()});
       SAVE.getH().then(function(h){HAS=!!h;draw()});draw()})}
+  // 💾 세이브 연동 표시: 컬렉션(data-col) · 우화집 처치 수(data-kill) · 캐릭터(data-ch)
+  var showExtra=function(){var X=null;try{X=JSON.parse(localStorage.getItem('ll_extra')||'null')}catch(e){}if(!X)return;
+    var cw={};X.cw.forEach(function(k){cw[k]=1});var uc={},bc={};X.uc.forEach(function(k){uc[k]=1});X.bc.forEach(function(k){bc[k]=1});
+    var nc=0,tc=0;[].forEach.call(document.querySelectorAll('[data-col]'),function(el){tc++;var ok=!!cw[el.dataset.col];if(ok)nc++;el.classList.toggle('got',ok);el.classList.toggle('miss',!ok)});
+    var nk=0,tk=0;[].forEach.call(document.querySelectorAll('[data-kill]'),function(el){tk++;var n=X.kc[el.dataset.kill]||0;if(n)nk++;el.classList.toggle('miss',!n);var b=el.querySelector('.bkill');if(b)b.textContent=n?'처치 '+n.toLocaleString():'아직 못 잡음'});
+    [].forEach.call(document.querySelectorAll('[data-ch]'),function(el){var id=el.dataset.ch;el.classList.toggle('locked',!uc[id]);el.classList.toggle('unbought',!!uc[id]&&!bc[id])});
+    [].forEach.call(document.querySelectorAll('.savestat'),function(el){var k=el.dataset.kind;el.innerHTML=k==='col'?'💾 세이브 기준 모은 것 <b>'+nc+' / '+tc+'</b>':'💾 세이브 기준 잡은 몹 <b>'+nk+' / '+tk+'</b>';el.classList.add('on')})};
+  showExtra();document.addEventListener('llchk',function(e){if(e.detail==='save')showExtra()});
   // 지도 크게 보기 (⛶ 또는 빈 곳 탭)
   [].forEach.call(document.querySelectorAll('.map'),function(m){
     function tog(on){m.classList.toggle('full',on);document.body.classList.toggle('noscroll',on)}
