@@ -380,6 +380,8 @@
   var rs=document.getElementById('dkReco');
   if(rs&&/^\/vs\//.test(location.pathname)){bkb=document.createElement('button');bkb.type='button';bkb.className='dk dk-bk';bkb.innerHTML='🔖<b></b>';rs.parentNode.insertBefore(bkb,rs.nextSibling);
     bkb.addEventListener('click',function(){bookmark()});setTimeout(bkBadge,0);document.addEventListener('llchk',function(){setTimeout(bkBadge,0)})}
+  // 📱 폰: 스크롤하는 동안 독을 흐리게 (글자 가림 줄이기 · 11/27 제이)
+  if(matchMedia('(max-width:720px)').matches){var dsT=null;addEventListener('scroll',function(){document.documentElement.classList.add('dscroll');clearTimeout(dsT);dsT=setTimeout(function(){document.documentElement.classList.remove('dscroll')},700)},{passive:true})}
   // 🎁 이번주 무료게임 독 버튼 (11/27 · 사이트 전체 · 새 게임을 아직 안 봤으면 빨간 점 · 누르면 작은 창)
   var mb2=document.getElementById('menuBtn');
   if(mb2&&!document.getElementById('freebox')){var fbB=document.createElement('button');fbB.type='button';fbB.className='dk dk-free';fbB.title='🎁 이번주 무료게임';fbB.innerHTML='🎁<b></b>';mb2.parentNode.insertBefore(fbB,mb2.nextSibling);
@@ -407,10 +409,12 @@
     var n=nChk(),bk=null;try{bk=JSON.parse(localStorage.getItem('ll_bk')||'null')}catch(e){}
     if(!n){ps.innerHTML='<p>아직 ☑ 체크한 게 없어요. <a href="/vs/unlocks.html">🔓 해금</a>에서 체크하고 오세요.</p>'}
     else SYNC.make().then(function(r){var url=location.origin+'/vs/unlocks.html#s='+r.code;
-      ps.innerHTML='<p>지금 체크 <b>☑ '+r.n+'개</b>를 링크·QR로 저장해요. 폰을 바꾸거나 브라우저 기록을 지워도 이걸로 되살려요.</p><div class="qrbox"><img alt="체크 저장 QR"></div>'+
-        '<div class="bkbtn"><button type="button" class="fgbtn bkcp">🔗 링크 복사</button><button type="button" class="fgbtn bkimg">🖼️ QR 이미지 저장</button></div>'+
-        '<p class="note">추천: 링크를 카톡 <b>나에게 보내기</b>에 붙여 두면, 나중에 <b>누르기만</b> 하면 불러와져요 · PC 화면의 QR은 폰 카메라로 찍어도 돼요 · 체크를 더 하면 다시 저장해 주세요</p>'+
-        '<details><summary>코드만 보기</summary><p><code class="sccode"></code></p></details>';
+      var share=!isPC&&!!navigator.share;
+      var qrb='<div class="qrbox"><img alt="체크 저장 QR"></div><div class="bkbtn"><button type="button" class="fgbtn bkcp">🔗 링크 복사</button><button type="button" class="fgbtn bkimg">🖼️ QR 이미지 저장</button></div><p class="note">아이폰은 QR 그림을 꾹 눌러 <b>사진에 저장</b> · 이미지는 다운로드 폴더(갤러리)에 저장돼요</p><details><summary>코드만 보기</summary><p><code class="sccode"></code></p></details>';
+      ps.innerHTML='<p>지금 체크 <b>☑ '+r.n+'개</b>를 저장해요. 폰을 바꾸거나 기록을 지워도 이걸로 되살려요.</p>'+
+        (share?'<button type="button" class="bkshare">📤 링크 보내기 <small>카톡 → 나와의 채팅 추천</small></button><p class="note">나중에 그 링크를 <b>누르기만</b> 하면 불러와져요 · 체크를 더 하면 다시 보내 주세요</p><details class="bkmore"><summary>다른 방법 ▾ (QR · 이미지 · 코드)</summary>'+qrb+'</details>'
+          :qrb.replace('<div class="bkbtn">','<p class="note">링크를 복사해서 카톡 <b>나와의 채팅</b>에 붙여 두면, 나중에 누르기만 하면 불러와져요 · PC 화면의 QR은 폰 기본 카메라로 찍어도 돼요</p><div class="bkbtn">'));
+      if(share)ps.querySelector('.bkshare').onclick=function(){navigator.share({title:"LucKey's Lab 체크 저장",text:"🔖 뱀서 체크 저장 ("+KST(Date.now())+" · ☑ "+r.n+"개) · 누르면 불러와져요",url:url}).then(function(){done();toast('📤 보냈어요')}).catch(function(){})};
       ps.querySelector('.sccode').textContent=r.code;
       var done=function(){try{localStorage.setItem('ll_bk',JSON.stringify({t:Date.now(),n:r.n}))}catch(e){}bkBadge()};
       loadJS('/assets/qrcode.min.js','qrcode').then(function(qrcode){var q=qrcode(0,'M');q.addData(url);q.make();
@@ -419,8 +423,7 @@
           x.drawImage(im,20,56);x.fillStyle='#1E2346';x.font='bold 22px sans-serif';x.fillText('📅 '+ds,W/2,H-36);x.font='14px sans-serif';x.fillText(KST(Date.now())+' · ☑ '+r.n+'개',W/2,H-12);
           var png=c.toDataURL('image/png');ps.querySelector('.qrbox img').src=png;
           ps.querySelector('.bkimg').onclick=function(){c.toBlob(function(bl){var f=new File([bl],fn,{type:'image/png'});
-            if(navigator.canShare&&navigator.canShare({files:[f]}))navigator.share({files:[f],title:"LucKey's Lab 체크 저장"}).then(done).catch(function(){});
-            else{var a=document.createElement('a');a.href=png;a.download=fn;document.body.appendChild(a);a.click();a.remove();done()}})}};
+            var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},4000);done();toast('🖼️ '+fn+' 저장')})}};
         im.src=q.createDataURL(6,2)});
       ps.querySelector('.bkcp').onclick=function(e){var b=e.target;(navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(function(){b.textContent='✅ 복사됨 · 카톡 나에게 붙여넣기';done()}).catch(function(){b.textContent='길게 눌러 코드 복사';ps.querySelector('details').open=true})}});
     var last=+(localStorage.getItem('ll_sync')||0);

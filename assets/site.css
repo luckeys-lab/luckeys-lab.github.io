@@ -514,3 +514,15 @@ html.inv .k-ogre .lbl{bottom:auto;top:calc(100% + 2px)}
 .rqbar{margin:8px 0 4px;text-align:center}.rqbar small{opacity:.8}
 .rqgo{border:0;border-radius:999px;background:var(--gold);color:var(--navy);font-weight:800;padding:8px 16px;cursor:pointer}
 .spd{font-style:normal;font-size:11px;background:#2e7d4f;color:#fff;border-radius:6px;padding:0 5px;margin-left:4px}
+
+/* 📱 폰 독: 작게 · 스크롤 중 흐리게 · 추천 버튼 글씨는 처음 안내 때만 */
+@media (max-width:720px){
+ .dock{gap:7px;left:8px;bottom:12px}.dock .dk{width:40px;height:40px}.dock .dk-free{width:34px;height:34px;font-size:15px}
+ .dock .rbar.fab .rfab{width:42px;height:42px}.dock .rbar.fab:not(.hint) .rlab{display:none}
+ .dock{transition:opacity .25s}html.dscroll .dock{opacity:.25}
+ main,.wrap{padding-left:max(12px,env(safe-area-inset-left))}
+}
+.bkshare{display:block;width:100%;border:0;border-radius:14px;background:var(--gold);color:var(--navy);font-weight:900;font-size:17px;padding:14px;cursor:pointer;margin:8px 0}
+.bkshare small{display:block;font-size:12px;font-weight:700;opacity:.8}
+.bkmore{margin-top:8px}.bkmore summary{cursor:pointer;font-weight:800;font-size:13px}
+@media (max-width:720px){.dock .rfab{height:42px;min-width:42px;padding:0 10px;font-size:18px!important}}

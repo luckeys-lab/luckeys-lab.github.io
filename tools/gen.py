@@ -109,6 +109,9 @@ RC=json.loads((D/'ed/reco.json').read_text(encoding='utf-8'))
 _MP=json.loads((D/'ed/map.json').read_text(encoding='utf-8'));_BS=json.loads((D/'ed/bosses.json').read_text(encoding='utf-8'))
 _ZN={int(k):v for k,v in _MP['zones'].items()}
 _EW={k[3:]:v for k,v in items.items() if k.startswith('ED_')}
+EDROP={'EME_GATEBOSS_SPECTER':'불로바','EME_GATEBOSS_SPIRITBEAST':'붉은 심장','EME_GATEBOSS_DRAGON':'글레이브','EME_GATEBOSS_IRONMAIDEN':'쿠쿠리','EME_GATEBOSS_LIVINGANGUISH':'미치광이의 두개골','EME_GATEBOSS_FINALEMPEROR':'플랑베르주','EME_BOSS_OGRE':'에메랄드 휴거'}   # 11/26 제이 플레이 표 (ed_playnotes)
+def _j(w,a,b):
+    c=w[-1] if w else 'a';return w+(a if '가'<=c<='힣' and (ord(c)-0xAC00)%28 else b)   # 받침 있으면 a
 def _side(n):return '포탈 도착 화면' if n==0 else (f'오른쪽으로 {n}칸' if n>0 else f'왼쪽으로 {-n}칸')
 def _arr(n):return f'{"→" if n>0 else "←"}{abs(n)}'
 def dual(a,b):return a if a==b else f'<span class="nv">{a}</span><span class="iv">{b}</span>'   # 지도 🔄 토글: 일반/인버스 글자 (인버스 = 180° 회전, 11/26 제이 스샷)
@@ -121,8 +124,16 @@ def guide(u):
         f=r['f'];who=[f"{o['cn']}{'' if o['sk'] in ('기본','') else ' ['+o['sk'].strip('()')+']'}" for o in RC['opts'] if o['w']==f]
         nm=_EW.get(f+'1',{}).get('n') or _EW.get(f,{}).get('n') or f
         if who:out.append(f"🗡️ 시작 스킬 <b>{esc(nm)}</b>로 시작하는 캐릭터: "+' · '.join(esc(x) for x in dict.fromkeys(who)))
+        _db2=next((b for b,w in EDROP.items() if w==nm),None)
+        if who and _db2:
+            _bp2=[x for x in _MP['pins'] if x['kind']=='boss' and x['id']==_db2]
+            out.append(f"🎁 또는 " + (f"<a href=\"/vs/map.html#z{_bp2[0]['zone']}\">{esc(_ZN[_bp2[0]['zone']])}</a> 보스" if _bp2 else '숨은 오우거') + f"가 <b>{esc(_j(nm,'을','를'))}</b> 떨궈요 → 아무 캐릭터로 잡고 주워서 진화")
         else:
-            un=RC['wun'].get(f);out.append(f"🎲 {esc(nm)} 시작 캐릭터 없음 · 레벨업에서 골라야 합니다"+(f" (먼저 <a href=\"#{un}\">💎{un[3:]}</a>에서 스킬 해금)" if un else ''))
+            un=RC['wun'].get(f);_db=next((b for b,w in EDROP.items() if w==nm),None)
+            if _db:
+                _bp=[x for x in _MP['pins'] if x['kind']=='boss' and x['id']==_db]
+                out.append(f"🎁 <b>{esc(_j(nm,'은','는'))}</b> " + (f"<a href=\"/vs/map.html#z{_bp[0]['zone']}\">{esc(_ZN[_bp[0]['zone']])}</a> 보스" if _bp else '숨은 오우거') + "가 떨궈요 → 그 보스를 잡고 주운 판에서 진화")
+            else:out.append(f"🎲 {esc(nm)} 시작 캐릭터 없음 · 레벨업에서 골라야 합니다"+(f" (먼저 <a href=\"#{un}\">💎{un[3:]}</a>에서 스킬 해금)" if un else ''))
         if r['k']=='evo':
             line=[k for k in _EW if re.sub(r'\d+$','',k)==f and re.search(r'\d+$',k)];line.sort()
             if not line and f in _EW:line=[f,f+'2']
@@ -139,7 +150,7 @@ def guide(u):
         b=_BS.get(pb[0]['id'],{}) if pb else {}
         out.append(f"📍 <a href=\"/vs/map.html#z{r['z']}\">{esc(_ZN[r['z']])}</a> 보스 · {(_side(-pb[0]['xm']) if iv else _side(pb[0]['xm'])) if pb else ''} · ❤️ {b.get('hp')}{'×레벨' if b.get('hpxlv') else ''}")
     if r['k']=='allboss':out.append('📍 <a href="/vs/map.html#z7">정션</a>에서 6구역 보스를 한 판에 전부 · 디바 5번 필수')
-    if r['k']=='ogre':out.append('⏱ <b>21~25분쯤</b> 나오는 숨은 보스 (시간 확인 중) · 화면 가장자리 💀 표시를 따라가기 · 일반 <b>6시</b>(정션 아래쪽) · 인버스 <b>12시</b>')
+    if r['k']=='ogre':out.append('📍 <b>게이트에 들어가지 말고 정션에서 남쪽으로 날아가기</b> · 일시정지 지도의 💀 표시 · 인버스는 북쪽 · 🎁 에메랄드 휴거 드랍')
     if r['k']=='disk':out.append('🛒 본편 <b>달빛</b> 스테이지 상인 <b>크산티아</b>가 DLC 디스크를 팔아요 · 달빛은 <a href="/vs/unlocks.html#b-Unlock4Hypers">본편 #77</a>(하이퍼 4개)로 열려요')
     mm=''
     if r['k'] in ('coffin','boss'):
@@ -365,12 +376,12 @@ for p in MP['pins']:
         ns=[u['n'] for u in U['unlocks'] if nm.split(' ')[0] in u['text'] and u['zone']!='전부']
         st=f"❤️ {b.get('hp')}{'×레벨' if b.get('hpxlv') else ''} · ⚔️ {b.get('power')} · 👟 {b.get('speed')}"
         bd=re.sub(r'\s+',' ',(b.get('d') or '').replace('\\n',' ')).strip()
-        items['EB_'+p['id']]={'n':nm,'t':f'보스 · {zn}','d':'','p':st,'ul':ulines(sorted(set(ns))),'bn':b.get('ko') or nm,'bd':bd}
+        items['EB_'+p['id']]={'n':nm,'t':f'보스 · {zn}','d':(f"🎁 잡으면 {EDROP[p['id']]} 드랍 (제이 플레이 확인)" if p['id'] in EDROP else ''),'p':st,'ul':ulines(sorted(set(ns))),'bn':b.get('ko') or nm,'bd':bd}
     if p['kind']=='coffin':
         ch=items.get('CH_'+p['id'],{});cn={'EME_RAPIERDUAL':2,'EME_SWORDBITE':25}.get(p['id'])
         items['EC_'+p['id']]={'i':ch.get('i'),'n':'⚰️ '+p['label'],'t':f'관 · {zn} · {_side(p["xm"])}','d':ch.get('d',''),'s':ch.get('s'),'si':ch.get('si'),'ul':ulines([cn]) if cn else [],'l':ch.get('l')}
 _b=BS['EME_BOSS_OGRE']
-items['EB_EME_BOSS_OGRE']={'n':'숨은 오우거','t':'보스 · 21~25분쯤','d':'21~25분쯤 나타나요 (시간 확인 중). 화면 가장자리 💀 표시를 따라가면 돼요 · 일반 6시(정션 아래쪽) · 인버스 12시.','p':f"❤️ {_b['hp']}{'×레벨' if _b['hpxlv'] else ''} · ⚔️ {_b['power']} · 👟 {_b['speed']}",'ul':ulines([41]),'bn':'숨은 오우거','bd':''}
+items['EB_EME_BOSS_OGRE']={'n':'숨은 오우거','t':'보스 · 정션 남쪽 멀리','d':'게이트(포탈)에 들어가지 말고 정션에서 남쪽으로 날아가요 (이속이 빠르면 빈 공간도 지나가요) · 인버스는 북쪽 · 🎁 잡으면 에메랄드 휴거 드랍','p':f"❤️ {_b['hp']}{'×레벨' if _b['hpxlv'] else ''} · ⚔️ {_b['power']} · 👟 {_b['speed']}",'ul':ulines([41]),'bn':'숨은 오우거','bd':''}
 (D/'items.json').write_text(json.dumps(items,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 def pin_html(p,hub=False):
     st=f'--x:{p["x"]/256*100:.2f}%;--y:{p["y"]/280*100:.2f}%'
@@ -380,7 +391,7 @@ def pin_html(p,hub=False):
         if hub:
             side='l' if p['x']<100 else 'r' if p['x']>156 else ('t' if p['y']<140 else 'b')
             bn=next((x['label'] for x in MP['pins'] if x['zone']==z and x['kind']=='boss'),'')
-            return f'<a class="pin k-portal" style="{st}" href="#z{z}" title="{esc(ZNAME[z])}">{z}<i class="zl zl-{side}">{esc(ZNAME[z])}<small>👹 {esc(bn)}</small></i></a>'
+            return f'<a class="pin k-portal" style="{st}" href="#z{z}" title="{esc(ZNAME[z])}">{z}<i class="zl zl-{side}">{esc(ZNAME[z])}<small>👹 {esc(bn)}{(' · 🎁 '+esc(EDROP[_bid])) if (_bid:=next((x['id'] for x in MP['pins'] if x['zone']==z and x['kind']=='boss'),None)) in EDROP else ''}</small></i></a>'
         return f'<a class="pin k-portal" style="{st}" href="#z7" title="정션으로">🌀</a>'
     if p['kind']=='item':
         it=items.get(p['id'],{});ic=f'<img src="{it["i"]}" alt="">' if it.get('i') else '💍'
@@ -401,7 +412,7 @@ for z in set(p['zone'] for p in MP['pins']):
         grp=[q for q in ps if abs(q['x']-p['x'])<NEAR and abs(q['y']-p['y'])<NEAR]
         grp.sort(key=lambda q:KO.index(q['kind']))
         p['pk']=','.join(popkey(q) for q in grp)
-OGPIN='<span class="pin k-ogre" style="--x:54.69%;--y:96%" data-pop="EB_EME_BOSS_OGRE">💀<i class="lbl">숨은 오우거 {}<small>21~25분쯤</small></i></span>'.format(dual('⬇','⬆'))
+OGPIN='<span class="pin k-ogre" style="--x:54.69%;--y:96%" data-pop="EB_EME_BOSS_OGRE">💀<i class="lbl">숨은 오우거 {}<small>정션에서 날아서</small></i></span>'.format(dual('⬇','⬆'))
 def mapbox(z,ps,hub=False):
     return f'''<div class="map" data-z="{z}"><div class="mi"><img src="/assets/vs/ed/map/z{z}.png" alt="{esc(ZNAME[z])} 지도" loading="lazy">{''.join(pin_html(p,hub) for p in ps)}{OGPIN if hub else ''}</div><button type="button" class="mfull" aria-label="크게 보기">⛶</button></div>'''
 zs=[]
@@ -429,9 +440,9 @@ MAPED=f'''<div class="coffins"><h2>⚰️ 관 위치</h2><ul>{cofbox}</ul></div>
 {chr(10).join(allr)}
 </section>
 {chr(10).join(zs)}
-<section class="zone" id="z9"><h2>💀 <b class="hb">숨은 오우거</b> · 21~25분쯤</h2>
-<p>해금 조건은 <b class="hb pop" data-pop="EB_EME_BOSS_OGRE">숨은 오우거</b> 1마리 처치입니다. <b>21~25분쯤</b> 나타나요 (정확한 시간 확인 중).</p>
-<p>나타나면 화면 가장자리에 <b>💀 해골 표시</b>가 방향을 알려줘요. 일반 모드는 <b>6시</b>(정션 아래쪽, 지도의 💀 핀), <b>인버스는 맵이 돌아가서 12시</b>예요. 위 🔄 버튼으로 바꿔 보세요.</p>
+<section class="zone" id="z9"><h2>💀 <b class="hb">숨은 오우거</b> · 정션 남쪽 멀리</h2>
+<p>해금 조건은 <b class="hb pop" data-pop="EB_EME_BOSS_OGRE">숨은 오우거</b> 1마리 처치입니다. <b>게이트(포탈)에 들어가지 말고, 정션에서 남쪽으로 날아가세요.</b> 이동 속도가 빠르면 빈 공간도 지나갈 수 있어요.</p>
+<p>일시정지 지도에 <b>💀 해골 표시</b>가 방향을 알려줘요. 일반은 <b>남쪽(6시)</b> · <b>인버스는 맵이 돌아가서 북쪽(12시)</b> · 위 🔄 버튼으로 바꿔 보세요. 잡으면 <b>🎁 에메랄드 휴거</b>를 떨궈요 (→ 💎40).</p>
 <p class="note">게임 데이터에도 정션 훨씬 아래에 <span class="pop" data-pop="EB_EME_SUSPICIOUS_OGRE">수상한 오우거</span> 자리가 있어요.</p>
 {chr(10).join(ogr)}
 </section>
