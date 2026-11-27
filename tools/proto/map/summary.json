@@ -1,0 +1,446 @@
+{
+"FOREST": {
+"n": "광기의 숲",
+"tiled": true,
+"items": 16,
+"size": [
+1400,
+1190
+],
+"types": [
+"CFF",
+"CURSE",
+"GOLD",
+"LEFT",
+"LUCK",
+"MAXHEALTH",
+"POWER",
+"REGEN",
+"RIGHT",
+"SILVER"
+],
+"far": []
+},
+"LIBRARY": {
+"n": "화려한 도서관",
+"tiled": true,
+"items": 13,
+"size": [
+1400,
+266
+],
+"types": [
+"CFF",
+"COOLDOWN",
+"Coffin",
+"GOLD",
+"GREED",
+"LEFT",
+"Piano",
+"RELIC_GRIMOIRE",
+"RIGHT",
+"SILVER"
+],
+"far": []
+},
+"WAREHOUSE": {
+"n": "유제품 공장",
+"tiled": true,
+"items": 36,
+"size": [
+1224,
+1224
+],
+"types": [
+"AREA",
+"ARMOR",
+"CART",
+"CFF",
+"GOLD",
+"LEFT",
+"MAGNET",
+"MOVESPEED",
+"PIZZA",
+"RELIC_GOUDA",
+"RELIC_MAP",
+"RIGHT",
+"SILVER",
+"VACUUM"
+],
+"far": []
+},
+"TOWER": {
+"n": "갈로의 탑",
+"tiled": true,
+"items": 14,
+"size": [
+200,
+1400
+],
+"types": [
+"CFF",
+"DURATION",
+"GOLD",
+"LEFT",
+"PIZZA",
+"RELIC_RANDOMAZZO",
+"RELIC_TEAR",
+"RIGHT",
+"SILVER",
+"SPEED",
+"UNO"
+],
+"far": []
+},
+"CHAPEL": {
+"n": "마그나 예배당",
+"tiled": true,
+"items": 12,
+"size": [
+1224,
+1152
+],
+"types": [
+"AMOUNT",
+"CFF",
+"GOLD",
+"GROWTH",
+"LEFT",
+"NFT",
+"REVIVAL",
+"RIGHT",
+"ROSARY",
+"SILVER"
+],
+"far": []
+},
+"SINKING": {
+"n": "달빛",
+"tiled": true,
+"items": 21,
+"size": [
+1224,
+1224
+],
+"types": [
+"AMOUNT",
+"AREA",
+"ARMOR",
+"COOLDOWN",
+"CURSE",
+"DISK_MRC",
+"DURATION",
+"GOLD",
+"GREED",
+"GROWTH",
+"LEFT",
+"LUCK",
+"MAGNET",
+"MAXHEALTH",
+"MOVESPEED",
+"POWER",
+"REGEN",
+"REVIVAL",
+"RIGHT",
+"SILVER",
+"SPEED"
+],
+"far": []
+},
+"GREENACRES": {
+"n": "푸른 초원",
+"tiled": true,
+"items": 16,
+"size": [
+1400,
+1190
+],
+"types": [
+"CFF",
+"CURSE",
+"GOLD",
+"LEFT",
+"LUCK",
+"MAXHEALTH",
+"POWER",
+"REGEN",
+"RIGHT",
+"SILVER"
+],
+"far": []
+},
+"RASH": {
+"n": "보스 래쉬",
+"tiled": true,
+"items": 28,
+"size": [
+1368,
+1224
+],
+"types": [
+"AMOUNT",
+"AREA",
+"ARMOR",
+"COOLDOWN",
+"CURSE",
+"DURATION",
+"GOLD",
+"GREED",
+"GROWTH",
+"LEFT",
+"LUCK",
+"MAGNET",
+"MAXHEALTH",
+"MOVESPEED",
+"NFT",
+"OROLOGION",
+"PIZZA",
+"POWER",
+"REGEN",
+"REVIVAL",
+"RIGHT",
+"ROAST",
+"ROSARY",
+"SILVER",
+"SPEED"
+],
+"far": []
+},
+"MACHINE": {
+"n": "에우다이모니아 M.",
+"tiled": false,
+"items": 0,
+"size": [
+1400,
+1400
+],
+"types": [],
+"far": []
+},
+"STAGEX": {
+"n": "Holy Forbidden",
+"tiled": false,
+"items": 2,
+"size": [
+1400,
+177
+],
+"types": [
+"RELIC_YELLOW",
+"ROSARYX"
+],
+"far": []
+},
+"WHITEOUT": {
+"n": "화이트아웃",
+"tiled": true,
+"items": 9,
+"size": [
+504,
+720
+],
+"types": [
+"CURSE",
+"ICELANCE",
+"MOVESPEED",
+"POWER",
+"RELIC_ANTIDOTE",
+"SORBETTO"
+],
+"far": []
+},
+"EX_LYCAEUM": {
+"n": "라이케움",
+"tiled": false,
+"items": 60,
+"size": [
+848,
+1400
+],
+"types": [
+"COFFIN_LYCA",
+"DURATION",
+"EX_PENSHIN",
+"MAGNET",
+"MOVESPEED",
+"MRC_BIGTROUBLER",
+"PIZZA_CRAB",
+"PIZZA_SALMON",
+"PIZZA_SEAL",
+"PIZZA_TRITON",
+"VACUUM"
+],
+"far": []
+},
+"COOP": {
+"n": "협동 농장",
+"tiled": true,
+"items": 3,
+"size": [
+1296,
+216
+],
+"types": [
+"FIREBALL",
+"PARMA",
+"RELIC_SPEEDUP"
+],
+"far": []
+},
+"SPAZIE": {
+"n": "스페이스 54",
+"tiled": true,
+"items": 21,
+"size": [
+936,
+936
+],
+"types": [
+"AREA",
+"COOLDOWN",
+"GILDED",
+"GOLDFINGER",
+"NFT",
+"PHASER",
+"ROSARY",
+"VACUUM"
+],
+"far": []
+},
+"CARLOCART": {
+"n": "카를로 카트",
+"tiled": false,
+"items": 0,
+"size": [
+1400,
+831
+],
+"types": [],
+"far": []
+},
+"LABORRATORY": {
+"n": "실험실",
+"tiled": false,
+"items": 32,
+"size": [
+1400,
+831
+],
+"types": [
+"PIZZA",
+"Pizza"
+],
+"far": []
+},
+"EX_WESTWOODS": {
+"n": "웨스트우드",
+"tiled": true,
+"items": 36,
+"size": [
+216,
+377
+],
+"types": [
+"CLOVER",
+"DOMINION",
+"EX_MAGISTONE1",
+"GATTI",
+"GIOCARE",
+"PENTAGRAM",
+"PICKUP_REROLL_DICE",
+"PIZZA",
+"RELIC_PARTY"
+],
+"far": []
+},
+"BATCOUNTRY": {
+"n": "박쥐 나라",
+"tiled": false,
+"items": 0,
+"size": [
+1400,
+1400
+],
+"types": [],
+"far": []
+},
+"ASTRALSTAIR": {
+"n": "아스트랄 계단",
+"tiled": false,
+"items": 18,
+"size": [
+1400,
+1400
+],
+"types": [
+"ASTRALSTAIR_PIZZA",
+"GOLDFINGER",
+"GUNS",
+"GUNS2",
+"PIZZA",
+"RELIC_MAP_AS",
+"RELIC_ROSALIA",
+"RELIC_TRISECTION",
+"VACUUM"
+],
+"far": []
+},
+"EX_MAZERELLA": {
+"n": "마제렐라",
+"tiled": false,
+"items": 27,
+"size": [
+1400,
+1400
+],
+"types": [
+"AREA",
+"ARMADIO",
+"ARMOR",
+"AXE",
+"CART2",
+"EX_17COLOSSUS_BURIED",
+"KNIFE",
+"LANCET",
+"LAUREL",
+"MAGNET",
+"MOVESPEED",
+"RELIC_LAZULIA",
+"RELIC_RECYCLE",
+"StartLeft",
+"StartRight"
+],
+"far": []
+},
+"TOWERBRIDGE": {
+"n": "작은 다리",
+"tiled": true,
+"items": 5,
+"size": [
+1008,
+216
+],
+"types": [
+"LIGHTNING",
+"MAGNET",
+"MOVESPEED",
+"RELIC_ALTEMANNA",
+"VENTO"
+],
+"far": []
+},
+"DEVILROOM": {
+"n": "1665호실",
+"tiled": false,
+"items": 3,
+"size": [
+87,
+1400
+],
+"types": [
+"ARCANACHEST",
+"Darkasso"
+],
+"far": []
+}
+}
