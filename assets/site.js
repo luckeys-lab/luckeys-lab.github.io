@@ -273,10 +273,10 @@
       var vis=Object.keys(B.rows).filter(function(k){var R=B.rows[k];return G[R.g]&&!S[k]&&RB[k]&&RB[k].need.every(function(g){return g.some(has)})});
       var CH=B.chars.filter(function(c){return ok(c.need)}),ST=B.stages.filter(function(x){return ok(x.need)}),inv=has(B.invk);
       CH.forEach(function(c){ST.forEach(function(st){var L=[];
-        vis.forEach(function(id){var R=B.rows[id];if(R.ch.length&&R.ch.indexOf(c.c)<0)return;if(R.st.length&&R.st.indexOf(st.s)<0)return;if(R.inv&&!inv)return;
+        vis.forEach(function(id){var R=B.rows[id];if(R.nl)return;if(R.ch.length&&R.ch.indexOf(c.c)<0)return;if(R.st.length&&R.st.indexOf(st.s)<0)return;if(R.inv&&!inv)return;
           var sc=R.sc+(early&&R.sec>=1800?2:0),lk=false,stt=false,bad=false;
           R.w.forEach(function(w){if(c.w.indexOf(w)>=0)stt=true;else{var l=B.lock[w];if(l&&!l.some(has))bad=true;lk=true;sc+=1}});
-          R.it.forEach(function(w){var l=B.lock[w];if(l&&!l.some(has))bad=true});if(bad)return;
+          R.it.forEach(function(w){var l=B.lock[w];if(l&&l.indexOf(id)<0&&!l.some(has))bad=true});if(bad)return;
           L.push({id:id,sc:sc,lk:lk,st:stt,sp:(R.ch.length||R.st.length)?0:1})});
         L.sort(function(a,b){return (b.st-a.st)||(a.sp-b.sp)||(a.sc-b.sc)});var pk=[],tot=0;
         L.forEach(function(x){if(pk.length>=T[2]||tot+x.sc>T[3]||(x.lk&&!T[4]))return;pk.push(x);tot+=x.sc});
@@ -298,7 +298,7 @@
       if(mode==='open'){h+='<div class="rbody"><p class="rintro">체크한 해금을 보고, <b>다음 판에 한 번에 노릴 수 있는 해금</b>을 골라 줘요. 줄을 누르면 공략과 ☑ 체크가 펼쳐져요.</p><div class="rtabs">'+TIER.map(function(t,i){return '<button type="button" data-t="'+i+'" class="'+(i===curT?'on':'')+'">'+t[1]+' '+t[0]+'</button>'}).join('')+'</div>';
         var G=getG(),gl=Object.keys(GRPN).filter(function(k){return G[k]});
         h+='<p class="rscope">추천 범위: '+(gl.length?gl.map(function(k){return '<b>'+GRPN[k]+'</b>'}).join(' · '):'<b>없음</b>')+' · <a href="/vs/unlocks.html">해금 페이지 맨 위에서 켜기/끄기</a></p>';
-        if((G.base||G.extra)&&BR){var nc=BR.cum.filter(function(k){return !S[k]&&RB[k]&&RB[k].need.every(function(g){return g.some(function(x){return S[x]})})}).length;if(nc)h+='<p class="rn">🔁 아무 판에서나 쌓이는 해금 '+nc+'개는 따로 · <a href="/vs/unlocks.html#base">해금 목록</a> · 🧛 본편 추천은 v1이라 같이 다듬는 중</p>'}
+        if((G.base||G.extra)&&BR){var nc=BR.cum.filter(function(k){return !S[k]&&RB[k]&&RB[k].need.every(function(g){return g.some(function(x){return S[x]})})}).length;var nlc=Object.keys(BR.rows).filter(function(k){var R=BR.rows[k];return R.nl&&G[R.g]&&!S[k]&&RB[k]&&RB[k].need.every(function(g){return g.some(function(x){return S[x]})})}).length;if(nc)h+='<p class="rn">🔁 아무 판에서나 쌓이는 해금 '+nc+'개는 따로 · <a href="/vs/unlocks.html#base">해금 목록</a> · 🧛 본편 추천은 v1이라 같이 다듬는 중</p>';if(nlc)h+='<p class="rn">📍 위치를 알아야 하는 유물 찾기 '+nlc+'개는 위치 공략을 채우는 중이라 추천에서 뺐어요</p>'}
         if(!top.length&&gl.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
         if(!gl.length)h+='<p class="rn">켜진 칸이 없어요 · 해금 페이지 각 칸 맨 위 🧭 스위치를 켜 주세요</p>';
         top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div class="rcb"><div class="rh2">'+head(r)+'</div>'+(o.c==='ANY'?'<div class="rw">본편 캐릭터도 OK</div>':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+

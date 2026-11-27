@@ -678,11 +678,21 @@ def _bsc(c):
     s+=2*len(c.get('mods',[]))+2*len(c.get('evo',[]))+len(c.get('items',[]))+(1 if c.get('kill') else 0)
     return max(s,1)
 BRC={'rows':{},'chars':[],'stages':[],'invk':'b-ObtainGraciasMirror','lock':{k:v for k,v in LMAP.items() if not k.startswith(('CH_','ED_'))},'cum':[]}
+for u in BU:   # 유물도 "이걸 주는 해금"을 체크해야 있는 것 (예: 레벨 50 조건의 란도마조)
+    for r in u['reward']:
+        p,_,nm=r.partition(' ')
+        rk=next((k for k,v in items.items() if k.startswith('RELIC_') and v.get('n','').rstrip('.')==nm.rstrip('.')),None) if p=='유물' else None
+        if rk:BRC['lock'].setdefault(rk,[]).append('b-'+u['id'])
+_stbyname=sorted(((v,k) for k,v in BSN.items() if not k.startswith(('ADV_','OTC_')) and v),key=lambda x:-len(x[0]))
 for u in BU:
     c=BCO.get(u['id'],{});k='b-'+u['id']
     if c.get('kind')=='누적':BRC['cum'].append(k)
     if c.get('kind')!='한판':continue
-    BRC['rows'][k]={'g':'extra' if u['group']=='추가' else 'base','ch':c.get('chars',[]),'st':[x for x in c.get('stage',[])],'w':[w[0] for w in c.get('weap',[])],'it':c.get('items',[]),'inv':'Inverse' in c.get('mods',[]),'sc':_bsc(c),'sec':c.get('sec',0)}
+    st=list(c.get('stage',[]))
+    if not st:st=[sid for nm,sid in _stbyname if nm in u['text_fix']][:1]   # 문구에 스테이지 이름이 있으면 그 스테이지 (예: 라이케움에서 …)
+    if not st and u['id'].startswith('Buy'):st=['SINKING']   # 상인 구매 = 달빛 (유리 가면 · 11/27 제이)
+    nl=1 if not st and any(i.startswith('RELIC_') and 'b-'+u['id'] in BRC['lock'].get(i,[]) for i in c.get('items',[])) else 0   # 유물 찾기인데 위치 모름 → 추천 조합에서 빼고 따로 안내
+    BRC['rows'][k]={'g':'extra' if u['group']=='추가' else 'base','ch':c.get('chars',[]),'st':st,'nl':nl,'w':[w[0] for w in c.get('weap',[])],'it':c.get('items',[]),'inv':'Inverse' in c.get('mods',[]),'sc':_bsc(c),'sec':c.get('sec',0)}
 for ck in [k for k in items if k.startswith('CH_') and not k.startswith('CH_EME')]:
     cid=ck[3:];nd=LMAP.get(ck,[])
     if not nd and cid not in DEFCH:continue
