@@ -41,8 +41,9 @@ def cpage(icon,name,tabs,top='',wrap=''):
     return f'''<div class="cp"><div class="cphead"><span class="cpi">{icon}</span><h1>{name}</h1><span class="cpn"></span><span class="cpc"></span></div>
 {top}
 <div class="cpw"><nav class="cpside" aria-label="DLC">{''.join(side)}</nav><div class="cpbody"{(' '+wrap) if wrap else ''}>{''.join(body)}</div></div></div>'''
-def RSW(k,lb):   # 🧭 추천 ON/OFF (11/27 제이: 칸마다 맨 위 · 처음엔 본편만 ON)
-    return f'<div class="rsw" data-grp="{k}"><span>🧭 <b>{lb} 추천</b><small>켜면 왼쪽 아래 🧭 추천 해금에 이 칸이 들어가요</small></span><button type="button" class="sw" role="switch" aria-checked="false" aria-label="{lb} 추천 켜기"><i></i></button></div>'
+def RSW(k,lb):   # 🧭 추천 ON/OFF (11/27 제이: 칸마다 맨 위 · 처음엔 본편만 ON) + 바로 아래 정렬 · 찾기
+    od='' if k=='ed' else '<span class="lord"><button type="button" data-o="game">🎮 게임 순서</button><button type="button" data-o="rec">🧭 추천 순서</button></span>'
+    return f'<div class="rsw" data-grp="{k}"><span>🧭 <b>{lb} 추천</b><small>켜면 왼쪽 아래 🧭 추천 해금에 이 칸이 들어가요</small></span><button type="button" class="sw" role="switch" aria-checked="false" aria-label="{lb} 추천 켜기"><i></i></button></div><div class="lctl">{od}<input class="lfind" type="search" placeholder="🔍 번호·이름으로 찾기" autocomplete="off"></div>'
 def redir(path,target,dh):
     """옛 주소 → 새 주소 (검색·링크 보존 · ?inv · #해시 그대로)"""
     f=R/'_src'/path
@@ -311,7 +312,7 @@ desc: 뱀파이어 서바이벌 해금 조건 전체. 게임처럼 1.0 버전 ·
 <div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div>
 <div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button>{afb}</div>
 <div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>
-<label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label> <button type="button" id="ordBtn" class="ordbtn">🧭 추천 순서</button></div>
+<label class="only"><input type="checkbox" id="onlyLeft"> 미해금만 보기</label></div>
 ''',wrap='id="ulist" data-group="all" data-lock="1"')}
 <p class="note">☑ 체크는 이 기기(브라우저)에만 저장됩니다. PC는 🛠 도구 → 💾 세이브 자동 체크로 한 번에 채울 수 있습니다.</p>
 <div class="ad" data-slot="end"></div>

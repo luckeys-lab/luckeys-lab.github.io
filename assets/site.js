@@ -162,12 +162,17 @@
     document.addEventListener('llchk',function(e){if(e.detail!=='bar'&&e.detail!=='save')return;try{S=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(x){}
       rows.forEach(function(rw){rw.querySelector('summary input').checked=!!S[rw.dataset.id]});apply()});
     // 🧭 추천 순서 ↔ 📜 게임 순서 (본편 줄만 · 번호는 게임 순서 그대로)
-    var ob=document.getElementById('ordBtn');
-    if(ob){var om='rec';try{om=localStorage.getItem('ll_order')||'rec'}catch(e){}
-      var reord=function(){[].forEach.call(list.querySelectorAll('.sec'),function(sec){var rs=[].slice.call(sec.querySelectorAll(':scope > .ul[data-gi]'));if(!rs.length)return;
-          rs.sort(function(a,b){return om==='game'?(a.dataset.gi-b.dataset.gi):(a.dataset.ord-b.dataset.ord)});var anchor=rs[0].previousElementSibling;rs.forEach(function(r){sec.appendChild(r)})});
-        ob.textContent=om==='game'?'📜 게임 순서':'🧭 추천 순서';ob.classList.toggle('on',om==='rec')};
-      ob.addEventListener('click',function(){om=om==='game'?'rec':'game';try{localStorage.setItem('ll_order',om)}catch(e){}reord()});reord()}
+    // 정렬: 🎮 게임 순서(기본) / 🧭 추천 순서 · 칸마다 추천 스위치 바로 아래 (11/27 제이)
+    var om='game';try{om=localStorage.getItem('ll_order')||'game'}catch(e){}
+    var reord=function(){[].forEach.call(list.querySelectorAll('.sec'),function(sec){var rs=[].slice.call(sec.querySelectorAll(':scope > .ul[data-gi]'));if(!rs.length)return;
+        rs.sort(function(a,b){return om==='game'?(a.dataset.gi-b.dataset.gi):(a.dataset.ord-b.dataset.ord)});rs.forEach(function(r){sec.appendChild(r)})});
+      [].forEach.call(document.querySelectorAll('.lord [data-o]'),function(b){b.classList.toggle('on',b.dataset.o===om)})};
+    document.addEventListener('click',function(e){var b=e.target.closest('.lord [data-o]');if(!b)return;om=b.dataset.o;try{localStorage.setItem('ll_order',om)}catch(x){}reord()});
+    if(document.querySelector('.lord'))reord();
+    // 🔍 번호·이름으로 찾기 (그 칸 안에서) · 숫자면 번호 그대로, 글자면 이름에 들어간 줄
+    document.addEventListener('input',function(e){var q=e.target.closest('.lfind');if(!q)return;var sec=q.closest('.sec'),v=q.value.trim().replace(/^[#💎]+/,'');
+      [].forEach.call(sec.querySelectorAll('.ul'),function(r){var hit=!v||(/^\d+$/.test(v)?(r.querySelector('.n')||{}).textContent.replace(/\D/g,'')===v:r.textContent.indexOf(v)>=0);r.classList.toggle('qhide',!hit);if(v&&hit)r.classList.remove('hide')});
+      if(!v)apply()});
     function goHash(){var h=location.hash.replace('#','');if(!h)return;var t=document.querySelector('[data-id="'+h+'"]');if(!t)return;
       if(t.classList.contains('hide')){showL=true;fT='';fS='';only=false;apply()}t.open=true;var sc=t.closest('.sec');if(sc)sc.open=true;t.scrollIntoView({block:'center'})}
     goHash();window.addEventListener('hashchange',goHash);
