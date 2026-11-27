@@ -486,10 +486,36 @@ MAPED=f'''<div class="coffins"><h2>⚰️ 관 위치</h2><ul>{cofbox}</ul></div>
 </section>
 </div>
 '''
+# 본편 🗺️ (11/27 · data/vs/base_map.json ← tools/proto/map/ · 위치 = 게임 맵 데이터 · ↑↓는 Tiled y 뒤집음)
+BMAP=json.loads((D/'base_map.json').read_text(encoding='utf-8'))
+_MSKIP=('PIZZA','Pizza','ASTRALSTAIR_PIZZA','StartLeft','StartRight')
+def _dir(xm,ym):
+    a=[]
+    if ym:a.append(('↑ 위' if ym>0 else '↓ 아래')+f' {abs(ym)}')
+    if xm:a.append(('→ 오른쪽' if xm>0 else '← 왼쪽')+f' {abs(xm)}')
+    return (' · '.join(a)+'칸') if a else '시작 칸'
+def _mrow(o,tiled):
+    ic=f'<img class="ic" src="{o["i"]}" alt="">' if o.get('i') else '📍 '
+    nm=f'<span class="pop" data-pop="{o["t"]}">{esc(o["n"])}</span>' if o['t'] in items else esc(o['n'])
+    ch=f' <em class="mch">🎲 {int(o["ch"]*100)}%</em>' if o.get('ch') and o['ch']<1 else ''
+    return f'<li>{ic}{nm}{(" · <b>"+_dir(o["xm"],o["ym"])+"</b>") if tiled else ""}{ch}</li>'
+def _mcard(m):
+    ob=[o for o in m['o'] if o['t'] not in _MSKIP and not o['t'].startswith('PIZZA')]
+    ob.sort(key=lambda o:(0 if o['t'].startswith('RELIC') else 1 if o['t'] in('CFF','Coffin','COFFIN_LYCA') else 2,o['n']))
+    far=''.join(f'<li>📍 {esc(f["n"])} · <b>{_dir(f["xm"],f["ym"])}</b> (아주 멀리)</li>' for f in m['far'])
+    how=('한 칸 = 맵 한 조각(반복) · 노란 칸 = 시작' if m['tiled'] else '노란 원 = 시작 · 아이콘 = 실제 자리')
+    return f'''<section class="bmap" id="m-{m["k"].lower()}"><h2>{esc(m["n"])} <small>{len(ob)}</small></h2>
+<a class="bmimg" href="{m["img"]}" target="_blank" rel="noopener"><img src="{m["img"]}" alt="{esc(m["n"])} 지도" loading="lazy" width="{m["w"]}" height="{m["h"]}"></a>
+<p class="note">{how} · 🎲 = 나올 확률</p><ul class="mlist">{"".join(_mrow(o,m["tiled"]) for o in ob)}{far}</ul></section>'''
+def _mtab(ms,lb):
+    nav=' '.join(f'<a href="#m-{m["k"].lower()}">{esc(m["n"])}</a>' for m in ms)
+    return f'<p class="sub">{lb} 지도 {len(ms)}곳 · 게임 맵 데이터로 그림 · 아이콘을 누르면 설명</p><p class="secnav">{nav}</p>'+''.join(_mcard(m) for m in ms)
+_mb=[m for m in BMAP if not m['k'].startswith('EX_')];_mx=[m for m in BMAP if m['k'].startswith('EX_')]
+MAPB=_mtab(_mb,'본편')+'<p class="note">일 몰리제 · 뼈의 대지는 게임에 맵 타일이 없어서 준비 중이에요</p>';MAPX=_mtab(_mx,'추가')
 (R/'_src/vs/map.html').write_text(f'''title: 지도 (본편 + DLC)
-desc: 뱀파이어 서바이벌 에메랄드 디오라마 지도. 관 2개 위치와 정션(허브) · 구역 6곳의 보스 · 패시브 위치를 게임 데이터로 표시.
+desc: 뱀파이어 서바이벌 지도 · 본편 {len(_mb)}곳 · 추가 {len(_mx)}곳 유물·관·아이템 위치 · 에메랄드 디오라마 지도. 관 2개 위치와 정션(허브) · 구역 6곳의 보스 · 패시브 위치를 게임 데이터로 표시.
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 지도</div>
-{cpage('🗺️','지도',{'ed':MAPED})}
+{cpage('🗺️','지도',{'base':MAPB,'extra':MAPX,'ed':MAPED})}
 <div class="ad" data-slot="end"></div>
 ''',encoding='utf-8')
 redir('vs/ed/map.html','/vs/map.html','#ed')
