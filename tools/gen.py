@@ -563,6 +563,7 @@ desc: 뱀파이어 서바이벌 컬렉션 · DLC별 탭 · 에메랄드 디오�
 ''',encoding='utf-8')
 redir('vs/ed/collection.html','/vs/collection.html','#ed')
 BE=json.loads((D/'ed/bestiary.json').read_text(encoding='utf-8'))
+BBE=json.loads((D/'base_bestiary.json').read_text(encoding='utf-8'))
 def bcard(i,b):
     st=f"❤️ {b['hp']}{'×Lv' if b['hpxlv'] else ''} · ⚔️ {b['pw']} · 👟 {b['sp']} · ✨ XP {b['xp']}"
     res=''.join(f'<span class="rz">{ {"Freeze":"❄️ 빙결","Rosary":"📿 묵주","Debuffs":"🌀 약화","Defang":"🦷 무력화"}.get(k,k)} 저항</span>' for k in b['res'])
@@ -571,9 +572,9 @@ def bcard(i,b):
 <div class="binfo"><h3>{esc(b['n'])}<small>{esc(b['en'])}</small></h3><p class="bst">{st}</p>{('<p class="brs">'+res+'</p>') if res else ''}
 {('<details class="blore"><summary>📖 이야기</summary><p>'+esc(b['d'])+'</p></details>') if b['d'] else ''}</div></article>'''
 (R/'_src/vs/bestiary.html').write_text(f'''title: 우화집 (본편 + DLC)
-desc: 뱀파이어 서바이벌 우화집 · DLC별 탭 · 에메랄드 디오라마 {len(BE)}마리 몹 그림 · 능력치 · 저항 · 이야기 · PC 세이브로 처치 수 표시.
+desc: 뱀파이어 서바이벌 우화집 · DLC별 탭 · 본편 {len(BBE)}마리 · 에메랄드 디오라마 {len(BE)}마리 몹 그림 · 능력치 · 저항 · 이야기 · PC 세이브로 처치 수 표시.
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 우화집</div>
-{cpage('📖','우화집',{'ed':f'<p class="sub">디오라마 {len(BE)}마리 · 게임 우화집 순서</p><div class="bgrid">{"".join(bcard(i,b) for i,b in enumerate(BE,1))}</div>'},top='<p class="sub">PC는 💾 세이브를 넣으면 처치 수가 붙고, 아직 못 잡은 몹은 회색으로 보여요</p>')}
+{cpage('📖','우화집',{'base':f'<p class="sub">본편 {len(BBE)}마리 · 게임 우화집 순서 · 그림 = 게임 원본</p><div class="bgrid">{"".join(bcard(i,b) for i,b in enumerate(BBE,1))}</div>','ed':f'<p class="sub">디오라마 {len(BE)}마리 · 게임 우화집 순서</p><div class="bgrid">{"".join(bcard(i,b) for i,b in enumerate(BE,1))}</div>'},top='<p class="sub">PC는 💾 세이브를 넣으면 처치 수가 붙고, 아직 못 잡은 몹은 회색으로 보여요</p>')}
 ''',encoding='utf-8')
 redir('vs/ed/bestiary.html','/vs/bestiary.html','#ed')
 print('ed collection',len(cw),'bestiary',len(BE))
@@ -670,7 +671,7 @@ _have=set(SKL)
 _new=[k for k in list(json.loads((D/'ach_keys.json').read_text(encoding='utf-8')).values())+['ed-%d'%u['n'] for u in U['unlocks']]+['s-'+x for x in json.loads((D/'secret_keys.json').read_text(encoding='utf-8'))]
       +['cw:'+k for k in sorted(items) if not k.startswith(('CH_','EB_','EC_','TP_'))]
       +['uc:'+k[3:] for k in sorted(items) if k.startswith('CH_')]+['bc:'+k[3:] for k in sorted(items) if k.startswith('CH_')]
-      +['kc:'+b['id'] for b in BE]+['rg:base','rg:extra','rg:ed'] if k not in _have]
+      +['kc:'+b['id'] for b in BE]+['rg:base','rg:extra','rg:ed']+['kc:'+b['id'] for b in BBE] if k not in _have]
 SKL+=list(dict.fromkeys(_new))
 SKF.write_text(json.dumps(SKL,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 print('sync keys',len(SKL))
