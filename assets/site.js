@@ -344,7 +344,7 @@
     if(X){X.cw.forEach(function(k){cw[U(k)]=1});X.uc.forEach(function(k){uc[k]=1});X.bc.forEach(function(k){bc[k]=1})}
     var lk=function(k){var a=C&&LM&&LM[k];return !!a&&!a.some(function(x){return S[x]})};
     var T=function(el,c,v){el.classList.toggle(c,!!v)};
-    [].forEach.call(document.querySelectorAll('[data-col]'),function(el){var L=lk('ED_'+el.dataset.col),g=X&&cw[U(el.dataset.col)];T(el,'locked',L&&!g);T(el,'got',g);T(el,'miss',X&&!g&&!L);T(el,'sok',X?g:!L)});
+    [].forEach.call(document.querySelectorAll('[data-col]'),function(el){var L=lk(el.dataset.lk||('ED_'+el.dataset.col)),g=X&&cw[U(el.dataset.col)];T(el,'locked',L&&!g);T(el,'got',g);T(el,'miss',X&&!g&&!L);T(el,'sok',X?g:!L)});
     [].forEach.call(document.querySelectorAll('[data-kill]'),function(el){var n=X?(X.kc[el.dataset.kill]||0):0;T(el,'miss',X&&!n);T(el,'sok',n);var b=el.querySelector('.bkill');if(b)b.textContent=!X?'':n>0?'처치 '+n.toLocaleString():n<0?'처치함':'아직 못 잡음'});
     [].forEach.call(document.querySelectorAll('[data-ch]'),function(el){var id=el.dataset.ch,L=lk('CH_'+id)||(X&&!uc[id]);T(el,'locked',L);T(el,'unbought',X&&!L&&!bc[id]);T(el,'sok',(X||C)&&!L)});
     [].forEach.call(document.querySelectorAll('[data-ek]'),function(el){T(el,'locked',lk(el.dataset.ek))});

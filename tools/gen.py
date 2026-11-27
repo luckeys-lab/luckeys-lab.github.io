@@ -536,10 +536,30 @@ tiles=[]
 for f,ks in fams.items():
     ks.sort();cells=''.join(f'<span class="ct" data-col="{k}" data-pop="ED_{k}">{"<img src=%s alt=>"%items["ED_"+k]["i"] if items["ED_"+k].get("i") else ""}<b>{esc(items["ED_"+k]["n"])}</b></span>' for k in ks)
     tiles.append(f'<div class="cline">{cells}</div>')
+# 본편 📦 (11/27 · 게임 데이터 순서: 스킬(진화 옆) → 패시브 → 아르카나 → 유물·줍는 것 · 아이콘 = 게임 resources.assets)
+_CD='/tmp/cards/cards/base/'
+def _cj(n):
+    try:return json.load(open(_CD+n+'.json',encoding='utf-8'))
+    except Exception:return {}
+_wo=list(_cj('weapon'));_io=list(_cj('item'));_ao=['ARCANA_'+k for k in _cj('arcana')]
+if not _wo:
+    _bc=json.loads((D/'base_col.json').read_text(encoding='utf-8'))
+else:
+    _skip=lambda k:k.endswith('_COUNTER') or k.startswith('FOLLOWER_KNIFE') or k not in items
+    _bc={'sk':[k for k in _wo if not _skip(k) and items[k]['t'] in('스킬','진화 스킬')],'pa':[k for k in _wo if not _skip(k) and items[k]['t']=='패시브'],
+         'ar':[k for k in _ao if k in items],'re':[k for k in _io if k in items and items[k].get('i') and _cj('item')[k].get('raw',{}).get('contentGroup') in('BASE','EXTRA')]}
+    (D/'base_col.json').write_text(json.dumps(_bc,ensure_ascii=False),encoding='utf-8')
+_LMF=json.loads((D/'lockmap.json').read_text(encoding='utf-8'))
+def _ct(k):
+    it=items[k];lkk=f' data-lk="{k}"' if k in _LMF else ''
+    return f'<span class="ct" data-col="{k}"{lkk} data-pop="{k}">{"<img src=%s alt=>"%it["i"] if it.get("i") else ""}<b>{esc(it["n"])}</b></span>'
+_BCN=[('sk','🗡️ 스킬'),('pa','💍 패시브'),('ar','🃏 아르카나'),('re','🏺 유물 · 줍는 것')]
+_bct=sum(len(_bc[k]) for k,_ in _BCN)
+BCOL=f'<p class="sub">본편 {_bct}개 · 게임 데이터 순서 · 진화 스킬은 원래 스킬 바로 옆 · 아이콘을 누르면 설명</p>'+''.join(f'<h2>{lb} {len(_bc[k])}</h2><div class="cline">{"".join(_ct(x) for x in _bc[k])}</div>' for k,lb in _BCN)
 (R/'_src/vs/collection.html').write_text(f'''title: 컬렉션 (본편 + DLC)
 desc: 뱀파이어 서바이벌 컬렉션 · DLC별 탭 · 에메랄드 디오라마 {len(cw)}개 스킬 진화 단계별 · PC 세이브 파일로 모은 것 표시.
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 컬렉션</div>
-{cpage('📦','컬렉션',{'ed':f'<p class="sub">디오라마 {len(cw)}개 · 한 줄 = 한 스킬의 진화 단계 · 아이콘을 누르면 설명</p><div class="cgrid">{"".join(tiles)}</div>'},top='<p class="sub">PC는 💾 세이브를 넣으면 아직 못 모은 것이 회색으로 보여요</p>')}
+{cpage('📦','컬렉션',{'base':BCOL,'ed':f'<p class="sub">디오라마 {len(cw)}개 · 한 줄 = 한 스킬의 진화 단계 · 아이콘을 누르면 설명</p><div class="cgrid">{"".join(tiles)}</div>'},top='<p class="sub">PC는 💾 세이브를 넣으면 아직 못 모은 것이 회색으로 보여요</p>')}
 ''',encoding='utf-8')
 redir('vs/ed/collection.html','/vs/collection.html','#ed')
 BE=json.loads((D/'ed/bestiary.json').read_text(encoding='utf-8'))
