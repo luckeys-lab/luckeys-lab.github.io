@@ -428,9 +428,12 @@
       ps.querySelector('.bkcp').onclick=function(e){var b=e.target;(navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(function(){b.textContent='✅ 복사됨 · 카톡 나에게 붙여넣기';done()}).catch(function(){b.textContent='길게 눌러 코드 복사';ps.querySelector('details').open=true})}});
     var last=+(localStorage.getItem('ll_sync')||0);
     pl.innerHTML='<p>저장해 둔 걸 불러와요. <b>지금 체크는 불러온 걸로 바뀌어요.</b></p><ol class="bkol"><li><b>🔗 링크</b>를 저장했으면 → 그 링크를 누르면 끝</li><li><b>🖼️ QR 이미지</b>를 저장했으면 → <label class="fgbtn bkpick">QR 사진 고르기<input type="file" accept="image/*" hidden></label><br><small>갤러리에서 저장한 QR 사진을 고르면 돼요 · 카메라는 안 써요</small></li><li><b>⌨️ 코드</b>면 → <input class="scin" placeholder="코드 또는 링크 붙여넣기" autocomplete="off"> <button type="button" class="fgbtn scgo">불러오기</button></li></ol>'+
-      '<p class="note">'+(last?'마지막으로 불러온 때: '+KST(last):'아직 불러온 적 없어요')+(bk?' · 마지막 저장: '+KST(bk.t)+' (☑ '+bk.n+'개)':'')+'</p><p class="bkmsg"></p>';
+      '<p class="note">'+(last?'마지막으로 불러온 때: '+KST(last):'아직 불러온 적 없어요')+(bk?' · 마지막 저장: '+KST(bk.t)+' (☑ '+bk.n+'개)':'')+'</p><p class="bkmsg"></p>'+'<div class="bkrst"><button type="button" class="bkrb">🗑️ 내 체크 초기화</button><small>체크 · 세이브 표시 · 추천 범위를 처음 상태로 · 지우기 전에 💾 저장 탭에서 링크를 보내 두면 되살릴 수 있어요</small></div>';
     var msg=pl.querySelector('.bkmsg'),take=function(v){SYNC.take(v).then(function(n){g.remove();toast('📥 불러왔어요 · ☑ '+n+'개');bkBadge()}).catch(function(){msg.textContent='⚠ 코드를 못 읽었어요'})};
     pl.querySelector('.scgo').onclick=function(){var v=pl.querySelector('.scin').value;if(v)take(v)};
+    var rb=pl.querySelector('.bkrb');rb.onclick=function(){if(!rb.classList.contains('arm')){rb.classList.add('arm');rb.textContent='⚠ 정말 지울까요? 한 번 더 누르면 지워져요';setTimeout(function(){if(rb.isConnected){rb.classList.remove('arm');rb.textContent='🗑️ 내 체크 초기화'}},5000);return}
+      ['ll_chk','ll_extra','ll_bk','ll_sync','ll_saveinfo','ll_savemod','ll_rgrp'].forEach(function(k){try{localStorage.removeItem(k)}catch(e){}});
+      g.remove();toast('🗑️ 초기화했어요 · 처음 상태예요');try{document.dispatchEvent(new CustomEvent('llchk',{detail:'save'}))}catch(e){}setTimeout(function(){location.reload()},900)};
     pl.querySelector('.bkpick input').onchange=function(e){var f=e.target.files[0];e.target.value='';if(!f)return;msg.textContent='⏳ 사진 읽는 중…';
       loadJS('/assets/jsqr.min.js','jsQR').then(function(jsQR){var im=new Image();im.onload=function(){var sc=Math.min(1,1600/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*sc;c.height=im.height*sc;
         var x=c.getContext('2d');x.drawImage(im,0,0,c.width,c.height);var d=x.getImageData(0,0,c.width,c.height),q=jsQR(d.data,c.width,c.height);URL.revokeObjectURL(im.src);
