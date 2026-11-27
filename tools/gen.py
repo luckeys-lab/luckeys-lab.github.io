@@ -318,6 +318,24 @@ print('chars pages',len(EC))
 
 # ---------- 본편 해금 ----------
 BU=json.loads((D/'base_unlocks.json').read_text(encoding='utf-8'))
+# 📍 유물 위치 = 지도 데이터 (11/27 · base_map.json) → 해금 줄 안내 + 추천 스테이지
+_BMP=json.loads((D/'base_map.json').read_text(encoding='utf-8'))
+def _mdir(xm,ym):
+    a=[]
+    if ym:a.append(('위' if ym>0 else '아래')+f' {abs(ym)}칸')
+    if xm:a.append(('오른쪽' if xm>0 else '왼쪽')+f' {abs(xm)}칸')
+    return ' · '.join(a) or '시작 근처'
+RELLOC={}
+for _m in _BMP:
+    for _o in _m['o']+_m['far']:
+        if _o['t'].startswith('RELIC_'):RELLOC.setdefault(_o['t'],[]).append((_m['k'],_m['n'],_mdir(_o['xm'],_o['ym']) if _m['tiled'] or _o in _m['far'] else '지도에 표시'))
+_BCO0=json.loads((D/'base_cond.json').read_text(encoding='utf-8'))['cond']
+for _u in BU:
+    if not _u['id'].startswith(('Find','Obtain')):continue
+    for _i in _BCO0.get(_u['id'],{}).get('items',[]):
+        if not _i.startswith('RELIC_'):continue
+        for _k,_n,_d in RELLOC.get(_i,[]):
+            BTIP.setdefault(_u['id'],[]).insert(0,f'📍 <a href="/vs/map.html#m-{_k.lower()}"><b>{esc(_n)}</b></a> · 시작에서 {esc(_d)} · <a href="/vs/map.html#m-{_k.lower()}">🗺️ 지도</a>')
 ICON2={'성장·진화':'📈','발견':'⚰️','특수':'🎯','레벨':'🆙','생존':'⏱','성장':'📈','처치 수':'💀','비밀':'🔒','진화':'✨','기타':'📦'}
 bc={}
 for u in BU: bc[u['type']]=bc.get(u['type'],0)+1
@@ -822,7 +840,8 @@ for u in BU:
     if c.get('kind')!='한판':continue
     st=list(c.get('stage',[]))
     if not st:st=[sid for nm,sid in _stbyname if nm in u['text_fix']][:1]   # 문구에 스테이지 이름이 있으면 그 스테이지 (예: 라이케움에서 …)
-    if not st and u['id'].startswith('Buy'):st=['SINKING']   # 상인 구매 = 달빛 (유리 가면 · 11/27 제이)
+    if not st and u['id'].startswith('Buy'):st=['SINKING']
+    if not st and u['id'].startswith(('Find','Obtain')):st=list(dict.fromkeys(k for i in c.get('items',[]) if i.startswith('RELIC_') for k,_,_ in RELLOC.get(i,[])))[:2]   # 유물 찾기 → 지도 데이터 스테이지 (11/27)   # 상인 구매 = 달빛 (유리 가면 · 11/27 제이)
     nl=1 if not st and any(i.startswith('RELIC_') and 'b-'+u['id'] in BRC['lock'].get(i,[]) for i in c.get('items',[])) else 0   # 유물 찾기인데 위치 모름 → 추천 조합에서 빼고 따로 안내
     o=BOVR.get(u['id'],{});st=o.get('st',st);nl=o.get('nl',nl)
     BRC['rows'][k]={'g':'extra' if u['group']=='추가' else 'base','ch':c.get('chars',[]),'st':st,'nl':nl,'w':[w[0] for w in c.get('weap',[])],'it':c.get('items',[]),'inv':'Inverse' in c.get('mods',[]),'sc':_bsc(dict(c,sec=o.get('sec',c.get('sec',0)))),'sec':o.get('sec',c.get('sec',0))}
