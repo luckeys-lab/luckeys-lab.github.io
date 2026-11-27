@@ -30,13 +30,14 @@ def pop(name):
 
 # ── 🗂 콘텐츠 틀 (11/26 제이): 위 = 콘텐츠 아이콘 + 이름 · 왼쪽 = DLC 세로 탭 (모바일은 가로 줄) · 탭 주소 #base #ed … ──
 TABS=[('base','🧛','본편','#E8B23C'),('extra','➕','추가','#E8B23C'),('ms','🌙','문스펠','#78C8FF'),('fs','🌊','포스카리','#28B4AA'),('em','🚀','긴급회의','#F06EAA'),('og','🔫','작전 총기','#F58C28'),('cv','🦇','캐슬바니아','#A064DC'),('ed','💎','디오라마','#46BE5A'),('ac','🏛️','안테 챔버','#9696A0'),('bm','🌕','블러드문','#C8283C')]
+TST={'ed':'💡','base':'🧭','extra':'🧭'};TSTN={'💡':'공략 · 지도 · 추천까지','🧭':'해금 목록 + 추천','📋':'해금 · 비밀 목록만 (공략은 채우는 중)'}
 def cpage(icon,name,tabs,top='',wrap=''):
     side=[];body=[]
     for k,ic,lb,col in TABS:
         h=tabs.get(k)
         if h is None:
             side.append(f'<span class="cpt-b off" title="준비 중"><i>{ic}</i><b>{lb}</b><small>준비 중</small></span>');continue
-        side.append(f'<a class="cpt-b" href="#{k}" data-tab="{k}" style="--tc:{col}"><i>{ic}</i><b>{lb}</b><small class="cn"></small></a>')
+        stt=TST.get(k,'📋');side.append(f'<a class="cpt-b" href="#{k}" data-tab="{k}" style="--tc:{col}"><i>{ic}</i><b>{lb}</b><small class="cn"></small><em class="tst" title="{TSTN[stt]}">{stt}</em></a>')
         body.append(f'<div class="sec cpt" id="t-{k}" data-tab="{k}" data-lb="{ic} {lb}" style="--tc:{col}">\n{h}\n</div>')
     return f'''<div class="cp"><div class="cphead"><span class="cpi">{icon}</span><h1>{name}</h1><span class="cpn"></span><span class="cpc"></span></div>
 {top}
@@ -68,7 +69,10 @@ def _needinfo():
     for i,u in enumerate(json.load(open(R/'data/vs/base_unlocks.json')),1):m['b-'+u['id']]=(i,u['reward'] if isinstance(u['reward'],list) else [u['reward']])
     for u in json.load(open(R/'data/vs/ed/unlocks.json'))['unlocks']:m['ed-%d'%u['n']]=(('💎%d'%u['n']),[u['reward']])
     return m
+DLCU=json.loads((D/'dlc/unlocks.json').read_text(encoding='utf-8'))   # 11/27 · tools/proto/dlcall.py
 NEEDI=_needinfo()
+for _t,_d in DLCU.items():
+    for _u in _d['rows']:NEEDI[_u['k']]=(f"{_d['name'].split(' ')[0]}{_u['n']}",_u['rw'])
 def need_attr(u):
     return ' data-need="'+';'.join('|'.join(g) for g in u.get('need',[]))+'"' if u.get('need') else ''
 def need_note(u,here):
@@ -172,7 +176,7 @@ for u in U['unlocks']:
     q=f'<div class="fix">게임 원문: {esc(raw)}</div>' if fixed!=raw else ''
     title=fixed
     rows.append(f'''<details class="ul" data-id="ed-{u['n']}" data-type="{t}" data-scope="{scope}"{need_attr(u)}>
-<summary><input type="checkbox" aria-label="해금 체크"><span class="n">💎{u['n']}</span><span class="tt">{'<span class="binv">🔄 인버스</span> ' if INVM(u) else ''}{hl(esc(title))}</span><span class="k">{CATI.get(t,'')} {t}</span></summary>
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">💎{u['n']}</span><span class="tt">{'<span class="binv">🔄 인버스</span> ' if INVM(u) else ''}{hl(esc(title))}</span>{'<span class="gi" title="공략 있음">💡</span>' if guide(u) else ''}<span class="k">{CATI.get(t,'')} {t}</span></summary>
 <div class="bdy"><p class="rw">🎁 보상 → {link_names(u['reward'])}</p>{q}<p>{badge}{(' · 📍 '+esc(loc)) if loc else ''}</p>{guide(u)}{need_note(u,'/vs/unlocks.html')}</div></details>''')
 types=sorted({ty(u['type']) for u in U['unlocks']},key=lambda t:(t=='기타',-sum(1 for u in U['unlocks'] if ty(u['type'])==t)))
 fb=''.join(f'<button type="button" data-f="{t}">{ICON.get(t,"")} {t} {sum(1 for u in U["unlocks"] if ty(u["type"])==t)}</button>' for t in types)
@@ -305,10 +309,23 @@ for r in brows+rows:
     t=re.search(r'data-type="([^"]+)"',r).group(1);ALLT[t]=ALLT.get(t,0)+1
 ICA=CATI
 afb=''.join(f'<button type="button" data-f="{t}">{ICA.get(t,"")} {t} {n}</button>' for t,n in sorted(ALLT.items(),key=lambda x:(x[0]=='기타',-x[1])))
-(R/'_src/vs/unlocks.html').write_text(f'''title: 해금 {len(BU)+len(U["unlocks"])}개 (본편 + DLC)
-desc: 뱀파이어 서바이벌 해금 조건 전체. 게임처럼 1.0 버전 · 추가 · DLC 칸으로 나눔 · 먼저 필요한 해금을 체크해야 다음 해금이 보임 · 게임 데이터 기준.
+DROWS={}
+for _t,_d in DLCU.items():
+    ic=_d['name'].split(' ')[0];rr=[]
+    for u in _d['rows']:
+        t=CATL[u['cat']];cb=' · '.join(esc(c) for c in u['char'])
+        rr.append(f'''<details class="ul" data-id="{u['k']}" data-type="{t}" data-scope="{'전용' if u['char'] else '공통'}"{need_attr(u)}>
+<summary><input type="checkbox" aria-label="해금 체크"><span class="n">{ic}{u['n']}</span><span class="tt">{esc(u['text'])}</span><span class="k">{CATI.get(t,'')} {t}</span></summary>
+<div class="bdy"><p class="rw">🎁 보상 → {' · '.join(link_names(x) for x in u['rw'])}</p><p>{('<span class="bd bd-own">전용 · '+cb+'</span>') if cb else '<span class="bd">공통</span>'}</p>{need_note(u,'/vs/unlocks.html')}</div></details>''')
+    DROWS[_t]='<div class="rsw rsoon"><span>📋 <b>'+esc(_d['name'])+' · 해금 목록</b><small>공략 · 추천은 채우는 중이에요</small></span></div><div class="lctl"><input class="lfind" type="search" placeholder="🔍 번호·이름으로 찾기" autocomplete="off"></div>'+chr(10).join(rr)
+    for r in rr:
+        t=re.search(r'data-type="([^"]+)"',r).group(1);ALLT[t]=ALLT.get(t,0)+1
+afb=''.join(f'<button type="button" data-f="{t}">{ICA.get(t,"")} {t} {n}</button>' for t,n in sorted(ALLT.items(),key=lambda x:(x[0]=='기타',-x[1])))
+NDLC=sum(len(d['rows']) for d in DLCU.values())
+(R/'_src/vs/unlocks.html').write_text(f'''title: 해금 {len(BU)+len(U["unlocks"])+NDLC}개 (본편 + DLC 전부)
+desc: 뱀파이어 서바이벌 해금 조건 전체 · 본편 · 추가 · 에메랄드 디오라마 · 문스펠 · 포스카리 · 긴급회의 · 작전 총기 · 캐슬바니아 · 안테 챔버 · 블러드문 DLC 탭으로 나눔 · 먼저 필요한 해금을 체크해야 다음 해금이 보임 · 게임 데이터 기준.
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 해금</div>
-{cpage('🔓','해금',{'base':RSW('base','🧛 본편')+chr(10).join(brows[:NMAIN]),'extra':RSW('extra','➕ 추가')+chr(10).join(brows[NMAIN:]),'ed':RSW('ed','💎 디오라마')+'<p class="secnav"><a href="/vs/map.html#ed">🗺️ 지도</a> · <a href="/vs/chars.html#ed">🧛 캐릭터</a></p>'+chr(10).join(rows)},top=f'''<p class="sub">게임 해금 화면처럼 칸으로 나눴습니다 · 기본은 <b>열리는 순서(추천 순서)</b> · 같은 스킬의 레벨·진화는 붙여 놨습니다(🔗 한 판에 같이) · 번호는 게임 순서</p>
+{cpage('🔓','해금',{'base':RSW('base','🧛 본편')+chr(10).join(brows[:NMAIN]),'extra':RSW('extra','➕ 추가')+chr(10).join(brows[NMAIN:]),'ed':RSW('ed','💎 디오라마')+'<p class="secnav"><a href="/vs/map.html#ed">🗺️ 지도</a> · <a href="/vs/chars.html#ed">🧛 캐릭터</a></p>'+chr(10).join(rows),**DROWS},top=f'''<p class="sub">게임 해금 화면처럼 칸으로 나눴습니다 · 기본은 <b>열리는 순서(추천 순서)</b> · 같은 스킬의 레벨·진화는 붙여 놨습니다(🔗 한 판에 같이) · 번호는 게임 순서</p>
 <div class="prog"><div class="pb"><i id="pbar"></i></div><span id="ptxt"></span></div>
 <div class="fbar" id="fType"><button type="button" class="on" data-f="">전체</button>{afb}</div>
 <div class="fbar" id="fScope"><button type="button" class="on" data-s="">전체</button><button type="button" data-s="공통">공통</button><button type="button" data-s="전용">전용</button>

@@ -1,0 +1,3242 @@
+{
+"ms": {
+"name": "🌙 문스펠",
+"rows": [
+{
+"id": "MOON01_FindCoffin",
+"n": 1,
+"k": "ms-MOON01_FindCoffin",
+"text": "문스펠산에서 관을 찾아서 엽니다.",
+"rw": [
+"캐릭터 미앙 문스펠"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "MOON02_Survive15Miang",
+"n": 2,
+"k": "ms-MOON02_Survive15Miang",
+"text": "미앙 문스펠로 15분 생존합니다.",
+"rw": [
+"스킬 은색 바람"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"미앙 문스펠"
+]
+},
+{
+"id": "MOON03_EvolveSilverWind",
+"n": 3,
+"k": "ms-MOON03_EvolveSilverWind",
+"text": "은색 바람을 진화합니다.",
+"rw": [
+"캐릭터 멘야 문스펠"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "MOON04_Survive15Menya",
+"n": 4,
+"k": "ms-MOON04_Survive15Menya",
+"text": "멘야 문스펠로 15분 생존합니다.",
+"rw": [
+"스킬 사계절"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"멘야 문스펠"
+]
+},
+{
+"id": "MOON05_EvolveFourSeasons",
+"n": 5,
+"k": "ms-MOON05_EvolveFourSeasons",
+"text": "사계절을 진화합니다.",
+"rw": [
+"캐릭터 슈토 문스펠"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "MOON06_Survive15Syuuto",
+"n": 6,
+"k": "ms-MOON06_Survive15Syuuto",
+"text": "슈토 문스펠로 15분 생존합니다.",
+"rw": [
+"스킬 밤 소환"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"슈토 문스펠"
+]
+},
+{
+"id": "MOON07_EvolveSummonNight",
+"n": 7,
+"k": "ms-MOON07_EvolveSummonNight",
+"text": "밤 소환을 진화합니다.",
+"rw": [
+"캐릭터 바비 온나"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "MOON08_Survive15BabiOnna",
+"n": 8,
+"k": "ms-MOON08_Survive15BabiOnna",
+"text": "바비 온나로 15분 생존합니다.",
+"rw": [
+"스킬 신기루 로브"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"바비 온나"
+]
+},
+{
+"id": "MOON09_EvolveMirageRobe",
+"n": 9,
+"k": "ms-MOON09_EvolveMirageRobe",
+"text": "신기루 로브를 진화합니다.",
+"rw": [
+"캐릭터 맥코이 오니"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "MOON10_Survive15McCoy",
+"n": 10,
+"k": "ms-MOON10_Survive15McCoy",
+"text": "맥코이 오니로 15분 생존합니다.",
+"rw": [
+"스킬 108 보체"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"맥코이 오니"
+]
+},
+{
+"id": "MOON11_Defeat100kVanya",
+"n": 11,
+"k": "ms-MOON11_Defeat100kVanya",
+"text": "멘야 문스펠로 한 게임에서 적을 100000명 처치합니다.",
+"rw": [
+"캐릭터 멘야 문스펠"
+],
+"need": [],
+"cat": "kill",
+"char": [
+"멘야 문스펠"
+]
+},
+{
+"id": "MOON12_Defeat100kVadjouel",
+"n": 12,
+"k": "ms-MOON12_Defeat100kVadjouel",
+"text": "슈토 문스펠로 한 게임에서 적을 100000명 처치합니다.",
+"rw": [
+"캐릭터 슈토 문스펠"
+],
+"need": [],
+"cat": "kill",
+"char": [
+"슈토 문스펠"
+]
+},
+{
+"id": "MOON13_Defeat6kWater",
+"n": 13,
+"k": "ms-MOON13_Defeat6kWater",
+"text": "갓파를 6000마리 처치합니다.",
+"rw": [
+"캐릭터 가베트오니",
+"스킬 밀레 볼레 블루"
+],
+"need": [],
+"cat": "kill",
+"char": []
+},
+{
+"id": "MOON14_FindNightSword",
+"n": 14,
+"k": "ms-MOON14_FindNightSword",
+"text": "밤의 검을 발견합니다.",
+"rw": [
+"스킬 밤의 검"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "MOON15_EvolveNightSword",
+"n": 15,
+"k": "ms-MOON15_EvolveNightSword",
+"text": "밤의 검을 진화합니다.",
+"rw": [
+"골드 50,000"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "MOON17_EvolveBubbles",
+"n": 16,
+"k": "ms-MOON17_EvolveBubbles",
+"text": "밀레 볼레 블루 진화합니다.",
+"rw": [
+"캐릭터 스피리토소"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "MOON19_GetLunarMightToLevel6",
+"n": 17,
+"k": "ms-MOON19_GetLunarMightToLevel6",
+"text": "루나마이트를 레벨 6에 맞추기.",
+"rw": [
+"스킬 루나마이트"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "MOON20_GetLunarBightToLevel6",
+"n": 18,
+"k": "ms-MOON20_GetLunarBightToLevel6",
+"text": "루나바이트를 레벨 6에 맞추기.",
+"rw": [
+"스킬 루나바이트"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "MOON21_GetLunarSightToLevel6",
+"n": 19,
+"k": "ms-MOON21_GetLunarSightToLevel6",
+"text": "루나사이트를 레벨 6에 맞추기.",
+"rw": [
+"스킬 루나사이트"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "MOON22_UniteLunarWeapons",
+"n": 20,
+"k": "ms-MOON22_UniteLunarWeapons",
+"text": "루나마이트, 루나사이트, 루나브라이트를 통합.",
+"rw": [
+"캐릭터 게코진"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "MOON23_ReachLevel80WithGekkojin",
+"n": 21,
+"k": "ms-MOON23_ReachLevel80WithGekkojin",
+"text": "게코진으로 레벨 80에 도달.",
+"rw": [
+"캐릭터 스피리토사"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"게코진"
+]
+},
+{
+"id": "MOON24_FindPearlMagatama",
+"n": 22,
+"k": "ms-MOON24_FindPearlMagatama",
+"text": "펄 마가타마 찾기.",
+"rw": [
+"스킬 펄 마가타마"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "MOON25_EvolveFestiveWinds",
+"n": 23,
+"k": "ms-MOON25_EvolveFestiveWinds",
+"text": "미앙 문스펠로 펄 마가타마를 소지한 상태에서 은빛 흐름 획득하기.",
+"rw": [
+"캐릭터 미앙 문스펠"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "MOON16_DefeatBossRuins",
+"n": 24,
+"k": "ms-MOON16_DefeatBossRuins",
+"text": "문스펠산에서 오로치마리오를 처치합니다.",
+"rw": [
+"하이퍼 문스펠산"
+],
+"need": [],
+"cat": "kill",
+"char": []
+},
+{
+"id": "MOON18_FindMap_Moonspell",
+"n": 25,
+"k": "ms-MOON18_FindMap_Moonspell",
+"text": "Moonspell 산 지도를 찾습니다.",
+"rw": [
+"유물 문스펠산 지도"
+],
+"need": [],
+"cat": "find",
+"char": []
+}
+]
+},
+"fs": {
+"name": "🌊 포스카리",
+"rows": [
+{
+"id": "FOSC01_FindCoffin",
+"n": 1,
+"k": "fs-FOSC01_FindCoffin",
+"text": "Foscari 호수에서 관을 찾고 엽니다.",
+"rw": [
+"캐릭터 엘리노어 유지론"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FOSC02_Survive15Eleanor",
+"n": 2,
+"k": "fs-FOSC02_Survive15Eleanor",
+"text": "엘리노어 유지론으로 15분 생존합니다.",
+"rw": [
+"스킬 마법주문 두루마리"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"엘리노어 유지론"
+]
+},
+{
+"id": "FOSC03_GetStreamToLevel6",
+"n": 3,
+"k": "fs-FOSC03_GetStreamToLevel6",
+"text": "마법주문 유창본을 레벨 6까지 올립니다.",
+"rw": [
+"스킬 마법주문 유창본"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "FOSC04_GetStrikeToLevel6",
+"n": 4,
+"k": "fs-FOSC04_GetStrikeToLevel6",
+"text": "마법주문 전능본을 레벨 6까지 올립니다.",
+"rw": [
+"스킬 마법주문 전능본"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "FOSC05_UniteSpells",
+"n": 5,
+"k": "fs-FOSC05_UniteSpells",
+"text": "마법주문 두루마리, 마법주문 유창본, 마법주문 전능본을 통합합니다.",
+"rw": [
+"캐릭터 마루토 컷츠"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FOSC06_Survive15Viktor",
+"n": 6,
+"k": "fs-FOSC06_Survive15Viktor",
+"text": "마루토 컷츠로 15분 생존합니다.",
+"rw": [
+"스킬 에스키치버"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"마루토 컷츠"
+]
+},
+{
+"id": "FOSC07_EvolveEskizzibur",
+"n": 7,
+"k": "fs-FOSC07_EvolveEskizzibur",
+"text": "에스키치버를 진화시킵니다.",
+"rw": [
+"캐릭터 케이타 무오르트"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FOSC08_Survive15Keira",
+"n": 8,
+"k": "fs-FOSC08_Survive15Keira",
+"text": "케이타 무오르트로 15분 생존합니다.",
+"rw": [
+"스킬 섬광의 화살"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"케이타 무오르트"
+]
+},
+{
+"id": "FOSC09_EvolveFlashArrow",
+"n": 9,
+"k": "fs-FOSC09_EvolveFlashArrow",
+"text": "섬광의 화살을 진화시킵니다.",
+"rw": [
+"골드 50,000"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FOSC10_BreakSeal1",
+"n": 10,
+"k": "fs-FOSC10_BreakSeal1",
+"text": "케이타로 호수의 봉인을 파괴합니다.",
+"rw": [
+"스테이지 Foscari 심연"
+],
+"need": [
+[
+"fs-FOSC07_EvolveEskizzibur"
+]
+],
+"cat": "special",
+"char": []
+},
+{
+"id": "FOSC11_BreakSeal2",
+"n": 11,
+"k": "fs-FOSC11_BreakSeal2",
+"text": "마루토로 심연의 봉인을 파괴합니다.",
+"rw": [
+"캐릭터 루미네어 포스카리"
+],
+"need": [
+[
+"fs-FOSC10_BreakSeal1"
+]
+],
+"cat": "special",
+"char": []
+},
+{
+"id": "FOSC12_BreakSeal3",
+"n": 12,
+"k": "fs-FOSC12_BreakSeal3",
+"text": "엘리노어로 추방자의 봉인을 파괴합니다.",
+"rw": [
+"캐릭터 쥬느비에브 그루예르"
+],
+"need": [
+[
+"fs-FOSC10_BreakSeal1"
+]
+],
+"cat": "special",
+"char": []
+},
+{
+"id": "FOSC13_Survive15Luminaire",
+"n": 13,
+"k": "fs-FOSC13_Survive15Luminaire",
+"text": "루미네어 포스카리로 15분 생존합니다.",
+"rw": [
+"스킬 프리즈마틱 미사일"
+],
+"need": [
+[
+"fs-FOSC10_BreakSeal1"
+]
+],
+"cat": "survive",
+"char": [
+"루미네어 포스카리"
+]
+},
+{
+"id": "FOSC14_EvolvePrismatic",
+"n": 14,
+"k": "fs-FOSC14_EvolvePrismatic",
+"text": "프리즈마틱 미사일을 진화시킵니다.",
+"rw": [
+"골드 50,000"
+],
+"need": [
+[
+"fs-FOSC10_BreakSeal1"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "FOSC15_Survive15Genevieve",
+"n": 15,
+"k": "fs-FOSC15_Survive15Genevieve",
+"text": "쥬느비에브 그루예르로 15분 생존합니다.",
+"rw": [
+"스킬 그림자 시종"
+],
+"need": [
+[
+"fs-FOSC10_BreakSeal1"
+]
+],
+"cat": "survive",
+"char": [
+"쥬느비에브 그루예르"
+]
+},
+{
+"id": "FOSC16_EvolveShadow",
+"n": 16,
+"k": "fs-FOSC16_EvolveShadow",
+"text": "그림자 시종을 진화시킵니다.",
+"rw": [
+"골드 50,000"
+],
+"need": [
+[
+"fs-FOSC10_BreakSeal1"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "FOSC17_Defeat100kGenevieve",
+"n": 17,
+"k": "fs-FOSC17_Defeat100kGenevieve",
+"text": "쥬느비에브 그루예르로 1번의 게임에서 적을 100000명 처치합니다.",
+"rw": [
+"캐릭터 제네비"
+],
+"need": [
+[
+"fs-FOSC10_BreakSeal1"
+]
+],
+"cat": "kill",
+"char": [
+"쥬느비에브 그루예르"
+]
+},
+{
+"id": "FOSC18_Defeat6kFairy",
+"n": 18,
+"k": "fs-FOSC18_Defeat6kFairy",
+"text": "총 6000마리의 새미를 처치합니다.",
+"rw": [
+"캐릭터 새미"
+],
+"need": [],
+"cat": "kill",
+"char": []
+},
+{
+"id": "FOSC19_Defeat6kHorror",
+"n": 19,
+"k": "fs-FOSC19_Defeat6kHorror",
+"text": "충 6000마리의 썩어가는 구울을 처치합니다.",
+"rw": [
+"캐릭터 썩어가는 구울",
+"스킬 파티 폭죽"
+],
+"need": [
+[
+"fs-FOSC10_BreakSeal1"
+]
+],
+"cat": "kill",
+"char": []
+},
+{
+"id": "FOSC20_DefeatBossLake",
+"n": 20,
+"k": "fs-FOSC20_DefeatBossLake",
+"text": "Foscari 호수에서 가에야의 아바타를 처치합니다.",
+"rw": [
+"하이퍼 Foscari 호수"
+],
+"need": [],
+"cat": "kill",
+"char": []
+},
+{
+"id": "FOSC21_DefeatBossAbyss",
+"n": 21,
+"k": "fs-FOSC21_DefeatBossAbyss",
+"text": "Foscari 심연에서 제네비를 처치합니다.",
+"rw": [
+"하이퍼 Foscari 심연"
+],
+"need": [
+[
+"fs-FOSC10_BreakSeal1"
+]
+],
+"cat": "kill",
+"char": []
+},
+{
+"id": "FOSC22_FindMap_Foscari",
+"n": 22,
+"k": "fs-FOSC22_FindMap_Foscari",
+"text": "Foscari 호수를 찾습니다.",
+"rw": [
+"유물 Foscari 호수 지도"
+],
+"need": [],
+"cat": "find",
+"char": []
+}
+]
+},
+"em": {
+"name": "🚀 긴급회의",
+"rows": [
+{
+"id": "CHAL01_FindCoffin",
+"n": 1,
+"k": "em-CHAL01_FindCoffin",
+"text": "Polus 레플리카에서 관을 찾아서 여세요.",
+"rw": [
+"캐릭터 크루원 디노"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "CHAL02_Survive15Red",
+"n": 2,
+"k": "em-CHAL02_Survive15Red",
+"text": "크루원 디노로 15분 생존하세요.",
+"rw": [
+"스킬 신고!"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"크루원 디노"
+]
+},
+{
+"id": "CHAL03_EvolveReport",
+"n": 3,
+"k": "em-CHAL03_EvolveReport",
+"text": "신고!를 진화시키세요.",
+"rw": [
+"캐릭터 임포스터 리나"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "CHAL04_Survive15Purple",
+"n": 4,
+"k": "em-CHAL04_Survive15Purple",
+"text": "임포스터로 15분 생존하세요",
+"rw": [
+"스킬 샤프 메롱"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"임포스터 리나"
+]
+},
+{
+"id": "CHAL05_EvolveTongue",
+"n": 5,
+"k": "em-CHAL05_EvolveTongue",
+"text": "샤프 메롱을 진화시키세요.",
+"rw": [
+"캐릭터 기술자 지노"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "CHAL06_Survive15Orange",
+"n": 6,
+"k": "em-CHAL06_Survive15Orange",
+"text": "기술자로 15분 생존하세요.",
+"rw": [
+"스킬 행운의 카드긁기"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"기술자 지노"
+]
+},
+{
+"id": "CHAL07_EvolveSwipe",
+"n": 7,
+"k": "em-CHAL07_EvolveSwipe",
+"text": "행운의 카드긁기를 진화시키세요.",
+"rw": [
+"캐릭터 과학자 미나"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "CHAL08_ReachLv50Pink",
+"n": 8,
+"k": "em-CHAL08_ReachLv50Pink",
+"text": "과학자 미나로 레벨 50에 도달히세요.",
+"rw": [
+"스킬 과학 암석"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"과학자 미나"
+]
+},
+{
+"id": "CHAL09_EvolveSamples",
+"n": 9,
+"k": "em-CHAL09_EvolveSamples",
+"text": "과학 암석을 진화시키세요.",
+"rw": [
+"캐릭터 형상 변환자 니노"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "CHAL10_Survive15Green",
+"n": 10,
+"k": "em-CHAL10_Survive15Green",
+"text": "형상 변환자 니노로 15분 생존하세요.",
+"rw": [
+"스킬 오락가락 환풍구"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"형상 변환자 니노"
+]
+},
+{
+"id": "CHAL11_EvolveVent",
+"n": 11,
+"k": "em-CHAL11_EvolveVent",
+"text": "오락가락 환풍구를 진화시키세요.",
+"rw": [
+"골드 50,000"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "CHAL12_GetMedicalToLevel7",
+"n": 12,
+"k": "em-CHAL12_GetMedicalToLevel7",
+"text": "생명 징후 스캔을 레벨 7로 올리세요.",
+"rw": [
+"스킬 생명 징후 스캔"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "CHAL13_EvolveMedical",
+"n": 13,
+"k": "em-CHAL13_EvolveMedical",
+"text": "생명 징후 스캔을 진화시키세요.",
+"rw": [
+"캐릭터 유령 리노"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "CHAL14_KillOneWithYellow",
+"n": 14,
+"k": "em-CHAL14_KillOneWithYellow",
+"text": "유령 리노로 적 1명을 처치하세요?!",
+"rw": [
+"캐릭터 보호자 피나"
+],
+"need": [],
+"cat": "kill",
+"char": [
+"유령 리노"
+]
+},
+{
+"id": "CHAL15_ReachLv50Blue",
+"n": 15,
+"k": "em-CHAL15_ReachLv50Blue",
+"text": "보호자 미나로 레벨 50에 도달히세요.",
+"rw": [
+"스킬 파편 파괴"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"보호자 피나"
+]
+},
+{
+"id": "CHAL16_EvolveGarbage",
+"n": 16,
+"k": "em-CHAL16_EvolveGarbage",
+"text": "파편 파괴를 진화시키세요.",
+"rw": [
+"골드 50,000"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "CHAL17_Defeat6000Cute",
+"n": 17,
+"k": "em-CHAL17_Defeat6000Cute",
+"text": "의심스러워 보이는 적 총 6000마리를 처치하세요.",
+"rw": [
+"캐릭터 말",
+"스킬 모자"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "CHAL18_Defeat100kPurple",
+"n": 18,
+"k": "em-CHAL18_Defeat100kPurple",
+"text": "임포스터 리나로 한 게임에서 적 100000명을 처치하세요.",
+"rw": [
+"캐릭터 임포스터 리나"
+],
+"need": [],
+"cat": "kill",
+"char": [
+"임포스터 리나"
+]
+},
+{
+"id": "CHAL19_DefeatBoss25",
+"n": 19,
+"k": "em-CHAL19_DefeatBoss25",
+"text": "Polus 레플리카에서 확신의 희번득을 처치하세요.",
+"rw": [
+"하이퍼 Polus 레플리카"
+],
+"need": [],
+"cat": "kill",
+"char": []
+},
+{
+"id": "CHAL20_FindMap",
+"n": 20,
+"k": "em-CHAL20_FindMap",
+"text": "Polus 레플리카 맵을 찾으세요.",
+"rw": [
+"유물 Polus 레플리카 맵"
+],
+"need": [],
+"cat": "find",
+"char": []
+}
+]
+},
+"og": {
+"name": "🔫 작전 총기",
+"rows": [
+{
+"id": "FB_01_Find__Coffin",
+"n": 1,
+"k": "og-FB_01_Find__Coffin",
+"text": "갈루가 정글에서 관을 찾아서 여세요.",
+"rw": [
+"캐릭터 빌 라이저"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_02_SurvivLong",
+"n": 2,
+"k": "og-FB_02_SurvivLong",
+"text": "빌 라이저로 15분 생존하세요.",
+"rw": [
+"스킬 장총"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"빌 라이저"
+]
+},
+{
+"id": "FB_03_EvolveLong",
+"n": 3,
+"k": "og-FB_03_EvolveLong",
+"text": "장총을 진화시키세요.",
+"rw": [
+"캐릭터 렌스 빈"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_04_SurvivShort",
+"n": 4,
+"k": "og-FB_04_SurvivShort",
+"text": "란스 빈으로 15분 생존하세요.",
+"rw": [
+"스킬 래피드 파이어"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"렌스 빈"
+]
+},
+{
+"id": "FB_05_EvolveShort",
+"n": 5,
+"k": "og-FB_05_EvolveShort",
+"text": "단총을 진화시키세요.",
+"rw": [
+"캐릭터 아리아나"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_06_SurvivSpread",
+"n": 6,
+"k": "og-FB_06_SurvivSpread",
+"text": "아리아나에서 15분 동안 생존하세요.",
+"rw": [
+"스킬 스프레드 샷"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"아리아나"
+]
+},
+{
+"id": "FB_07_EvolveSpread",
+"n": 7,
+"k": "og-FB_07_EvolveSpread",
+"text": "스프레드 샷을 진화시키세요.",
+"rw": [
+"캐릭터 루시아"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_08_SurvivLaser",
+"n": 8,
+"k": "og-FB_08_SurvivLaser",
+"text": "루치아로 15분 생존하세요.",
+"rw": [
+"스킬 C-U-레이저"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"루시아"
+]
+},
+{
+"id": "FB_09_EvolveLaser",
+"n": 9,
+"k": "og-FB_09_EvolveLaser",
+"text": "C-U-레이저를 진화시키세요.",
+"rw": [
+"스테이지 빡빡한 하이웨이",
+"하이퍼 빡빡한 하이웨이"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_10_Find__Coffin",
+"n": 10,
+"k": "og-FB_10_Find__Coffin",
+"text": "빡빡한 하이웨이에서 관을 찾아서 여세요.",
+"rw": [
+"캐릭터 브래드 팡"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_11_SurvivFire",
+"n": 11,
+"k": "og-FB_11_SurvivFire",
+"text": "브래드 팡으로 15분 생존하세요.",
+"rw": [
+"스킬 총기"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"브래드 팡"
+]
+},
+{
+"id": "FB_12_EvolveFire",
+"n": 12,
+"k": "og-FB_12_EvolveFire",
+"text": "불의 무기를 진화시키세요.",
+"rw": [
+"캐릭터 브라우니"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_13_SurvivSonic",
+"n": 13,
+"k": "og-FB_13_SurvivSonic",
+"text": "브라우니로 15분 생존하세요.",
+"rw": [
+"스킬 소닉 블룸"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"브라우니"
+]
+},
+{
+"id": "FB_14_EvolveSonic",
+"n": 14,
+"k": "og-FB_14_EvolveSonic",
+"text": "소닉 블룸을 진화시키세요.",
+"rw": [
+"캐릭터 시이나 에트란지"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_15_SurvivCross",
+"n": 15,
+"k": "og-FB_15_SurvivCross",
+"text": "시이나 에트란지로 15분 생존하세요.",
+"rw": [
+"스킬 블레이드 석궁"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"시이나 에트란지"
+]
+},
+{
+"id": "FB_16_EvolveCross",
+"n": 16,
+"k": "og-FB_16_EvolveCross",
+"text": "칼날 석궁을 진화시키세요.",
+"rw": [
+"골드 50,000"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_17_Find__Barrier",
+"n": 17,
+"k": "og-FB_17_Find__Barrier",
+"text": "장벽 7개를 찾으세요.",
+"rw": [
+"캐릭터 프로보텍터"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_18_SurvivPrism",
+"n": 18,
+"k": "og-FB_18_SurvivPrism",
+"text": "프로보텍터로 15분 생존하세요.",
+"rw": [
+"스킬 프리즘 라스"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"프로보텍터"
+]
+},
+{
+"id": "FB_19_EvolvePrism",
+"n": 19,
+"k": "og-FB_19_EvolvePrism",
+"text": "프리즘 라스를 진화시킵니다.",
+"rw": [
+"골드 50,000"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_20_Find__Rapid",
+"n": 20,
+"k": "og-FB_20_Find__Rapid",
+"text": "래피드파이어 14개를 찾으세요.",
+"rw": [
+"캐릭터 스탠리"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_21_SurvivHoming",
+"n": 21,
+"k": "og-FB_21_SurvivHoming",
+"text": "스탠리 아이언사이드로 15분 생존하세요.",
+"rw": [
+"스킬 귀소 실패"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"스탠리"
+]
+},
+{
+"id": "FB_22_EvolveHoming",
+"n": 22,
+"k": "og-FB_22_EvolveHoming",
+"text": "귀소 실패를 진화시키세요.",
+"rw": [
+"골드 50,000"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_23_Find__Grenade",
+"n": 23,
+"k": "og-FB_23_Find__Grenade",
+"text": "수류탄 28개를 찾으세요.",
+"rw": [
+"캐릭터 뉴트 플리스켄"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_24_SurvivMines",
+"n": 24,
+"k": "og-FB_24_SurvivMines",
+"text": "뉴트 플리스켄으로 15분 생존하세요.",
+"rw": [
+"스킬 다이버 광산"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"뉴트 플리스켄"
+]
+},
+{
+"id": "FB_25_EvolveMines",
+"n": 25,
+"k": "og-FB_25_EvolveMines",
+"text": "다이버 광산을 진화시키세요.",
+"rw": [
+"캐릭터 시몬도 벨몬트"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_26_DefeatSpecial",
+"n": 26,
+"k": "og-FB_26_DefeatSpecial",
+"text": "갈루가 정글에서 빅 퍼즈를 처치하세요.",
+"rw": [
+"캐릭터 바하무트"
+],
+"need": [],
+"cat": "kill",
+"char": []
+},
+{
+"id": "FB_27_SurvivClaw",
+"n": 27,
+"k": "og-FB_27_SurvivClaw",
+"text": "콜로넬 바하멋으로 15분 생존하세요.",
+"rw": [
+"스킬 메탈 클로"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"바하무트"
+]
+},
+{
+"id": "FB_28_EvolveClaw",
+"n": 28,
+"k": "og-FB_28_EvolveClaw",
+"text": "메탈 크로우를 진화시키세요.",
+"rw": [
+"골드 50,000"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "FB_29_DefeatBoss",
+"n": 29,
+"k": "og-FB_29_DefeatBoss",
+"text": "갈루가 정글에서 타카를 처치하세요.",
+"rw": [
+"하이퍼 네오 갈루가"
+],
+"need": [],
+"cat": "kill",
+"char": []
+},
+{
+"id": "FB_30_Find__Map",
+"n": 30,
+"k": "og-FB_30_Find__Map",
+"text": "갈루가 정글 지도를 찾으세요.",
+"rw": [
+"유물 갈루가 정글 지도"
+],
+"need": [],
+"cat": "find",
+"char": []
+}
+]
+},
+"cv": {
+"name": "🦇 캐슬바니아",
+"rows": [
+{
+"id": "TP_Leon_FindCoffin1",
+"n": 1,
+"k": "cv-TP_Leon_FindCoffin1",
+"text": "Ode to Castlevania에서 첫 번째 관을 찾아서 여세요.",
+"rw": [
+"캐릭터 레온 벨몬드"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Sonia_HeartRefresh",
+"n": 2,
+"k": "cv-TP_Sonia_HeartRefresh",
+"text": "종마 게이트를 연 후 하트 리프레시 7개를 찾으세요.",
+"rw": [
+"캐릭터 소니아 벨몬드"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Trevor_Boss1",
+"n": 3,
+"k": "cv-TP_Trevor_Boss1",
+"text": "레온 벨몬드로 자이언트 메두사 헤드를 처치하세요.",
+"rw": [
+"캐릭터 랄프 C 벨몬드"
+],
+"need": [],
+"cat": "kill",
+"char": [
+"레온 벨몬드"
+]
+},
+{
+"id": "TP_Sypha_EvoDragonwater",
+"n": 4,
+"k": "cv-TP_Sypha_EvoDragonwater",
+"text": "그랜트 다이너스티로 슬로그라와 가이본을 처치하세요.",
+"rw": [
+"캐릭터 사이파 벨네이드"
+],
+"need": [],
+"cat": "kill",
+"char": [
+"그랜트 다이너스티"
+]
+},
+{
+"id": "TP_Grant_Boss2",
+"n": 5,
+"k": "cv-TP_Grant_Boss2",
+"text": "수룡 채찍을 진화시키세요.",
+"rw": [
+"캐릭터 그랜트 다이너스티"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Alucard_Boss3",
+"n": 6,
+"k": "cv-TP_Alucard_Boss3",
+"text": "랄프 C 벨몬드로 도플갱어를 처치하세요.",
+"rw": [
+"캐릭터 알루카드"
+],
+"need": [],
+"cat": "kill",
+"char": [
+"랄프 C 벨몬드"
+]
+},
+{
+"id": "TP_Hector_KarmaCoins",
+"n": 7,
+"k": "cv-TP_Hector_KarmaCoins",
+"text": "전갈 문을 연 후 카르마 코인 7개를 찾으세요.",
+"rw": [
+"캐릭터 헥터"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Christopher_EvoSworb",
+"n": 8,
+"k": "cv-TP_Christopher_EvoSworb",
+"text": "알루카트 스워브를 진화시키세요.",
+"rw": [
+"캐릭터 크리스토퍼 벨몬드"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Simon_EvoLemuria",
+"n": 9,
+"k": "cv-TP_Simon_EvoLemuria",
+"text": "제트 블랙 채찍을 진화시키세요.",
+"rw": [
+"캐릭터 시몬 벨몬드"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Juste_EvoCurse",
+"n": 10,
+"k": "cv-TP_Juste_EvoCurse",
+"text": "윈드 채찍을 진화시키세요.",
+"rw": [
+"캐릭터 쥬스트 벨몬드"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Julius_FindCoffin2",
+"n": 11,
+"k": "cv-TP_Julius_FindCoffin2",
+"text": "Ode to Castlevania에서 두 번째 관을 찾아서 엽니다.",
+"rw": [
+"캐릭터 줄리어스 벨몬드"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Yoko_Boss4",
+"n": 12,
+"k": "cv-TP_Yoko_Boss4",
+"text": "크루스 소마로 아바돈을 처치하세요.",
+"rw": [
+"캐릭터 요코 벨네이드"
+],
+"need": [],
+"cat": "kill",
+"char": [
+"소마 쿠루스"
+]
+},
+{
+"id": "TP_Soma_Boss5",
+"n": 13,
+"k": "cv-TP_Soma_Boss5",
+"text": "줄리어스 벨몬드로 게르고스를 처치하세요.",
+"rw": [
+"캐릭터 소마 쿠루스"
+],
+"need": [],
+"cat": "kill",
+"char": [
+"줄리어스 벨몬드"
+]
+},
+{
+"id": "TP_Jonhathan_EvoRPG",
+"n": 14,
+"k": "cv-TP_Jonhathan_EvoRPG",
+"text": "손 수류탄을 진화시키세요.",
+"rw": [
+"캐릭터 조나단 모리스"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Charlotte_Mirrors",
+"n": 15,
+"k": "cv-TP_Charlotte_Mirrors",
+"text": "카프라 문을 연 후 진실의 거울 7개를 찾으세요.",
+"rw": [
+"캐릭터 살럿 올린"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_John_EvoSpells",
+"n": 16,
+"k": "cv-TP_John_EvoSpells",
+"text": "레이징 파이어, 아이스 팡, 게일 포스, 록 라이엇을 횟수에 상관없이 진화시키세요.",
+"rw": [
+"캐릭터 존 모리스"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Eric_EvoJavelin",
+"n": 17,
+"k": "cv-TP_Eric_EvoJavelin",
+"text": "재블린을 진화시키세요",
+"rw": [
+"캐릭터 에릭 리카드"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Shanoa_EvoTwo",
+"n": 18,
+"k": "cv-TP_Shanoa_EvoTwo",
+"text": "아이언 볼과 알루카드 창을 진화시키세요.",
+"rw": [
+"캐릭터 샤노아"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Maria_unlock",
+"n": 19,
+"k": "cv-TP_Maria_unlock",
+"text": "샤노아, 쥬스트 벨몬드와 함께 모든 스테이지를 완료하세요.",
+"rw": [
+"캐릭터 마리아 라넷드"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Richter_EvoBeasts",
+"n": 20,
+"k": "cv-TP_Richter_EvoBeasts",
+"text": "수호자의 방패를 진화시키세요.",
+"rw": [
+"캐릭터 리히터 벨몬드"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Teleport1",
+"n": 21,
+"k": "cv-TP_Teleport1",
+"text": "자이언트 박쥐를 처치한 후 종마 게이트를 획득하세요.",
+"rw": [
+"유물 종마 게이트"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Teleport2",
+"n": 22,
+"k": "cv-TP_Teleport2",
+"text": "꼭두각시 마스터를 처치한 후 스콜피온 게이트를 획득하세요.",
+"rw": [
+"유물 스콜피온 게이트"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Teleport3",
+"n": 23,
+"k": "cv-TP_Teleport3",
+"text": "파라노이아를 처치하고 카프라 게이트를 획득하세요.",
+"rw": [
+"유물 카프라 게이트"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Teleport4",
+"n": 24,
+"k": "cv-TP_Teleport4",
+"text": "아바돈을 처치한 후 킹스 게이트를 획득하세요.",
+"rw": [
+"유물 킹스 게이트"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Teleport5",
+"n": 25,
+"k": "cv-TP_Teleport5",
+"text": "메나스를 처치한 후 거대 뱀 게이트를 획득하세요.",
+"rw": [
+"유물 거대 뱀 게이트"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Teleport6",
+"n": 26,
+"k": "cv-TP_Teleport6",
+"text": "엘리고르를 처치한 후 비스트 게이트를 획득하세요.",
+"rw": [
+"유물 비스트 게이트"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Relic_BlackDisk",
+"n": 27,
+"k": "cv-TP_Relic_BlackDisk",
+"text": "리히터 벨몬드와 함께 왕좌의 방에서 결투하고 살아남으세요.",
+"rw": [
+"유물 블랙 디스크"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Relic_CastleMap",
+"n": 28,
+"k": "cv-TP_Relic_CastleMap",
+"text": "캐슬바니아 지도를 찾으세요.",
+"rw": [
+"유물 캐슬바니아 지도"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Relic_LibrarianCard",
+"n": 29,
+"k": "cv-TP_Relic_LibrarianCard",
+"text": "나무 조각 교본을 찾으세요.",
+"rw": [
+"유물 나무 조각 교본"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Relic_PileOfSecrets",
+"n": 30,
+"k": "cv-TP_Relic_PileOfSecrets",
+"text": "켜켜히 쌓인 비밀을 찾으세요.",
+"rw": [
+"유물 켜켜히 쌓인 비밀"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Relic_EbonyCrimsonStone",
+"n": 31,
+"k": "cv-TP_Relic_EbonyCrimsonStone",
+"text": "흑단석과 진홍석을 찾으세요.",
+"rw": [
+"유물 흑단석과 진홍석"
+],
+"need": [
+[
+"cv-TP_Relic_PileOfSecrets"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Hyper_Castle",
+"n": 32,
+"k": "cv-TP_Hyper_Castle",
+"text": "Ode to Castlevania에서 말파스를 처치하세요.",
+"rw": [
+"하이퍼 Ode to Castlevania"
+],
+"need": [],
+"cat": "kill",
+"char": []
+},
+{
+"id": "TP_Dracula_FindCoffin3",
+"n": 33,
+"k": "cv-TP_Dracula_FindCoffin3",
+"text": "Ode to Castlevania에서 세 번째 관을 찾아서 여세요.",
+"rw": [
+"캐릭터 드라큘라"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Lisa_WineGlass",
+"n": 34,
+"k": "cv-TP_Lisa_WineGlass",
+"text": "와인 잔을 진화시키세요.",
+"rw": [
+"캐릭터 리사 테페스"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Shaft_Light",
+"n": 35,
+"k": "cv-TP_Shaft_Light",
+"text": "루미나시오를 진화시키세요.",
+"rw": [
+"캐릭터 샤프트"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Elizabeth_Dark",
+"n": 36,
+"k": "cv-TP_Elizabeth_Dark",
+"text": "움브라를 진화시키세요.",
+"rw": [
+"캐릭터 엘리자베스 바토리"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Vincent_Spells",
+"n": 37,
+"k": "cv-TP_Vincent_Spells",
+"text": "횟수와 상관없이 풀구르와 케레멧 버블을 진화시키세요.",
+"rw": [
+"캐릭터 빈센트 도린"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Mina_Shield",
+"n": 38,
+"k": "cv-TP_Mina_Shield",
+"text": "아이언 실드를 진화시키세요.",
+"rw": [
+"캐릭터 미나 하쿠바"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Albus_Confodere",
+"n": 39,
+"k": "cv-TP_Albus_Confodere",
+"text": "콘포데레를 완전히 진화시키세요.",
+"rw": [
+"캐릭터 알버스"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Barlowe_Spite",
+"n": 40,
+"k": "cv-TP_Barlowe_Spite",
+"text": "옵티컬 샷을 진화시키세요.",
+"rw": [
+"캐릭터 발로우"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Isaac_Mace",
+"n": 41,
+"k": "cv-TP_Isaac_Mace",
+"text": "철퇴를 진화시키세요.",
+"rw": [
+"캐릭터 아이작"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_SaintGermain_Chauve",
+"n": 42,
+"k": "cv-TP_SaintGermain_Chauve",
+"text": "트라이던트를 진화시키세요.",
+"rw": [
+"캐릭터 생제르맹"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Julia_Energy",
+"n": 43,
+"k": "cv-TP_Julia_Energy",
+"text": "글로버스를 진화시키세요.",
+"rw": [
+"캐릭터 줄리아 라포레즈"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Sara_AlchemyWhip",
+"n": 44,
+"k": "cv-TP_Sara_AlchemyWhip",
+"text": "연금술 채찍을 진화시키세요.",
+"rw": [
+"캐릭터 사라 트란토울"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Rinaldo_Flail",
+"n": 45,
+"k": "cv-TP_Rinaldo_Flail",
+"text": "별 도리깨를 진화시키세요.",
+"rw": [
+"캐릭터 리날도 간돌피"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Quincy_PlatinumWhip",
+"n": 46,
+"k": "cv-TP_Quincy_PlatinumWhip",
+"text": "플래티넘 채찍을 진화시키세요.",
+"rw": [
+"캐릭터 퀸시 모리스"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Maxim_HolyWhip",
+"n": 47,
+"k": "cv-TP_Maxim_HolyWhip",
+"text": "비부티 채찍을 진화시키세요.",
+"rw": [
+"캐릭터 맥심 키신"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Nathan_SonicWhip",
+"n": 48,
+"k": "cv-TP_Nathan_SonicWhip",
+"text": "소닉 채찍을 진화시키세요.",
+"rw": [
+"캐릭터 네이선 그레이브스"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Reinhardt_FindCoffin4",
+"n": 49,
+"k": "cv-TP_Reinhardt_FindCoffin4",
+"text": "Ode to Castlevania에서 네 번째 관을 찾아서 여세요.",
+"rw": [
+"캐릭터 라인하르트 슈나이더"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Henry_Slash",
+"n": 50,
+"k": "cv-TP_Henry_Slash",
+"text": "튀르핑을 진화시키세요.",
+"rw": [
+"캐릭터 헨리"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Cornell_Gun",
+"n": 51,
+"k": "cv-TP_Cornell_Gun",
+"text": "은색 리볼버를 진화시키세요.",
+"rw": [
+"캐릭터 코넬"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Carrie_Custos",
+"n": 52,
+"k": "cv-TP_Carrie_Custos",
+"text": "쿠스토스 문양을 완전히 진화시키세요.",
+"rw": [
+"캐릭터 캐리 페르난데스"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Weapon_WHIP_1",
+"n": 53,
+"k": "cv-TP_Weapon_WHIP_1",
+"text": "레온 벨몬드로 6분 생존하세요.",
+"rw": [
+"스킬 연금술 채찍"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"레온 벨몬드"
+]
+},
+{
+"id": "TP_Weapon_WHIP_2",
+"n": 54,
+"k": "cv-TP_Weapon_WHIP_2",
+"text": "소니아 벨몬드로 8분 생존하세요.",
+"rw": [
+"스킬 소닉 채찍"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"소니아 벨몬드"
+]
+},
+{
+"id": "TP_Weapon_WHIP_3",
+"n": 55,
+"k": "cv-TP_Weapon_WHIP_3",
+"text": "트레버 벨몬드로 10분 생존하세요.",
+"rw": [
+"스킬 드래곤 워터 채찍"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"랄프 C 벨몬드"
+]
+},
+{
+"id": "TP_Weapon_WHIP_4",
+"n": 56,
+"k": "cv-TP_Weapon_WHIP_4",
+"text": "시몬 벨몬드로 12분 생존하세요.",
+"rw": [
+"스킬 윈드 채찍"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"시몬 벨몬드"
+]
+},
+{
+"id": "TP_Weapon_WHIP_5",
+"n": 57,
+"k": "cv-TP_Weapon_WHIP_5",
+"text": "크리스토퍼 벨몬드로 14분 생존하세요.",
+"rw": [
+"스킬 제트 블랙 채찍"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"크리스토퍼 벨몬드"
+]
+},
+{
+"id": "TP_Weapon_WHIP_6",
+"n": 58,
+"k": "cv-TP_Weapon_WHIP_6",
+"text": "쥬스트 벨몬드로 16분 생존하세요.",
+"rw": [
+"스킬 비부티 채찍"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"쥬스트 벨몬드"
+]
+},
+{
+"id": "TP_Weapon_WHIP_7",
+"n": 59,
+"k": "cv-TP_Weapon_WHIP_7",
+"text": "리히터 벨몬드로 18분 생존하세요.",
+"rw": [
+"스킬 플래티넘 채찍"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"리히터 벨몬드"
+]
+},
+{
+"id": "TP_Weapon_WHIP_8",
+"n": 60,
+"k": "cv-TP_Weapon_WHIP_8",
+"text": "줄리어스 벨몬드로 20분 생존하세요.",
+"rw": [
+"스킬 색즉시공 채찍"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"줄리어스 벨몬드"
+]
+},
+{
+"id": "TP_Weapon_PROJECTILE_1",
+"n": 61,
+"k": "cv-TP_Weapon_PROJECTILE_1",
+"text": "곡선 단검을 레벨 1까지 상승시키세요.",
+"rw": [
+"스킬 곡선 단검"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_PROJECTILE_2",
+"n": 62,
+"k": "cv-TP_Weapon_PROJECTILE_2",
+"text": "수리검을 레벨 2까지 상승시키세요.",
+"rw": [
+"스킬 수리검"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_PROJECTILE_3",
+"n": 63,
+"k": "cv-TP_Weapon_PROJECTILE_3",
+"text": "조블린을 레벨 3까지 상승시키세요.",
+"rw": [
+"스킬 투창"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_PROJECTILE_4",
+"n": 64,
+"k": "cv-TP_Weapon_PROJECTILE_4",
+"text": "아이언 볼을 레벨 4까지 상승시키세요.",
+"rw": [
+"스킬 아이언 볼"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_PROJECTILE_5",
+"n": 65,
+"k": "cv-TP_Weapon_PROJECTILE_5",
+"text": "디스커스를 레벨 5까지 상승시키세요.",
+"rw": [
+"스킬 원반"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_PROJECTILE_6",
+"n": 66,
+"k": "cv-TP_Weapon_PROJECTILE_6",
+"text": "은색 리볼버를 레벨 6까지 상승시키세요.",
+"rw": [
+"스킬 은색 리볼버"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_PROJECTILE_7",
+"n": 67,
+"k": "cv-TP_Weapon_PROJECTILE_7",
+"text": "손 수류탄을 레벨 7까지 상승시키세요.",
+"rw": [
+"스킬 손 수류탄"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_PROJECTILE_8",
+"n": 68,
+"k": "cv-TP_Weapon_PROJECTILE_8",
+"text": "와인잔을 레벨 8까지 상승시키세요.",
+"rw": [
+"스킬 와인 잔"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_SPELL_1",
+"n": 69,
+"k": "cv-TP_Weapon_SPELL_1",
+"text": "레이징 파이어를 진화시키세요.",
+"rw": [
+"스킬 레이징 파이어"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Weapon_SPELL_2",
+"n": 70,
+"k": "cv-TP_Weapon_SPELL_2",
+"text": "아이스 팡을 진화시키세요.",
+"rw": [
+"스킬 아이스 팡"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Weapon_SPELL_3",
+"n": 71,
+"k": "cv-TP_Weapon_SPELL_3",
+"text": "게일 포스를 진화시키세요.",
+"rw": [
+"스킬 게일 포스"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Weapon_SPELL_4",
+"n": 72,
+"k": "cv-TP_Weapon_SPELL_4",
+"text": "록 라이엇을 진화시키세요.",
+"rw": [
+"스킬 록 라이엇"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Weapon_SPELL_5",
+"n": 73,
+"k": "cv-TP_Weapon_SPELL_5",
+"text": "풀구르를 진화시키세요.",
+"rw": [
+"스킬 풀구르"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Weapon_SPELL_6",
+"n": 74,
+"k": "cv-TP_Weapon_SPELL_6",
+"text": "케레멧 버블을 진화시키세요.",
+"rw": [
+"스킬 케레멧 버블"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Weapon_SPELL_7",
+"n": 75,
+"k": "cv-TP_Weapon_SPELL_7",
+"text": "레펙시오를 진화시키세요.",
+"rw": [
+"스킬 레펙시오"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Weapon_SPELL_8",
+"n": 76,
+"k": "cv-TP_Weapon_SPELL_8",
+"text": "헥스를 진화시키세요.",
+"rw": [
+"스킬 헥스"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "TP_Weapon_WEAPON_1",
+"n": 77,
+"k": "cv-TP_Weapon_WEAPON_1",
+"text": "알루카트 스워브로 피해를 총 10000 만큼 입히세요.",
+"rw": [
+"스킬 알루카트 스워브"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Weapon_WEAPON_2",
+"n": 78,
+"k": "cv-TP_Weapon_WEAPON_2",
+"text": "튀르핑으로 피해를 총 20000 만큼 입히세요.",
+"rw": [
+"스킬 튀르핑"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Weapon_WEAPON_3",
+"n": 79,
+"k": "cv-TP_Weapon_WEAPON_3",
+"text": "알루카드 창으로 피해를 총 30000 만큼 입히세요.",
+"rw": [
+"스킬 알루카드 창"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Weapon_WEAPON_4",
+"n": 80,
+"k": "cv-TP_Weapon_WEAPON_4",
+"text": "트라이던트로 피해를 총 40000 만큼 입히세요.",
+"rw": [
+"스킬 트라이던트"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Weapon_WEAPON_5",
+"n": 81,
+"k": "cv-TP_Weapon_WEAPON_5",
+"text": "철퇴로 피해를 총 50000 만큼 입히세요.",
+"rw": [
+"스킬 철퇴"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Weapon_WEAPON_6",
+"n": 82,
+"k": "cv-TP_Weapon_WEAPON_6",
+"text": "별 도리깨로 피해를 총 60000 만큼 입히세요.",
+"rw": [
+"스킬 별 도리깨"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Weapon_WEAPON_7",
+"n": 83,
+"k": "cv-TP_Weapon_WEAPON_7",
+"text": "아이언 실드로 피해를 총 70000 만큼 입히세요.",
+"rw": [
+"스킬 아이언 실드"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Weapon_WEAPON_8",
+"n": 84,
+"k": "cv-TP_Weapon_WEAPON_8",
+"text": "수호 방패로 피해를 총 80000 만큼 입히세요.",
+"rw": [
+"스킬 수호 방패"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Weapon_GLYPH_1",
+"n": 85,
+"k": "cv-TP_Weapon_GLYPH_1",
+"text": "샤노아로 적 1000명을 처치하세요.",
+"rw": [
+"스킬 콘포데레"
+],
+"need": [],
+"cat": "kill",
+"char": [
+"샤노아"
+]
+},
+{
+"id": "TP_Weapon_GLYPH_2",
+"n": 86,
+"k": "cv-TP_Weapon_GLYPH_2",
+"text": "알버스로 2000명의 적을 처치하세요.",
+"rw": [
+"스킬 옵티컬 샷"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "kill",
+"char": [
+"알버스"
+]
+},
+{
+"id": "TP_Weapon_GLYPH_3",
+"n": 87,
+"k": "cv-TP_Weapon_GLYPH_3",
+"text": "리사로 적을 3000명을 처치하세요.",
+"rw": [
+"스킬 루미나시오"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "kill",
+"char": [
+"리사 테페스"
+]
+},
+{
+"id": "TP_Weapon_GLYPH_4",
+"n": 88,
+"k": "cv-TP_Weapon_GLYPH_4",
+"text": "샤프트로 적  4000명을 처치하세요.",
+"rw": [
+"스킬 움브라"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "kill",
+"char": [
+"샤프트"
+]
+},
+{
+"id": "TP_Weapon_GLYPH_5",
+"n": 89,
+"k": "cv-TP_Weapon_GLYPH_5",
+"text": "생제르맹으로 적 5000명을 처치하세요.",
+"rw": [
+"스킬 글로버스"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "kill",
+"char": [
+"생제르맹"
+]
+},
+{
+"id": "TP_Weapon_GLYPH_6",
+"n": 90,
+"k": "cv-TP_Weapon_GLYPH_6",
+"text": "알버스로 적 6000명을 처치하세요.",
+"rw": [
+"스킬 소닉 질주"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "kill",
+"char": [
+"네이선 그레이브스"
+]
+},
+{
+"id": "TP_Weapon_GLYPH_7",
+"n": 91,
+"k": "cv-TP_Weapon_GLYPH_7",
+"text": "덱스트로 쿠스토스를 레벨 6까지 상승시키세요.",
+"rw": [
+"스킬 덱스트로 쿠스토스"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_GLYPH_8",
+"n": 92,
+"k": "cv-TP_Weapon_GLYPH_8",
+"text": "시네스트로 쿠스토스를 레벨 6까지 상승시키세요.",
+"rw": [
+"스킬 시니스트로 쿠스토스"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_GLYPH_9",
+"n": 93,
+"k": "cv-TP_Weapon_GLYPH_9",
+"text": "코넬로 적 7000명을 처치하세요.",
+"rw": [
+"스킬 센트럴리스 쿠스토스"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "kill",
+"char": [
+"코넬"
+]
+},
+{
+"id": "TP_Weapon_GLYPH_10",
+"n": 94,
+"k": "cv-TP_Weapon_GLYPH_10",
+"text": "도미누스의 분노를 레벨 6까지 상승시키세요.",
+"rw": [
+"스킬 도미누스의 분노"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_GLYPH_11",
+"n": 95,
+"k": "cv-TP_Weapon_GLYPH_11",
+"text": "증오를 레벨 6까지 상승시키세요.",
+"rw": [
+"스킬 도미누스의 증오"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "TP_Weapon_GLYPH_12",
+"n": 96,
+"k": "cv-TP_Weapon_GLYPH_12",
+"text": "발로우로 적 8000명을 처치하세요.",
+"rw": [
+"스킬 도미누스의 고뇌"
+],
+"need": [
+[
+"cv-TP_Relic_BlackDisk"
+]
+],
+"cat": "kill",
+"char": [
+"발로우"
+]
+},
+{
+"id": "TP_Selector_FamiliarForge",
+"n": 97,
+"k": "cv-TP_Selector_FamiliarForge",
+"text": "사역마 대장간을 찾으세요.",
+"rw": [
+"스킬 사역마 대장간"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Selector_MorningStar",
+"n": 98,
+"k": "cv-TP_Selector_MorningStar",
+"text": "8개의 마법 채찍 라인을 모두 진화시키세요.",
+"rw": [
+"스킬 모닝 스타",
+"스킨 13개"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Selector_SpectralSword",
+"n": 99,
+"k": "cv-TP_Selector_SpectralSword",
+"text": "8가지 마법 무기 라인을 모두 진화시키세요.",
+"rw": [
+"스킬 스펙트랄 소드",
+"스킨 8개"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Selector_Spellbook",
+"n": 100,
+"k": "cv-TP_Selector_Spellbook",
+"text": "8개의 주문 라인을 모두 진화시키세요.",
+"rw": [
+"스킬 벨나데스의 주문서",
+"스킨 15개"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Selector_Diabologue",
+"n": 101,
+"k": "cv-TP_Selector_Diabologue",
+"text": "8개의 문양 라인을 모두 진화시키세요.",
+"rw": [
+"스킬 에보니 디아볼로그",
+"스킨 9개"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Selector_CoatOfArms",
+"n": 102,
+"k": "cv-TP_Selector_CoatOfArms",
+"text": "16가지 뱀파이어 살상 도구 라인을 모두 진화시키세요.",
+"rw": [
+"스킬 문장",
+"스킨 11개"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "TP_Selector_Candybox",
+"n": 103,
+"k": "cv-TP_Selector_Candybox",
+"text": "모닝 스타, 벨나데스 주문서, 문장, 에보니 다이알로그, 스펙트랄 소드를 잠금 해제하여 사용하세요.",
+"rw": [
+"스킨 3개"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "CompleteAdv_OdeToCastlevania",
+"n": 104,
+"k": "cv-CompleteAdv_OdeToCastlevania",
+"text": "Ode to Castlevania 모험을 한 번 완료하세요.",
+"rw": [
+"스킨 1개"
+],
+"need": [
+[
+"cv-TP_Soma_Boss5"
+],
+[
+"b-FindAtlas"
+]
+],
+"cat": "special",
+"char": []
+}
+]
+},
+"ac": {
+"name": "🏛️ 안테 챔버",
+"rows": [
+{
+"id": "LEM_FindJokerDisc",
+"n": 1,
+"k": "ac-LEM_FindJokerDisc",
+"text": "조커 디스크를 찾아 구매하세요.",
+"rw": [
+"유물 조커 디스크",
+"스테이지 안테 챔버"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "LEM_FindCoffin1",
+"n": 2,
+"k": "ac-LEM_FindCoffin1",
+"text": "안테 챔버교에서 관을 찾아서 열어보세요.",
+"rw": [
+"캐릭터 짐보"
+],
+"need": [
+[
+"ac-LEM_FindJokerDisc"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "LEM_GetInfernolatroToLevel6",
+"n": 3,
+"k": "ac-LEM_GetInfernolatroToLevel6",
+"text": "인페르놀라트로를 레벨 6으로 올리세요.",
+"rw": [
+"스킬 인페르놀라트로"
+],
+"need": [
+[
+"ac-LEM_FindJokerDisc"
+]
+],
+"cat": "skill",
+"char": []
+},
+{
+"id": "LEM_EvolveInfernolatro",
+"n": 4,
+"k": "ac-LEM_EvolveInfernolatro",
+"text": "인페르놀라트로를 진화시키세요.",
+"rw": [
+"캐릭터 카니오"
+],
+"need": [
+[
+"ac-LEM_FindJokerDisc"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "LEM_GetFibonacciToLevel6",
+"n": 5,
+"k": "ac-LEM_GetFibonacciToLevel6",
+"text": "피보나치 스프리츠를 레벨 6으로 올리세요.",
+"rw": [
+"스킬 피보나치 스프리츠"
+],
+"need": [
+[
+"ac-LEM_FindJokerDisc"
+]
+],
+"cat": "skill",
+"char": []
+},
+{
+"id": "LEM_EvolveFibonacci",
+"n": 6,
+"k": "ac-LEM_EvolveFibonacci",
+"text": "피보나치 스프리츠를 진화시키세요.",
+"rw": [
+"캐릭터 치코트"
+],
+"need": [
+[
+"ac-LEM_FindJokerDisc"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "LEM_GetGrosMichelToLevel6",
+"n": 7,
+"k": "ac-LEM_GetGrosMichelToLevel6",
+"text": "그로스 미셸을 레벨 6으로 올리세요.",
+"rw": [
+"스킬 그로스 미셸"
+],
+"need": [
+[
+"ac-LEM_FindJokerDisc"
+]
+],
+"cat": "skill",
+"char": []
+},
+{
+"id": "LEM_EvolveGrosMichel",
+"n": 8,
+"k": "ac-LEM_EvolveGrosMichel",
+"text": "그로스 미셸을 진화시키세요.",
+"rw": [
+"캐릭터 페르케오"
+],
+"need": [
+[
+"ac-LEM_FindJokerDisc"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "LEM_GetRichRocketToLevel6",
+"n": 9,
+"k": "ac-LEM_GetRichRocketToLevel6",
+"text": "리치 로켓을 레벨 6으로 올리세요.",
+"rw": [
+"스킬 천체 부스터"
+],
+"need": [
+[
+"ac-LEM_FindJokerDisc"
+]
+],
+"cat": "skill",
+"char": []
+},
+{
+"id": "LEM_EvolveRichRocket",
+"n": 10,
+"k": "ac-LEM_EvolveRichRocket",
+"text": "리치 로켓을 진화시키세요.",
+"rw": [
+"골드 77,777"
+],
+"need": [
+[
+"ac-LEM_FindJokerDisc"
+]
+],
+"cat": "find",
+"char": []
+},
+{
+"id": "LEM_DefeatBoss",
+"n": 11,
+"k": "ac-LEM_DefeatBoss",
+"text": "안테 챔버에서 크림슨 하트를 물리치세요.",
+"rw": [
+"하이퍼 안테 챔버"
+],
+"need": [
+[
+"ac-LEM_FindJokerDisc"
+]
+],
+"cat": "kill",
+"char": []
+}
+]
+},
+"bm": {
+"name": "🌕 블러드문",
+"rows": [
+{
+"id": "BMN01_FindCoffinMalice",
+"n": 1,
+"k": "bm-BMN01_FindCoffinMalice",
+"text": "붉은 달 장원에서 관을 찾아 열기.",
+"rw": [
+"캐릭터 맬리스 블러드문"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "BMN02_Survive15Malice",
+"n": 2,
+"k": "bm-BMN02_Survive15Malice",
+"text": "말리스 블러드문으로 15분 생존.",
+"rw": [
+"스킬 주홍색 바늘"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"맬리스 블러드문"
+]
+},
+{
+"id": "BMN03_EvolveScarletNeedle",
+"n": 3,
+"k": "bm-BMN03_EvolveScarletNeedle",
+"text": "주홍색 바늘 진화시키기.",
+"rw": [
+"캐릭터 칼로제로 블러드문"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "BMN04_Survive15Calogero",
+"n": 4,
+"k": "bm-BMN04_Survive15Calogero",
+"text": "칼로제로 블러드문으로 15분 생존.",
+"rw": [
+"스킬 아셸라"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"칼로제로 블러드문"
+]
+},
+{
+"id": "BMN05_EvolveAshella",
+"n": 5,
+"k": "bm-BMN05_EvolveAshella",
+"text": "아셸라 진화시키기.",
+"rw": [
+"캐릭터 阿絲塔特"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "BMN06_Survive15Ashtart",
+"n": 6,
+"k": "bm-BMN06_Survive15Ashtart",
+"text": "애쉬타트로 15분 생존.",
+"rw": [
+"스킬 불태우리"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"阿絲塔特"
+]
+},
+{
+"id": "BMN07_EvolveIncineration",
+"n": 7,
+"k": "bm-BMN07_EvolveIncineration",
+"text": "불태우리 진화시키기.",
+"rw": [
+"캐릭터 사르곤"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "BMN10_Survive15Sargon",
+"n": 8,
+"k": "bm-BMN10_Survive15Sargon",
+"text": "사르곤으로 15분 생존.",
+"rw": [
+"스킬 화염 낙하"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"사르곤"
+]
+},
+{
+"id": "BMN11_GetFireBallToLevel6",
+"n": 9,
+"k": "bm-BMN11_GetFireBallToLevel6",
+"text": "파이어볼을 레벨 6에 맞추기.",
+"rw": [
+"스킬 파이어볼"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "BMN12_GetFireWallToLevel6",
+"n": 10,
+"k": "bm-BMN12_GetFireWallToLevel6",
+"text": "파이어월을 레벨 6에 맞추기.",
+"rw": [
+"스킬 파이어월"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "BMN13_UniteFire",
+"n": 11,
+"k": "bm-BMN13_UniteFire",
+"text": "사르곤으로 벨벳 십이면체를 들고 파이어스톨 획득하기.",
+"rw": [
+"캐릭터 사르곤"
+],
+"need": [],
+"cat": "find",
+"char": [
+"사르곤"
+]
+},
+{
+"id": "BMN14_GetMiseryToLevel9",
+"n": 12,
+"k": "bm-BMN14_GetMiseryToLevel9",
+"text": "비참한 나락 레벨 9에 맞추기.",
+"rw": [
+"캐릭터 바보",
+"스킬 비참한 나락"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "BMN15_Die7TimesWithFool",
+"n": 13,
+"k": "bm-BMN15_Die7TimesWithFool",
+"text": "이름 없는 바보로 총 7회 죽기.",
+"rw": [
+"캐릭터 신도단"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "BMN16_GetScreamsToLevel7",
+"n": 14,
+"k": "bm-BMN16_GetScreamsToLevel7",
+"text": "공허의 비명 레벨 7에 맞추기.",
+"rw": [
+"스킬 공허의 비명"
+],
+"need": [],
+"cat": "skill",
+"char": []
+},
+{
+"id": "BMN17_EvolveScreamsOfTheVoi",
+"n": 15,
+"k": "bm-BMN17_EvolveScreamsOfTheVoi",
+"text": "공허의 비명 진화시키기.",
+"rw": [
+"스킬 벨벳 십이면체"
+],
+"need": [],
+"cat": "find",
+"char": []
+},
+{
+"id": "BMN18_Defeat6000Witches",
+"n": 16,
+"k": "bm-BMN18_Defeat6000Witches",
+"text": "자만 자토스를 6000마리 처치하기.",
+"rw": [
+"캐릭터 자만 자토",
+"스킬 108번의 교독"
+],
+"need": [],
+"cat": "kill",
+"char": []
+},
+{
+"id": "BMN19_DefeatAllBosses",
+"n": 17,
+"k": "bm-BMN19_DefeatAllBosses",
+"text": "한 번의 플레이에서 애쉬타르, 사르곤, 신도단, 바알 처치하기.",
+"rw": [
+"캐릭터 성자"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "BMN20_BreakStatue",
+"n": 18,
+"k": "bm-BMN20_BreakStatue",
+"text": "108번의 보체 또는 108번의 교독으로 쿠자타의 동상 부수기.",
+"rw": [
+"캐릭터 쿠자타"
+],
+"need": [],
+"cat": "special",
+"char": []
+},
+{
+"id": "BMN21_DefeatBaal",
+"n": 19,
+"k": "bm-BMN21_DefeatBaal",
+"text": "붉은 달 장원에서 바알타사르 처치하기.",
+"rw": [
+"캐릭터 바알타사르"
+],
+"need": [],
+"cat": "kill",
+"char": []
+},
+{
+"id": "BMN22_Survive15BaalThasar",
+"n": 20,
+"k": "bm-BMN22_Survive15BaalThasar",
+"text": "바알타사르로 15분 생존.",
+"rw": [
+"스킬 암흑의 천공"
+],
+"need": [],
+"cat": "survive",
+"char": [
+"바알타사르"
+]
+},
+{
+"id": "BMN23_EvolveBlackenFirmam",
+"n": 21,
+"k": "bm-BMN23_EvolveBlackenFirmam",
+"text": "바알타사르로 벨벳 십이면체를 들고 단죄 획득하기.",
+"rw": [
+"캐릭터 바알타무트"
+],
+"need": [],
+"cat": "find",
+"char": [
+"바알타사르"
+]
+},
+{
+"id": "BMN24_25MinuteBoss",
+"n": 22,
+"k": "bm-BMN24_25MinuteBoss",
+"text": "붉은 달 장원에서 바티 레이를 처치하기.",
+"rw": [
+"하이퍼 붉은 달 장원"
+],
+"need": [],
+"cat": "kill",
+"char": []
+},
+{
+"id": "BMN25_FindMap_Bloodmoon",
+"n": 23,
+"k": "bm-BMN25_FindMap_Bloodmoon",
+"text": "붉은 달 장원 지도 찾기.",
+"rw": [
+"유물 붉은 달 장원 지도"
+],
+"need": [],
+"cat": "find",
+"char": []
+}
+]
+}
+}

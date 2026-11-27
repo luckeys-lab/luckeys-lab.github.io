@@ -108,7 +108,7 @@
   var GRPN={base:'🧛 본편',extra:'➕ 추가',ed:'💎 디오라마'};
   var getG=function(){try{var g=JSON.parse(localStorage.getItem('ll_rgrp')||'null');if(g)return g}catch(e){}return {base:1}};
   var setG=function(g){try{localStorage.setItem('ll_rgrp',JSON.stringify(g))}catch(e){}try{document.dispatchEvent(new CustomEvent('llchk',{detail:'grp'}))}catch(e){}};
-  var swDraw=function(){var G=getG();[].forEach.call(document.querySelectorAll('.rsw'),function(r){var on=!!G[r.dataset.grp];r.classList.toggle('on',on);var b=r.querySelector('.sw');b.setAttribute('aria-checked',on?'true':'false')})};
+  var swDraw=function(){var G=getG();[].forEach.call(document.querySelectorAll('.rsw[data-grp]'),function(r){var on=!!G[r.dataset.grp];r.classList.toggle('on',on);var b=r.querySelector('.sw');b.setAttribute('aria-checked',on?'true':'false')})};
   document.addEventListener('click',function(e){var b=e.target.closest('.rsw .sw');if(!b)return;var k=b.closest('.rsw').dataset.grp,G=getG();if(G[k])delete G[k];else G[k]=1;setG(G);swDraw()});
   swDraw();document.addEventListener('llchk',function(e){if(e.detail==='grp'||e.detail==='save')swDraw()});
   // 🗂 콘텐츠 틀: 왼쪽 DLC 탭 (11/26) · #base #ed … · 다른 콘텐츠로 가도 같은 탭(ll_tab)
@@ -183,8 +183,8 @@
       return Promise.all([fetch('/data/vs/ach_keys.json?v='+VER).then(function(x){return x.json()}),fetch('/data/vs/secret_keys.json?v='+VER).then(function(x){return x.json()})]).then(function(KK){
         var K=KK[0],SK=KK[1],AL={},SL={};A.forEach(function(a){AL[String(a).toLowerCase()]=1});(o.Secrets||[]).forEach(function(a){SL[String(a).toLowerCase()]=1});   // 대소문자 무시 (GetMagiStoneToLevel7)
         var S={};try{S=JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){}
-        var r={nb:0,tb:0,ne:0,te:0,ns:0,ts:SK.length,name:o.saveName||''};
-        Object.keys(K).forEach(function(a){var k=K[a],ok=!!AL[a.toLowerCase()];if(k.charAt(0)==='b'){r.tb++;if(ok)r.nb++}else{r.te++;if(ok)r.ne++}if(ok)S[k]=1;else delete S[k]});
+        var r={nb:0,tb:0,ne:0,te:0,nd:0,td:0,ns:0,ts:SK.length,name:o.saveName||''};
+        Object.keys(K).forEach(function(a){var k=K[a],ok=!!AL[a.toLowerCase()];if(/^b-/.test(k)){r.tb++;if(ok)r.nb++}else if(/^ed-/.test(k)){r.te++;if(ok)r.ne++}else{r.td++;if(ok)r.nd++}if(ok)S[k]=1;else delete S[k]});
         SK.forEach(function(id){if(SL[id.toLowerCase()]){S['s-'+id]=1;r.ns++}else delete S['s-'+id]});
         try{localStorage.setItem('ll_chk',JSON.stringify(S));localStorage.setItem('ll_saveinfo',JSON.stringify({t:Date.now(),name:r.name}))}catch(e){}
         var X={cw:(o.CollectedWeapons||[]).concat(o.CollectedItems||[]),kc:{},uc:o.UnlockedCharacters||[],bc:o.BoughtCharacters||[]};
@@ -203,7 +203,7 @@
   var hhmm=function(t){var d=new Date(t);return ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)};
   var stool=document.getElementById('savetool');
   if(stool){var msg=stool.querySelector('.msg');
-    var show=function(r){msg.innerHTML='✅ '+(r.name?'「'+esc(r.name)+'」 ':'')+'세이브를 읽어 체크했어요'+(r.mod?' · 게임 저장 '+hhmm(r.mod):'')+'<br>🔓 <a href="/vs/unlocks.html">본편 해금 '+r.nb+' / '+r.tb+'</a> · 💎 <a href="/vs/unlocks.html#sec-ed">디오라마 해금 '+r.ne+' / '+r.te+'</a> · 🤫 <a href="/vs/secrets.html">비밀 '+r.ns+' / '+r.ts+'</a><br><button type="button" class="tqr fgbtn">🔖 저장 · 폰으로 보내기</button> <small>링크·QR로 저장 · 폰 카메라로 찍으면 폰에서도 같은 체크</small>'};
+    var show=function(r){msg.innerHTML='✅ '+(r.name?'「'+esc(r.name)+'」 ':'')+'세이브를 읽어 체크했어요'+(r.mod?' · 게임 저장 '+hhmm(r.mod):'')+'<br>🔓 <a href="/vs/unlocks.html">본편 해금 '+r.nb+' / '+r.tb+'</a> · 💎 <a href="/vs/unlocks.html#sec-ed">디오라마 해금 '+r.ne+' / '+r.te+'</a> · 🌙 <a href="/vs/unlocks.html#ms">다른 DLC 해금 '+r.nd+' / '+r.td+'</a> · 🤫 <a href="/vs/secrets.html">비밀 '+r.ns+' / '+r.ts+'</a><br><button type="button" class="tqr fgbtn">🔖 저장 · 폰으로 보내기</button> <small>링크·QR로 저장 · 폰 카메라로 찍으면 폰에서도 같은 체크</small>'};
     var fail=function(){msg.textContent='⚠ 세이브 파일을 못 읽었어요. SaveData 파일이 맞는지 확인해 주세요.'};
     var rd=function(f){if(!f)return;f.text().then(SAVE.apply).then(show).catch(fail)};
     stool.querySelector('input').addEventListener('change',function(e){rd(e.target.files[0]);e.target.value=''});   // 같은 파일을 다시 골라도 읽히게
@@ -219,7 +219,7 @@
   // 🔄 세이브 버튼 (버튼 모음 빈 칸) · 연결된 세이브가 있을 때만 · 크롬이 다시 허락을 원하면 "!" 표시
   var sbtn=null,gap=document.querySelector('.dock .dk-gap');
   var sflash=function(t){if(!sbtn)return;sbtn.querySelector('i').textContent=t;sbtn.classList.add('msg');clearTimeout(sbtn._t);sbtn._t=setTimeout(function(){sbtn.classList.remove('msg')},3500)};
-  var loadFile=function(f){if(!f)return;sflash('⏳');f.text().then(SAVE.apply).then(function(r){sflash('✅ 세이브 로드 · 💎 '+r.ne+'/'+r.te+' · 본편 '+r.nb+'/'+r.tb);toast('✅ 세이브 로드 완료 · <button type="button" class="tqr">🔖 저장 · 폰으로 보내기</button>')}).catch(function(){sflash('⚠ 세이브 파일이 아니에요')})};
+  var loadFile=function(f){if(!f)return;sflash('⏳');f.text().then(SAVE.apply).then(function(r){sflash('✅ 세이브 로드 · 본편 '+r.nb+'/'+r.tb+' · 💎 '+r.ne+'/'+r.te+' · 다른 DLC '+r.nd+'/'+r.td);toast('✅ 세이브 로드 완료 · <button type="button" class="tqr">🔖 저장 · 폰으로 보내기</button>')}).catch(function(){sflash('⚠ 세이브 파일이 아니에요')})};
   var isPC=matchMedia('(hover:hover) and (pointer:fine)').matches;   // 폰·태블릿엔 세이브 로드 안 보이게 (11/26 제이)
   if(gap&&isPC&&/^\/vs\//.test(location.pathname)){
     sbtn=document.createElement('button');sbtn.type='button';sbtn.className='dk dk-save';sbtn.title='💾 세이브 파일 로드';sbtn.innerHTML='💾<i></i><input type="file" hidden>';gap.parentNode.replaceChild(sbtn,gap);

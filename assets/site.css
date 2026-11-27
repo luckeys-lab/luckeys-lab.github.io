@@ -501,3 +501,8 @@ html.inv .k-ogre .lbl{bottom:auto;top:calc(100% + 2px)}
 .lord button.on{background:var(--navy);color:var(--gold)}
 .lfind{flex:1;min-width:150px;padding:7px 10px;border:2px solid var(--line);border-radius:999px;font-size:14px;background:var(--bg);color:var(--txt)}.lfind:focus{border-color:var(--gold);outline:0}
 .ul.qhide{display:none!important}
+
+/* 탭 상태 배지 · 공략 있는 줄 💡 */
+.cpt-b{position:relative}.cpt-b .tst{position:absolute;top:2px;right:3px;font-style:normal;font-size:10px;line-height:1}
+.ul .gi{font-size:12px;flex:none}
+.rsw.rsoon{border-style:dashed;justify-content:flex-start}
