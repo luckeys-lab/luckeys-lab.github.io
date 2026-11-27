@@ -226,9 +226,15 @@ def stat_rows(st):
         if k not in st: continue
         v=st[k]
         if k in MULT:
-            if v==1: continue
-            p=round((v-1)*100);txt=f"{p:+d}%";w=max(6,min(100,50+p))
+            if k=='magnet':   # 자석은 더하는 값 (0 = 그대로)
+                if not v: continue
+                p=round(v*100)
+            else:
+                if v==1: continue
+                p=round((v-1)*100)
+            txt=f"{p:+d}%";w=max(6,min(100,50+p))
         else:
+            if not v and k!='maxHp':continue
             txt=str(v) if k=='maxHp' else f"+{v}";w=max(6,min(100,(v/2 if k=='maxHp' else v*12)))
         out.append(f'<div class="stat"><span>{lab}</span><div class="pb"><i style="width:{w}%"></i></div><em>{txt}</em></div>')
     return ''.join(out)
@@ -265,10 +271,41 @@ desc: 뱀파이어 서바이벌 에메랄드 디오라마 캐릭터 {c["ko"]} ·
 ''',encoding='utf-8')
     k='CH_'+c['id']
     if k in items: items[k]['l']=f'/vs/ed/c/{sl}.html'
+# ── 🧛 본편 캐릭터 (11/27 · data/vs/base_chars.json ← tools/proto/basechar.py) ──
+BCH=json.loads((D/'base_chars.json').read_text(encoding='utf-8'))
+_chprov={}
+for u in json.loads((D/'base_unlocks.json').read_text(encoding='utf-8')):
+    for r in u['reward']:
+        if r.startswith('캐릭터 '):_chprov.setdefault(r[4:],[]).append(u)
+(R/'_src/vs/base/c').mkdir(parents=True,exist_ok=True)
+btiles={'base':[],'extra':[]}
+for c in BCH:
+    sl=c['id'].lower();ck='CH_'+c['id'];it=items.get(ck,{});w=items.get(c['start'] or '',{})
+    sw=pop(w['n']) if w.get('n') else '🗡️ -'
+    ms=c['stats'].get('moveSpeed',1);spd=f' <em class="spd">👟 {round((ms-1)*100):+d}%</em>' if ms!=1 else ''
+    prov=_chprov.get(it.get('n',''),[])
+    howl=''.join(f'<li><a href="/vs/unlocks.html#b-{u["id"]}">#{u["gi"]}</a> · {esc(u["text_fix"])}</li>' for u in prov) or f'<li>{esc(c["un"])}</li>'
+    tip=re.sub(r'\s*[^\s]+ ▶$','',c['tip'])
+    btiles[c['grp']].append(f'<a class="tile ctile" data-ch="{c["id"]}" href="/vs/base/c/{sl}.html">{f"<img class=sp src={c[chr(105)+chr(109)+chr(103)]} alt= loading=lazy>" if c["img"] else ""}<b>{esc(c["ko"])}{" 🤫" if c["secret"] else ""}</b><span>{sw}</span></a>')
+    (R/f'_src/vs/base/c/{sl}.html').write_text(f'''title: {c["ko"]} · 뱀파이어 서바이벌 캐릭터
+desc: 뱀파이어 서바이벌 캐릭터 {c["ko"]} · 시작 스킬 {w.get("n","")} · 능력치 · 해금 방법 ({esc(c["un"])})
+<div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › <a href="/vs/chars.html#{c["grp"]}">캐릭터</a></div>
+<div class="chead">{f'<img class="sp big" src="{c["img"]}" alt="{esc(c["ko"])}">' if c["img"] else ''}<div><h1>{esc(c["ko"])}</h1>
+<p class="sub">{sw}{spd}{(' · 💰 '+format(c["price"],",")+'골드') if c.get("price") else ''}</p></div></div>
+<div class="quote">{link_names(c["desc"] or "")}</div>
+<h2>해금 방법</h2><ul class="how">{howl}</ul>{('<p class="guide">💡 '+esc(tip)+'</p>') if tip else ''}
+<h2>능력치</h2>{stat_rows(c["stats"]) or '<p class="note">기본 능력치</p>'}
+{('<p class="note">스킨 '+str(len(c["skins"]))+'종</p>') if len(c["skins"])>1 else ''}
+<div class="ad" data-slot="end"></div>
+''',encoding='utf-8')
+    if ck in items:
+        items[ck]['l']=f'/vs/base/c/{sl}.html'
+        if c['img'] and not items[ck].get('i'):items[ck]['i']=c['img']
+BCHT={k:f'<p class="sub">{"1.0 · 비밀" if k=="base" else "추가"} 캐릭터 {len(v)}명 · 이름 아래는 시작 스킬 · 🤫 = 비밀로 여는 캐릭터 · 들어가면 능력치와 해금 방법</p><div class="tiles">{"".join(v)}</div>' for k,v in btiles.items()}
 (R/'_src/vs/chars.html').write_text(f'''title: 캐릭터 (본편 + DLC)
 desc: 뱀파이어 서바이벌 캐릭터 · DLC별 탭 · 에메랄드 디오라마 {len(EC)}명 시작 스킬 · 스킨 · PC 세이브로 해금 표시.
 <div class="crumb"><a href="/">홈</a> › <a href="/vs/">뱀파이어 서바이벌</a> › 캐릭터</div>
-{cpage('🧛','캐릭터',{'ed':f'<p class="sub">디오라마 {len(EC)}명 · 이름 아래는 기본 시작 스킬 · 들어가면 스킨별 시작 스킬과 해금 방법</p><div class="tiles">{"".join(tiles)}</div>'},top='<p class="sub">PC는 💾 세이브를 넣으면 아직 해금 안 된 캐릭터가 회색으로 보여요</p>')}
+{cpage('🧛','캐릭터',{**BCHT,'ed':f'<p class="sub">디오라마 {len(EC)}명 · 이름 아래는 기본 시작 스킬 · 들어가면 스킨별 시작 스킬과 해금 방법</p><div class="tiles">{"".join(tiles)}</div>'},top='<p class="sub">PC는 💾 세이브를 넣으면 아직 해금 안 된 캐릭터가 회색으로 보여요</p>')}
 ''',encoding='utf-8')
 redir('vs/ed/chars.html','/vs/chars.html','#ed')
 (D/'items.json').write_text(json.dumps(items,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
