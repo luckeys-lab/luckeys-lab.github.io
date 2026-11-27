@@ -506,3 +506,11 @@ html.inv .k-ogre .lbl{bottom:auto;top:calc(100% + 2px)}
 .cpt-b{position:relative}.cpt-b .tst{position:absolute;top:2px;right:3px;font-style:normal;font-size:10px;line-height:1}
 .ul .gi{font-size:12px;flex:none}
 .rsw.rsoon{border-style:dashed;justify-content:flex-start}
+
+/* 추천 ↔ 목록 · 빠른 체크 · 이속 */
+.rpinh{font-size:12.5px;font-weight:800;color:var(--gold2);margin:8px 0 4px;padding-left:4px}
+.ul.rpin{border:2px solid var(--gold)!important}
+.rbar .rq{width:18px;height:18px;margin:0 6px 0 0;vertical-align:middle;accent-color:var(--gold)}
+.rqbar{margin:8px 0 4px;text-align:center}.rqbar small{opacity:.8}
+.rqgo{border:0;border-radius:999px;background:var(--gold);color:var(--navy);font-weight:800;padding:8px 16px;cursor:pointer}
+.spd{font-style:normal;font-size:11px;background:#2e7d4f;color:#fff;border-radius:6px;padding:0 5px;margin-left:4px}

@@ -169,6 +169,13 @@
       [].forEach.call(document.querySelectorAll('.lord [data-o]'),function(b){b.classList.toggle('on',b.dataset.o===om)})};
     document.addEventListener('click',function(e){var b=e.target.closest('.lord [data-o]');if(!b)return;om=b.dataset.o;try{localStorage.setItem('ll_order',om)}catch(x){}reord()});
     if(document.querySelector('.lord'))reord();
+    // 🧭 지금 추천 줄을 그 칸 맨 위로 (11/27 제이: 추천이랑 목록 정렬 맞추기)
+    rows.forEach(function(r,i){r.dataset.oi=i});
+    document.addEventListener('llreco',function(e){[].forEach.call(list.querySelectorAll('.rpinh'),function(x){x.remove()});[].forEach.call(list.querySelectorAll('.ul.rpin'),function(x){x.classList.remove('rpin')});
+      [].forEach.call(list.querySelectorAll('.sec'),function(sec){[].slice.call(sec.querySelectorAll(':scope > .ul')).sort(function(a,b){return a.dataset.oi-b.dataset.oi}).forEach(function(r){sec.appendChild(r)})});reord();
+      e.detail.slice().reverse().forEach(function(g){var by={};g.ids.forEach(function(id){var r=list.querySelector('.ul[data-id="'+id+'"]');if(!r)return;var sec=r.closest('.sec');(by[sec.id]=by[sec.id]||{sec:sec,rows:[]}).rows.push(r)});
+        Object.keys(by).forEach(function(k){var sec=by[k].sec,anc=sec.querySelector('.lctl');anc=anc?anc.nextSibling:sec.firstChild;var h=document.createElement('div');h.className='rpinh';h.innerHTML='🧭 지금 추천 · <b>'+esc(g.lb)+'</b>';
+          sec.insertBefore(h,anc);var at=h.nextSibling;by[k].rows.forEach(function(r){r.classList.add('rpin');sec.insertBefore(r,at)})})})});
     // 🔍 번호·이름으로 찾기 (그 칸 안에서) · 숫자면 번호 그대로, 글자면 이름에 들어간 줄
     document.addEventListener('input',function(e){var q=e.target.closest('.lfind');if(!q)return;var sec=q.closest('.sec'),v=q.value.trim().replace(/^[#💎]+/,'');
       [].forEach.call(sec.querySelectorAll('.ul'),function(r){var hit=!v||(/^\d+$/.test(v)?(r.querySelector('.n')||{}).textContent.replace(/\D/g,'')===v:r.textContent.indexOf(v)>=0);r.classList.toggle('qhide',!hit);if(v&&hit)r.classList.remove('hide')});
@@ -254,7 +261,7 @@
   document.addEventListener('click',function(e){var sp=e.target.closest('.spoil');if(sp){e.preventDefault();sp.classList.add('show')}});
   // 📌 상단 고정 추천 띠 · ll_chk로 계산 · 띠 안에서 펼치기/체크
   if(/^\/vs\//.test(location.pathname)){
-    var HAS=false,BR=null,TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],RB=null,RC=null,bar=null,curT=0,mode='min',openRow=null;
+    var HAS=false,BR=null,PEND={},TIER=[['쉬움','🟢',2,3,false],['보통','🟡',4,8,true],['지옥','🔥',6,99,true]],RB=null,RC=null,bar=null,curT=0,mode='min',openRow=null;
     var first=false;try{mode=localStorage.getItem('ll_rbar');if(!mode){mode='min';first=true}if(mode==='off')mode='min';curT=+(localStorage.getItem('ll_rtier')||0)}catch(e){}
     var getS=function(){try{return JSON.parse(localStorage.getItem('ll_chk')||'{}')}catch(e){return {}}};
     function calcEd(S){var has=function(k){return !!S[k]},inv=[].concat(RC.inv).every(has),T=TIER[curT],res=[];
@@ -280,17 +287,17 @@
           L.push({id:id,sc:sc,lk:lk,st:stt,sp:(R.ch.length||R.st.length)?0:1})});
         L.sort(function(a,b){return (b.st-a.st)||(a.sp-b.sp)||(a.sc-b.sc)});var pk=[],tot=0;
         L.forEach(function(x){if(pk.length>=T[2]||tot+x.sc>T[3]||(x.lk&&!T[4]))return;pk.push(x);tot+=x.sc});
-        if(pk.length)res.push({o:{c:'B_'+c.c,cn:c.cn,sk:'📍 '+st.sn,wn:c.wn,ci:c.ci,wi:c.wi},md:0,pk:pk,tot:tot,ns:pk.filter(function(x){return x.st}).length,b:1})})});
+        if(pk.length)res.push({o:{c:'B_'+c.c,cn:c.cn,sk:'📍 '+st.sn,wn:c.wn,ci:c.ci,wi:c.wi,ms:c.ms||1},md:0,pk:pk,tot:tot,ns:pk.filter(function(x){return x.st}).length,b:1})})});
       return res}
     function calc(){var S=getS(),G=getG(),parts=[];
       if(G.ed)parts.push(calcEd(S));if((G.base||G.extra)&&BR)parts.push(calcBase(S,G));
-      var srt=function(a,b){return (b.pk.length-a.pk.length)||(b.ns-a.ns)||(a.tot-b.tot)},seen={},top=[];
+      var srt=function(a,b){return (b.pk.length-a.pk.length)||(b.ns-a.ns)||(a.tot-b.tot)||((b.o.ms||1)-(a.o.ms||1))},seen={},top=[];
       parts.forEach(function(p){p.sort(srt)});
       parts.forEach(function(p){for(var i=0;i<p.length;i++){if(!seen[p[i].o.c]){seen[p[i].o.c]=1;top.push(p[i]);break}}});   // 켠 칸마다 1장씩
       parts.forEach(function(p){p.forEach(function(r){if(top.length>=3||seen[r.o.c])return;seen[r.o.c]=1;top.push(r)})});
       return {top:top,S:S}}
-    function head(r){var o=r.o;return '<b>'+esc(o.cn)+'</b>'+(o.c==='ANY'?'':' · '+esc(o.sk))+' · '+(r.md?'<span class="binv">🔄 인버스 모드</span>':'🌍 일반')}
-    function draw(){if(!bar)return;var c=calc(),top=c.top,S=c.S;
+    function head(r){var o=r.o;return '<b>'+esc(o.cn)+'</b>'+(o.ms>1?' <em class="spd">👟 +'+Math.round((o.ms-1)*100)+'%</em>':'')+(o.c==='ANY'?'':' · '+esc(o.sk))+' · '+(r.md?'<span class="binv">🔄 인버스 모드</span>':'🌍 일반')}
+    function draw(){if(!bar)return;var c=calc(),top=c.top,S=c.S;pinRec(top);
       var one=top.length?head(top[0])+' → '+top[0].pk.map(function(x){return (x.id.charAt(0)==='b'?'#':'💎')+RB[x.id].n}).join(' · '):'추천할 판이 없어요',cnt=top.length?top[0].pk.length:0;
       // 접힘 = 왼쪽 아래 둥근 버튼 (11/26 제이: 화면엔 페이지 내용만)
       if(mode!=='open'){bar.className='rbar fab'+(first?' hint':'');bar.innerHTML='<button type="button" class="rfab" data-m="open" title="추천 해금">🧭<span class="rlab">추천 해금</span>'+(cnt?'<i class="rcnt">'+cnt+'</i>':'')+'</button>';return}
@@ -302,13 +309,17 @@
         if(!top.length&&gl.length)h+='<p class="rn">지금 체크 상태로는 추천할 판이 없어요.</p>';
         if(!gl.length)h+='<p class="rn">켜진 칸이 없어요 · 해금 페이지 각 칸 맨 위 🧭 스위치를 켜 주세요</p>';
         top.forEach(function(r){var o=r.o;h+='<div class="rc">'+(o.ci?'<img class="sp" src="'+o.ci+'" alt="">':'')+'<div class="rcb"><div class="rh2">'+head(r)+'</div>'+(o.c==='ANY'?'<div class="rw">본편 캐릭터도 OK</div>':'<div class="rw">'+(o.wi?'<img class="ic" src="'+o.wi+'" alt="">':'🗡️ ')+'시작 스킬 '+esc(o.wn)+'</div>')+'<ul>'+
-          r.pk.map(function(x){var it=RB[x.id],op=openRow===x.id;return '<li><a class="ri" data-r="'+x.id+'">'+(x.id.charAt(0)==='b'?'#':'💎')+it.n+' '+(it.th||esc(it.t))+'</a>'+(x.st?' <em class="st">🗡️ 시작 스킬</em>':'')+(x.lk?' <em class="lk">🎲 상자 운</em>':'')+
+          r.pk.map(function(x){var it=RB[x.id],op=openRow===x.id;return '<li><input type="checkbox" class="rq" data-q="'+x.id+'"'+(PEND[x.id]?' checked':'')+' aria-label="이번 판에 해냄"><a class="ri" data-r="'+x.id+'">'+(x.id.charAt(0)==='b'?'#':'💎')+it.n+' '+(it.th||esc(it.t))+'</a>'+(x.st?' <em class="st">🗡️ 시작 스킬</em>':'')+(x.lk?' <em class="lk">🎲 상자 운</em>':'')+
             (op?'<div class="rdet"><label class="rck"><input type="checkbox" data-c="'+x.id+'"'+(S[x.id]?' checked':'')+'> 해금 완료</label><p class="rw2">🎁 보상 → '+esc(it.rw)+'</p>'+it.g+'<a class="go" href="/vs/unlocks.html#'+x.id+'">목록에서 보기 →</a></div>':'')+'</li>'}).join('')+'</ul></div></div>'});
+        var np=Object.keys(PEND).length;if(top.length)h+='<div class="rqbar">'+(np?'<button type="button" class="rqgo">✅ 체크한 '+np+'개 해금 완료</button>':'<small>판 끝나고 해낸 줄 앞 ☐ 를 눌러 모아 두고, 한 번에 완료할 수 있어요</small>')+'</div>';
         h+='</div>'}
       bar.className='rbar '+mode;bar.innerHTML=h}
+    var _rp='';function pinRec(top){var sig=top.map(function(r){return r.o.c+':'+r.pk.map(function(x){return x.id}).join(',')}).join('|');if(sig===_rp)return;_rp=sig;try{document.dispatchEvent(new CustomEvent('llreco',{detail:top.map(function(r){return {lb:r.o.cn+(r.o.c==='ANY'?'':' · '+r.o.sk),ids:r.pk.map(function(x){return x.id})}})}))}catch(e){}}
     Promise.all([fetch('/data/vs/ed/rbar.json?v='+VER).then(function(r){return r.json()}),fetch('/data/vs/ed/reco.json?v='+VER).then(function(r){return r.json()}),fetch('/data/vs/breco.json?v='+VER).then(function(r){return r.json()}).catch(function(){return null})]).then(function(j){RB=j[0];RC=j[1];BR=j[2];
       bar=document.createElement('div');(document.getElementById('dkReco')||document.body).appendChild(bar);
-      bar.addEventListener('click',function(e){var m=e.target.closest('[data-m]'),t=e.target.closest('[data-t]'),ri=e.target.closest('.ri'),ck=e.target.closest('[data-c]');
+      bar.addEventListener('click',function(e){var q=e.target.closest('.rq');if(q){if(q.checked)PEND[q.dataset.q]=1;else delete PEND[q.dataset.q];draw();return}
+        if(e.target.closest('.rqgo')){var S2=getS();Object.keys(PEND).forEach(function(k){S2[k]=1});PEND={};try{localStorage.setItem('ll_chk',JSON.stringify(S2))}catch(x){}draw();try{document.dispatchEvent(new CustomEvent('llchk',{detail:'bar'}))}catch(x){}return}
+        var m=e.target.closest('[data-m]'),t=e.target.closest('[data-t]'),ri=e.target.closest('.ri'),ck=e.target.closest('[data-c]');
         if(e.target.closest('.rs')){var b=e.target.closest('.rs');b.textContent='⏳';SAVE.reread(true,true).then(function(r){b.textContent=r&&r.need?'🔒 허락 필요':'✅ '+(r&&r.mod?hhmm(r.mod):'');setTimeout(draw,1500)}).catch(function(){b.textContent='⚠'});return}
         if(m){mode=m.dataset.m;try{localStorage.setItem('ll_rbar',mode)}catch(x){}draw();return}
         if(t){curT=+t.dataset.t;try{localStorage.setItem('ll_rtier',curT)}catch(x){}draw();return}

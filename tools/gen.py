@@ -71,6 +71,9 @@ def _needinfo():
     return m
 DLCU=json.loads((D/'dlc/unlocks.json').read_text(encoding='utf-8'))   # 11/27 · tools/proto/dlcall.py
 NEEDI=_needinfo()
+# 💡 본편 공략 한 줄 (확인된 것만 · 11/27)
+BTIP={'BuyGlassMask':['📍 <b>달빛</b> 시작 지점 바로 위 상인 · <b>10,000골드</b> · 한 번만 삼 · 달빛은 <a href="#b-Unlock4Hypers">#77</a>(하이퍼 4개)로 열려요','⚠ 상인 창을 닫으면 그 판에선 상인이 사라져요 → 살 건 한 번에 · 사면 모든 스테이지에 상인이 나와요'],
+      'FindYellowSign':['📍 <b>달빛</b>에서 15분 → 트리나크리아 보스 → <b>Holy Forbidden</b>으로 이동 → 거기서 획득','⚠ 시간 제한 켜고 · 비밀 캐릭터 말고 · 노란색 신호를 얻을 때까지 15분마다 다시 보내져요']}
 for _t,_d in DLCU.items():
     for _u in _d['rows']:NEEDI[_u['k']]=(f"{_d['name'].split(' ')[0]}{_u['n']}",_u['rw'])
 def need_attr(u):
@@ -279,6 +282,7 @@ for i,u in enumerate(BU,1):
         mates=[x for x in BU if x.get('grp')==u['grp']]
         ev=items.get(u['grp'],{}).get('e') or ''
         gl='<p class="guide">🔗 한 판에 같이: '+' · '.join(f'<a href="#b-{x["id"]}">#{x["gi"]}</a> {esc(x["text_fix"])}' for x in sorted(mates,key=lambda x:x['ord']))+'</p>'+(f'<p class="guide">✨ 진화: {link_names(ev)}</p>' if ev else '')
+    gl+=''.join(f'<p class="guide">{x}</p>' for x in BTIP.get(u['id'],[]))
     q=(f'<div class="fix">게임 원문: {esc(u["text"])}</div>' if u['text_fix']!=u['text'] else '')
     rw=' · '.join(link_names(r) for r in u['reward'])
     badge=('<span class="bd bd-own">전용 · '+' · '.join(pop(c) for c in u['char'])+'</span>') if u['char'] else '<span class="bd">공통</span>'
@@ -694,6 +698,8 @@ def _bsc(c):
     l=c.get('lvl',0);s+=0 if not l else 1 if l<=40 else 2 if l<=60 else 3 if l<=80 else 4
     s+=2*len(c.get('mods',[]))+2*len(c.get('evo',[]))+len(c.get('items',[]))+(1 if c.get('kill') else 0)
     return max(s,1)
+_MS=json.loads((D/'base_speed.json').read_text(encoding='utf-8'))   # 캐릭터 이동 속도 (vs_cards base/character.json moveSpeed)
+BOVR={'FindYellowSign':{'st':['SINKING'],'sec':900,'nl':0}}   # 달빛 15분 → Holy Forbidden (11/27)
 BRC={'rows':{},'chars':[],'stages':[],'invk':'b-ObtainGraciasMirror','lock':{k:v for k,v in LMAP.items() if not k.startswith(('CH_','ED_'))},'cum':[]}
 for u in BU:   # 유물도 "이걸 주는 해금"을 체크해야 있는 것 (예: 레벨 50 조건의 란도마조)
     for r in u['reward']:
@@ -709,17 +715,18 @@ for u in BU:
     if not st:st=[sid for nm,sid in _stbyname if nm in u['text_fix']][:1]   # 문구에 스테이지 이름이 있으면 그 스테이지 (예: 라이케움에서 …)
     if not st and u['id'].startswith('Buy'):st=['SINKING']   # 상인 구매 = 달빛 (유리 가면 · 11/27 제이)
     nl=1 if not st and any(i.startswith('RELIC_') and 'b-'+u['id'] in BRC['lock'].get(i,[]) for i in c.get('items',[])) else 0   # 유물 찾기인데 위치 모름 → 추천 조합에서 빼고 따로 안내
-    BRC['rows'][k]={'g':'extra' if u['group']=='추가' else 'base','ch':c.get('chars',[]),'st':st,'nl':nl,'w':[w[0] for w in c.get('weap',[])],'it':c.get('items',[]),'inv':'Inverse' in c.get('mods',[]),'sc':_bsc(c),'sec':c.get('sec',0)}
+    o=BOVR.get(u['id'],{});st=o.get('st',st);nl=o.get('nl',nl)
+    BRC['rows'][k]={'g':'extra' if u['group']=='추가' else 'base','ch':c.get('chars',[]),'st':st,'nl':nl,'w':[w[0] for w in c.get('weap',[])],'it':c.get('items',[]),'inv':'Inverse' in c.get('mods',[]),'sc':_bsc(dict(c,sec=o.get('sec',c.get('sec',0)))),'sec':o.get('sec',c.get('sec',0))}
 for ck in [k for k in items if k.startswith('CH_') and not k.startswith('CH_EME')]:
     cid=ck[3:];nd=LMAP.get(ck,[])
     if not nd and cid not in DEFCH:continue
     w=BST.get(cid,[]);w0=w[0] if w else None;it=items[ck]
-    BRC['chars'].append({'c':cid,'cn':it['n'],'ci':it.get('i'),'w':w,'wn':items.get(w0,{}).get('n',''),'wi':items.get(w0,{}).get('i'),'need':nd})
+    BRC['chars'].append({'c':cid,'ms':_MS.get(cid,1),'cn':it['n'],'ci':it.get('i'),'w':w,'wn':items.get(w0,{}).get('n',''),'wi':items.get(w0,{}).get('i'),'need':nd})
 for st in dict.fromkeys(MAINST):
     if st in BSN:BRC['stages'].append({'s':st,'sn':BSN[st],'need':_stneed.get(st,[])})
 (D/'breco.json').write_text(json.dumps(BRC,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 _rb=json.loads((D/'ed/rbar.json').read_text(encoding='utf-8'))
 for u in BU:
-    _rb['b-'+u['id']]={'n':u['gi'],'t':u['text_fix'],'th':esc(u['text_fix']),'rw':' · '.join(u['reward']),'need':u.get('need',[]),'g':''}
+    _rb['b-'+u['id']]={'n':u['gi'],'t':u['text_fix'],'th':esc(u['text_fix']),'rw':' · '.join(u['reward']),'need':u.get('need',[]),'g':''.join(f'<p class="guide">{x}</p>' for x in BTIP.get(u['id'],[]))}
 (D/'ed/rbar.json').write_text(json.dumps(_rb,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 print('breco rows',len(BRC['rows']),'chars',len(BRC['chars']),'stages',len(BRC['stages']),'cum',len(BRC['cum']))
