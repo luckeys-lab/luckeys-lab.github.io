@@ -279,6 +279,7 @@ for u in json.loads((D/'base_unlocks.json').read_text(encoding='utf-8')):
         if r.startswith('캐릭터 '):_chprov.setdefault(r[4:],[]).append(u)
 (R/'_src/vs/base/c').mkdir(parents=True,exist_ok=True)
 btiles={'base':[],'extra':[]}
+SKKO={'DEFAULT':'기본','LEGACY':'레거시'}
 for c in BCH:
     sl=c['id'].lower();ck='CH_'+c['id'];it=items.get(ck,{});w=items.get(c['start'] or '',{})
     sw=pop(w['n']) if w.get('n') else '🗡️ -'
@@ -295,7 +296,7 @@ desc: 뱀파이어 서바이벌 캐릭터 {c["ko"]} · 시작 스킬 {w.get("n",
 <div class="quote">{link_names(c["desc"] or "")}</div>
 <h2>해금 방법</h2><ul class="how">{howl}</ul>{('<p class="guide">💡 '+esc(tip)+'</p>') if tip else ''}
 <h2>능력치</h2>{stat_rows(c["stats"]) or '<p class="note">기본 능력치</p>'}
-{('<p class="note">스킨 '+str(len(c["skins"]))+'종</p>') if len(c["skins"])>1 else ''}
+{('<h2>스킨 '+str(len(c.get("skimg",[])))+'</h2><div class="skins">'+''.join(f'<div class="skin"><img class="sp" src="{k["img"]}" alt="" loading="lazy"><b>{esc(SKKO.get(k["t"],k["n"] or k["t"]))}</b></div>' for k in c["skimg"])+'</div>') if len(c.get("skimg",[]))>1 else ''}
 <div class="ad" data-slot="end"></div>
 ''',encoding='utf-8')
     if ck in items:
